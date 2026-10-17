@@ -1,0 +1,1213 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bedrock 모델 비용 — 한 달에 얼마인가요?</title>
+<style>
+  /* ============================================================
+     design tokens — awskr.net house palette
+     Accent is purple because that is what quick/kiro share
+     (quick = magenta->purple, kiro = purple). Green and blue are
+     reserved as STATUS colours (release uses green for "released",
+     blue for "preview"), so neither may double as the accent.
+     ============================================================ */
+  :root {
+    --bg:#0d0f17;
+    --surface-1:#141825;   /* cards, panels */
+    --surface-2:#1b2030;   /* inputs, nested */
+    --surface-3:#232a3d;   /* hover, open row */
+    --line:#2a3146;
+    --line-soft:#1f2535;
+
+    --txt:#e9ecf5;
+    --ink:#c3cadb;
+    --muted:#8a92a8;
+    --faint:#5b6378;
+
+    --accent:#a855f7;
+    --accent-hover:#b974f9;
+    --accent-soft:#2a1d44;
+    --accent-line:#4b336e;
+    --on-accent:#0c0714;
+    --grad-from:#e24aa8;
+    --grad-to:#a855f7;
+
+    --ok:#46c988;      --ok-soft:#10281c;   --ok-line:#1d4a33;
+    --info:#5ea0ef;    --info-soft:#111f33; --info-line:#24405e;
+    --warn:#e0b03a;    --warn-soft:#2a2110; --warn-line:#52411a;
+    --danger:#f0797f;
+
+    --batch:#15101f; --batch-line:#3d2f5a; --batch-ink:#d3bdf5; --batch-band:#241a3a;
+
+    --font-sans:"Pretendard", -apple-system, system-ui, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    --font-mono:ui-monospace, "SF Mono", Menlo, monospace;
+
+    --fs-title:23px; --fs-h1:15px; --fs-body:15px;
+    --fs-sm:13.5px;  --fs-xs:12px;
+    --lh-base:1.6;   --lh-dense:1.45;
+
+    --r-sm:6px; --r-md:10px; --r-lg:14px; --r-pill:999px;
+    --ring:var(--accent);
+    --dur:.14s; --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  :root[data-theme=light] {
+    --bg:#f6f7fb;
+    --surface-1:#ffffff;
+    --surface-2:#f0f2f8;
+    --surface-3:#e7eaf3;
+    --line:#d9deea;
+    --line-soft:#e8ebf3;
+
+    --txt:#1a1f2e;
+    --ink:#39415a;
+    --muted:#5f6880;
+    --faint:#8a93aa;
+
+    --accent:#9333ea;
+    --accent-hover:#7e22ce;
+    --accent-soft:#f3e8ff;
+    --accent-line:#d8b4fe;
+    --on-accent:#ffffff;
+    --grad-from:#d6338f;
+    --grad-to:#9333ea;
+
+    --ok:#15935c;   --ok-soft:#dcf5e8;   --ok-line:#a5e0c4;
+    --info:#2563eb; --info-soft:#dbe8ff; --info-line:#b4ceff;
+    --warn:#a97b12; --warn-soft:#fbf0d2; --warn-line:#e8d08a;
+    --danger:#c0353c;
+
+    --batch:#f7f2fd; --batch-line:#e3d4f7; --batch-ink:#6b34a8; --batch-band:#f1e6fc;
+  }
+
+  * { box-sizing:border-box; }
+  html,body { margin:0; }
+  body {
+    font:var(--fs-body)/var(--lh-base) var(--font-sans);
+    background:var(--bg); color:var(--txt);
+    font-feature-settings:"tnum";
+    transition:background var(--dur) var(--ease);
+  }
+  body.batch-mode { background:var(--batch); }
+  .wrap { max-width:1120px; margin:0 auto; padding:0 20px 0; }
+
+  /* one global keyboard-only focus ring */
+  :where(button,[role=button],[role=radio],[role=option],a,input,select,summary,[tabindex]):focus-visible {
+    outline:2px solid var(--ring); outline-offset:2px; border-radius:inherit;
+  }
+  *:focus:not(:focus-visible) { outline:none; }
+
+  /* ---------- top bar ---------- */
+  .topbar {
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:11px 20px;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .brand { display:flex; align-items:center; gap:9px; text-decoration:none; color:var(--txt); }
+  .brand .logo { filter:drop-shadow(0 0 10px color-mix(in srgb, var(--accent) 45%, transparent)); flex:none; }
+  .brand-name { font-weight:650; font-size:14.5px; letter-spacing:-.01em; }
+  .nav-right { display:flex; align-items:center; gap:14px; }
+  .nav-asof { font-size:var(--fs-xs); color:var(--faint); }
+
+  .toggle { background:none; border:0; padding:0; cursor:pointer; line-height:0; }
+  .toggle .track {
+    display:inline-flex; align-items:center; width:42px; height:23px; padding:2px;
+    border-radius:var(--r-pill); background:var(--surface-2); border:1px solid var(--line);
+  }
+  .toggle .thumb {
+    width:17px; height:17px; border-radius:50%;
+    background:linear-gradient(135deg,var(--grad-from),var(--grad-to));
+    transition:transform var(--dur) var(--ease);
+  }
+  .toggle[aria-checked=true] .thumb { transform:translateX(19px); }
+
+  /* ---------- page head ---------- */
+  header { padding:24px 0 14px; }
+  h1 { margin:0; font-size:var(--fs-title); font-weight:800; letter-spacing:-.02em; line-height:1.25; }
+  h1 .grad {
+    background:linear-gradient(100deg,var(--grad-from),var(--grad-to));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  h1 .sub { font-weight:400; color:var(--muted); font-size:var(--fs-h1); margin-left:9px; letter-spacing:0; }
+  .prov { margin-top:7px; font-size:var(--fs-xs); color:var(--faint); }
+  .prov b { color:var(--muted); font-weight:500; }
+  .prov .stale { color:var(--danger); }
+
+  /* ---------- batch band ---------- */
+  .batchband {
+    display:none; align-items:center; gap:10px; margin:0 0 14px;
+    padding:9px 14px; border-radius:var(--r-md);
+    background:var(--batch-band); border:1px solid var(--batch-line);
+    color:var(--batch-ink); font-size:var(--fs-sm);
+  }
+  body.batch-mode .batchband { display:flex; }
+
+  /* ---------- question bar ---------- */
+  .ask { background:var(--surface-1); border:1px solid var(--line); border-radius:var(--r-lg); padding:16px 18px; }
+  .qrow { display:flex; flex-wrap:wrap; gap:14px 22px; align-items:flex-end; }
+  .q { display:flex; flex-direction:column; gap:6px; }
+  .q > label, .q > .lab { font-size:var(--fs-xs); color:var(--muted); }
+  .grow { flex:1 1 320px; min-width:0; }
+
+  /* search — pill with a key hint, the handbook idiom */
+  .search {
+    display:flex; align-items:center; gap:8px;
+    background:var(--surface-2); border:1px solid var(--line);
+    border-radius:var(--r-pill); padding:8px 13px;
+  }
+  .search:focus-within { border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft); }
+  .search .ic { color:var(--muted); flex:none; }
+  .search input {
+    flex:1; min-width:0; background:transparent; border:0; color:var(--txt);
+    font:inherit; font-size:14px;
+  }
+  .search input:focus { outline:none; }
+  .search input::-webkit-search-cancel-button { -webkit-appearance:none; }
+  .search kbd {
+    font:var(--fs-xs)/1 var(--font-mono); color:var(--faint); flex:none;
+    border:1px solid var(--line); border-radius:4px; padding:3px 6px; background:var(--surface-1);
+  }
+  .search:focus-within kbd { opacity:0; }
+
+  /* combobox — replaces the native <select> (36 regions, 4 groups) */
+  .combo { position:relative; }
+  .combo-btn {
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    min-width:236px; width:100%;
+    background:var(--surface-2); border:1px solid var(--line); border-radius:var(--r-md);
+    color:var(--txt); font:inherit; font-size:14px; padding:9px 12px;
+    cursor:pointer; text-align:left;
+    transition:border-color var(--dur) var(--ease);
+  }
+  .combo-btn:hover { border-color:var(--accent-line); }
+  .combo-btn[aria-expanded=true] { border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft); }
+  .combo-caret { color:var(--muted); flex:none; transition:transform var(--dur) var(--ease); }
+  .combo-btn[aria-expanded=true] .combo-caret { transform:rotate(180deg); }
+  .combo-pop {
+    position:absolute; z-index:60; top:calc(100% + 6px); left:0;
+    min-width:300px; max-height:340px; overflow:auto;
+    margin:0; padding:6px; list-style:none;
+    background:var(--surface-1); border:1px solid var(--line); border-radius:var(--r-md);
+    box-shadow:0 12px 32px rgba(0,0,0,.45);
+  }
+  .combo-pop[hidden] { display:none; }
+  .combo-grp {
+    padding:8px 10px 4px; font-size:11px; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--muted);
+  }
+  .combo-opt {
+    display:flex; justify-content:space-between; gap:12px; align-items:center;
+    padding:8px 10px; border-radius:7px; font-size:14px; cursor:pointer; color:var(--ink);
+  }
+  .combo-opt .cnt { color:var(--faint); font-size:var(--fs-xs); flex:none; }
+  .combo-opt[aria-selected=true] { color:var(--accent); font-weight:600; }
+  .combo-opt.active, .combo-opt:hover { background:var(--surface-2); }
+
+  /* stepper — replaces native number inputs (OS spinners clash with dark UI) */
+  .stepper {
+    display:inline-flex; align-items:stretch;
+    background:var(--surface-2); border:1px solid var(--line);
+    border-radius:var(--r-md); overflow:hidden;
+  }
+  .stepper:focus-within { border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft); }
+  .stepper input {
+    width:58px; text-align:center; background:transparent; border:0; color:var(--txt);
+    font:inherit; font-size:14px; padding:8px 2px;
+  }
+  .stepper input:focus { outline:none; }
+  .st-btn {
+    background:transparent; border:0; color:var(--muted);
+    font:inherit; font-size:16px; width:30px; cursor:pointer; line-height:1;
+    transition:color var(--dur) var(--ease), background var(--dur) var(--ease);
+  }
+  .st-btn:hover { color:var(--accent); background:var(--surface-3); }
+  .st-btn:active { background:var(--accent); color:var(--on-accent); }
+
+  /* segmented control */
+  .seg { display:inline-flex; background:var(--surface-2); border:1px solid var(--line);
+         border-radius:var(--r-md); padding:2px; }
+  .seg button {
+    background:transparent; border:0; color:var(--muted); cursor:pointer;
+    font:inherit; font-size:var(--fs-sm); padding:7px 14px;
+    border-radius:calc(var(--r-md) - 3px);
+    transition:background var(--dur) var(--ease), color var(--dur) var(--ease);
+  }
+  .seg button.on { background:var(--accent); color:var(--on-accent); font-weight:600; }
+
+  /* chips */
+  .chips { display:flex; flex-wrap:wrap; gap:6px; }
+  .chip {
+    font:inherit; font-size:var(--fs-xs); padding:6px 12px; border-radius:var(--r-pill);
+    cursor:pointer; background:var(--surface-2); border:1px solid var(--line); color:var(--ink);
+    transition:all var(--dur) var(--ease);
+  }
+  .chip:hover { border-color:var(--accent-line); color:var(--accent); }
+  .chip.on { background:var(--accent-soft); border-color:var(--accent-line); color:var(--accent); font-weight:600; }
+  .chip .n { color:var(--faint); }
+  .chip.on .n { color:var(--accent); opacity:.75; }
+
+  /* residency — a decision, rendered as a segmented radiogroup not OS radios */
+  .resid { margin-top:14px; padding-top:14px; border-top:1px solid var(--line); }
+  .resid .qq { font-size:14px; margin-bottom:8px; }
+  .segradio {
+    display:inline-flex; border:1px solid var(--line); border-radius:var(--r-pill);
+    overflow:hidden; background:var(--surface-2);
+  }
+  .segradio button {
+    background:transparent; border:0; color:var(--muted); cursor:pointer;
+    font:inherit; font-size:var(--fs-sm); padding:8px 17px;
+    display:flex; flex-direction:column; line-height:1.3; text-align:left;
+    transition:background var(--dur) var(--ease), color var(--dur) var(--ease);
+  }
+  .segradio button small { color:var(--faint); font-size:11.5px; }
+  .segradio button + button { border-left:1px solid var(--line); }
+  .segradio button[aria-checked=true] { background:var(--accent); color:var(--on-accent); font-weight:600; }
+  .segradio button[aria-checked=true] small { color:var(--on-accent); opacity:.75; font-weight:400; }
+
+  /* ---------- badges ---------- */
+  .badge {
+    display:inline-flex; align-items:center; gap:4px;
+    font-size:11.5px; font-weight:600; padding:2px 8px;
+    border-radius:var(--r-pill); line-height:1.5; white-space:nowrap;
+  }
+  .badge.ok     { background:var(--ok-soft);     color:var(--ok);     border:1px solid var(--ok-line); }
+  .badge.info   { background:var(--info-soft);   color:var(--info);   border:1px solid var(--info-line); }
+  .badge.warn   { background:var(--warn-soft);   color:var(--warn);   border:1px solid var(--warn-line); }
+  .badge.neutral{ background:var(--surface-3);   color:var(--muted);  border:1px solid var(--line); }
+
+  /* overflow pill — release's "+16" idiom */
+  .ovf {
+    display:inline-flex; align-items:center; gap:5px; font-size:11.5px;
+    background:var(--surface-2); border:1px solid var(--line); border-radius:var(--r-pill);
+    padding:2px 8px; color:var(--ink); white-space:nowrap;
+  }
+  .ovf .more { color:var(--accent); font-weight:600; }
+
+  /* ---------- leaderboard ---------- */
+  .lb-head { display:flex; align-items:center; gap:10px; margin:22px 0 9px; }
+  .lb-title { margin:0; font-size:15px; font-weight:650; color:var(--txt);
+              display:flex; align-items:center; gap:8px; }
+  .count {
+    font-size:var(--fs-xs); font-weight:600; color:var(--accent);
+    background:var(--accent-soft); border:1px solid var(--accent-line);
+    border-radius:var(--r-pill); padding:2px 9px;
+  }
+  .sum { margin-left:auto; font-size:var(--fs-xs); color:var(--muted); text-align:right; }
+  .sum b { color:var(--ink); font-weight:600; }
+
+  .ruler { position:relative; height:22px; margin:4px 0 10px; display:none; }
+  body.ruler-on .ruler { display:block; }
+  .ruler .tick { position:absolute; top:0; font-size:11px; color:var(--faint); transform:translateX(-50%); }
+  .ruler .line { position:absolute; left:0; right:0; top:17px; height:1px; background:var(--line); }
+
+  .grid { grid-template-columns:30px 1fr 132px 118px 74px; gap:14px; }
+  .rowhead {
+    display:grid; align-items:center; padding:8px 16px;
+    font-size:11.5px; color:var(--muted);
+    background:var(--surface-1); border:1px solid var(--line); border-bottom:0;
+    border-radius:var(--r-lg) var(--r-lg) 0 0;
+  }
+  .rowhead .r { text-align:right; justify-self:end; }
+  .colsort {
+    background:none; border:0; color:var(--muted); font:inherit; font-size:11.5px;
+    cursor:pointer; display:inline-flex; align-items:center; gap:4px; padding:0;
+  }
+  .colsort i { font-size:8px; opacity:0; font-style:normal; }
+  .colsort:hover { color:var(--ink); }
+  .colsort.on { color:var(--accent); font-weight:600; }
+  .colsort.on i { opacity:1; }
+
+  .rows { border:1px solid var(--line); border-top:0; border-radius:0 0 var(--r-lg) var(--r-lg);
+          overflow:hidden; background:var(--surface-1); }
+  .row {
+    display:grid; align-items:center; position:relative;
+    padding:12px 16px; border-top:1px solid var(--line-soft); cursor:pointer;
+    transition:background var(--dur) var(--ease);
+  }
+  .row:first-child { border-top:0; }
+  .row::before {
+    content:""; position:absolute; left:0; top:0; bottom:0; width:3px;
+    background:transparent; transition:background var(--dur) var(--ease);
+  }
+  .row:hover { background:var(--surface-2); }
+  .row:hover::before { background:linear-gradient(180deg,var(--grad-from),var(--grad-to)); }
+  .row.open { background:var(--surface-3); }
+  .row.amb::before { background:var(--warn); }
+
+  .rank { color:var(--faint); font-size:var(--fs-xs); text-align:right; }
+  .name { font-size:15px; font-weight:600; display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
+  .name .vendor { color:var(--muted); font-weight:400; font-size:var(--fs-xs); }
+  .meta { margin-top:5px; display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
+  .meta .raw { color:var(--faint); font-size:11.5px; }
+  .cost { text-align:right; }
+  .cost b { font-size:21px; font-weight:700; letter-spacing:-.015em; }
+  .cost .range { font-size:15.5px; font-weight:650; color:var(--warn); }
+  .calc { font-size:11px; color:var(--faint); text-align:right; line-height:var(--lh-dense); }
+  .mult { text-align:right; font-size:var(--fs-xs); color:var(--muted); }
+  .mult.base { color:var(--ok); font-weight:600; }
+  .mult.na { color:var(--warn); }
+  .dot { position:relative; height:14px; }
+  .dot i { position:absolute; width:7px; height:7px; border-radius:50%;
+           background:var(--accent); top:4px; transform:translateX(-50%); }
+
+  .expand { padding:4px 16px 16px 58px; background:var(--surface-2);
+            border-top:1px solid var(--line); font-size:13px; }
+  .expand h4 { margin:10px 0 7px; font-size:11.5px; color:var(--muted); font-weight:600;
+               letter-spacing:.05em; text-transform:uppercase; }
+  .rgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(252px,1fr)); gap:4px 18px; }
+  .rgrid div { display:flex; justify-content:space-between; gap:12px; padding:4px 0;
+               border-bottom:1px solid var(--line-soft); }
+  .rgrid span.r { color:var(--ink); }
+  .rgrid span.v { color:var(--txt); }
+  .rgrid span.v em { color:var(--faint); font-style:normal; font-size:11px; margin-left:5px; }
+
+  /* ---------- unavailable groups ---------- */
+  .group { margin-top:20px; }
+  .group > summary {
+    cursor:pointer; font-size:var(--fs-sm); color:var(--muted);
+    padding:11px 16px; background:var(--surface-1);
+    border:1px solid var(--line); border-radius:var(--r-md);
+    display:flex; align-items:center; gap:9px;
+  }
+  .group > summary::marker { color:var(--faint); }
+  .group[open] > summary { border-radius:var(--r-md) var(--r-md) 0 0; }
+  .group .body {
+    border:1px solid var(--line); border-top:0; border-radius:0 0 var(--r-md) var(--r-md);
+    background:var(--surface-1); padding:12px 16px; font-size:13px; color:var(--ink);
+  }
+  .group .body div { padding:5px 0; border-bottom:1px solid var(--line-soft);
+                     display:flex; justify-content:space-between; gap:14px; }
+  .group .body div:last-child { border-bottom:0; }
+  .group .body em { color:var(--faint); font-style:normal; font-size:var(--fs-xs); }
+
+  /* ---------- advanced ---------- */
+  details.adv { margin-top:24px; }
+  details.adv > summary {
+    cursor:pointer; font-size:var(--fs-sm); color:var(--muted); padding:11px 0;
+    border-top:1px solid var(--line);
+  }
+  .advgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+             gap:18px; padding:10px 0 4px; }
+  .advgrid h5 { margin:0 0 7px; font-size:11px; color:var(--muted); font-weight:600;
+                letter-spacing:.06em; text-transform:uppercase; }
+  label.chk { display:flex; gap:8px; align-items:center; font-size:var(--fs-sm);
+              padding:3px 0; cursor:pointer; color:var(--ink); }
+  label.chk input { accent-color:var(--accent); }
+  .hint { font-size:11.5px; color:var(--faint); margin-top:6px; line-height:var(--lh-dense); }
+
+  .note { margin-top:18px; font-size:var(--fs-xs); color:var(--faint); line-height:1.75; }
+  .note b { color:var(--muted); font-weight:500; }
+  .empty { padding:26px 16px; color:var(--muted); font-size:14px; line-height:1.7; }
+  .empty b { color:var(--txt); }
+  .empty code { font-family:var(--font-mono); font-size:12px; background:var(--surface-2);
+                border:1px solid var(--line); border-radius:4px; padding:1px 5px; }
+  a { color:var(--accent); }
+
+  /* ---------- footer ---------- */
+  .site-foot {
+    margin-top:44px; padding:22px 20px 34px; border-top:1px solid var(--line);
+    text-align:center; font-size:var(--fs-xs); color:var(--faint); line-height:1.8;
+  }
+  .site-foot b { color:var(--muted); font-weight:600; }
+
+  @media (max-width:760px) {
+    :root { --fs-title:20px; }
+    .grid { grid-template-columns:1fr 112px; }
+    .rank, .calc, .rowhead .h-calc, .rowhead .h-rank { display:none; }
+    .rowhead { grid-template-columns:1fr 112px; }
+    .mult { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <a class="brand" href="#top">
+    <svg class="logo" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+      <defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#e24aa8"/><stop offset="1" stop-color="#a855f7"/>
+      </linearGradient></defs>
+      <rect x="3" y="3" width="26" height="26" rx="8" fill="url(#bm)"/>
+      <path d="M10.5 21.5V10.5l5.5 6.5 5.5-6.5v11" fill="none" stroke="#fff"
+            stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+    </svg>
+    <span class="brand-name">Bedrock 비용 비교</span>
+  </a>
+  <div class="nav-right">
+    <span class="nav-asof" id="nav-asof"></span>
+    <button type="button" class="toggle" id="themeToggle" role="switch"
+            aria-checked="false" aria-label="밝은 테마로 전환">
+      <span class="track"><span class="thumb"></span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="wrap">
+<span id="top"></span>
+
+<header>
+  <h1><span class="grad">Bedrock 모델 비용</span><span class="sub">한 달에 얼마인가요?</span></h1>
+  <div class="prov" id="prov">불러오는 중…</div>
+</header>
+
+<div class="batchband" id="batchband">
+  <b>일괄 처리(배치) 요금으로 보고 있습니다</b>
+  <span>— 즉시 응답 요금과 다릅니다. 보통 절반 수준입니다.</span>
+</div>
+
+<div class="ask">
+  <div class="qrow">
+    <div class="q grow">
+      <label for="q">모델 찾기</label>
+      <div class="search">
+        <svg class="ic" width="15" height="15" viewBox="0 0 16 16" aria-hidden="true">
+          <circle cx="6.8" cy="6.8" r="4.8" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M10.4 10.4L14 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <input id="q" type="search" aria-label="모델 검색" placeholder="소넷, 노바프로, claude 4.5 …" />
+        <kbd aria-hidden="true">/</kbd>
+      </div>
+    </div>
+
+    <div class="q">
+      <span class="lab" id="region-lbl">어느 리전에서 쓰시나요?</span>
+      <div class="combo" id="region-combo">
+        <button type="button" class="combo-btn" id="region-btn"
+                aria-haspopup="listbox" aria-expanded="false" aria-labelledby="region-lbl region-val">
+          <span id="region-val">—</span>
+          <svg class="combo-caret" width="11" height="11" viewBox="0 0 12 12" aria-hidden="true">
+            <path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <ul class="combo-pop" id="region-pop" role="listbox" aria-labelledby="region-lbl" tabindex="-1" hidden></ul>
+      </div>
+    </div>
+
+    <div class="q">
+      <label for="tin">한 달 입력 (백만 토큰)</label>
+      <div class="stepper">
+        <button type="button" class="st-btn" data-for="tin" data-d="-1" aria-label="입력 1 감소">−</button>
+        <input id="tin" type="text" inputmode="numeric" aria-label="월 입력 백만 토큰" />
+        <button type="button" class="st-btn" data-for="tin" data-d="1" aria-label="입력 1 증가">+</button>
+      </div>
+    </div>
+
+    <div class="q">
+      <label for="tout">출력 (백만 토큰)</label>
+      <div class="stepper">
+        <button type="button" class="st-btn" data-for="tout" data-d="-1" aria-label="출력 1 감소">−</button>
+        <input id="tout" type="text" inputmode="numeric" aria-label="월 출력 백만 토큰" />
+        <button type="button" class="st-btn" data-for="tout" data-d="1" aria-label="출력 1 증가">+</button>
+      </div>
+    </div>
+
+    <div class="q">
+      <span class="lab">응답 방식</span>
+      <span class="seg" id="modeseg" role="group" aria-label="응답 방식">
+        <button type="button" data-mode="online">즉시 응답</button>
+        <button type="button" data-mode="batch">일괄 처리</button>
+      </span>
+    </div>
+  </div>
+
+  <div class="qrow" style="margin-top:13px">
+    <div class="q grow">
+      <span class="lab">사용량 예시</span>
+      <div class="chips" id="presets"></div>
+    </div>
+  </div>
+
+  <div class="resid">
+    <div class="qq">데이터가 <b id="homeName">이 리전</b> 밖에서 처리되어도 괜찮으신가요?</div>
+    <div class="segradio" role="radiogroup" aria-label="데이터 처리 리전 허용 범위">
+      <button type="button" role="radio" aria-checked="true" data-v="any">
+        상관없습니다 <small>가장 싼 경로를 고릅니다</small></button>
+      <button type="button" role="radio" aria-checked="false" data-v="strict">
+        안 됩니다 <small>이 리전 안에서 처리되는 요금만</small></button>
+    </div>
+  </div>
+</div>
+
+<div class="lb-head">
+  <h2 class="lb-title">월 비용 순위 <span class="count" id="rowcount">—</span></h2>
+  <div class="sum" id="sum"></div>
+</div>
+
+<div class="ruler" id="ruler"></div>
+
+<div class="rowhead grid" id="rowhead">
+  <span class="h-rank rank">#</span>
+  <span>모델</span>
+  <button type="button" class="colsort on r" data-sort="cost" aria-label="월 비용으로 정렬">월 비용 (USD/월) <i>▲</i></button>
+  <span class="h-calc r">계산</span>
+  <button type="button" class="colsort r" data-sort="mult" aria-label="배수로 정렬">배수 <i>▲</i></button>
+</div>
+<div class="rows" id="rows"></div>
+
+<details class="group" id="g-partial"><summary></summary><div class="body" id="g-partial-body"></div></details>
+<details class="group" id="g-missing"><summary></summary><div class="body" id="g-missing-body"></div></details>
+
+<details class="adv">
+  <summary>고급 설정</summary>
+  <div class="advgrid">
+    <div>
+      <h5>포함할 모델</h5>
+      <div id="adv-status"></div>
+      <div class="hint">미리보기·내부 코드명 모델은 기본적으로 숨깁니다.</div>
+    </div>
+    <div>
+      <h5>처리 우선순위</h5>
+      <div id="adv-tier"></div>
+    </div>
+    <div>
+      <h5>입력 길이 요금 구간</h5>
+      <div id="adv-band"></div>
+      <div class="hint">일부 모델은 긴 입력에 다른 단가를 씁니다. 구분 기준은 AWS SKU 안에만 있습니다.</div>
+    </div>
+    <div>
+      <h5>공급사</h5>
+      <div id="adv-vendor" style="max-height:168px;overflow:auto"></div>
+    </div>
+    <div>
+      <h5>파라미터 크기</h5>
+      <div id="adv-size"></div>
+      <div class="hint">이름에 크기가 적힌 모델만 분류됩니다. 나머지는 미공개 — 가격으로 크기를 추정하지 않습니다.</div>
+    </div>
+    <div>
+      <h5>표시</h5>
+      <label class="chk"><input type="checkbox" id="adv-ruler" /> 단가 눈금자 표시</label>
+      <label class="chk"><input type="checkbox" id="adv-raw" /> 원본 항목명 표시</label>
+      <div class="hint">눈금자는 출력 단가($/1M) 축이라 사용량을 바꿔도 흔들리지 않습니다.</div>
+    </div>
+  </div>
+</details>
+
+<div class="note" id="note"></div>
+
+</div>
+
+<footer class="site-foot">
+  © 2026 Bedrock 비용 비교 · <b>비공식 자료</b>이며 AWS와 무관합니다. 결제 전 AWS 공식 가격 페이지로 확인하세요.
+  <br /><span id="foot-asof"></span>
+</footer>
+
+<script type="module">
+const $ = (s)=>document.querySelector(s);
+
+/* ---- theme: applied before data so there is no flash ---- */
+const themeBtn = $("#themeToggle");
+function applyTheme(t){
+  document.documentElement.dataset.theme = t;
+  themeBtn.setAttribute("aria-checked", String(t==="light"));
+  themeBtn.setAttribute("aria-label", t==="light" ? "어두운 테마로 전환" : "밝은 테마로 전환");
+}
+applyTheme(localStorage.getItem("theme")
+  || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"));
+themeBtn.onclick = ()=>{
+  const t = document.documentElement.dataset.theme==="light" ? "dark" : "light";
+  localStorage.setItem("theme", t); applyTheme(t);
+};
+
+let snap;
+try {
+  if (window.__PRICING__) snap = window.__PRICING__;
+  else {
+    const res = await fetch("./pricing.json", {cache:"no-cache"});
+    if(!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
+    snap = await res.json();
+  }
+  if(!snap || !Array.isArray(snap.price_points) || !snap.price_points.length)
+    throw new Error("pricing.json에 price_points가 없습니다");
+} catch (err) {
+  $("#prov").textContent = "데이터를 불러오지 못했습니다";
+  $("#rows").innerHTML = `<div class="empty"><b>pricing.json을 불러오지 못했습니다 — ${String(err.message||err)}</b><br><br>`
+    + (location.protocol === "file:"
+       ? `<code>file://</code>로 열면 브라우저가 데이터 요청을 차단합니다. 로컬 서버로 여시거나, 데이터가 들어 있는 단일 파일 빌드(<code>dist/bedrock-pricing.html</code>)를 쓰세요.`
+       : `서버가 떠 있는지, <code>pricing.json</code>이 같은 경로에 있는지 확인하세요.`)
+    + `</div>`;
+  throw err;
+}
+const P = snap.price_points;
+
+/* ====================== 용어 ====================== */
+const PATH_KO = {
+  "in-region":   { label:"리전 내 처리",     help:"이 리전 안에서 처리됩니다", tone:"ok" },
+  "global-cris": { label:"글로벌 분산 처리", help:"데이터가 리전 밖에서 처리될 수 있습니다", tone:"info" },
+  "regional-cris":{ label:"묶음 경로",       help:"별도 단가 없음", tone:"neutral" },
+};
+const TIER_KO = { "standard":"표준", "priority":"우선 처리", "flex":"유연", "latency-optimized":"지연 최소화" };
+const STATUS_KO = { "ga":"정식 제공", "legacy":"구형", "preview":"미리보기", "internal":"내부 코드명" };
+const STATUS_TONE = { "legacy":"neutral", "preview":"info", "internal":"warn" };
+const BAND_KO = { "standard":"기본 입력 길이", "long-ctx":"긴 입력" };
+const MODE_KO = { "online":"즉시 응답", "batch":"일괄 처리" };
+
+/* ====================== 리전 ====================== */
+const REGION_KO = {
+  "ap-northeast-1":"도쿄","ap-northeast-2":"서울","ap-northeast-3":"오사카",
+  "ap-south-1":"뭄바이","ap-south-2":"하이데라바드",
+  "ap-southeast-1":"싱가포르","ap-southeast-2":"시드니","ap-southeast-3":"자카르타",
+  "ap-southeast-4":"멜버른","ap-southeast-5":"쿠알라룸푸르","ap-southeast-6":"뉴질랜드",
+  "ap-southeast-7":"방콕","ap-east-1":"홍콩","ap-east-2":"타이베이",
+  "us-east-1":"버지니아","us-east-2":"오하이오","us-west-1":"캘리포니아","us-west-2":"오레곤",
+  "us-gov-east-1":"GovCloud 동부","us-gov-west-1":"GovCloud 서부",
+  "eu-west-1":"아일랜드","eu-west-2":"런던","eu-west-3":"파리",
+  "eu-central-1":"프랑크푸르트","eu-central-2":"취리히","eu-north-1":"스톡홀름",
+  "eu-south-1":"밀라노","eu-south-2":"스페인",
+  "ca-central-1":"캐나다 중부","ca-west-1":"캘거리",
+  "sa-east-1":"상파울루","mx-central-1":"멕시코",
+  "me-central-1":"UAE","me-south-1":"바레인","il-central-1":"텔아비브",
+  "af-south-1":"케이프타운",
+};
+const regionName = (r)=> REGION_KO[r] || r;
+const regionFull = (r)=> REGION_KO[r] ? `${REGION_KO[r]} (${r})` : r;
+const REGION_ORDER = [
+  ["아시아·태평양", r=>/^ap-/.test(r)],
+  ["미국",          r=>/^us-/.test(r)],
+  ["유럽",          r=>/^eu-/.test(r)],
+  ["그 외",         r=>!/^(ap|us|eu)-/.test(r)],
+];
+
+/* ====================== 검색 ====================== */
+const ALIASES = {
+  "소넷":"sonnet","소네트":"sonnet","쏘넷":"sonnet",
+  "하이쿠":"haiku","하이꾸":"haiku","오푸스":"opus","오퍼스":"opus",
+  "클로드":"claude","크로드":"claude",
+  "노바":"nova","마이크로":"micro","라이트":"lite","프로":"pro","프리미어":"premier",
+  "라마":"llama","미스트랄":"mistral","믹스트랄":"mixtral",
+  "딥식":"deepseek","딥시크":"deepseek",
+  "지피티":"gpt","챗지피티":"gpt","오픈에이아이":"openai",
+  "네모트론":"nemotron","큐원":"qwen","쿠엔":"qwen",
+  "젬마":"gemma","제마":"gemma","그록":"grok","키미":"kimi",
+  "잠바":"jamba","타이탄":"titan","커맨드":"command","임베딩":"embed",
+};
+function tokens(str){
+  let s = String(str||"").toLowerCase().normalize("NFKC");
+  s = s.replace(/^[a-z0-9]+\./, " ");
+  s = s.replace(/(\d)-(\d)/g, "$1.$2");
+  s = s.replace(/[^a-z0-9.가-힣]+/g, " ");
+  s = s.replace(/\.(?!\d)/g, " ");
+  return s.split(/\s+/).filter(Boolean);
+}
+const KO_KEYS = Object.keys(ALIASES).sort((a,b)=>b.length-a.length);
+function segmentKorean(t){
+  const parts=[]; let i=0;
+  while(i<t.length){
+    const hit=KO_KEYS.find(k=>t.startsWith(k,i));
+    if(!hit) return null;
+    parts.push(ALIASES[hit]); i+=hit.length;
+  }
+  return parts.length>1 ? parts.flatMap(tokens) : null;
+}
+function alternatives(t){
+  const alts=[[t]];
+  if(ALIASES[t]) alts.push(tokens(ALIASES[t]));
+  if(/^[가-힣]+$/.test(t)){ const seg=segmentKorean(t); if(seg) alts.push(seg); }
+  return alts;
+}
+const bags = {};
+for(const p of P){
+  const k=p.provider+"\u0001"+p.model_id;
+  if(!bags[k]) bags[k]=[...new Set([...tokens(p.model_id), ...tokens(p.provider)])];
+}
+function matches(provider, modelId, q){
+  if(!q) return true;
+  const bag=bags[provider+"\u0001"+modelId]; if(!bag) return false;
+  const hit=(t)=>bag.some(b=>b.startsWith(t));
+  return tokens(q).every(raw => alternatives(raw).some(alt => alt.every(hit)));
+}
+
+/* ====================== 크기 (이름에 적힌 것만) ====================== */
+// Price is NOT used to guess size: dressing a rate up as a parameter count
+// would be invented data. Models that publish nothing stay "미공개".
+function sizeBucket(modelId){
+  const m = String(modelId).match(/(\d+(?:\.\d+)?)\s*x\s*(\d+(?:\.\d+)?)\s*b\b/i);
+  let b = null;
+  if(m) b = parseFloat(m[1]) * parseFloat(m[2]);
+  else {
+    const s = String(modelId).match(/(?:^|[\s\-_])(\d+(?:\.\d+)?)\s*b\b/i);
+    if(s) b = parseFloat(s[1]);
+  }
+  if(b == null) return "미공개";
+  if(b < 10) return "10B 미만";
+  if(b <= 70) return "10~70B";
+  return "70B 초과";
+}
+const SIZES = ["10B 미만","10~70B","70B 초과","미공개"];
+
+/* ====================== 상태 ====================== */
+const PRESETS = {
+  "일반 챗봇": [10, 2],
+  "RAG · 요약": [20, 1],
+  "코딩 보조": [2, 1],
+  "대량 추출":  [100, 10],
+};
+const vendors = [...new Set(P.map(p=>p.provider))].sort();
+const state = {
+  q:"",
+  region: snap.regions.includes("ap-northeast-2") ? "ap-northeast-2" : snap.regions[0],
+  inM: 10, outM: 2,
+  mode:"online",
+  resid:"any",
+  sort:"cost",
+  statuses:new Set(["ga","legacy"]),
+  tiers:new Set(["standard"]),
+  bands:new Set(["standard"]),
+  vendors:new Set(vendors),
+  sizes:new Set(SIZES),
+  ruler:false,
+  raw:false,
+  open:null,
+};
+
+/* ---- URL state ---- */
+const hash = new URLSearchParams(location.hash.replace(/^#/,""));
+if(hash.get("region") && snap.regions.includes(hash.get("region"))) state.region = hash.get("region");
+if(hash.get("in"))  state.inM  = Math.max(0, +hash.get("in")  || 0);
+if(hash.get("out")) state.outM = Math.max(0, +hash.get("out") || 0);
+if(hash.get("mode")==="batch") state.mode="batch";
+if(hash.get("resid")==="strict") state.resid="strict";
+if(hash.get("q")) state.q = hash.get("q");
+function syncHash(){
+  const h=new URLSearchParams();
+  h.set("region",state.region); h.set("in",state.inM); h.set("out",state.outM);
+  if(state.mode!=="online") h.set("mode",state.mode);
+  if(state.resid!=="any") h.set("resid",state.resid);
+  if(state.q) h.set("q",state.q);
+  history.replaceState(null,"","#"+h.toString());
+}
+
+/* ====================== 포맷 ====================== */
+const money = (v)=> v>=100 ? "$"+v.toLocaleString("en-US",{maximumFractionDigits:0})
+                  : v>=1   ? "$"+v.toFixed(2)
+                           : "$"+v.toFixed(3);
+const rate = (v)=> v>=1 ? "$"+v.toFixed(2) : "$"+v.toFixed(3);
+const badge = (tone, text)=> `<span class="badge ${tone}">${text}</span>`;
+
+/* ====================== 집계 ====================== */
+// provider/model -> region -> path -> dimension -> Set(prices)
+const statusOf = {};
+function buildIndex(){
+  const idx = {};
+  for(const p of P){
+    if(!/^(input|output)$/.test(p.dimension)) continue;
+    if((p.execution_mode||"online") !== state.mode) continue;
+    if(!state.statuses.has(p.status||"ga")) continue;
+    if(!state.tiers.has(p.service_tier)) continue;
+    if(!state.bands.has(p.context_band||"standard")) continue;
+    if(!state.vendors.has(p.provider)) continue;
+    if(!state.sizes.has(sizeBucket(p.model_id))) continue;
+    if(!matches(p.provider, p.model_id, state.q)) continue;
+    const key = p.provider+"\u0001"+p.model_id;
+    statusOf[key] = p.status || "ga";
+    const node = (((idx[key] ??= {})[p.source_region] ??= {})[p.endpoint_type] ??= {});
+    (node[p.dimension] ??= new Set()).add(p.price_per_1m);
+  }
+  return idx;
+}
+
+const allowedPaths = ()=> state.resid==="strict" ? ["in-region"] : ["in-region","global-cris"];
+
+// monthly cost for one path, or null when a dimension is missing
+function costFor(pathNode){
+  if(!pathNode) return null;
+  const i = pathNode.input, o = pathNode.output;
+  if(!i || !o || !i.size || !o.size) return null;
+  const iv=[...i], ov=[...o];
+  const lo = Math.min(...iv)*state.inM + Math.min(...ov)*state.outM;
+  const hi = Math.max(...iv)*state.inM + Math.max(...ov)*state.outM;
+  return { lo, hi, ambiguous: lo!==hi, inRates:iv.sort((a,b)=>a-b), outRates:ov.sort((a,b)=>a-b) };
+}
+
+/* ====================== 렌더 ====================== */
+function render(){
+  const idx = buildIndex();
+  const paths = allowedPaths();
+
+  const ranked = [], partial = [], missing = [];
+
+  for(const [key, regions] of Object.entries(idx)){
+    const [provider, model] = key.split("\u0001");
+    const here = regions[state.region];
+    if(!here){
+      missing.push({ provider, model, where:Object.keys(regions).length });
+      continue;
+    }
+    let best = null;
+    for(const path of paths){
+      const c = costFor(here[path]);
+      if(!c) continue;
+      if(!best || c.lo < best.cost.lo) best = { path, cost:c };
+    }
+    if(!best){
+      const have = new Set();
+      for(const path of Object.keys(here)) for(const d of Object.keys(here[path])) have.add(d);
+      const only = [...have].map(d=> d==="input"?"입력":"출력").join(" · ");
+      const blockedByResidency = state.resid==="strict"
+        && paths.length===1 && here["global-cris"] && !here["in-region"];
+      partial.push({ provider, model,
+        reason: blockedByResidency
+          ? "이 리전 안에서 처리되는 요금이 없습니다 (글로벌 분산 처리만 제공)"
+          : `${only} 단가만 있어 월 비용을 계산할 수 없습니다` });
+      continue;
+    }
+    ranked.push({ provider, model, status:statusOf[key], ...best, regions });
+  }
+
+  ranked.sort((a,b)=> a.cost.lo - b.cost.lo);
+
+  // "N배" baseline: cheapest row with a settled (non-ambiguous) price
+  const base = ranked.find(r=>!r.cost.ambiguous);
+  const multOf = (r)=> base && !r.cost.ambiguous ? r.cost.lo/base.cost.lo : Infinity;
+  if(state.sort==="mult") ranked.sort((a,b)=> multOf(a)-multOf(b));
+
+  // ruler domain: output rate axis ($/1M) — stable no matter the workload
+  const outRates = ranked.flatMap(r=>r.cost.outRates).filter(v=>v>0);
+  const rlo = outRates.length ? Math.min(...outRates) : 0.1;
+  const rhi = outRates.length ? Math.max(...outRates) : 100;
+  const pos = (v)=>{
+    if(!(rhi>rlo) || !(v>0)) return 0;
+    return (Math.log10(v)-Math.log10(rlo)) / (Math.log10(rhi)-Math.log10(rlo)) * 100;
+  };
+
+  /* --- header line --- */
+  $("#rowcount").textContent = ranked.length;
+  $("#sum").innerHTML =
+    `<b>${regionName(state.region)}</b> · 입력 <b>${state.inM.toLocaleString()}</b>백만`
+    + ` + 출력 <b>${state.outM.toLocaleString()}</b>백만 · ${MODE_KO[state.mode]}`
+    + (state.resid==="strict" ? ` · <b>리전 내 처리만</b>` : ``);
+
+  /* --- ruler --- */
+  if(state.ruler){
+    const ticks=[0.01,0.1,1,10,100,1000].filter(t=>t>=rlo*0.9 && t<=rhi*1.1);
+    $("#ruler").innerHTML = `<div class="line"></div>`
+      + ticks.map(t=>`<span class="tick" style="left:${pos(t)}%">${rate(t)}</span>`).join("")
+      + `<span class="tick" style="left:0;transform:none;color:var(--faint)">출력 단가 /1M →</span>`;
+  }
+
+  /* --- rows --- */
+  if(!ranked.length){
+    let msg;
+    if(state.q){
+      const anywhere = Object.keys(buildIndexIgnoringFilters(state.q));
+      msg = anywhere.length
+        ? `<b>'${state.q}'</b>에 맞는 모델은 있지만, 지금 조건(${regionName(state.region)} · ${MODE_KO[state.mode]})에서는 월 비용을 계산할 단가가 없습니다.`
+          + `<br>리전을 바꾸거나 고급 설정에서 미리보기 모델을 포함해 보세요.`
+        : `<b>'${state.q}'</b>에 맞는 모델이 없습니다.<br>한글(소넷, 노바프로)이나 API ID(anthropic.claude-sonnet-4-5)로도 찾을 수 있습니다.`;
+    } else {
+      msg = `이 조건에서 월 비용을 계산할 수 있는 모델이 없습니다. 리전이나 고급 설정을 바꿔보세요.`;
+    }
+    $("#rows").innerHTML = `<div class="empty">${msg}</div>`;
+  } else {
+    $("#rows").innerHTML = ranked.map((r,i)=>{
+      const c=r.cost, p=PATH_KO[r.path];
+      const m = multOf(r);
+      const mult = !isFinite(m)
+        ? `<span class="mult na">—</span>`
+        : (r===base ? `<span class="mult base">기준</span>`
+                    : `<span class="mult">${m.toFixed(m<10?1:0)}배</span>`);
+      // the unit lives in the column header, not repeated on all 21 rows
+      const costHtml = c.ambiguous
+        ? `<span class="range">${money(c.lo)}–${money(c.hi)}</span>`
+        : `<b>${money(c.lo)}</b>`;
+      const calc = `입력 ${rate(c.inRates[0])}×${state.inM}<br>출력 ${rate(c.outRates[0])}×${state.outM}`;
+
+      // repeated prose collapsed into badges (release idiom)
+      const bits = [ badge(p.tone, p.label) ];
+      if(r.status && r.status!=="ga")
+        bits.push(badge(STATUS_TONE[r.status]||"neutral", STATUS_KO[r.status]||r.status));
+      if(c.ambiguous) bits.push(badge("warn", "단가 2개 ⚠"));
+      if(r.path==="global-cris" && !r.regions[state.region]?.["in-region"])
+        bits.push(badge("neutral", "이 리전엔 리전 내 단가 없음"));
+      const nRegions = Object.keys(r.regions).length;
+      if(nRegions>1) bits.push(`<span class="ovf">${regionName(state.region)}<span class="more">+${nRegions-1}</span></span>`);
+      if(state.raw) bits.push(`<span class="raw">${r.path} · ${p.help}</span>`);
+
+      const open = state.open===r.provider+"\u0001"+r.model;
+      return `<div class="row grid ${c.ambiguous?"amb":""} ${open?"open":""}" data-k="${r.provider}\u0001${r.model}">
+          <div class="rank">${i+1}</div>
+          <div>
+            <div class="name">${r.model}<span class="vendor">${r.provider}</span></div>
+            <div class="meta">${bits.join("")}</div>
+          </div>
+          <div class="cost">${costHtml}</div>
+          <div class="calc">${calc}</div>
+          ${mult}
+        </div>`
+        + (state.ruler ? `<div class="dot" style="grid-column:1/-1"><i style="left:${pos(c.outRates[0])}%"></i></div>` : "")
+        + (open ? renderExpand(r) : "");
+    }).join("");
+
+    for(const el of document.querySelectorAll(".row")){
+      el.onclick = ()=>{
+        const k = el.dataset.k;
+        state.open = state.open===k ? null : k;
+        render();
+      };
+    }
+  }
+
+  /* --- unavailable groups --- */
+  const gp=$("#g-partial"), gm=$("#g-missing");
+  if(partial.length){
+    gp.style.display="";
+    gp.querySelector("summary").innerHTML =
+      `월 비용 계산 불가 <span class="count">${partial.length}</span> — 이유 보기`;
+    $("#g-partial-body").innerHTML = partial.map(x=>
+      `<div><span>${x.model} <em>${x.provider}</em></span><em>${x.reason}</em></div>`).join("");
+  } else gp.style.display="none";
+
+  if(missing.length){
+    gm.style.display="";
+    gm.querySelector("summary").innerHTML =
+      `${regionName(state.region)}에서 제공되지 않는 모델 <span class="count">${missing.length}</span> — 목록 보기`;
+    $("#g-missing-body").innerHTML = missing
+      .sort((a,b)=>b.where-a.where)
+      .map(x=>`<div><span>${x.model} <em>${x.provider}</em></span>`
+             + `<span class="ovf">다른 리전<span class="more">+${x.where}</span></span></div>`).join("");
+  } else gm.style.display="none";
+
+  document.body.classList.toggle("batch-mode", state.mode==="batch");
+  document.body.classList.toggle("ruler-on", state.ruler);
+  $("#homeName").textContent = regionName(state.region);
+  syncHash();
+}
+
+// used only for the empty-state message: does the query match anything at all?
+function buildIndexIgnoringFilters(q){
+  const out={};
+  for(const p of P){
+    if(!matches(p.provider,p.model_id,q)) continue;
+    out[p.provider+"\u0001"+p.model_id]=1;
+  }
+  return out;
+}
+
+function renderExpand(r){
+  // the same model across regions — comparison AFTER picking a model, never a
+  // permanent second column (an unlabelled column reads as a regional discount)
+  const rows=[];
+  for(const [rg, byPath] of Object.entries(r.regions)){
+    let best=null;
+    for(const path of allowedPaths()){
+      const c=costFor(byPath[path]);
+      if(!c) continue;
+      if(!best || c.lo<best.c.lo) best={path,c};
+    }
+    if(!best) continue;
+    rows.push({ rg, path:best.path, c:best.c });
+  }
+  rows.sort((a,b)=>a.c.lo-b.c.lo);
+  const mine = rows.find(x=>x.rg===state.region);
+  const body = rows.map(x=>{
+    const same = mine && x.c.lo===mine.c.lo;
+    const diff = mine && !same ? ` <em>${x.c.lo>mine.c.lo?"+":""}${((x.c.lo/mine.c.lo-1)*100).toFixed(0)}%</em>` : "";
+    const val = x.c.ambiguous ? `${money(x.c.lo)}–${money(x.c.hi)}` : money(x.c.lo);
+    return `<div><span class="r">${regionFull(x.rg)}</span>`
+         + `<span class="v">${val}<em>${PATH_KO[x.path].label}</em>`
+         + (same && x.rg!==state.region ? ` <em>${regionName(state.region)}와 동일</em>` : diff)
+         + `</span></div>`;
+  }).join("");
+  return `<div class="expand">
+      <h4>${r.model} — 다른 리전에서는?</h4>
+      <div class="rgrid">${body || "<div><span>다른 리전 정보 없음</span></div>"}</div>
+    </div>`;
+}
+
+/* ====================== 컨트롤 ====================== */
+
+/* --- region combobox (ARIA listbox; no native <select>) --- */
+const regionCount = {};
+for(const r of snap.regions)
+  regionCount[r] = new Set(P.filter(p=>p.source_region===r).map(p=>p.provider+"/"+p.model_id)).size;
+
+(function regionCombo(){
+  const btn=$("#region-btn"), val=$("#region-val"), pop=$("#region-pop");
+  let active=-1;
+
+  for(const [name,test] of REGION_ORDER){
+    const members = snap.regions.filter(test).sort((a,b)=>regionCount[b]-regionCount[a]);
+    if(!members.length) continue;
+    const h=document.createElement("li");
+    h.className="combo-grp"; h.setAttribute("role","presentation"); h.textContent=name;
+    pop.append(h);
+    for(const r of members){
+      const li=document.createElement("li");
+      li.className="combo-opt"; li.setAttribute("role","option"); li.dataset.v=r;
+      li.setAttribute("aria-selected", String(r===state.region));
+      li.innerHTML=`<span>${regionFull(r)}</span><span class="cnt">${regionCount[r]}개 모델</span>`;
+      pop.append(li);
+    }
+  }
+  const opts=()=>[...pop.querySelectorAll(".combo-opt")];
+  const paintVal=()=>{ val.textContent=`${regionFull(state.region)} · ${regionCount[state.region]}개 모델`; };
+  const setActive=(i)=>{
+    const o=opts(); if(!o.length) return;
+    o.forEach(x=>x.classList.remove("active"));
+    active=Math.max(0,Math.min(i,o.length-1));
+    o[active].classList.add("active");
+    o[active].scrollIntoView({block:"nearest"});
+  };
+  function open(){
+    pop.hidden=false; btn.setAttribute("aria-expanded","true");
+    setActive(Math.max(0, opts().findIndex(o=>o.dataset.v===state.region)));
+    pop.focus();
+  }
+  function close(){ pop.hidden=true; btn.setAttribute("aria-expanded","false"); }
+  function choose(v){
+    state.region=v; state.open=null;
+    opts().forEach(o=>o.setAttribute("aria-selected", String(o.dataset.v===v)));
+    paintVal(); close(); btn.focus(); render();
+  }
+  btn.onclick = ()=> pop.hidden ? open() : close();
+  btn.onkeydown = (e)=>{
+    if(e.key==="ArrowDown"||e.key==="Enter"||e.key===" "){ e.preventDefault(); open(); }
+  };
+  pop.onkeydown = (e)=>{
+    if(e.key==="ArrowDown"){ e.preventDefault(); setActive(active+1); }
+    else if(e.key==="ArrowUp"){ e.preventDefault(); setActive(active-1); }
+    else if(e.key==="Home"){ e.preventDefault(); setActive(0); }
+    else if(e.key==="End"){ e.preventDefault(); setActive(opts().length-1); }
+    else if(e.key==="Enter"||e.key===" "){ e.preventDefault(); choose(opts()[active].dataset.v); }
+    else if(e.key==="Escape"){ e.preventDefault(); close(); btn.focus(); }
+    else if(e.key==="Tab"){ close(); }
+    else if(e.key.length===1){
+      const q=e.key.toLowerCase(), o=opts();
+      const after=o.findIndex((x,i)=>i>active && x.textContent.toLowerCase().includes(q));
+      const any=o.findIndex(x=>x.textContent.toLowerCase().includes(q));
+      if(after>=0||any>=0) setActive(after>=0?after:any);
+    }
+  };
+  pop.onclick = (e)=>{ const li=e.target.closest(".combo-opt"); if(li) choose(li.dataset.v); };
+  document.addEventListener("click",(e)=>{ if(!$("#region-combo").contains(e.target)) close(); });
+  paintVal();
+})();
+
+/* --- search --- */
+$("#q").value = state.q;
+$("#q").oninput = (e)=>{ state.q=e.target.value.trim(); state.open=null; render(); };
+document.addEventListener("keydown",(e)=>{
+  if(e.key==="/" && document.activeElement!==$("#q")
+     && !/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)){
+    e.preventDefault(); $("#q").focus();
+  } else if(e.key==="Escape" && document.activeElement===$("#q")){
+    $("#q").value=""; state.q=""; render();
+  }
+});
+
+/* --- steppers (no native number spinners) --- */
+function paintUsage(){ $("#tin").value=state.inM; $("#tout").value=state.outM; }
+for(const id of ["tin","tout"]){
+  const key = id==="tin" ? "inM" : "outM";
+  $("#"+id).oninput = (e)=>{
+    const v=e.target.value.replace(/[^\d]/g,"");
+    e.target.value=v; state[key]=Math.max(0,+v||0);
+    paintPresets(); render();
+  };
+}
+for(const b of document.querySelectorAll(".st-btn")){
+  b.onclick = ()=>{
+    const key = b.dataset.for==="tin" ? "inM" : "outM";
+    state[key] = Math.max(0, state[key] + (+b.dataset.d));
+    paintUsage(); paintPresets(); render();
+  };
+}
+
+/* --- presets --- */
+$("#presets").innerHTML = Object.entries(PRESETS).map(([n,[i,o]])=>
+  `<button type="button" class="chip" data-in="${i}" data-out="${o}">${n} <span class="n">${i}/${o}</span></button>`).join("");
+function paintPresets(){
+  for(const b of document.querySelectorAll("#presets .chip"))
+    b.classList.toggle("on", +b.dataset.in===state.inM && +b.dataset.out===state.outM);
+}
+for(const b of document.querySelectorAll("#presets .chip")){
+  b.onclick = ()=>{ state.inM=+b.dataset.in; state.outM=+b.dataset.out;
+                    paintUsage(); paintPresets(); render(); };
+}
+
+/* --- mode --- */
+for(const b of document.querySelectorAll("#modeseg button")){
+  b.onclick = ()=>{ state.mode=b.dataset.mode; paintMode(); render(); };
+}
+function paintMode(){
+  for(const b of document.querySelectorAll("#modeseg button"))
+    b.classList.toggle("on", b.dataset.mode===state.mode);
+}
+
+/* --- residency: segmented radiogroup, native radio key model preserved --- */
+(function residency(){
+  const g=document.querySelector(".segradio");
+  const btns=[...g.querySelectorAll("[role=radio]")];
+  const paint=()=>btns.forEach(b=>{
+    const on=b.dataset.v===state.resid;
+    b.setAttribute("aria-checked", String(on));
+    b.tabIndex = on ? 0 : -1;
+  });
+  const pick=(b)=>{ state.resid=b.dataset.v; state.open=null; paint(); b.focus(); render(); };
+  btns.forEach(b=> b.onclick=()=>pick(b));
+  g.onkeydown=(e)=>{
+    if(!["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"].includes(e.key)) return;
+    e.preventDefault();
+    const i=btns.findIndex(b=>b.dataset.v===state.resid);
+    const fwd = e.key==="ArrowRight"||e.key==="ArrowDown";
+    pick(btns[(i + (fwd?1:btns.length-1)) % btns.length]);
+  };
+  paint();
+})();
+
+/* --- sortable columns --- */
+for(const h of document.querySelectorAll(".colsort")){
+  h.onclick = ()=>{
+    state.sort = h.dataset.sort;
+    for(const x of document.querySelectorAll(".colsort")) x.classList.toggle("on", x===h);
+    render();
+  };
+}
+
+/* --- advanced --- */
+function chkList(host, items, set, labelFn){
+  host.innerHTML="";
+  for(const it of items){
+    const l=document.createElement("label"); l.className="chk";
+    const c=document.createElement("input"); c.type="checkbox"; c.checked=set.has(it);
+    c.onchange=()=>{ c.checked?set.add(it):set.delete(it); state.open=null; render(); };
+    l.append(c, document.createTextNode(labelFn?labelFn(it):it));
+    host.append(l);
+  }
+}
+const haveStatuses = ["ga","legacy","preview","internal"].filter(s=>P.some(p=>(p.status||"ga")===s));
+chkList($("#adv-status"), haveStatuses, state.statuses, s=>STATUS_KO[s]||s);
+chkList($("#adv-tier"), ["standard","priority","flex","latency-optimized"].filter(t=>P.some(p=>p.service_tier===t)),
+        state.tiers, t=>TIER_KO[t]||t);
+chkList($("#adv-band"), ["standard","long-ctx"].filter(b=>P.some(p=>(p.context_band||"standard")===b)),
+        state.bands, b=>BAND_KO[b]||b);
+chkList($("#adv-vendor"), vendors, state.vendors);
+chkList($("#adv-size"), SIZES, state.sizes);
+$("#adv-ruler").onchange = (e)=>{ state.ruler=e.target.checked; render(); };
+$("#adv-raw").onchange   = (e)=>{ state.raw=e.target.checked; render(); };
+
+/* --- provenance + footnotes --- */
+const asOf = (v)=>{ const m=String(v||"").match(/^(\d{4})(\d{2})(\d{2})/); return m?`${m[1]}-${m[2]}-${m[3]}`:"?"; };
+const dates = Object.values(snap.as_of||{}).map(asOf).sort();
+const newest = dates[dates.length-1] || "?";
+const ageDays = newest!=="?" ? Math.floor((Date.now()-new Date(newest))/864e5) : 999;
+$("#prov").innerHTML =
+  (ageDays>7 ? `<span class="stale">데이터가 ${ageDays}일 지났습니다 — 최신이 아닐 수 있습니다.</span> ` : "")
+  + `AWS 공개 가격 파일 기준 · <b>${dates.join(" / ")}</b> · 금액은 모두 <b>USD</b>`;
+$("#nav-asof").textContent = `${newest} 기준`;
+$("#foot-asof").textContent =
+  `AWS 공개 가격 파일 ${dates.join(" / ")} · ${snap.regions.length}개 리전 · `
+  + `${new Set(P.map(p=>p.provider+"/"+p.model_id)).size}개 모델`;
+$("#note").innerHTML = [
+  `모든 금액은 <b>USD</b>입니다. 환율 정보가 원본 데이터에 없어 원화로 환산하지 않습니다.`,
+  `<b>묶음 경로(geo CRIS)</b>는 별도 단가가 없습니다 — 출발 리전의 "리전 내 처리" 요금으로 과금됩니다.`,
+  `같은 조건에 단가가 2개인 경우 <b>범위로 표시</b>하고 "N배" 기준에서 제외합니다. 구분 기준이 AWS SKU 안에만 있어 한쪽을 고를 수 없습니다.`,
+].map(t=>`· ${t}`).join("<br>");
+
+paintUsage(); paintPresets(); paintMode(); render();
+</script>
+</body>
+</html>

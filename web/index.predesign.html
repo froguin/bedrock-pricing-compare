@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bedrock 모델 비용 — 한 달에 얼마인가요?</title>
+<style>
+  :root {
+    --bg:#0f1117; --panel:#161a24; --panel2:#1b2030; --line:#262d3d;
+    --txt:#e8ebf2; --muted:#8b93a7; --faint:#5d6478;
+    --blue:#5ea0ef; --green:#5bc98a; --amber:#e0b03a; --ink:#c6ccdb;
+    --batch:#1a1526; --batch-line:#3d2f5a;
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; }
+  body {
+    font:15px/1.6 -apple-system, system-ui, "Apple SD Gothic Neo", "Pretendard", sans-serif;
+    background:var(--bg); color:var(--txt);
+    font-feature-settings:"tnum";
+  }
+  body.batch-mode { background:var(--batch); }
+  .wrap { max-width:1120px; margin:0 auto; padding:0 20px 80px; }
+
+  /* ---------- header ---------- */
+  header { padding:26px 0 14px; }
+  h1 { margin:0; font-size:24px; font-weight:650; letter-spacing:-.01em; }
+  h1 .sub { font-weight:400; color:var(--muted); font-size:15px; margin-left:8px; }
+  .prov { margin-top:7px; font-size:12.5px; color:var(--faint); }
+  .prov b { color:var(--muted); font-weight:500; }
+
+  /* ---------- batch band ---------- */
+  .batchband {
+    display:none; align-items:center; gap:10px; margin:0 0 14px;
+    padding:9px 14px; border-radius:9px;
+    background:#241a3a; border:1px solid var(--batch-line); color:#d3bdf5; font-size:13.5px;
+  }
+  body.batch-mode .batchband { display:flex; }
+
+  /* ---------- question bar ---------- */
+  .ask { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px 18px; }
+  .qrow { display:flex; flex-wrap:wrap; gap:14px 22px; align-items:flex-end; }
+  .q { display:flex; flex-direction:column; gap:5px; }
+  .q > label { font-size:12.5px; color:var(--muted); }
+  .q input[type=search], .q select, .q input[type=number] {
+    background:var(--panel2); border:1px solid var(--line); border-radius:8px;
+    color:var(--txt); padding:8px 11px; font:inherit; font-size:14px;
+  }
+  .q input[type=search] { min-width:300px; }
+  .q input[type=number] { width:92px; text-align:right; }
+  .q select { min-width:210px; }
+  .grow { flex:1 1 auto; }
+
+  .seg { display:inline-flex; border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+  .seg button {
+    background:transparent; border:0; color:var(--muted);
+    font:inherit; font-size:13.5px; padding:7px 13px; cursor:pointer;
+  }
+  .seg button.on { background:var(--blue); color:#0c1017; font-weight:600; }
+
+  .chips { display:flex; flex-wrap:wrap; gap:6px; }
+  .chip {
+    font:inherit; font-size:12.5px; padding:5px 11px; border-radius:14px; cursor:pointer;
+    background:var(--panel2); border:1px solid var(--line); color:var(--ink);
+  }
+  .chip:hover { border-color:var(--blue); color:var(--blue); }
+  .chip.on { background:var(--blue); border-color:var(--blue); color:#0c1017; font-weight:600; }
+
+  /* residency question — a decision, not a filter */
+  .resid { margin-top:14px; padding-top:14px; border-top:1px solid var(--line); }
+  .resid .qq { font-size:14px; margin-bottom:7px; }
+  .resid .opts { display:flex; flex-wrap:wrap; gap:16px; }
+  .resid label { display:flex; gap:7px; align-items:baseline; font-size:13.5px; cursor:pointer; color:var(--ink); }
+  .resid small { color:var(--faint); }
+
+  /* ---------- summary line ---------- */
+  .sum { margin:18px 0 10px; font-size:13.5px; color:var(--muted); }
+  .sum b { color:var(--txt); font-weight:600; }
+
+  /* ---------- ruler ---------- */
+  .ruler { position:relative; height:22px; margin:4px 0 10px; display:none; }
+  body.ruler-on .ruler { display:block; }
+  .ruler .tick { position:absolute; top:0; font-size:11px; color:var(--faint); transform:translateX(-50%); }
+  .ruler .line { position:absolute; left:0; right:0; top:17px; height:1px; background:var(--line); }
+
+  /* ---------- leaderboard ---------- */
+  .rows { border:1px solid var(--line); border-radius:12px; overflow:hidden; background:var(--panel); }
+  .row {
+    display:grid; grid-template-columns:34px 1fr 150px 118px 86px;
+    gap:14px; align-items:center;
+    padding:13px 16px; border-top:1px solid var(--line); cursor:pointer;
+  }
+  .row:first-child { border-top:0; }
+  .row:hover { background:var(--panel2); }
+  .rank { color:var(--faint); font-size:13px; text-align:right; }
+  .name { font-size:15.5px; font-weight:550; }
+  .name .vendor { color:var(--muted); font-weight:400; font-size:12.5px; margin-left:7px; }
+  .path { margin-top:3px; font-size:12px; color:var(--muted); }
+  .path .warn { color:var(--amber); }
+  .cost { text-align:right; }
+  .cost b { font-size:21px; font-weight:650; letter-spacing:-.01em; }
+  .cost .per { color:var(--faint); font-size:12px; margin-left:2px; }
+  .cost .range { font-size:16px; font-weight:600; color:var(--amber); }
+  .calc { font-size:11.5px; color:var(--faint); text-align:right; line-height:1.45; }
+  .mult { text-align:right; font-size:13px; color:var(--muted); }
+  .mult.base { color:var(--green); }
+  .dot { position:relative; height:14px; }
+  .dot i { position:absolute; width:7px; height:7px; border-radius:50%; background:var(--blue); top:4px; transform:translateX(-50%); }
+
+  .row.amb { border-left:3px solid var(--amber); }
+  .row.open { background:var(--panel2); }
+
+  /* row expansion: other regions */
+  .expand { padding:4px 16px 16px 62px; background:var(--panel2); border-top:1px solid var(--line); font-size:13px; }
+  .expand h4 { margin:10px 0 7px; font-size:12px; color:var(--muted); font-weight:500; letter-spacing:.04em; text-transform:uppercase; }
+  .rgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(248px,1fr)); gap:4px 18px; }
+  .rgrid div { display:flex; justify-content:space-between; gap:12px; padding:3px 0; border-bottom:1px solid var(--line); }
+  .rgrid span.r { color:var(--ink); }
+  .rgrid span.v { color:var(--txt); }
+  .rgrid span.v em { color:var(--faint); font-style:normal; font-size:11.5px; margin-left:5px; }
+
+  /* ---------- unavailable groups ---------- */
+  .group { margin-top:22px; }
+  .group > summary {
+    cursor:pointer; font-size:13.5px; color:var(--muted);
+    padding:11px 16px; background:var(--panel); border:1px solid var(--line); border-radius:10px;
+  }
+  .group > summary::marker { color:var(--faint); }
+  .group[open] > summary { border-radius:10px 10px 0 0; }
+  .group .body {
+    border:1px solid var(--line); border-top:0; border-radius:0 0 10px 10px;
+    background:var(--panel); padding:12px 16px; font-size:13px; color:var(--ink);
+  }
+  .group .body div { padding:4px 0; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; gap:14px; }
+  .group .body div:last-child { border-bottom:0; }
+  .group .body em { color:var(--faint); font-style:normal; font-size:12px; }
+
+  /* ---------- advanced ---------- */
+  details.adv { margin-top:26px; }
+  details.adv > summary {
+    cursor:pointer; font-size:13.5px; color:var(--muted); padding:10px 0;
+    border-top:1px solid var(--line);
+  }
+  .advgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:18px; padding:10px 0 4px; }
+  .advgrid h5 { margin:0 0 7px; font-size:11.5px; color:var(--muted); font-weight:500;
+                letter-spacing:.05em; text-transform:uppercase; }
+  label.chk { display:flex; gap:7px; align-items:center; font-size:13.5px; padding:2px 0; cursor:pointer; color:var(--ink); }
+  .hint { font-size:12px; color:var(--faint); margin-top:5px; }
+
+  .note { margin-top:20px; font-size:12.5px; color:var(--faint); line-height:1.7; }
+  .note b { color:var(--muted); font-weight:500; }
+  .stale { color:#f0a0a0; }
+  .empty { padding:26px 16px; color:var(--muted); font-size:14px; }
+  .empty b { color:var(--txt); }
+  a { color:var(--blue); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Bedrock 모델 비용 <span class="sub">한 달에 얼마인가요?</span></h1>
+  <div class="prov" id="prov">불러오는 중…</div>
+</header>
+
+<div class="batchband" id="batchband">
+  <b>일괄 처리(배치) 요금으로 보고 있습니다</b>
+  <span>— 즉시 응답 요금과 다릅니다. 보통 절반 수준입니다.</span>
+</div>
+
+<div class="ask">
+  <div class="qrow">
+    <div class="q grow">
+      <label for="q">모델 찾기 <span style="color:var(--faint)">( / 키로 이동 )</span></label>
+      <input id="q" type="search" placeholder="소넷 · 노바프로 · claude 4.5 · anthropic.claude-sonnet-4-5" />
+    </div>
+    <div class="q">
+      <label for="region">어느 리전에서 쓰시나요?</label>
+      <select id="region"></select>
+    </div>
+    <div class="q">
+      <label>한 달 사용량 — 입력 (백만 토큰)</label>
+      <input id="tin" type="number" min="0" step="1" />
+    </div>
+    <div class="q">
+      <label>출력 (백만 토큰)</label>
+      <input id="tout" type="number" min="0" step="1" />
+    </div>
+    <div class="q">
+      <label>응답 방식</label>
+      <span class="seg" id="modeseg">
+        <button data-mode="online">즉시 응답</button>
+        <button data-mode="batch">일괄 처리</button>
+      </span>
+    </div>
+  </div>
+
+  <div class="qrow" style="margin-top:13px">
+    <div class="q grow">
+      <label>사용량 예시</label>
+      <div class="chips" id="presets"></div>
+    </div>
+  </div>
+
+  <div class="resid">
+    <div class="qq">데이터가 <b id="homeName">이 리전</b> 밖에서 처리되어도 괜찮으신가요?</div>
+    <div class="opts">
+      <label><input type="radio" name="resid" value="any" checked />
+        <span>상관없습니다 <small>— 가장 싼 경로를 고릅니다</small></span></label>
+      <label><input type="radio" name="resid" value="strict" />
+        <span>안 됩니다 <small>— 이 리전 안에서 처리되는 요금만</small></span></label>
+    </div>
+  </div>
+</div>
+
+<div class="sum" id="sum"></div>
+<div class="ruler" id="ruler"></div>
+<div class="rows" id="rows"></div>
+
+<details class="group" id="g-partial"><summary></summary><div class="body" id="g-partial-body"></div></details>
+<details class="group" id="g-missing"><summary></summary><div class="body" id="g-missing-body"></div></details>
+
+<details class="adv">
+  <summary>고급 설정</summary>
+  <div class="advgrid">
+    <div>
+      <h5>포함할 모델</h5>
+      <div id="adv-status"></div>
+      <div class="hint">미리보기·내부 코드명 모델은 기본적으로 숨깁니다.</div>
+    </div>
+    <div>
+      <h5>처리 우선순위</h5>
+      <div id="adv-tier"></div>
+    </div>
+    <div>
+      <h5>입력 길이 요금 구간</h5>
+      <div id="adv-band"></div>
+      <div class="hint">일부 모델은 긴 입력에 다른 단가를 씁니다. 구분 기준은 AWS SKU 안에만 있습니다.</div>
+    </div>
+    <div>
+      <h5>공급사</h5>
+      <div id="adv-vendor" style="max-height:168px;overflow:auto"></div>
+    </div>
+    <div>
+      <h5>파라미터 크기</h5>
+      <div id="adv-size"></div>
+      <div class="hint">이름에 크기가 적힌 모델만 분류됩니다. 나머지는 미공개 — 가격으로 크기를 추정하지 않습니다.</div>
+    </div>
+    <div>
+      <h5>표시</h5>
+      <label class="chk"><input type="checkbox" id="adv-ruler" /> 단가 눈금자 표시</label>
+      <label class="chk"><input type="checkbox" id="adv-raw" /> 원본 항목명 표시</label>
+      <div class="hint">눈금자는 출력 단가($/1M) 축이라 사용량을 바꿔도 흔들리지 않습니다.</div>
+    </div>
+  </div>
+</details>
+
+<div class="note" id="note"></div>
+
+</div>
+
+<script type="module">
+const $ = (s)=>document.querySelector(s);
+
+let snap;
+try {
+  if (window.__PRICING__) snap = window.__PRICING__;
+  else {
+    const res = await fetch("./pricing.json", {cache:"no-cache"});
+    if(!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
+    snap = await res.json();
+  }
+  if(!snap || !Array.isArray(snap.price_points) || !snap.price_points.length)
+    throw new Error("pricing.json에 price_points가 없습니다");
+} catch (err) {
+  $("#prov").textContent = "데이터를 불러오지 못했습니다";
+  $("#rows").innerHTML = `<div class="empty"><b>pricing.json을 불러오지 못했습니다 — ${String(err.message||err)}</b><br><br>`
+    + (location.protocol === "file:"
+       ? `<code>file://</code>로 열면 브라우저가 데이터 요청을 차단합니다. 로컬 서버로 여시거나, 데이터가 들어 있는 단일 파일 빌드(<code>dist/bedrock-pricing.html</code>)를 쓰세요.`
+       : `서버가 떠 있는지, <code>pricing.json</code>이 같은 경로에 있는지 확인하세요.`)
+    + `</div>`;
+  throw err;
+}
+const P = snap.price_points;
+
+/* ====================== 용어 ====================== */
+const PATH_KO = {
+  "in-region":   { label:"리전 내 처리",     help:"이 리전 안에서 처리됩니다" },
+  "global-cris": { label:"글로벌 분산 처리", help:"데이터가 리전 밖에서 처리될 수 있습니다" },
+  "regional-cris":{ label:"묶음 경로",       help:"별도 단가 없음" },
+};
+const TIER_KO = { "standard":"표준", "priority":"우선 처리", "flex":"유연", "latency-optimized":"지연 최소화" };
+const STATUS_KO = { "ga":"정식 제공", "legacy":"구형", "preview":"미리보기", "internal":"내부 코드명" };
+const BAND_KO = { "standard":"기본 입력 길이", "long-ctx":"긴 입력" };
+const MODE_KO = { "online":"즉시 응답", "batch":"일괄 처리" };
+
+/* ====================== 리전 ====================== */
+const REGION_KO = {
+  "ap-northeast-1":"도쿄","ap-northeast-2":"서울","ap-northeast-3":"오사카",
+  "ap-south-1":"뭄바이","ap-south-2":"하이데라바드",
+  "ap-southeast-1":"싱가포르","ap-southeast-2":"시드니","ap-southeast-3":"자카르타",
+  "ap-southeast-4":"멜버른","ap-southeast-5":"쿠알라룸푸르","ap-southeast-6":"뉴질랜드",
+  "ap-southeast-7":"방콕","ap-east-1":"홍콩","ap-east-2":"타이베이",
+  "us-east-1":"버지니아","us-east-2":"오하이오","us-west-1":"캘리포니아","us-west-2":"오레곤",
+  "us-gov-east-1":"GovCloud 동부","us-gov-west-1":"GovCloud 서부",
+  "eu-west-1":"아일랜드","eu-west-2":"런던","eu-west-3":"파리",
+  "eu-central-1":"프랑크푸르트","eu-central-2":"취리히","eu-north-1":"스톡홀름",
+  "eu-south-1":"밀라노","eu-south-2":"스페인",
+  "ca-central-1":"캐나다 중부","ca-west-1":"캘거리",
+  "sa-east-1":"상파울루","mx-central-1":"멕시코",
+  "me-central-1":"UAE","me-south-1":"바레인","il-central-1":"텔아비브",
+  "af-south-1":"케이프타운",
+};
+const regionName = (r)=> REGION_KO[r] || r;
+const regionFull = (r)=> REGION_KO[r] ? `${REGION_KO[r]} (${r})` : r;
+const REGION_ORDER = [
+  ["아시아·태평양", r=>/^ap-/.test(r)],
+  ["미국",          r=>/^us-/.test(r)],
+  ["유럽",          r=>/^eu-/.test(r)],
+  ["그 외",         r=>!/^(ap|us|eu)-/.test(r)],
+];
+
+/* ====================== 검색 ====================== */
+const ALIASES = {
+  "소넷":"sonnet","소네트":"sonnet","쏘넷":"sonnet",
+  "하이쿠":"haiku","하이꾸":"haiku","오푸스":"opus","오퍼스":"opus",
+  "클로드":"claude","크로드":"claude",
+  "노바":"nova","마이크로":"micro","라이트":"lite","프로":"pro","프리미어":"premier",
+  "라마":"llama","미스트랄":"mistral","믹스트랄":"mixtral",
+  "딥식":"deepseek","딥시크":"deepseek",
+  "지피티":"gpt","챗지피티":"gpt","오픈에이아이":"openai",
+  "네모트론":"nemotron","큐원":"qwen","쿠엔":"qwen",
+  "젬마":"gemma","제마":"gemma","그록":"grok","키미":"kimi",
+  "잠바":"jamba","타이탄":"titan","커맨드":"command","임베딩":"embed",
+};
+function tokens(str){
+  let s = String(str||"").toLowerCase().normalize("NFKC");
+  s = s.replace(/^[a-z0-9]+\./, " ");
+  s = s.replace(/(\d)-(\d)/g, "$1.$2");
+  s = s.replace(/[^a-z0-9.가-힣]+/g, " ");
+  s = s.replace(/\.(?!\d)/g, " ");
+  return s.split(/\s+/).filter(Boolean);
+}
+const KO_KEYS = Object.keys(ALIASES).sort((a,b)=>b.length-a.length);
+function segmentKorean(t){
+  const parts=[]; let i=0;
+  while(i<t.length){
+    const hit=KO_KEYS.find(k=>t.startsWith(k,i));
+    if(!hit) return null;
+    parts.push(ALIASES[hit]); i+=hit.length;
+  }
+  return parts.length>1 ? parts.flatMap(tokens) : null;
+}
+function alternatives(t){
+  const alts=[[t]];
+  if(ALIASES[t]) alts.push(tokens(ALIASES[t]));
+  if(/^[가-힣]+$/.test(t)){ const seg=segmentKorean(t); if(seg) alts.push(seg); }
+  return alts;
+}
+const bags = {};
+for(const p of P){
+  const k=p.provider+"\u0001"+p.model_id;
+  if(!bags[k]) bags[k]=[...new Set([...tokens(p.model_id), ...tokens(p.provider)])];
+}
+function matches(provider, modelId, q){
+  if(!q) return true;
+  const bag=bags[provider+"\u0001"+modelId]; if(!bag) return false;
+  const hit=(t)=>bag.some(b=>b.startsWith(t));
+  return tokens(q).every(raw => alternatives(raw).some(alt => alt.every(hit)));
+}
+
+/* ====================== 크기 (이름에 적힌 것만) ====================== */
+// Price is NOT used to guess size: dressing a rate up as a parameter count
+// would be invented data. Models that publish nothing stay "미공개".
+function sizeBucket(modelId){
+  const m = String(modelId).match(/(\d+(?:\.\d+)?)\s*x\s*(\d+(?:\.\d+)?)\s*b\b/i);
+  let b = null;
+  if(m) b = parseFloat(m[1]) * parseFloat(m[2]);
+  else {
+    const s = String(modelId).match(/(?:^|[\s\-_])(\d+(?:\.\d+)?)\s*b\b/i);
+    if(s) b = parseFloat(s[1]);
+  }
+  if(b == null) return "미공개";
+  if(b < 10) return "10B 미만";
+  if(b <= 70) return "10~70B";
+  return "70B 초과";
+}
+const SIZES = ["10B 미만","10~70B","70B 초과","미공개"];
+
+/* ====================== 상태 ====================== */
+const PRESETS = {
+  "일반 챗봇": [10, 2],
+  "RAG · 요약": [20, 1],
+  "코딩 보조": [2, 1],
+  "대량 추출":  [100, 10],
+};
+const vendors = [...new Set(P.map(p=>p.provider))].sort();
+const state = {
+  q:"",
+  region: snap.regions.includes("ap-northeast-2") ? "ap-northeast-2" : snap.regions[0],
+  inM: 10, outM: 2,
+  mode:"online",
+  resid:"any",
+  statuses:new Set(["ga","legacy"]),
+  tiers:new Set(["standard"]),
+  bands:new Set(["standard"]),
+  vendors:new Set(vendors),
+  sizes:new Set(SIZES),
+  ruler:false,
+  raw:false,
+  open:null,
+};
+
+/* ---- URL state ---- */
+const hash = new URLSearchParams(location.hash.replace(/^#/,""));
+if(hash.get("region") && snap.regions.includes(hash.get("region"))) state.region = hash.get("region");
+if(hash.get("in"))  state.inM  = Math.max(0, +hash.get("in")  || 0);
+if(hash.get("out")) state.outM = Math.max(0, +hash.get("out") || 0);
+if(hash.get("mode")==="batch") state.mode="batch";
+if(hash.get("resid")==="strict") state.resid="strict";
+if(hash.get("q")) state.q = hash.get("q");
+function syncHash(){
+  const h=new URLSearchParams();
+  h.set("region",state.region); h.set("in",state.inM); h.set("out",state.outM);
+  if(state.mode!=="online") h.set("mode",state.mode);
+  if(state.resid!=="any") h.set("resid",state.resid);
+  if(state.q) h.set("q",state.q);
+  history.replaceState(null,"","#"+h.toString());
+}
+
+/* ====================== 포맷 ====================== */
+const money = (v)=> v>=100 ? "$"+v.toLocaleString("en-US",{maximumFractionDigits:0})
+                  : v>=1   ? "$"+v.toFixed(2)
+                           : "$"+v.toFixed(3);
+const rate = (v)=> v>=1 ? "$"+v.toFixed(2) : "$"+v.toFixed(3);
+
+/* ====================== 집계 ====================== */
+// provider/model -> region -> path -> dimension -> Set(prices)
+function buildIndex(){
+  const idx = {};
+  for(const p of P){
+    if(!/^(input|output)$/.test(p.dimension)) continue;
+    if((p.execution_mode||"online") !== state.mode) continue;
+    if(!state.statuses.has(p.status||"ga")) continue;
+    if(!state.tiers.has(p.service_tier)) continue;
+    if(!state.bands.has(p.context_band||"standard")) continue;
+    if(!state.vendors.has(p.provider)) continue;
+    if(!state.sizes.has(sizeBucket(p.model_id))) continue;
+    if(!matches(p.provider, p.model_id, state.q)) continue;
+    const key = p.provider+"\u0001"+p.model_id;
+    const node = (((idx[key] ??= {})[p.source_region] ??= {})[p.endpoint_type] ??= {});
+    (node[p.dimension] ??= new Set()).add(p.price_per_1m);
+  }
+  return idx;
+}
+
+const allowedPaths = ()=> state.resid==="strict" ? ["in-region"] : ["in-region","global-cris"];
+
+// monthly cost for one path, or null when a dimension is missing
+function costFor(pathNode){
+  if(!pathNode) return null;
+  const i = pathNode.input, o = pathNode.output;
+  if(!i || !o || !i.size || !o.size) return null;
+  const iv=[...i], ov=[...o];
+  const lo = Math.min(...iv)*state.inM + Math.min(...ov)*state.outM;
+  const hi = Math.max(...iv)*state.inM + Math.max(...ov)*state.outM;
+  return { lo, hi, ambiguous: lo!==hi, inRates:iv.sort((a,b)=>a-b), outRates:ov.sort((a,b)=>a-b) };
+}
+
+/* ====================== 렌더 ====================== */
+function render(){
+  const idx = buildIndex();
+  const paths = allowedPaths();
+
+  const ranked = [], partial = [], missing = [];
+
+  for(const [key, regions] of Object.entries(idx)){
+    const [provider, model] = key.split("\u0001");
+    const here = regions[state.region];
+    if(!here){
+      // offered somewhere, just not in the chosen region
+      const where = Object.keys(regions).length;
+      missing.push({ provider, model, where });
+      continue;
+    }
+    let best = null;
+    for(const path of paths){
+      const c = costFor(here[path]);
+      if(!c) continue;
+      if(!best || c.lo < best.cost.lo) best = { path, cost:c };
+    }
+    if(!best){
+      // present in this region but a dimension is absent (embeddings, video-only, …)
+      const have = new Set();
+      for(const path of Object.keys(here)) for(const d of Object.keys(here[path])) have.add(d);
+      const only = [...have].map(d=> d==="input"?"입력":"출력").join(" · ");
+      const blockedByResidency = state.resid==="strict"
+        && paths.length===1 && here["global-cris"] && !here["in-region"];
+      partial.push({ provider, model,
+        reason: blockedByResidency
+          ? "이 리전 안에서 처리되는 요금이 없습니다 (글로벌 분산 처리만 제공)"
+          : `${only} 단가만 있어 월 비용을 계산할 수 없습니다` });
+      continue;
+    }
+    ranked.push({ provider, model, ...best, regions });
+  }
+
+  ranked.sort((a,b)=> a.cost.lo - b.cost.lo);
+
+  // "N배" baseline: cheapest row with a settled (non-ambiguous) price
+  const base = ranked.find(r=>!r.cost.ambiguous);
+
+  // ruler domain: output rate axis ($/1M) — stable no matter the workload
+  const outRates = ranked.flatMap(r=>r.cost.outRates).filter(v=>v>0);
+  const rlo = outRates.length ? Math.min(...outRates) : 0.1;
+  const rhi = outRates.length ? Math.max(...outRates) : 100;
+  const pos = (v)=>{
+    if(!(rhi>rlo) || !(v>0)) return 0;
+    return (Math.log10(v)-Math.log10(rlo)) / (Math.log10(rhi)-Math.log10(rlo)) * 100;
+  };
+
+  /* --- summary --- */
+  const totalTokens = state.inM + state.outM;
+  $("#sum").innerHTML =
+    `<b>${regionFull(state.region)}</b>에서 <b>입력 ${state.inM.toLocaleString()}백만 + 출력 ${state.outM.toLocaleString()}백만 토큰</b>`
+    + `(월 ${totalTokens.toLocaleString()}백만)을 ${MODE_KO[state.mode]} 방식으로 쓸 때, `
+    + `월 비용이 낮은 순 <b>${ranked.length}개</b>`
+    + (state.resid==="strict" ? ` · <b>이 리전 안에서 처리되는 요금만</b>` : ``);
+
+  /* --- ruler --- */
+  if(state.ruler){
+    const ticks=[0.01,0.1,1,10,100,1000].filter(t=>t>=rlo*0.9 && t<=rhi*1.1);
+    $("#ruler").innerHTML = `<div class="line"></div>`
+      + ticks.map(t=>`<span class="tick" style="left:${pos(t)}%">${rate(t)}</span>`).join("")
+      + `<span class="tick" style="left:0;transform:none;color:var(--faint)">출력 단가 /1M →</span>`;
+  }
+
+  /* --- rows --- */
+  if(!ranked.length){
+    let msg;
+    if(state.q){
+      const anywhere = Object.keys(buildIndexIgnoringFilters(state.q));
+      msg = anywhere.length
+        ? `<b>'${state.q}'</b>에 맞는 모델은 있지만, 지금 조건(${regionName(state.region)} · ${MODE_KO[state.mode]})에서는 월 비용을 계산할 단가가 없습니다.`
+          + `<br>리전을 바꾸거나 고급 설정에서 미리보기 모델을 포함해 보세요.`
+        : `<b>'${state.q}'</b>에 맞는 모델이 없습니다.<br>한글(소넷, 노바프로)이나 API ID(anthropic.claude-sonnet-4-5)로도 찾을 수 있습니다.`;
+    } else {
+      msg = `이 조건에서 월 비용을 계산할 수 있는 모델이 없습니다. 리전이나 고급 설정을 바꿔보세요.`;
+    }
+    $("#rows").innerHTML = `<div class="empty">${msg}</div>`;
+  } else {
+    $("#rows").innerHTML = ranked.map((r,i)=>{
+      const c=r.cost, p=PATH_KO[r.path];
+      const mult = base && !c.ambiguous
+        ? (r===base ? `<span class="mult base">기준</span>`
+                    : `<span class="mult">${(c.lo/base.cost.lo).toFixed(c.lo/base.cost.lo<10?1:0)}배</span>`)
+        : `<span class="mult" style="color:var(--amber)">—</span>`;
+      const costHtml = c.ambiguous
+        ? `<span class="range">${money(c.lo)}–${money(c.hi)}</span><span class="per">/월</span>`
+        : `<b>${money(c.lo)}</b><span class="per">/월</span>`;
+      const calc = `입력 ${rate(c.inRates[0])}×${state.inM}<br>출력 ${rate(c.outRates[0])}×${state.outM}`;
+      const ambNote = c.ambiguous
+        ? ` · <span class="warn">단가 2개 · 구분 기준은 AWS SKU에만 있음</span>` : "";
+      const residNote = (r.path==="global-cris" && !r.regions[state.region]?.["in-region"])
+        ? ` · <span class="warn">이 리전엔 리전 내 처리 단가 없음</span>` : "";
+      const open = state.open===r.provider+"\u0001"+r.model;
+      return `<div class="row ${c.ambiguous?"amb":""} ${open?"open":""}" data-k="${r.provider}\u0001${r.model}">
+          <div class="rank">${i+1}</div>
+          <div>
+            <div class="name">${r.model}<span class="vendor">${r.provider}</span></div>
+            <div class="path">${p.label}<span style="color:var(--faint)"> — ${p.help}</span>${residNote}${ambNote}${
+              state.raw ? ` · <span style="color:var(--faint)">${r.path}</span>` : ""}</div>
+          </div>
+          <div class="cost">${costHtml}</div>
+          <div class="calc">${calc}</div>
+          ${mult}
+        </div>`
+        + (state.ruler ? `<div class="dot" style="grid-column:1/-1"><i style="left:${pos(c.outRates[0])}%"></i></div>` : "")
+        + (open ? renderExpand(r) : "");
+    }).join("");
+
+    for(const el of document.querySelectorAll(".row")){
+      el.onclick = ()=>{
+        const k = el.dataset.k;
+        state.open = state.open===k ? null : k;
+        render();
+      };
+    }
+  }
+
+  /* --- unavailable groups --- */
+  const gp=$("#g-partial"), gm=$("#g-missing");
+  if(partial.length){
+    gp.style.display="";
+    gp.querySelector("summary").textContent = `월 비용 계산 불가 ${partial.length}개 — 이유 보기`;
+    $("#g-partial-body").innerHTML = partial.map(x=>
+      `<div><span>${x.model} <em>${x.provider}</em></span><em>${x.reason}</em></div>`).join("");
+  } else gp.style.display="none";
+
+  if(missing.length){
+    gm.style.display="";
+    gm.querySelector("summary").textContent =
+      `${regionName(state.region)}에서 제공되지 않는 모델 ${missing.length}개 — 목록 보기`;
+    $("#g-missing-body").innerHTML = missing
+      .sort((a,b)=>b.where-a.where)
+      .map(x=>`<div><span>${x.model} <em>${x.provider}</em></span><em>다른 ${x.where}개 리전에서 제공</em></div>`).join("");
+  } else gm.style.display="none";
+
+  document.body.classList.toggle("batch-mode", state.mode==="batch");
+  document.body.classList.toggle("ruler-on", state.ruler);
+  $("#homeName").textContent = regionName(state.region);
+  syncHash();
+}
+
+// used only for the empty-state message: does the query match anything at all?
+function buildIndexIgnoringFilters(q){
+  const out={};
+  for(const p of P){
+    if(!matches(p.provider,p.model_id,q)) continue;
+    out[p.provider+"\u0001"+p.model_id]=1;
+  }
+  return out;
+}
+
+function renderExpand(r){
+  // the same model across regions — comparison AFTER picking a model, never a
+  // permanent second column (an unlabelled column reads as a regional discount)
+  const rows=[];
+  for(const [rg, byPath] of Object.entries(r.regions)){
+    let best=null;
+    for(const path of allowedPaths()){
+      const c=costFor(byPath[path]);
+      if(!c) continue;
+      if(!best || c.lo<best.c.lo) best={path,c};
+    }
+    if(!best) continue;
+    rows.push({ rg, path:best.path, c:best.c });
+  }
+  rows.sort((a,b)=>a.c.lo-b.c.lo);
+  const mine = rows.find(x=>x.rg===state.region);
+  const body = rows.map(x=>{
+    const same = mine && x.c.lo===mine.c.lo;
+    const diff = mine && !same ? ` <em>${x.c.lo>mine.c.lo?"+":""}${((x.c.lo/mine.c.lo-1)*100).toFixed(0)}%</em>` : "";
+    const val = x.c.ambiguous ? `${money(x.c.lo)}–${money(x.c.hi)}` : money(x.c.lo);
+    return `<div><span class="r">${regionFull(x.rg)}</span>`
+         + `<span class="v">${val}<em>${PATH_KO[x.path].label}</em>`
+         + (same && x.rg!==state.region ? ` <em>${regionName(state.region)}와 동일</em>` : diff)
+         + `</span></div>`;
+  }).join("");
+  return `<div class="expand">
+      <h4>${r.model} — 다른 리전에서는?</h4>
+      <div class="rgrid">${body || "<div><span>다른 리전 정보 없음</span></div>"}</div>
+    </div>`;
+}
+
+/* ====================== 컨트롤 ====================== */
+// region dropdown, grouped, Korean names, with model counts
+const regionCount = {};
+for(const r of snap.regions)
+  regionCount[r] = new Set(P.filter(p=>p.source_region===r).map(p=>p.provider+"/"+p.model_id)).size;
+$("#region").innerHTML = REGION_ORDER.map(([name,test])=>{
+  const members = snap.regions.filter(test).sort((a,b)=>regionCount[b]-regionCount[a]);
+  if(!members.length) return "";
+  return `<optgroup label="${name}">` + members.map(r=>
+    `<option value="${r}"${r===state.region?" selected":""}>${regionFull(r)} · ${regionCount[r]}개 모델</option>`
+  ).join("") + `</optgroup>`;
+}).join("");
+$("#region").onchange = (e)=>{ state.region=e.target.value; state.open=null; render(); };
+
+$("#q").value = state.q;
+$("#q").oninput = (e)=>{ state.q=e.target.value.trim(); state.open=null; render(); };
+document.addEventListener("keydown",(e)=>{
+  if(e.key==="/" && document.activeElement!==$("#q")){ e.preventDefault(); $("#q").focus(); }
+  else if(e.key==="Escape" && document.activeElement===$("#q")){ $("#q").value=""; state.q=""; render(); }
+});
+
+$("#tin").value = state.inM;  $("#tin").oninput  = (e)=>{ state.inM = Math.max(0, +e.target.value||0); render(); };
+$("#tout").value= state.outM; $("#tout").oninput = (e)=>{ state.outM= Math.max(0, +e.target.value||0); render(); };
+
+$("#presets").innerHTML = Object.entries(PRESETS).map(([n,[i,o]])=>
+  `<button class="chip" data-in="${i}" data-out="${o}">${n} <span style="color:var(--faint)">${i}/${o}</span></button>`).join("");
+function paintPresets(){
+  for(const b of document.querySelectorAll("#presets .chip"))
+    b.classList.toggle("on", +b.dataset.in===state.inM && +b.dataset.out===state.outM);
+}
+for(const b of document.querySelectorAll("#presets .chip")){
+  b.onclick = ()=>{ state.inM=+b.dataset.in; state.outM=+b.dataset.out;
+                    $("#tin").value=state.inM; $("#tout").value=state.outM; paintPresets(); render(); };
+}
+
+for(const b of document.querySelectorAll("#modeseg button")){
+  b.onclick = ()=>{ state.mode=b.dataset.mode; paintMode(); render(); };
+}
+function paintMode(){
+  for(const b of document.querySelectorAll("#modeseg button")) b.classList.toggle("on", b.dataset.mode===state.mode);
+}
+
+for(const el of document.querySelectorAll('input[name=resid]')){
+  el.checked = el.value===state.resid;
+  el.onchange = ()=>{ if(el.checked){ state.resid=el.value; state.open=null; render(); } };
+}
+
+/* advanced */
+function chkList(host, items, set, labelFn){
+  host.innerHTML="";
+  for(const it of items){
+    const l=document.createElement("label"); l.className="chk";
+    const c=document.createElement("input"); c.type="checkbox"; c.checked=set.has(it);
+    c.onchange=()=>{ c.checked?set.add(it):set.delete(it); state.open=null; render(); };
+    l.append(c, document.createTextNode(labelFn?labelFn(it):it));
+    host.append(l);
+  }
+}
+const haveStatuses = ["ga","legacy","preview","internal"].filter(s=>P.some(p=>(p.status||"ga")===s));
+chkList($("#adv-status"), haveStatuses, state.statuses, s=>STATUS_KO[s]||s);
+chkList($("#adv-tier"), ["standard","priority","flex","latency-optimized"].filter(t=>P.some(p=>p.service_tier===t)),
+        state.tiers, t=>TIER_KO[t]||t);
+chkList($("#adv-band"), ["standard","long-ctx"].filter(b=>P.some(p=>(p.context_band||"standard")===b)),
+        state.bands, b=>BAND_KO[b]||b);
+chkList($("#adv-vendor"), vendors, state.vendors);
+chkList($("#adv-size"), SIZES, state.sizes);
+$("#adv-ruler").onchange = (e)=>{ state.ruler=e.target.checked; render(); };
+$("#adv-raw").onchange   = (e)=>{ state.raw=e.target.checked; render(); };
+
+/* provenance + footnotes */
+const asOf = (v)=>{ const m=String(v||"").match(/^(\d{4})(\d{2})(\d{2})/); return m?`${m[1]}-${m[2]}-${m[3]}`:"?"; };
+const dates = Object.values(snap.as_of||{}).map(asOf).sort();
+const newest = dates[dates.length-1] || "?";
+const ageDays = newest!=="?" ? Math.floor((Date.now()-new Date(newest))/864e5) : 999;
+$("#prov").innerHTML =
+  (ageDays>7 ? `<span class="stale">데이터가 ${ageDays}일 지났습니다 — 최신이 아닐 수 있습니다.</span> ` : "")
+  + `AWS 공개 가격 파일 기준 · <b>${dates.join(" / ")}</b> · ${snap.regions.length}개 리전 · `
+  + `${new Set(P.map(p=>p.provider+"/"+p.model_id)).size}개 모델 · 금액은 모두 <b>USD</b>`;
+$("#note").innerHTML = [
+  `모든 금액은 <b>USD</b>입니다. 환율 정보가 원본 데이터에 없어 원화로 환산하지 않습니다.`,
+  `<b>묶음 경로(geo CRIS)</b>는 별도 단가가 없습니다 — 출발 리전의 "리전 내 처리" 요금으로 과금됩니다.`,
+  `같은 조건에 단가가 2개인 경우 <b>범위로 표시</b>하고 "N배" 기준에서 제외합니다. 구분 기준이 AWS SKU 안에만 있어 한쪽을 고를 수 없습니다.`,
+  `<b>비공식 자료입니다.</b> AWS 공식 가격 페이지를 대체하지 않습니다. 결제 전 공식 페이지로 확인하세요.`,
+].map(t=>`· ${t}`).join("<br>");
+
+paintPresets(); paintMode(); render();
+</script>
+</body>
+</html>

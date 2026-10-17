@@ -33,5 +33,4 @@ const merged = {
 };
 
 writeFileSync(join(ROOT, "web/pricing.json"), JSON.stringify(merged));
-writeFileSync(join(ROOT, "web/src/pricing.json"), JSON.stringify(merged));
 console.log(`merged ${merged.count} price_points -> web/pricing.json (${merged.regions.length} regions)`);

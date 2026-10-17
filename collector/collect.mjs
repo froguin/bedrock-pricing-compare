@@ -223,9 +223,12 @@ async function main() {
   };
   const out = join(ROOT, "data/snapshots", `${version}.json`);
   await writeFile(out, JSON.stringify(snap, null, 2));
-  // also write a stable "latest" for the web PoC to load
-  await writeFile(join(ROOT, "web/src/pricing.json"), JSON.stringify(snap));
+  // Snapshot only. The dataset the front-end loads (web/pricing.json) is written
+  // by merge.mjs, which combines this with the AmazonBedrockFoundationModels
+  // (Marketplace/mantle) snapshot. Writing it here would publish a single-source
+  // dataset missing the newest Claude models.
   process.stderr.write(`\nwrote ${all.length} price_points -> ${out}\n`);
+  process.stderr.write(`next: node collector/parse-abfm.mjs && node collector/merge.mjs\n`);
 
   // quick summary to stdout
   const byProv = {};

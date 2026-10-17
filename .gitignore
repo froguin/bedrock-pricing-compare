@@ -1,0 +1,3 @@
+.shot/
+node_modules/
+.deploy-*

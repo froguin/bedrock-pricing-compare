@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bedrock Pricing Compare — PoC</title>
+<style>
+  :root { --bg:#0f1117; --card:#171b26; --line:#2a3040; --txt:#e6e9f0; --muted:#8b93a7;
+          --accent:#e0803a; --blue:#5ea0ef; --green:#5bc98a; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:14px/1.5 -apple-system,system-ui,"Apple SD Gothic Neo",sans-serif;
+         background:var(--bg); color:var(--txt); }
+  header { padding:14px 20px; border-bottom:1px solid var(--line); }
+  h1 { margin:0; font-size:16px; } .sub { color:var(--muted); font-size:12px; margin-top:4px; }
+  .wrap { display:grid; grid-template-columns:240px 1fr; height:calc(100vh - 62px); }
+  .side { border-right:1px solid var(--line); padding:14px; overflow:auto; }
+  .main { padding:12px 16px; overflow:auto; }
+  .grp { margin-bottom:14px; } .grp h3 { margin:0 0 6px; font-size:11px; text-transform:uppercase;
+         letter-spacing:.06em; color:var(--muted); }
+  label.chk { display:flex; align-items:center; gap:6px; font-size:13px; padding:1px 0; cursor:pointer; }
+  input[type=search] { width:100%; padding:6px 8px; background:var(--card); border:1px solid var(--line);
+         border-radius:6px; color:var(--txt); }
+  select { width:100%; padding:6px 8px; background:var(--card); color:var(--txt);
+         border:1px solid var(--line); border-radius:6px; }
+  .regbox { max-height:200px; overflow:auto; border:1px solid var(--line); border-radius:6px; padding:6px; }
+  .minibtn { font-size:11px; color:var(--blue); cursor:pointer; background:none; border:none; padding:2px 0; }
+  table { border-collapse:collapse; width:100%; font-variant-numeric:tabular-nums; }
+  th,td { padding:5px 9px; border-bottom:1px solid var(--line); text-align:right; white-space:nowrap; }
+  th.l, td.l { text-align:left; }
+  thead th { position:sticky; top:0; z-index:2; background:var(--bg); font-size:11px; color:var(--muted); }
+  th.reg-hd { color:var(--txt); font-weight:600; border-left:1px solid var(--line); border-bottom:1px solid var(--line); text-align:center; }
+  th.ep-hd { color:var(--blue); font-weight:600; border-left:1px solid var(--line); text-align:center; }
+  th.dim-hd { font-weight:400; border-left:1px solid #232a3a; }
+  tbody tr:hover { background:#1b2130; }
+  tr.prov-hd td { background:#131826; cursor:pointer; font-weight:600; color:var(--blue);
+                  border-top:1px solid var(--line); position:sticky; }
+  .caret { display:inline-block; width:14px; color:var(--muted); }
+  .prov-count { color:var(--muted); font-weight:400; font-size:12px; margin-left:6px; }
+  .cheap { color:var(--green); font-weight:600; } .na { color:#4a5162; }
+  .bar { font-size:11px; color:var(--muted); margin:0 0 8px; }
+  .tag { display:inline-block; padding:1px 7px; border:1px solid var(--line); border-radius:10px;
+         font-size:11px; color:var(--muted); margin-right:4px; }
+  .warn { background:#2a1f14; border:1px solid #4a341d; color:#f0b878; padding:7px 11px;
+          border-radius:6px; font-size:12px; margin-bottom:10px; }
+  .mname { color:var(--txt); }
+
+  /* --- toolbar: compare mode + home region + search --- */
+  .toolbar { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:10px;
+             padding:9px 11px; background:var(--card); border:1px solid var(--line); border-radius:8px; }
+  .tb-lab { font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); }
+  .seg { display:inline-flex; border:1px solid var(--line); border-radius:7px; overflow:hidden; }
+  .seg button { background:transparent; border:none; color:var(--muted); font-size:12.5px;
+                padding:5px 11px; cursor:pointer; }
+  .seg button.on { background:var(--blue); color:#0b0e14; font-weight:600; }
+  .toolbar select, .toolbar input[type=search] { width:auto; min-width:150px; }
+  .tb-sp { flex:1; }
+
+  /* --- KPI / headline band --- */
+  .kpis { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+  .kpi { flex:1 1 160px; background:var(--card); border:1px solid var(--line);
+         border-radius:8px; padding:8px 11px; }
+  .kpi b { display:block; font-size:17px; color:var(--txt); font-variant-numeric:tabular-nums; }
+  .kpi span { font-size:11px; color:var(--muted); }
+  .note { background:#131826; border:1px solid var(--line); color:var(--muted);
+          padding:7px 11px; border-radius:6px; font-size:12px; margin-bottom:10px; }
+  .note b { color:var(--txt); }
+
+  /* --- frozen model column --- */
+  th.fz, td.fz { position:sticky; left:0; z-index:3; background:var(--bg); }
+  thead th.fz { z-index:5; }
+  tbody tr:hover td.fz { background:#1b2130; }
+  tr.prov-hd td.fz { background:#131826; }
+
+  /* --- delta % --- */
+  td.delta { font-weight:600; font-size:12.5px; }
+  .dn { color:var(--green); }  /* cheaper */
+  .up { color:#f08a8a; }       /* pricier */
+  .eq { color:var(--muted); }
+
+  /* --- region picker: geo groups + preset chips --- */
+  .reggrp { font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted);
+            margin:7px 0 3px; padding-top:5px; border-top:1px solid var(--line); }
+  .reggrp:first-child { margin-top:0; padding-top:0; border-top:none; }
+  .chips { display:flex; flex-wrap:wrap; gap:4px; margin-bottom:6px; }
+  .chip { font-size:11px; padding:3px 8px; border-radius:11px; cursor:pointer;
+          background:var(--card); border:1px solid var(--line); color:var(--txt); }
+  .chip:hover { border-color:var(--blue); color:var(--blue); }
+  .chip.ghost { color:var(--muted); }
+
+  /* --- a cell whose key carries more than one rate: never shown as settled --- */
+  td.ambig { color:#f0c674; cursor:help; }
+
+  /* --- inline log-scale price bar --- */
+  .pb { display:inline-block; height:4px; border-radius:2px; background:var(--blue);
+        opacity:.65; vertical-align:middle; margin-left:6px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Amazon Bedrock 가격 비교 <span class="tag">PoC · 모델 중심</span></h1>
+  <div class="sub" id="meta">로딩 중…</div>
+</header>
+<div class="wrap">
+  <aside class="side">
+    <div class="grp"><h3>과금 차원</h3><select id="dim">
+      <option value="io">Input / Output</option>
+      <option value="cache">Cache read / write</option>
+    </select></div>
+    <div class="grp"><h3>모델 상태</h3><div id="statuses"></div></div>
+    <div class="grp"><h3>FM 벤더 <button class="minibtn" id="ven-all">전체</button> · <button class="minibtn" id="ven-none">해제</button></h3><div class="regbox" id="vendors"></div></div>
+    <div class="grp"><h3>파라미터 크기 <span class="tag">32% 공개</span></h3><div id="sizes"></div></div>
+    <div class="grp"><h3>출시 <span class="tag">버전 추정</span></h3><div id="releases"></div></div>
+    <div class="grp"><h3>실행 모드</h3><div id="execs"></div></div>
+    <div class="grp"><h3>컨텍스트 밴드</h3><div id="bands"></div></div>
+    <div class="grp"><h3>서비스 티어</h3><div id="tiers"></div></div>
+    <div class="grp"><h3>비교 리전 <span class="tag">리전 비교 모드</span></h3>
+      <div class="chips" id="reg-presets"></div>
+      <div class="regbox" id="regions"></div></div>
+  </aside>
+  <main class="main">
+    <div class="warn" id="warn"></div>
+    <div class="toolbar">
+      <span class="tb-lab">비교 기준</span>
+      <span class="seg" id="mode-seg">
+        <button data-mode="routing">라우팅 비교 (in-region vs global CRIS)</button>
+        <button data-mode="region">리전 비교</button>
+      </span>
+      <span class="tb-lab" id="home-lab">기준 리전</span>
+      <select id="home"></select>
+      <span class="seg" id="routing-seg">
+        <button data-routing="in-region">in-region</button>
+        <button data-routing="global-cris">global CRIS</button>
+      </span>
+      <span class="tb-sp"></span>
+      <input id="q2" type="search" placeholder="모델 검색  ( / )  — 소넷 · 노바프로 · claude 4.5 · anthropic.claude-sonnet-4-5" />
+    </div>
+    <div class="kpis" id="kpis"></div>
+    <div class="note" id="note"></div>
+    <div class="bar" id="bar"></div>
+    <table><thead id="thead"></thead><tbody id="tbody"></tbody></table>
+  </main>
+</div>
+<script type="module">
+const $ = (s)=>document.querySelector(s);
+
+// A failed load used to leave the page silently blank (module top-level await
+// rejecting). Say what went wrong and how to fix it instead.
+let snap;
+try {
+  if (window.__PRICING__) {
+    // standalone single-file build: data is inlined, no fetch (works from file://)
+    snap = window.__PRICING__;
+  } else {
+  const res = await fetch("./pricing.json", {cache:"no-cache"});
+  if(!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
+  snap = await res.json();
+  }
+  if(!snap || !Array.isArray(snap.price_points) || !snap.price_points.length)
+    throw new Error("pricing.json에 price_points가 없습니다");
+} catch (err) {
+  const viaFile = location.protocol === "file:";
+  document.querySelector("#meta").textContent = "데이터를 불러오지 못했습니다";
+  document.querySelector("#warn").innerHTML =
+    `<b>pricing.json을 불러오지 못했습니다 — ${String(err.message||err)}</b><br>`
+    + (viaFile
+        ? `<code>file://</code>로 열면 브라우저가 fetch를 차단합니다. 로컬 서버로 여세요:<br>
+           <code>python3 -m http.server 8137 --bind 127.0.0.1 --directory web</code> 실행 후
+           <code>http://127.0.0.1:8137/index.html</code>`
+        : `서버가 떠 있는지, <code>pricing.json</code>이 이 페이지와 같은 경로에 있는지 확인하세요:<br>
+           <code>python3 -m http.server 8137 --bind 127.0.0.1 --directory web</code>`);
+  throw err;
+}
+const P = snap.price_points;
+// provenance: offer-file versions are yyyymmddHHMMSS strings
+function parseOfferDate(v){ const m=String(v||"").match(/^(\d{4})(\d{2})(\d{2})/); return m?`${m[1]}-${m[2]}-${m[3]}`:"?"; }
+const asOfDates = Object.values(snap.as_of||{}).map(parseOfferDate);
+const newestAsOf = asOfDates.slice().sort().pop() || "?";
+const ageDays = newestAsOf!=="?" ? Math.floor((Date.now()-new Date(newestAsOf))/864e5) : 999;
+const STALE_DAYS = 7; // AWS list prices don't change intraday; flag if older than a week
+$("#meta").textContent = `${snap.count} pts · ${snap.regions.length}리전 · ${new Set(P.map(p=>p.provider+"/"+p.model_id)).size}모델 · as of ${asOfDates.join(" / ")} (offer files)`;
+$("#warn").innerHTML = (ageDays>STALE_DAYS
+    ? `<b style="color:#f08a8a">⚠️ 데이터가 ${ageDays}일 경과 — 최신이 아닐 수 있습니다.</b> `
+    : "")
+  + "공개 AWS offer file 기반 · 단위 <b>USD / 1M tokens</b> · 모델은 <b>리전마다 다릅니다</b>(없으면 <span class='na'>—</span>) · "
+  + "<b>비공식 — AWS 공식 가격 페이지를 대체하지 않습니다.</b> 기본은 GA 모델만 표시(preview/internal 제외).";
+
+const uniq = (k)=>[...new Set(P.map(p=>p[k]))];
+
+// ---------------------------------------------------------------------------
+// SEARCH
+// The old matcher was `model_id.includes(query)`, so every realistic query
+// failed: 소넷 / 오푸스 / 노바프로 -> 0 hits, "claude 4.5" -> 0 (space),
+// "anthropic.claude-sonnet-4-5" -> 0 (hyphenated API id vs display name).
+// Fix = one normaliser + prefix matching + a Korean/English alias table.
+// ---------------------------------------------------------------------------
+const ALIASES = {
+  // Korean reading -> canonical English tokens present in model names
+  "소넷":"sonnet", "소네트":"sonnet", "쏘넷":"sonnet",
+  "하이쿠":"haiku", "하이꾸":"haiku",
+  "오푸스":"opus", "오퍼스":"opus",
+  "클로드":"claude", "크로드":"claude",
+  "노바":"nova", "마이크로":"micro", "라이트":"lite", "프로":"pro", "프리미어":"premier",
+  "라마":"llama", "미스트랄":"mistral", "믹스트랄":"mixtral",
+  "딥식":"deepseek", "딥시크":"deepseek",
+  "지피티":"gpt", "챗지피티":"gpt", "오픈에이아이":"openai",
+  "네모트론":"nemotron", "큐원":"qwen", "쿠엔":"qwen",
+  "젬마":"gemma", "제마":"gemma", "그록":"grok", "키미":"kimi",
+  "잠바":"jamba", "타이탄":"titan", "커맨드":"command", "임베딩":"embed",
+  // common English shorthands
+  "cs":"claude sonnet", "opus":"opus", "moe":"mixtral", "oss":"gpt-oss",
+};
+
+// "anthropic.claude-sonnet-4-5" -> ["claude","sonnet","4","5"]
+// "Claude 3.5 Sonnet v2"        -> ["claude","3.5","sonnet","v2"]
+function searchTokens(str){
+  let s = String(str||"").toLowerCase().normalize("NFKC");
+  s = s.replace(/^[a-z0-9]+\./, " ");          // drop a provider id prefix
+  s = s.replace(/(\d)-(\d)/g, "$1.$2");         // claude-sonnet-4-5 -> 4.5
+  s = s.replace(/[^a-z0-9.가-힣]+/g, " ");      // keep dots (versions) and hangul
+  s = s.replace(/\.(?!\d)/g, " ");              // a dot not starting a number is a separator
+  return s.split(/\s+/).filter(Boolean);
+}
+
+// Korean alias keys, longest first, for segmenting compounds typed without a
+// space ("노바프로" -> 노바 + 프로, "클로드소넷" -> 클로드 + 소넷).
+const KO_KEYS = Object.keys(ALIASES).filter(k=>/[가-힣]/.test(k)).sort((a,b)=>b.length-a.length);
+function segmentKorean(t){
+  const parts=[]; let i=0;
+  while(i<t.length){
+    const hit=KO_KEYS.find(k=>t.startsWith(k,i));
+    if(!hit) return null;             // unknown fragment -> not a compound we know
+    parts.push(ALIASES[hit]); i+=hit.length;
+  }
+  return parts.length>1 ? parts.flatMap(searchTokens) : null;
+}
+
+// A query token may match through several ALTERNATIVES. Each alternative is a
+// list of tokens that must ALL match (so a compound needs every part present).
+function tokenAlternatives(t){
+  const alts=[[t]];
+  if(ALIASES[t]) alts.push(searchTokens(ALIASES[t]));
+  if(/^[가-힣]+$/.test(t)){
+    const seg=segmentKorean(t);
+    if(seg) alts.push(seg);
+  }
+  return alts;
+}
+
+// one searchable token bag per model, built once
+const searchBag = {};
+for(const p of P){
+  const key = p.provider+"\u0001"+p.model_id;
+  if(searchBag[key]) continue;
+  searchBag[key] = new Set([...searchTokens(p.model_id), ...searchTokens(p.provider)]);
+}
+
+function matchesQuery(provider, modelId, q){
+  if(!q) return true;
+  const bag = searchBag[provider+"\u0001"+modelId];
+  if(!bag) return false;
+  const bagArr=[...bag];
+  const hits=(t)=>bagArr.some(b=>b.startsWith(t));
+  // every query token must satisfy at least one of its alternatives in full
+  return searchTokens(q).every(raw =>
+    tokenAlternatives(raw).some(alt => alt.every(hits))
+  );
+}
+
+// ---- shared model-attribute parsing (used by filters AND sort) ----
+// version/generation from the model name; context ("100K") and size ("8x7B","90B") are NOT versions
+function genOf(m){
+  const x=String(m).toLowerCase().replace(/\d+\s*k\b/g,"").replace(/\d+x\d+\s*b\b/g,"").replace(/\d+\s*b\b/g,"");
+  const nums=(x.match(/\d+(?:\.\d+)?/g)||[]).map(Number).filter(n=>n<10);
+  return nums.length?Math.max(...nums):0;
+}
+// parameter size bucket — only ~32% of models publish a count, the rest go to 미공개
+const SIZE_BUCKETS=["소형 (<10B)","중형 (10~70B)","대형 (>70B)","파라미터 미공개"];
+function sizeBucket(m){
+  const s=String(m);
+  const moe=s.match(/(\d+)\s*x\s*(\d+(?:\.\d+)?)\s*b\b/i);      // 8x7B -> 56B
+  const plain=s.match(/(\d+(?:\.\d+)?)\s*b\b/i);                 // 90B
+  let b=null;
+  if(moe) b=Number(moe[1])*Number(moe[2]);
+  else if(plain) b=Number(plain[1]);
+  if(b==null) return "파라미터 미공개";
+  if(b<10) return "소형 (<10B)";
+  if(b<=70) return "중형 (10~70B)";
+  return "대형 (>70B)";
+}
+// release/recency bucket from the parsed version (no launch-date field exists in the offer files)
+const RELEASE_BUCKETS=["최신 세대 (4+)","이전 세대 (3.x)","구세대 (<3)","버전 불명"];
+function releaseBucket(m){
+  const g=genOf(m);
+  if(g===0) return "버전 불명";
+  if(g>=4) return "최신 세대 (4+)";
+  if(g>=3) return "이전 세대 (3.x)";
+  return "구세대 (<3)";
+}
+const MAJOR_PROVIDERS = ["Anthropic","OpenAI","Amazon","Meta","Mistral","Google","DeepSeek"];
+const MAJOR_REGIONS = ["us-east-1","us-west-2","ap-northeast-2","ap-northeast-1","eu-west-1","eu-central-1"];
+// provider display order: majors first (by list), then the rest alphabetically
+const allProvs = uniq("provider");
+const provOrder = [...MAJOR_PROVIDERS.filter(p=>allProvs.includes(p)),
+                   ...allProvs.filter(p=>!MAJOR_PROVIDERS.includes(p)).sort()];
+// how many regions each model spans (for the "regions" mini-column)
+const modelRegions = {};
+for(const p of P){ const m=p.provider+"\u0001"+p.model_id; (modelRegions[m]??=new Set()).add(p.source_region); }
+
+const state = {
+  q:"", dim:"io",
+  mode:"routing",                 // "routing" = in-region vs global CRIS in one region; "region" = regions side by side
+  home: snap.regions.includes("ap-northeast-2") ? "ap-northeast-2" : snap.regions[0],
+  routing:"in-region",            // which routing is shown in region-compare mode
+  execs:new Set(["online"]),      // on-demand only by default; batch has its own (halved) rates
+  bands:new Set(["standard"]),    // long-context band is a separate, higher rate on some models
+  tiers:new Set(["standard"]),
+  statuses:new Set(["ga","legacy"]),
+  vendors:new Set(uniq("provider")),
+  sizes:new Set(SIZE_BUCKETS),
+  releases:new Set(RELEASE_BUCKETS),
+  endpoints:new Set(["in-region","global-cris"]),
+  regions:new Set(["ap-northeast-2","us-east-1","us-west-2"].filter(r=>snap.regions.includes(r))),
+  // providers collapsed/expanded: majors expanded by default
+  expanded:new Set(provOrder.filter(p=>MAJOR_PROVIDERS.includes(p))),
+};
+
+// --- shareable URL state: #mode=region&routing=global-cris&regions=ap-northeast-2,us-east-1 ---
+const hash = new URLSearchParams(location.hash.replace(/^#/,""));
+if(hash.get("mode")==="region"||hash.get("mode")==="routing") state.mode=hash.get("mode");
+if(hash.get("home") && snap.regions.includes(hash.get("home"))) state.home=hash.get("home");
+if(hash.get("routing")) state.routing=hash.get("routing");
+if(hash.get("dim")) state.dim=hash.get("dim");
+if(hash.get("q")) state.q=hash.get("q").toLowerCase();
+if(hash.get("regions")){
+  const rs=hash.get("regions").split(",").filter(r=>snap.regions.includes(r));
+  if(rs.length) state.regions=new Set(rs);
+}
+function syncHash(){
+  const h=new URLSearchParams();
+  h.set("mode",state.mode);
+  if(state.mode==="routing") h.set("home",state.home); else { h.set("routing",state.routing); h.set("regions",[...state.regions].join(",")); }
+  if(state.dim!=="io") h.set("dim",state.dim);
+  if(state.q) h.set("q",state.q);
+  history.replaceState(null,"","#"+h.toString());
+}
+
+// ---------------------------------------------------------------------------
+// REGIONS — 36 raw codes with no human names was unusable. Group them
+// geographically, label them in Korean, and ship presets for the real pattern
+// ("내 리전 + 미국").
+// ---------------------------------------------------------------------------
+const REGION_KO = {
+  "ap-northeast-1":"도쿄","ap-northeast-2":"서울","ap-northeast-3":"오사카",
+  "ap-south-1":"뭄바이","ap-south-2":"하이데라바드",
+  "ap-southeast-1":"싱가포르","ap-southeast-2":"시드니","ap-southeast-3":"자카르타",
+  "ap-southeast-4":"멜버른","ap-southeast-5":"쿠알라룸푸르","ap-southeast-6":"뉴질랜드",
+  "ap-southeast-7":"방콕","ap-east-1":"홍콩","ap-east-2":"타이베이",
+  "us-east-1":"버지니아","us-east-2":"오하이오","us-west-1":"캘리포니아","us-west-2":"오레곤",
+  "us-gov-east-1":"GovCloud 동부","us-gov-west-1":"GovCloud 서부",
+  "eu-west-1":"아일랜드","eu-west-2":"런던","eu-west-3":"파리",
+  "eu-central-1":"프랑크푸르트","eu-central-2":"취리히","eu-north-1":"스톡홀름",
+  "eu-south-1":"밀라노","eu-south-2":"스페인",
+  "ca-central-1":"캐나다 중부","ca-west-1":"캘거리",
+  "sa-east-1":"상파울루","mx-central-1":"멕시코",
+  "me-central-1":"UAE","me-south-1":"바레인","il-central-1":"텔아비브",
+  "af-south-1":"케이프타운",
+};
+const regionLabel = (r)=> REGION_KO[r] ? `${r} · ${REGION_KO[r]}` : r;
+const REGION_GROUPS = [
+  ["아시아·태평양", r=>/^ap-/.test(r)],
+  ["미국",          r=>/^us-/.test(r)],
+  ["유럽",          r=>/^eu-/.test(r)],
+  ["그 외",         r=>!/^(ap|us|eu)-/.test(r)],
+];
+const REGION_PRESETS = {
+  "서울 중심":  ["ap-northeast-2","us-east-1","us-west-2"],
+  "미국 전체":  ["us-east-1","us-east-2","us-west-1","us-west-2"],
+  "아시아 주요":["ap-northeast-2","ap-northeast-1","ap-southeast-1","ap-south-1","ap-southeast-2"],
+  "유럽 주요":  ["eu-west-1","eu-central-1","eu-west-2","eu-west-3"],
+};
+
+// --- sidebar builders ---
+function chkList(host, items, sel, onchange){
+  host.innerHTML="";
+  for(const it of items){
+    const l=document.createElement("label"); l.className="chk";
+    const c=document.createElement("input"); c.type="checkbox"; c.checked=sel.has(it);
+    c.onchange=()=>{ c.checked?sel.add(it):sel.delete(it); onchange(); };
+    l.append(c, document.createTextNode(it)); host.append(l);
+  }
+}
+chkList($("#bands"), ["standard","long-ctx"].filter(b=>uniq("context_band").includes(b)), state.bands, render);
+chkList($("#execs"), ["online","batch"].filter(m=>uniq("execution_mode").includes(m)), state.execs, render);
+chkList($("#tiers"), ["standard","priority","flex","batch","latency-optimized"], state.tiers, render);
+chkList($("#statuses"), ["ga","legacy","preview","internal"].filter(s=>uniq("status").includes(s)), state.statuses, render);
+chkList($("#vendors"), provOrder, state.vendors, render);
+$("#ven-all").onclick=()=>{ state.vendors=new Set(provOrder); chkList($("#vendors"),provOrder,state.vendors,render); render(); };
+$("#ven-none").onclick=()=>{ state.vendors=new Set(); chkList($("#vendors"),provOrder,state.vendors,render); render(); };
+chkList($("#sizes"), SIZE_BUCKETS, state.sizes, render);
+chkList($("#releases"), RELEASE_BUCKETS, state.releases, render);
+// regions sorted by data density (most models first)
+const regionDensity = snap.regions.map(r=>[r, P.filter(p=>p.source_region===r).length]).sort((a,b)=>b[1]-a[1]).map(x=>x[0]);
+const regionModelCount = {};
+for(const r of snap.regions) regionModelCount[r]=new Set(P.filter(p=>p.source_region===r).map(p=>p.provider+"/"+p.model_id)).size;
+
+// geo-grouped region picker with Korean names + presets
+function buildRegions(){
+  const host=$("#regions"); host.innerHTML="";
+  for(const [groupName, test] of REGION_GROUPS){
+    const members=regionDensity.filter(r=>test(r));
+    if(!members.length) continue;
+    const h=document.createElement("div"); h.className="reggrp";
+    h.textContent=groupName+" ("+members.length+")";
+    host.append(h);
+    for(const r of members){
+      const l=document.createElement("label"); l.className="chk";
+      const c=document.createElement("input"); c.type="checkbox"; c.checked=state.regions.has(r);
+      c.onchange=()=>{ c.checked?state.regions.add(r):state.regions.delete(r); render(); };
+      const t=document.createElement("span");
+      t.innerHTML=`${regionLabel(r)} <span class="na">${regionModelCount[r]}</span>`;
+      l.append(c,t); host.append(l);
+    }
+  }
+}
+function buildRegionPresets(){
+  const host=$("#reg-presets"); host.innerHTML="";
+  for(const [name,list] of Object.entries(REGION_PRESETS)){
+    const b=document.createElement("button"); b.className="chip"; b.textContent=name;
+    b.onclick=()=>{ state.regions=new Set(list.filter(r=>snap.regions.includes(r))); buildRegions(); render(); };
+    host.append(b);
+  }
+  for(const [name,fn] of [["전체 36",()=>new Set(snap.regions)],["해제",()=>new Set()]]){
+    const b=document.createElement("button"); b.className="chip ghost"; b.textContent=name;
+    b.onclick=()=>{ state.regions=fn(); buildRegions(); render(); };
+    host.append(b);
+  }
+}
+buildRegions(); buildRegionPresets();
+$("#q2").oninput=(e)=>{ state.q=e.target.value.trim(); render(); };
+document.addEventListener("keydown",(e)=>{
+  if(e.key==="/" && document.activeElement!==$("#q2")){ e.preventDefault(); $("#q2").focus(); }
+  else if(e.key==="Escape" && document.activeElement===$("#q2")){ $("#q2").value=""; state.q=""; render(); }
+});
+$("#dim").onchange=(e)=>{ state.dim=e.target.value; render(); };
+
+// --- toolbar: compare mode + home region (every region is selectable) ---
+$("#home").innerHTML = regionDensity.map(r=>
+  `<option value="${r}"${r===state.home?" selected":""}>${regionLabel(r)} (${regionModelCount[r]}모델)</option>`
+).join("");
+$("#home").onchange=(e)=>{ state.home=e.target.value; render(); };
+function paintMode(){
+  for(const b of document.querySelectorAll("#mode-seg button")) b.classList.toggle("on", b.dataset.mode===state.mode);
+  for(const b of document.querySelectorAll("#routing-seg button")) b.classList.toggle("on", b.dataset.routing===state.routing);
+  // home region drives routing-compare; region-compare uses the sidebar region checkboxes + one routing
+  const routing = state.mode==="routing";
+  $("#home").style.display = routing ? "" : "none";
+  $("#routing-seg").style.display = routing ? "none" : "";
+  $("#home-lab").textContent = routing ? "기준 리전" : "라우팅";
+}
+for(const b of document.querySelectorAll("#mode-seg button")){
+  b.onclick=()=>{ state.mode=b.dataset.mode; paintMode(); render(); };
+}
+for(const b of document.querySelectorAll("#routing-seg button")){
+  b.onclick=()=>{ state.routing=b.dataset.routing; paintMode(); render(); };
+}
+paintMode();
+
+const EP_LABEL = { "in-region":"in-region", "global-cris":"global CRIS", "regional-cris":"geo CRIS" };
+
+function fmt(v){ return "$"+(v<1 ? v.toFixed(3) : v.toFixed(2)); }
+
+// row passes every sidebar filter except region/endpoint/dimension (those are per-mode)
+function passes(p){
+  return state.tiers.has(p.service_tier)
+      && state.execs.has(p.execution_mode||"online")
+      && state.bands.has(p.context_band||"standard")
+      && state.statuses.has(p.status||"ga")
+      && state.vendors.has(p.provider)
+      && state.sizes.has(sizeBucket(p.model_id))
+      && state.releases.has(releaseBucket(p.model_id))
+      && matchesQuery(p.provider, p.model_id, state.q);
+}
+
+function deltaCell(base, other){
+  if(base==null || other==null) return "<td class='delta eq'>—</td>";
+  if(base===other)             return "<td class='delta eq'>0%</td>";
+  const d=(other-base)/base*100;
+  return `<td class='delta ${d<0?"dn":"up"}'>${d>0?"+":""}${d.toFixed(1)}%</td>`;
+}
+
+// inline log-scale bar so a 750× spread is visible at a glance
+function bar(v, lo, hi){
+  if(v==null || !(hi>lo)) return "";
+  const t=(Math.log10(v)-Math.log10(lo))/(Math.log10(hi)-Math.log10(lo));
+  return `<span class="pb" style="width:${(3+Math.max(0,Math.min(1,t))*44).toFixed(0)}px"></span>`;
+}
+
+function sortModels(a,b){ const d=genOf(b)-genOf(a); return d!==0?d:a.localeCompare(b); }
+
+function render(){
+  const dims = state.dim==="io" ? ["input","output"] : ["cache_write","cache_read"];
+  const nDim = dims.length;
+  const kpis=[], notes=[];
+
+  // ---------- build tree: provider -> model -> cellKey -> price ----------
+  const tree={}, amb={};
+  const cellOf = state.mode==="routing"
+    ? (p)=>`${p.endpoint_type}|${p.dimension}`
+    : (p)=>`${p.source_region}|${p.dimension}`;
+  const inScope = state.mode==="routing"
+    ? (p)=>p.source_region===state.home
+    : (p)=>state.regions.has(p.source_region) && p.endpoint_type===state.routing;
+
+  for(const p of P){
+    if(!dims.includes(p.dimension)) continue;
+    if(!passes(p)) continue;
+    if(!inScope(p)) continue;
+    const ck=cellOf(p);
+    const node=((tree[p.provider] ??= {})[p.model_id] ??= {});
+    if(node[ck]!=null && node[ck]!==p.price_per_1m){
+      // two different rates share this key (e.g. a context-window band the offer file
+      // encodes only in the SKU). Show the lower one but mark the cell ambiguous —
+      // never present one of two rates as if it were the price.
+      const ak=p.provider+"\u0001"+p.model_id+"\u0001"+ck;
+      (amb[ak] ??= new Set([node[ck]])).add(p.price_per_1m);
+      node[ck]=Math.min(node[ck], p.price_per_1m);
+    } else {
+      node[ck]=p.price_per_1m;
+    }
+  }
+  const isAmb=(prov,model,ck)=>amb[prov+"\u0001"+model+"\u0001"+ck];
+
+  // price range of the primary dimension, for the log bars
+  let lo=Infinity, hi=0;
+  for(const prov of Object.keys(tree)) for(const m of Object.keys(tree[prov]))
+    for(const [k,v] of Object.entries(tree[prov][m]))
+      if(k.endsWith("|"+dims[0]) && v>0){ lo=Math.min(lo,v); hi=Math.max(hi,v); }
+
+  // ---------- columns + header ----------
+  const EPS = ["in-region","global-cris"];
+  const regions = regionDensity.filter(r=>state.regions.has(r));
+  let head="", colspan=2, cols=[];
+
+  if(state.mode==="routing"){
+    // dim (colspan 3) / [in-region | global CRIS | Δ]
+    cols = dims.flatMap(d=>[{d,ep:"in-region"},{d,ep:"global-cris"},{d,delta:true}]);
+    const h1=["<tr><th class='l fz' rowspan='2'>모델</th><th rowspan='2'>리전수</th>"];
+    for(const d of dims) h1.push(`<th colspan='3' class='reg-hd'>${d.replace(/_/g," ")}</th>`);
+    const h2=["</tr><tr>"];
+    for(const d of dims){
+      h2.push(`<th class='ep-hd'>in-region</th>`);
+      h2.push(`<th class='ep-hd'>global CRIS</th>`);
+      h2.push(`<th class='dim-hd'>Δ</th>`);
+    }
+    head=h1.join("")+h2.join("")+"</tr>";
+    colspan=2+cols.length;
+  } else {
+    // region (colspan nDim) / dim, + trailing cheapest-region column
+    cols = regions.flatMap(rg=>dims.map(d=>({rg,d})));
+    const h1=["<tr><th class='l fz' rowspan='2'>모델</th><th rowspan='2'>리전수</th>"];
+    for(const rg of regions) h1.push(`<th colspan='${nDim}' class='reg-hd'>${regionLabel(rg)}</th>`);
+    h1.push(`<th rowspan='2'>최저 리전</th>`);
+    const h2=["</tr><tr>"];
+    for(const rg of regions) for(const d of dims) h2.push(`<th class='dim-hd'>${d.replace(/_/g," ")}</th>`);
+    head=h1.join("")+h2.join("")+"</tr>";
+    colspan=3+cols.length;
+  }
+  $("#thead").innerHTML=head;
+
+  // ---------- body ----------
+  const body=[]; let modelCount=0, bothCount=0, onlyGlobal=0, ambCount=0, savings=[];
+  for(const prov of provOrder){
+    if(!tree[prov]) continue;
+    const models=Object.keys(tree[prov]).sort(sortModels);
+    // while searching, every group with a hit is open — a match hidden inside a
+    // collapsed group reads as "no results".
+    const isExp=state.q ? true : state.expanded.has(prov);
+    body.push(`<tr class='prov-hd' data-prov="${prov}"><td class='l fz'><span class='caret'>${isExp?"▾":"▸"}</span>${prov}<span class='prov-count'>${models.length} 모델</span></td><td colspan='${colspan-1}'></td></tr>`);
+    if(!isExp) continue;
+
+    for(const model of models){
+      modelCount++;
+      const r=tree[prov][model];
+      const nReg=modelRegions[prov+"\u0001"+model]?.size ?? 0;
+      const tds=[`<td class='l mname fz'>${model}</td><td>${nReg}</td>`];
+
+      if(state.mode==="routing"){
+        const ir=r[`in-region|${dims[0]}`], gl=r[`global-cris|${dims[0]}`];
+        const pairAmb=isAmb(prov,model,`in-region|${dims[0]}`)||isAmb(prov,model,`global-cris|${dims[0]}`);
+        if(ir!=null&&gl!=null){ bothCount++; if(!pairAmb) savings.push((gl-ir)/ir*100); }
+        else if(gl!=null&&ir==null){ onlyGlobal++; }
+        for(const d of dims){
+          const a=r[`in-region|${d}`], b=r[`global-cris|${d}`];
+          const aA=isAmb(prov,model,`in-region|${d}`), bA=isAmb(prov,model,`global-cris|${d}`);
+          const mn=[a,b].filter(v=>v!=null);
+          const m=mn.length?Math.min(...mn):null;
+          for(const [v,A,ep] of [[a,aA,"in-region"],[b,bA,"global-cris"]]){
+            if(v==null){ tds.push("<td class='na'>—</td>"); continue; }
+            if(A){ ambCount++; tds.push(`<td class='ambig' title='이 조합에 단가가 ${A.size}개 있습니다: ${[...A].map(fmt).join(" / ")} — offer file이 SKU에만 구분을 담아 확정 불가'>${fmt(v)}+ ⚠</td>`); continue; }
+            const hl=(v===m && mn.length>1)?"cheap":"";
+            tds.push(`<td class='${hl}'>${fmt(v)}${d===dims[0]?bar(v,lo,hi):""}</td>`);
+          }
+          tds.push((aA||bA) ? "<td class='delta eq' title='모호한 단가라 비교 생략'>?</td>" : deltaCell(a,b));
+        }
+      } else {
+        // per-dim minimum across the selected regions
+        const mins={};
+        for(const d of dims){
+          const vs=regions.map(rg=>r[`${rg}|${d}`]).filter(v=>v!=null);
+          mins[d]=vs.length?Math.min(...vs):null;
+        }
+        for(const rg of regions) for(const d of dims){
+          const v=r[`${rg}|${d}`];
+          if(v==null){ tds.push("<td class='na'>—</td>"); continue; }
+          const A=isAmb(prov,model,`${rg}|${d}`);
+          if(A){ ambCount++; tds.push(`<td class='ambig' title='이 조합에 단가가 ${A.size}개 있습니다: ${[...A].map(fmt).join(" / ")}'>${fmt(v)}+ ⚠</td>`); continue; }
+          const hl=(v===mins[d])?"cheap":"";
+          tds.push(`<td class='${hl}'>${fmt(v)}${d===dims[0]?bar(v,lo,hi):""}</td>`);
+        }
+        const anyAmb=regions.some(rg=>isAmb(prov,model,`${rg}|${dims[0]}`));
+        const best=regions.filter(rg=>r[`${rg}|${dims[0]}`]===mins[dims[0]]);
+        tds.push(`<td class='l'>${anyAmb?"<span class='na'>확정 불가</span>":(best.length===regions.length&&regions.length>1?"<span class='na'>동일</span>":best.join(", ")||"<span class='na'>—</span>")}</td>`);
+      }
+      body.push(`<tr>${tds.join("")}</tr>`);
+    }
+  }
+  if(!body.length){
+    // Never a bare blank. Say WHY there is nothing, and whether a facet is hiding it.
+    let msg;
+    if(state.q){
+      const hitsAnyStatus = [...new Set(P.filter(p=>matchesQuery(p.provider,p.model_id,state.q))
+                                        .map(p=>p.provider+" / "+p.model_id+" ["+p.status+"]"))];
+      const hiddenByStatus = hitsAnyStatus.filter(x=>/\[(preview|internal)\]$/.test(x));
+      if(hiddenByStatus.length){
+        msg = `<b>'${state.q}'</b>는 preview/internal 상태라 기본 필터에서 가려졌습니다 — 왼쪽 '모델 상태'에서 켜세요.`
+            + `<br><span class="na">${hiddenByStatus.slice(0,4).join(" · ")}</span>`;
+      } else if(hitsAnyStatus.length){
+        msg = `<b>'${state.q}'</b>에 맞는 모델은 있지만 지금 선택한 리전·라우팅·차원 조건에 단가가 없습니다.`
+            + `<br><span class="na">${hitsAnyStatus.slice(0,4).join(" · ")}</span>`;
+      } else {
+        // closest models by shared-token count
+        const qt=searchTokens(state.q).flatMap(t=>tokenAlternatives(t).flat());
+        const near=Object.entries(searchBag)
+          .map(([k,bag])=>[k.split("\u0001")[1], qt.filter(t=>[...bag].some(b=>b.startsWith(t.slice(0,2)))).length])
+          .filter(([,n])=>n>0).sort((a,b)=>b[1]-a[1]).slice(0,3).map(([m])=>m);
+        msg = `<b>'${state.q}'</b>에 맞는 모델이 없습니다.`
+            + (near.length?`<br>혹시 이것들인가요? <span class="na">${near.join(" · ")}</span>`:"")
+            + `<br><span class="na">한글(소넷, 노바프로)이나 API ID(anthropic.claude-sonnet-4-5)로도 검색됩니다.</span>`;
+      }
+    } else {
+      msg = "조건에 맞는 데이터 없음 — 왼쪽 필터를 넓혀보세요.";
+    }
+    $("#tbody").innerHTML=`<tr><td colspan='${colspan}' class='l'>${msg}</td></tr>`;
+  } else {
+    $("#tbody").innerHTML=body.join("");
+  }
+  for(const hd of document.querySelectorAll("tr.prov-hd")){
+    hd.onclick=()=>{ const p=hd.dataset.prov; state.expanded.has(p)?state.expanded.delete(p):state.expanded.add(p); render(); };
+  }
+
+  // ---------- KPI band + notes ----------
+  if(state.mode==="routing"){
+    const avg=savings.length?savings.reduce((a,b)=>a+b,0)/savings.length:null;
+    kpis.push([`${modelCount}`,`${state.home} 표시 모델`]);
+    kpis.push([`${bothCount}`,"두 라우팅 모두 제공 (비교 가능)"]);
+    kpis.push([onlyGlobal?`${onlyGlobal}`:"0","global CRIS만 가능 (in-region 없음)"]);
+    kpis.push([avg==null?"—":`${avg>0?"+":""}${avg.toFixed(1)}%`,`global CRIS 평균 ${dims[0]} 차이`]);
+    if(onlyGlobal) notes.push(`<b>${state.home}</b>에서 <b>${onlyGlobal}개 모델</b>은 in-region 단가가 없고 <b>global CRIS가 유일한 경로</b>입니다 (최신 Claude 등). 초록 = 더 싼 라우팅.`);
+  } else {
+    kpis.push([`${modelCount}`,"표시 모델"]);
+    kpis.push([`${regions.length}`,`비교 리전 (전체 ${snap.regions.length})`]);
+    kpis.push([EP_LABEL[state.routing]||state.routing,"라우팅"]);
+    kpis.push([`${snap.regions.length}`,"global CRIS 제공 리전"]);
+    notes.push(`리전은 사이드바에서 <b>36개 전부</b> 선택할 수 있습니다. 초록 = 해당 차원 최저 리전.`);
+  }
+  notes.push(`<b>Geo CRIS</b>는 offer file에 온디맨드 토큰 단가가 없습니다 — <code>_Geo</code> SKU는 Reserved TPM(시간당)뿐이라, 온디맨드 geo 라우팅은 소스 리전 in-region 단가로 과금됩니다.`);
+  if(ambCount) notes.push(`<b style="color:#f0c674">⚠ ${ambCount}개 셀</b>은 같은 조합에 단가가 2개 이상입니다(컨텍스트 밴드 등을 offer file이 SKU에만 담음). <b>낮은 값 + ⚠</b>로 표시하고 Δ 비교에서 제외했습니다 — 셀에 마우스를 올리면 실제 값들이 보입니다.`);
+  $("#kpis").innerHTML=kpis.map(([b,s])=>`<div class="kpi"><b>${b}</b><span>${s}</span></div>`).join("");
+  $("#note").innerHTML=notes.join("<br>");
+  $("#bar").textContent=`${cols.length}열 · ${dims.join(" / ")} · 단위 USD / 1M tokens · 막대는 로그 스케일(${isFinite(lo)?fmt(lo):"—"} ~ ${hi?fmt(hi):"—"})`;
+  syncHash();
+}
+$("#q2").value=state.q; $("#dim").value=state.dim;
+render();
+</script>
+</body>
+</html>

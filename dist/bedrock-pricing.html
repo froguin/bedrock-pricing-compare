@@ -355,14 +355,25 @@
 
   .expand { padding:4px 16px 16px 58px; background:var(--surface-2);
             border-top:1px solid var(--line); font-size:13px; }
-  .expand h4 { margin:10px 0 7px; font-size:11.5px; color:var(--muted); font-weight:600;
-               letter-spacing:.05em; text-transform:uppercase; }
-  .rgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(252px,1fr)); gap:4px 18px; }
-  .rgrid div { display:flex; justify-content:space-between; gap:12px; padding:4px 0;
-               border-bottom:1px solid var(--line-soft); }
-  .rgrid span.r { color:var(--ink); }
-  .rgrid span.v { color:var(--txt); }
-  .rgrid span.v em { color:var(--faint); font-style:normal; font-size:11px; margin-left:5px; }
+  .xp-sum { margin:12px 0 8px; color:var(--muted); }
+  .xp-sum b { color:var(--ink); font-weight:600; }
+  .xp-empty { margin:12px 0; color:var(--faint); }
+  table.xp { width:100%; border-collapse:collapse; }
+  table.xp th { text-align:left; font-size:11.5px; font-weight:600; color:var(--faint);
+                padding:6px 10px; border-bottom:1px solid var(--line); white-space:nowrap; }
+  table.xp td { padding:8px 10px; border-bottom:1px solid var(--line-soft); vertical-align:middle; }
+  table.xp tr:last-child td { border-bottom:0; }
+  table.xp tr.mine td { background:var(--accent-soft); }
+  .xp-v { font-variant-numeric:tabular-nums; font-weight:600; color:var(--ink); white-space:nowrap; width:1%; }
+  .xp-d { font-size:12px; white-space:nowrap; font-variant-numeric:tabular-nums; }
+  .xp-d.down { color:var(--ok); } .xp-d.up { color:var(--warn); }
+  .xp-d.same, .xp-d.mine { color:var(--muted); }
+  .xp-regs { display:flex; flex-wrap:wrap; gap:4px; align-items:center; }
+  .xp-n { font-size:12px; color:var(--faint); margin-right:4px; white-space:nowrap; }
+  .xp-r { font-size:12px; padding:1px 8px; border-radius:999px; background:var(--surface-3);
+          color:var(--txt); white-space:nowrap; }
+  .xp-r.on { background:var(--accent); color:#fff; }
+  .xp-r.more { color:var(--accent); font-weight:600; cursor:help; }
 
   /* ---------- unavailable groups ---------- */
   .group { margin-top:20px; }
@@ -1017,19 +1028,51 @@ function renderExpand(r){
     rows.push({ rg, path:best.path, c:best.c });
   }
   rows.sort((a,b)=>a.c.lo-b.c.lo);
+  if(!rows.length) return `<div class="expand"><p class="xp-empty">다른 리전 정보 없음</p></div>`;
+
+  // Collapse regions that cost exactly the same (global routing is usually one
+  // price everywhere) into a single price tier, so 30 regions read as 2-4 rows.
+  const tiers=[];
+  for(const x of rows){
+    const sig=`${x.c.lo}|${x.c.hi}|${x.path}`;
+    let t=tiers.find(t=>t.sig===sig);
+    if(!t){ t={sig, c:x.c, path:x.path, regions:[]}; tiers.push(t); }
+    t.regions.push(x.rg);
+  }
   const mine = rows.find(x=>x.rg===state.region);
-  const body = rows.map(x=>{
-    const same = mine && x.c.lo===mine.c.lo;
-    const diff = mine && !same ? ` <em>${x.c.lo>mine.c.lo?"+":""}${((x.c.lo/mine.c.lo-1)*100).toFixed(0)}%</em>` : "";
-    const val = x.c.ambiguous ? `${money(x.c.lo)}–${money(x.c.hi)}` : money(x.c.lo);
-    return `<div><span class="r">${regionFull(x.rg)}</span>`
-         + `<span class="v">${val}<em>${PATH_KO[x.path].label}</em>`
-         + (same && x.rg!==state.region ? ` <em>${regionName(state.region)}와 동일</em>` : diff)
-         + `</span></div>`;
+  const cheapest = rows[0];
+  const LIMIT=6;
+  const body = tiers.map(t=>{
+    const isMine = t.regions.includes(state.region);
+    const val = t.c.ambiguous ? `${money(t.c.lo)}–${money(t.c.hi)}` : money(t.c.lo);
+    let delta = "";
+    if(mine && !isMine){
+      const pct = Math.round((t.c.lo/mine.c.lo-1)*100);
+      delta = pct===0 ? `<span class="xp-d same">동일</span>`
+            : `<span class="xp-d ${pct<0?"down":"up"}">${pct>0?"+":""}${pct}%</span>`;
+    } else if(isMine){
+      delta = `<span class="xp-d mine">선택 리전</span>`;
+    }
+    // selected region first, then by name
+    const regs = [...t.regions].sort((a,b)=>(b===state.region)-(a===state.region) || regionName(a).localeCompare(regionName(b),"ko"));
+    const shown = regs.slice(0,LIMIT).map(rg=>`<span class="xp-r${rg===state.region?" on":""}" title="${rg}">${regionName(rg)}</span>`).join("");
+    const more = regs.length>LIMIT
+      ? `<span class="xp-r more" title="${regs.slice(LIMIT).map(regionName).join(", ")}">+${regs.length-LIMIT}</span>` : "";
+    return `<tr class="${isMine?"mine":""}">
+        <td class="xp-v">${val}</td>
+        <td>${delta}</td>
+        <td>${badge(PATH_KO[t.path].tone, PATH_KO[t.path].label)}</td>
+        <td><div class="xp-regs"><span class="xp-n">${t.regions.length}개 리전</span>${shown}${more}</div></td>
+      </tr>`;
   }).join("");
+  const saving = mine && cheapest.c.lo<mine.c.lo
+    ? ` · ${regionName(state.region)}보다 <b>${Math.round((1-cheapest.c.lo/mine.c.lo)*100)}% 저렴</b>` : "";
   return `<div class="expand">
-      <h4>${r.model} — 다른 리전에서는?</h4>
-      <div class="rgrid">${body || "<div><span>다른 리전 정보 없음</span></div>"}</div>
+      <p class="xp-sum">${rows.length}개 리전 제공 · 가장 저렴한 곳 <b>${regionName(cheapest.rg)}</b> ${money(cheapest.c.lo)}${saving}</p>
+      <table class="xp">
+        <thead><tr><th>월 비용</th><th>선택 리전 대비</th><th>처리 방식</th><th>리전</th></tr></thead>
+        <tbody>${body}</tbody>
+      </table>
     </div>`;
 }
 
@@ -1207,15 +1250,19 @@ $("#adv-raw").onchange   = (e)=>{ state.raw=e.target.checked; render(); };
 
 /* --- provenance + footnotes --- */
 const asOf = (v)=>{ const m=String(v||"").match(/^(\d{4})(\d{2})(\d{2})/); return m?`${m[1]}-${m[2]}-${m[3]}`:"?"; };
+// One date per source, labelled: the two AWS files are published independently,
+// so an unlabelled "10-12 / 10-16" reads as if the site were stale.
+const SRC_KO = { "AmazonBedrock":"Bedrock", "AmazonBedrockFoundationModels":"Marketplace 모델" };
+const srcDates = Object.entries(snap.as_of||{}).map(([k,v])=>`${SRC_KO[k]||k} ${asOf(v)}`);
 const dates = Object.values(snap.as_of||{}).map(asOf).sort();
 const newest = dates[dates.length-1] || "?";
 const ageDays = newest!=="?" ? Math.floor((Date.now()-new Date(newest))/864e5) : 999;
 $("#prov").innerHTML =
   (ageDays>7 ? `<span class="stale">데이터가 ${ageDays}일 지났습니다 — 최신이 아닐 수 있습니다.</span> ` : "")
-  + `AWS 공개 가격 파일 기준 · <b>${dates.join(" / ")}</b> · 금액은 모두 <b>USD</b>`;
+  + `AWS 공개 가격 파일 기준 · <b>${srcDates.join(" · ")}</b> · 금액은 모두 <b>USD</b>`;
 $("#nav-asof").textContent = `${newest} 기준`;
 $("#foot-asof").textContent =
-  `AWS 공개 가격 파일 ${dates.join(" / ")} · ${snap.regions.length}개 리전 · `
+  `AWS 공개 가격 파일 ${srcDates.join(" · ")} · ${snap.regions.length}개 리전 · `
   + `${new Set(P.map(p=>p.provider+"/"+p.model_id)).size}개 모델`;
 $("#note").innerHTML = [
   `모든 금액은 <b>USD</b>입니다. 환율 정보가 원본 데이터에 없어 원화로 환산하지 않습니다.`,

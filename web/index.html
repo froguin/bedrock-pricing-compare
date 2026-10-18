@@ -135,6 +135,21 @@
   .prov { margin-top:7px; font-size:var(--fs-xs); color:var(--faint); }
   .prov b { color:var(--muted); font-weight:500; }
   .prov .stale { color:var(--danger); }
+  /* "why two dates" tooltip: hover or keyboard focus, no JS */
+  .tip { position:relative; display:inline-flex; align-items:center; justify-content:center;
+         width:16px; height:16px; margin-left:4px; border-radius:50%; vertical-align:-3px;
+         border:1px solid var(--line); background:var(--surface-2); color:var(--muted);
+         font-size:10.5px; font-weight:700; cursor:help; font-family:inherit; padding:0; }
+  .tip:hover, .tip:focus-visible { border-color:var(--accent-line); color:var(--accent); outline:none; }
+  .tip-body { position:absolute; left:50%; top:calc(100% + 8px); transform:translateX(-50%);
+              width:min(320px, 80vw); padding:10px 12px; border-radius:var(--r-md);
+              background:var(--surface-1); color:var(--txt); border:1px solid var(--line);
+              box-shadow:0 8px 24px rgba(0,0,0,.25); font-size:12.5px; font-weight:400;
+              line-height:1.6; text-align:left; z-index:50; visibility:hidden; opacity:0;
+              transition:opacity .12s; pointer-events:none; }
+  .tip-body b { color:var(--ink); font-weight:600; }
+  .tip:hover .tip-body, .tip:focus .tip-body { visibility:visible; opacity:1; }
+  @media (prefers-reduced-motion: reduce) { .tip-body { transition:none; } }
 
   /* ---------- batch band ---------- */
   .batchband {
@@ -1249,7 +1264,15 @@ const newest = dates[dates.length-1] || "?";
 const ageDays = newest!=="?" ? Math.floor((Date.now()-new Date(newest))/864e5) : 999;
 $("#prov").innerHTML =
   (ageDays>7 ? `<span class="stale">데이터가 ${ageDays}일 지났습니다 — 최신이 아닐 수 있습니다.</span> ` : "")
-  + `AWS 공개 가격 파일 기준 · <b>${srcDates.join(" · ")}</b> · 금액은 모두 <b>USD</b>`;
+  + `AWS 공개 가격 파일 기준 · <b>${srcDates.join(" · ")}</b>`
+  + `<button type="button" class="tip" aria-describedby="tip-dates" aria-label="날짜가 두 개인 이유">?`
+  +   `<span class="tip-body" id="tip-dates" role="tooltip">`
+  +     `AWS는 Bedrock 가격을 <b>두 파일로 따로</b> 발행하고, 갱신 시점도 서로 다릅니다.<br>`
+  +     `· <b>Bedrock</b>: Amazon Nova·Llama·Mistral 등 AWS가 직접 제공하는 모델<br>`
+  +     `· <b>Marketplace 모델</b>: 최신 Claude·GPT·Grok 등 AWS Marketplace를 거쳐 제공하는 모델<br>`
+  +     `날짜는 각 파일이 마지막으로 발행된 날입니다. 이 사이트는 두 파일을 30분마다 확인해 새 판이 나오면 자동으로 반영합니다.`
+  +   `</span></button>`
+  + ` · 금액은 모두 <b>USD</b>`;
 $("#nav-asof").textContent = `${newest} 기준`;
 $("#foot-asof").textContent =
   `AWS 공개 가격 파일 ${srcDates.join(" · ")} · ${snap.regions.length}개 리전 · `

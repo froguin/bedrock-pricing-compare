@@ -20,9 +20,17 @@ const next = JSON.parse(readFileSync(nextPath, "utf8"));
 
 const key = (p) => [p.provider, p.model_id, p.endpoint_type, p.source_region, p.service_tier,
   p.execution_mode, p.dimension, p.context_band].join("|");
+// Some keys legitimately carry several rates (Nova 2.0 Omni image SKUs, two
+// Qwen3 Next SKUs in ap-south-1). Last-write-wins would compare whichever rate
+// happened to come last, and AWS reorders SKUs between versions -- that reads as
+// a fake 100x jump. Keep the whole set and only ratio-check single-rate keys.
 const index = (snap) => {
   const m = new Map();
-  for (const p of snap.price_points) m.set(key(p), p.price_per_1m);
+  for (const p of snap.price_points) {
+    const s = m.get(key(p)) || new Set();
+    s.add(p.price_per_1m);
+    m.set(key(p), s);
+  }
   return m;
 };
 
@@ -38,9 +46,11 @@ if (bad.length) fails.push(`${bad.length} non-positive/non-finite prices, e.g. $
 
 const a = index(prev), b = index(next);
 const jumps = [];
-for (const [k, v] of b) {
-  const old = a.get(k);
-  if (old && (v / old > 10 || old / v > 10)) jumps.push(`${k}: ${old} -> ${v}`);
+for (const [k, vs] of b) {
+  const olds = a.get(k);
+  if (!olds || olds.size !== 1 || vs.size !== 1) continue;
+  const [old] = olds, [v] = vs;
+  if (v / old > 10 || old / v > 10) jumps.push(`${k}: ${old} -> ${v}`);
 }
 if (jumps.length) fails.push(`${jumps.length} prices moved >10x, e.g. ${jumps.slice(0, 3).join("; ")}`);
 

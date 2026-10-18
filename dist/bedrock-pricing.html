@@ -353,7 +353,7 @@
   .dot i { position:absolute; width:7px; height:7px; border-radius:50%;
            background:var(--accent); top:4px; transform:translateX(-50%); }
 
-  .expand { padding:4px 16px 16px 58px; background:var(--surface-2);
+  .expand { padding:4px 16px 16px 58px; background:var(--surface-2); overflow-x:auto;
             border-top:1px solid var(--line); font-size:13px; }
   .xp-sum { margin:12px 0 8px; color:var(--muted); }
   .xp-sum b { color:var(--ink); font-weight:600; }
@@ -365,6 +365,8 @@
   table.xp tr:last-child td { border-bottom:0; }
   table.xp tr.mine td { background:var(--accent-soft); }
   .xp-v { font-variant-numeric:tabular-nums; font-weight:600; color:var(--ink); white-space:nowrap; width:1%; }
+  .xp-p { font-variant-numeric:tabular-nums; color:var(--txt); white-space:nowrap; width:1%; font-size:12.5px; }
+  table.xp th:nth-child(2), table.xp th:nth-child(3) { text-align:left; }
   .xp-d { font-size:12px; white-space:nowrap; font-variant-numeric:tabular-nums; }
   .xp-d.down { color:var(--ok); } .xp-d.up { color:var(--warn); }
   .xp-d.same, .xp-d.mine { color:var(--muted); }
@@ -1034,7 +1036,8 @@ function renderExpand(r){
   // price everywhere) into a single price tier, so 30 regions read as 2-4 rows.
   const tiers=[];
   for(const x of rows){
-    const sig=`${x.c.lo}|${x.c.hi}|${x.path}`;
+    // rates are part of the tier: two splits can sum to the same monthly total
+    const sig=`${x.c.inRates}|${x.c.outRates}|${x.path}`;
     let t=tiers.find(t=>t.sig===sig);
     if(!t){ t={sig, c:x.c, path:x.path, regions:[]}; tiers.push(t); }
     t.regions.push(x.rg);
@@ -1045,6 +1048,7 @@ function renderExpand(r){
   const body = tiers.map(t=>{
     const isMine = t.regions.includes(state.region);
     const val = t.c.ambiguous ? `${money(t.c.lo)}–${money(t.c.hi)}` : money(t.c.lo);
+    const rr = (v)=> v.length>1 ? `${rate(v[0])}–${rate(v[v.length-1])}` : rate(v[0]);
     let delta = "";
     if(mine && !isMine){
       const pct = Math.round((t.c.lo/mine.c.lo-1)*100);
@@ -1060,6 +1064,8 @@ function renderExpand(r){
       ? `<span class="xp-r more" title="${regs.slice(LIMIT).map(regionName).join(", ")}">+${regs.length-LIMIT}</span>` : "";
     return `<tr class="${isMine?"mine":""}">
         <td class="xp-v">${val}</td>
+        <td class="xp-p">${rr(t.c.inRates)}</td>
+        <td class="xp-p">${rr(t.c.outRates)}</td>
         <td>${delta}</td>
         <td>${badge(PATH_KO[t.path].tone, PATH_KO[t.path].label)}</td>
         <td><div class="xp-regs"><span class="xp-n">${t.regions.length}개 리전</span>${shown}${more}</div></td>
@@ -1070,7 +1076,7 @@ function renderExpand(r){
   return `<div class="expand">
       <p class="xp-sum">${rows.length}개 리전 제공 · 가장 저렴한 곳 <b>${regionName(cheapest.rg)}</b> ${money(cheapest.c.lo)}${saving}</p>
       <table class="xp">
-        <thead><tr><th>월 비용</th><th>선택 리전 대비</th><th>처리 방식</th><th>리전</th></tr></thead>
+        <thead><tr><th>월 비용</th><th>입력 /1M</th><th>출력 /1M</th><th>선택 리전 대비</th><th>처리 방식</th><th>리전</th></tr></thead>
         <tbody>${body}</tbody>
       </table>
     </div>`;

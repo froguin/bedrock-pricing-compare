@@ -16,6 +16,10 @@ BUCKET=awskr-bedrock-pricing
 DIST_ID=E1OQXWKSFOXAF
 ACCOUNT="${AWS_ACCOUNT_ID:-$(aws sts get-caller-identity --query Account --output text)}"
 OIDC="arn:aws:iam::${ACCOUNT}:oidc-provider/token.actions.githubusercontent.com"
+# GitHub may issue "immutable" subjects (repo:owner@<id>/name@<id>:...) instead
+# of repo:owner/name:... -- ask GitHub which prefix this repo's tokens carry.
+SUB_PREFIX="$(gh api "repos/${REPO}/actions/oidc/customization/sub" --jq '.sub_claim_prefix // empty' 2>/dev/null || true)"
+SUB_PREFIX="${SUB_PREFIX:-repo:${REPO}}"
 
 TRUST=$(cat <<EOF
 {"Version":"2012-10-17","Statement":[{"Effect":"Allow",
@@ -23,7 +27,7 @@ TRUST=$(cat <<EOF
  "Action":"sts:AssumeRoleWithWebIdentity",
  "Condition":{"StringEquals":{
    "token.actions.githubusercontent.com:aud":"sts.amazonaws.com",
-   "token.actions.githubusercontent.com:sub":"repo:${REPO}:ref:refs/heads/main"}}}]}
+   "token.actions.githubusercontent.com:sub":"${SUB_PREFIX}:ref:refs/heads/main"}}}]}
 EOF
 )
 PERM=$(cat <<EOF

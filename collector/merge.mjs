@@ -7,6 +7,7 @@
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
+import { writeJsonIfChanged } from "./write-stable.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dir = join(ROOT, "data/snapshots");
@@ -32,5 +33,6 @@ const merged = {
   price_points: [...bed.price_points, ...abfm.price_points],
 };
 
-writeFileSync(join(ROOT, "web/pricing.json"), JSON.stringify(merged));
+const wrote = writeJsonIfChanged(join(ROOT, "web/pricing.json"), merged);
+if (!wrote) console.log("web/pricing.json unchanged apart from generated_at -- kept");
 console.log(`merged ${merged.count} price_points -> web/pricing.json (${merged.regions.length} regions)`);

@@ -18,6 +18,7 @@
  * Usage: node collector/parse-abfm.mjs [region ...]   (default: PoC set; "all" = every region)
  */
 import { writeFile, mkdir, readFile } from "node:fs/promises";
+import { writeJsonIfChanged } from "./write-stable.mjs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { canonProvider } from "./providers.mjs";
@@ -187,11 +188,11 @@ async function main() {
 
   await mkdir(join(ROOT, "data/snapshots"), { recursive: true });
   const out = join(ROOT, "data/snapshots", `abfm-${version}.json`);
-  await writeFile(out, JSON.stringify({
+  if (!writeJsonIfChanged(out, {
     generated_at: new Date().toISOString(),
     offer_version: version, regions, count: all.length, source: "AmazonBedrockFoundationModels",
     price_points: all,
-  }, null, 2));
+  }, 2)) process.stderr.write(`unchanged, kept ${out}\n`);
   process.stderr.write(`\nwrote ${all.length} ABFM price_points -> ${out}\n`);
 
   // summary

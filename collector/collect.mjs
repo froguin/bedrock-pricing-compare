@@ -11,6 +11,7 @@ import { writeFile, mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { canonProvider, prettyModelId } from "./providers.mjs";
+import { writeJsonIfChanged } from "./write-stable.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const BASE = "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock";
@@ -222,7 +223,7 @@ async function main() {
     price_points: all,
   };
   const out = join(ROOT, "data/snapshots", `${version}.json`);
-  await writeFile(out, JSON.stringify(snap, null, 2));
+  if (!writeJsonIfChanged(out, snap, 2)) process.stderr.write(`unchanged, kept ${out}\n`);
   // Snapshot only. The dataset the front-end loads (web/pricing.json) is written
   // by merge.mjs, which combines this with the AmazonBedrockFoundationModels
   // (Marketplace/mantle) snapshot. Writing it here would publish a single-source

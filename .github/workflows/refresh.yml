@@ -1,0 +1,90 @@
+name: Refresh prices
+
+on:
+  schedule:
+    # Every 30 minutes, off the :00/:30 rush. GitHub may start scheduled runs late.
+    - cron: "7,37 * * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Rebuild and deploy even if no source changed"
+        type: boolean
+        default: false
+
+# Never let two refreshes overlap; a queued run waits for the current one.
+concurrency:
+  group: refresh-prices
+  cancel-in-progress: false
+
+permissions:
+  contents: write   # commit new snapshots + state back to main
+  id-token: write   # OIDC token for the AWS role
+
+env:
+  BUCKET: awskr-bedrock-pricing
+  DIST_ID: E1OQXWKSFOXAF
+  AWS_REGION: ap-northeast-2
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Check sources (conditional GETs, ~20 KB)
+        id: check
+        run: node collector/check-sources.mjs
+
+      - name: Collect + merge
+        id: build
+        if: steps.check.outputs.offer_changed == 'true' || inputs.force
+        run: |
+          cp web/pricing.json "$RUNNER_TEMP/prev-pricing.json"
+          node collector/collect.mjs all
+          node collector/parse-abfm.mjs all
+          node collector/merge.mjs
+
+      - name: Publish gate
+        if: steps.build.outcome == 'success'
+        run: node collector/gate.mjs "$RUNNER_TEMP/prev-pricing.json" web/pricing.json
+
+      - name: Build single-file page
+        if: steps.build.outcome == 'success'
+        run: node collector/build-standalone.mjs
+
+      - name: AWS credentials (OIDC, 1h, upload + invalidate only)
+        if: steps.build.outcome == 'success'
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Deploy
+        if: steps.build.outcome == 'success'
+        run: |
+          aws s3 cp dist/bedrock-pricing.html "s3://$BUCKET/index.html" \
+            --content-type "text/html; charset=utf-8" \
+            --cache-control "public, max-age=300" --no-progress
+          aws cloudfront create-invalidation --distribution-id "$DIST_ID" \
+            --paths "/index.html" "/" --query 'Invalidation.Id' --output text
+
+      - name: Note page-only change
+        if: steps.check.outputs.page_changed == 'true' && steps.check.outputs.offer_changed != 'true'
+        run: |
+          echo "AWS pricing page tables changed; offer files did not. The page parser is not built yet, so nothing is redeployed." >> "$GITHUB_STEP_SUMMARY"
+
+      # Only commit when something actually changed -- no empty commits every 30 min.
+      - name: Commit data back to main
+        if: steps.check.outputs.state_dirty == 'true' || steps.build.outcome == 'success'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ web/pricing.json dist/
+          if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
+          git commit -m "data: refresh $(jq -r '.as_of | to_entries | map("\(.key)=\(.value)") | join(", ")' web/pricing.json)"
+          git push origin HEAD:main

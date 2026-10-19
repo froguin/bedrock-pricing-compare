@@ -273,18 +273,25 @@ export default function App({ snap }) {
           header={
             <Header variant="h1"
               description={
-                <span>
-                  데이터 확인 시점 — 영문 Pricing <b>{englishCheckedTime}</b>, {srcDatesTime.join(", ")}. 금액은 모두 <b>USD</b>.{" "}
-                  <Popover header="가격 출처" size="large" triggerType="custom" dismissAriaLabel="설명 닫기"
-                    content={<SpaceBetween size="xs">
-                      <span>① <b><Link href="https://aws.amazon.com/bedrock/pricing/" external variant="secondary">영문 Pricing 페이지</Link></b>의 명시 가격이 같은 조건의 API 가격보다 우선합니다.</span>
-                      <span>② <b><Link href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html" external variant="secondary">영문 Documentation</Link></b>으로 모델 출시와 in-region·Geo·Global 지원 리전을 확인합니다.</span>
-                      <span>③ <b>Price List API</b>는 페이지에 없는 리전·실행 모드·서비스 티어·컨텍스트 밴드를 보강합니다.</span>
-                      <span>위 시각은 각 출처를 마지막으로 가져온 시점(KST)입니다.</span>
-                      {sourceConflicts > 0 && <span>영문 페이지와 API 값이 다른 키 <b>{sourceConflicts}개</b>는 영문 페이지 값을 표시합니다.</span>}
-                    </SpaceBetween>}>
-                    <Button variant="inline-icon" iconName="status-info" ariaLabel="가격 출처 설명" />
-                  </Popover>
+                <span className="header-meta">
+                  <span className="hm-item">데이터 확인 시점 —</span>{" "}
+                  <span className="hm-item">영문 Pricing <b>{englishCheckedTime}</b>,</span>{" "}
+                  {srcDatesTime.map((s, i) => (
+                    <span className="hm-item" key={i}>{s}{i < srcDatesTime.length - 1 ? "," : "."}{" "}</span>
+                  ))}
+                  <span className="hm-item">금액은 모두 <b>USD</b>.</span>{" "}
+                  <span className="hm-item">
+                    <Popover header="가격 출처" size="large" triggerType="custom" dismissAriaLabel="설명 닫기"
+                      content={<SpaceBetween size="xs">
+                        <span>① <b><Link href="https://aws.amazon.com/bedrock/pricing/" external variant="secondary">영문 Pricing 페이지</Link></b>의 명시 가격이 같은 조건의 API 가격보다 우선합니다.</span>
+                        <span>② <b><Link href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html" external variant="secondary">영문 Documentation</Link></b>으로 모델 출시와 in-region·Geo·Global 지원 리전을 확인합니다.</span>
+                        <span>③ <b>Price List API</b>는 페이지에 없는 리전·실행 모드·서비스 티어·컨텍스트 밴드를 보강합니다.</span>
+                        <span>위 시각은 각 출처를 마지막으로 가져온 시점(KST)입니다.</span>
+                        {sourceConflicts > 0 && <span>영문 페이지와 API 값이 다른 키 <b>{sourceConflicts}개</b>는 영문 페이지 값을 표시합니다.</span>}
+                      </SpaceBetween>}>
+                      <Button variant="inline-icon" iconName="status-info" ariaLabel="가격 출처 설명" />
+                    </Popover>
+                  </span>
                 </span>
               }>
               Bedrock 모델 비용, <span className="title-grad">한 달에 얼마인가요?</span>

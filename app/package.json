@@ -1,0 +1,23 @@
+{
+  "name": "bedrock-compare-cloudscape",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Cloudscape prototype of the Bedrock monthly-cost comparison page",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node ../collector/build-standalone.mjs --src app/dist/index.html --out dist/bedrock-pricing.cloudscape.html",
+    "test": "node --test src/"
+  },
+  "dependencies": {
+    "@cloudscape-design/components": "3.0.1401",
+    "@cloudscape-design/global-styles": "1.0.71",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "6.1.2",
+    "vite": "8.3.4",
+    "vite-plugin-singlefile": "2.3.4"
+  }
+}

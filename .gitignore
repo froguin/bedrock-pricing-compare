@@ -1,3 +1,5 @@
 .shot/
 node_modules/
 .deploy-*
+app/dist/
+dist/bedrock-pricing.cloudscape.html

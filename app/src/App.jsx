@@ -46,7 +46,17 @@ function readHash(regions) {
 function useTheme() {
   const [theme, setTheme] = useState(() => localStorage.getItem("theme")
     || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"));
-  useEffect(() => { applyMode(theme === "dark" ? Mode.Dark : Mode.Light); }, [theme]);
+  useEffect(() => {
+    applyMode(theme === "dark" ? Mode.Dark : Mode.Light);
+    // The top-navigation surface is not a global CSS token, so copy the bar's
+    // actual background onto our #top-nav wrapper (which also holds the date and
+    // theme toggle) — otherwise that area renders transparent on mobile.
+    requestAnimationFrame(() => {
+      const nav = document.getElementById("top-nav");
+      const bar = nav?.querySelector('[class*="awsui_top-navigation_"]');
+      if (nav && bar) nav.style.background = getComputedStyle(bar).backgroundColor;
+    });
+  }, [theme]);
   const toggle = () => setTheme((t) => { const n = t === "dark" ? "light" : "dark"; localStorage.setItem("theme", n); return n; });
   return [theme, toggle];
 }

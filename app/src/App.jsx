@@ -223,7 +223,7 @@ export default function App({ snap }) {
           ]}
         />
       </div>
-      <div style={{ maxWidth: 1180, margin: "0 auto", padding: "0 20px 40px" }}>
+      <div style={{ maxWidth: 1120, margin: "0 auto", padding: "0 20px 40px" }}>
         <ContentLayout
           header={
             <Header variant="h1"
@@ -242,7 +242,7 @@ export default function App({ snap }) {
                   {" "}· 금액은 모두 <b>USD</b>
                 </span>
               }>
-              Bedrock 모델 비용, 한 달에 얼마인가요?
+              Bedrock 모델 비용, <span className="page-title">한 달에 얼마인가요?</span>
             </Header>
           }>
           <SpaceBetween size="l">

@@ -74,7 +74,8 @@ function RegionChips({ regions, selected, limit = 6 }) {
     <SpaceBetween direction="horizontal" size="xxs">
       <Box variant="small" color="text-body-secondary">{regions.length}개 리전</Box>
       {shown.map((rg) => (
-        <Badge key={rg} color={rg === selected ? "blue" : "grey"}>{regionName(rg)}</Badge>
+        rg === selected ? <span key={rg} className="mine-chip">{regionName(rg)}</span>
+          : <Badge key={rg} color="grey">{regionName(rg)}</Badge>
       ))}
       {rest.length > 0 && (
         <Popover size="medium" triggerType="text" dismissButton={false}
@@ -190,12 +191,12 @@ export default function App({ snap }) {
       id: "mult", header: "배수 · 리전 대비", sortingField: "mult",
       cell: (it) => {
         if (it.kind === "tier") {
-          if (it.isMine) return <Badge color="blue">선택 리전</Badge>;
+          if (it.isMine) return <span className="mine-chip">선택 리전</span>;
           if (it.delta == null) return "—";
           if (it.delta === 0) return <Box color="text-body-secondary">동일</Box>;
           return <StatusIndicator type={it.delta < 0 ? "success" : "warning"}>{it.delta > 0 ? "+" : ""}{it.delta}%</StatusIndicator>;
         }
-        if (it.isBase) return <Badge color="green">기준</Badge>;
+        if (it.isBase) return <Badge color="grey">기준</Badge>;
         if (it.mult == null) return "—";
         return `${it.mult.toFixed(it.mult < 10 ? 1 : 0)}배`;
       },
@@ -245,12 +246,12 @@ export default function App({ snap }) {
               Bedrock 모델 비용, <span className="page-title">한 달에 얼마인가요?</span>
             </Header>
           }>
-          <SpaceBetween size="l">
+          <SpaceBetween size="m">
             {ageDays > 7 && <Alert type="warning">데이터가 {ageDays}일 지났습니다. 최신이 아닐 수 있습니다.</Alert>}
 
             <Container>
-              <SpaceBetween size="l">
-                <ColumnLayout columns={4} variant="text-grid">
+              <SpaceBetween size="m">
+                <ColumnLayout columns={4} variant="text-grid" borders="vertical">
                   <FormField label="모델 찾기">
                     <Input type="search" value={f.q} placeholder="소넷, 노바 프로, llama…"
                       ariaLabel="모델 찾기" onChange={({ detail }) => set({ q: detail.value.trim() ? detail.value : "" })} />
@@ -275,8 +276,8 @@ export default function App({ snap }) {
                   </FormField>
                 </ColumnLayout>
 
-                <SpaceBetween direction="horizontal" size="xs">
-                  <Box variant="small" color="text-body-secondary" padding={{ top: "xxs" }}>사용량 프리셋</Box>
+                <SpaceBetween direction="horizontal" size="xxs" alignItems="center">
+                  <Box variant="small" color="text-body-secondary">사용량 프리셋</Box>
                   {Object.entries(PRESETS).map(([n, [i, o]]) => (
                     <Button key={n} variant={isPreset(i, o) ? "primary" : "normal"}
                       onClick={() => set({ inM: i, outM: o })}>{n} {i}/{o}</Button>
@@ -295,7 +296,8 @@ export default function App({ snap }) {
             </Container>
 
             <Table
-              variant="container"
+              variant="stacked"
+              contentDensity="compact"
               trackBy="id"
               items={items}
               columnDefinitions={columns}
@@ -324,7 +326,7 @@ export default function App({ snap }) {
             />
 
             {result.partial.length > 0 && (
-              <ExpandableSection variant="container" headerText="월 비용 계산 불가" headerCounter={`(${result.partial.length})`}
+              <ExpandableSection variant="stacked" headerText="월 비용 계산 불가" headerCounter={`(${result.partial.length})`}
                 headerDescription="단가 일부만 있거나, 리전 내 처리 조건에 맞는 요금이 없는 모델">
                 <SpaceBetween size="xxs">
                   {result.partial.map((x) => (
@@ -334,7 +336,7 @@ export default function App({ snap }) {
               </ExpandableSection>
             )}
             {result.missing.length > 0 && (
-              <ExpandableSection variant="container" headerText={`${regionName(f.region)}에서 제공되지 않는 모델`}
+              <ExpandableSection variant="stacked" headerText={`${regionName(f.region)}에서 제공되지 않는 모델`}
                 headerCounter={`(${result.missing.length})`}>
                 <ColumnLayout columns={2}>
                   {result.missing.map((x) => (
@@ -344,7 +346,7 @@ export default function App({ snap }) {
               </ExpandableSection>
             )}
 
-            <ExpandableSection variant="container" headerText="고급 설정">
+            <ExpandableSection variant="stacked" headerText="고급 설정">
               <ColumnLayout columns={3} variant="text-grid">
                 <FormField label="포함할 모델" description="미리보기·내부 코드명 모델은 기본적으로 숨깁니다.">
                   <CheckList items={haveStatuses} set={f.statuses} label={(s) => STATUS_KO[s] || s}
@@ -372,7 +374,8 @@ export default function App({ snap }) {
               </ColumnLayout>
             </ExpandableSection>
 
-            <Box variant="small" color="text-body-secondary">
+            <SpaceBetween size="s">
+            <Box variant="small" color="text-body-secondary" padding={{ top: "s" }}>
               · 모든 금액은 <b>USD</b>입니다. 환율 정보가 원본 데이터에 없어 원화로 환산하지 않습니다.<br />
               · <b>묶음 경로(geo CRIS)</b>는 별도 단가가 없습니다. 출발 리전의 "리전 내 처리" 요금으로 과금됩니다.<br />
               · 같은 조건에 단가가 2개인 경우 <b>범위로 표시</b>하고 "N배" 기준에서 제외합니다.
@@ -382,6 +385,7 @@ export default function App({ snap }) {
               AWS 공개 가격 파일 {srcDates.join(" · ")} · {snap.regions.length}개 리전 · {nModels}개 모델 ·{" "}
               <Link href={REPO} external variant="secondary" fontSize="body-s">소스</Link>
             </Box>
+            </SpaceBetween>
           </SpaceBetween>
         </ContentLayout>
       </div>

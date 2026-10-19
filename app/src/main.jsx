@@ -6,7 +6,12 @@ import "@cloudscape-design/global-styles/index-base.css";
 import "./ember.css";
 import "./app.css";
 import { applyTheme } from "@cloudscape-design/components/theming";
+import { applyDensity, Density } from "@cloudscape-design/global-styles";
 import App from "./App.jsx";
+
+// Compact density = the vanilla page's data-tool rhythm (Cloudscape's default
+// "comfortable" is tuned for sparse console forms).
+applyDensity(Density.Compact);
 
 // awskr.net house accent (purple) + Amazon Ember. Green/blue stay as Cloudscape
 // status colours, so purple is used only for brand/interaction tokens.
@@ -105,6 +110,24 @@ applyTheme({
       borderRadiusBadge: "999px",
       borderRadiusAlert: "10px",
       borderRadiusItem: "8px",
+      // review fixes: colours still on Cloudscape defaults
+      colorTextBadgeBlue: { light: "#ffffff", dark: "#0d0f17" },
+      colorTextBadgeGreen: { light: "#ffffff", dark: "#0d0f17" },
+      colorTextBadgeGrey: V.ink,
+      colorTextStatusError: { light: "#c0353c", dark: "#f0797f" },
+      colorBackgroundPopover: V.surface1,
+      colorBorderPopover: V.line,
+      colorBorderDropdownContainer: V.line,
+      colorBackgroundDropdownItemSelected: V.accentSoft,
+      colorTextTopNavigationTitle: V.txt,
+      colorTextLinkInfoDefault: V.accent,
+      // dark-mode row dividers were darker than the surface (inverted seam)
+      colorBorderDividerSecondary: { light: "#e8ebf3", dark: "#2a3146" },
+      // review fixes: rhythm + Hangul-friendly line height
+      spaceFieldVertical: "4px",
+      lineHeightBodyM: "22px",
+      fontSizeBodyS: "13px",
+      lineHeightBodyS: "19px",
     },
   },
 });

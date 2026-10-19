@@ -10,9 +10,15 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const SRC_HTML = resolve(ROOT, "web/index.html");
+// --src / --out (repo-relative) let the Cloudscape prototype (app/) reuse this
+// injector; defaults keep the production build unchanged.
+const arg = (name, def) => {
+  const i = process.argv.indexOf(name);
+  return i > 0 && process.argv[i + 1] ? process.argv[i + 1] : def;
+};
+const SRC_HTML = resolve(ROOT, arg("--src", "web/index.html"));
 const SRC_JSON = resolve(ROOT, "web/pricing.json");
-const OUT = resolve(ROOT, "dist/bedrock-pricing.html");
+const OUT = resolve(ROOT, arg("--out", "dist/bedrock-pricing.html"));
 
 // Per-row fields the UI never reads — dropped from the inline payload.
 const DROP = new Set(["raw_unit", "source", "sku", "effective_date", "offer_version"]);
@@ -63,9 +69,11 @@ const expander = `<script>
 `;
 
 const html = readFileSync(SRC_HTML, "utf8");
-const marker = '<script type="module">';
-if (!html.includes(marker)) throw new Error("module script marker not found in web/index.html");
-const built = html.replace(marker, expander + marker);
+// The payload must run before the first module script (vite emits attributes
+// such as `crossorigin`, so match the tag prefix, not the exact string).
+const at = html.search(/<script type="module"[\s>]/);
+if (at < 0) throw new Error(`module script marker not found in ${SRC_HTML}`);
+const built = html.slice(0, at) + expander + html.slice(at);
 
 mkdirSync(dirname(OUT), { recursive: true });
 writeFileSync(OUT, built);

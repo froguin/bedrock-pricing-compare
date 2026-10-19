@@ -93,8 +93,10 @@ jobs:
           up dist/bedrock-pricing.html    index.html
           up dist/bedrock-pricing.html.br index.html.br --content-encoding br
           up dist/bedrock-pricing.html.gz index.html.gz --content-encoding gzip
+          aws s3 cp static/robots.txt "s3://$BUCKET/robots.txt" --content-type "text/plain; charset=utf-8" --cache-control "public, max-age=3600" --no-progress
+          aws s3 cp static/sitemap.xml "s3://$BUCKET/sitemap.xml" --content-type "application/xml; charset=utf-8" --cache-control "public, max-age=3600" --no-progress
           aws cloudfront create-invalidation --distribution-id "$DIST_ID" \
-            --paths "/index.html" "/" "/index.html.br" "/index.html.gz" --query 'Invalidation.Id' --output text
+            --paths "/index.html" "/" "/index.html.br" "/index.html.gz" "/robots.txt" "/sitemap.xml" --query 'Invalidation.Id' --output text
 
       - name: Note page-only change
         if: steps.check.outputs.page_changed == 'true' && steps.check.outputs.offer_changed != 'true'

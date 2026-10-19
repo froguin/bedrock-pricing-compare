@@ -13,7 +13,8 @@ export function initRum() {
     z = document.createElement("script");
     z.async = true;
     z.src = s;
-    z.crossOrigin = "anonymous";
+    // The AWS CDN serves this classic script without CORS headers. Setting
+    // crossOrigin would make browsers reject it (caught by Lighthouse).
     document.head.insertBefore(z, document.head.firstChild);
   })("cwr", APP_MONITOR_ID, "1.0.0", REGION, CLIENT, {
     signing: false,

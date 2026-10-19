@@ -80,8 +80,10 @@ applyTheme({
       colorBackgroundSegmentWrapper: ld(N[100], "#161512"),
       colorBackgroundSegmentDefault: ld("transparent", "transparent"),
       colorBackgroundSegmentHover: ld("#ffffff", N[850]),
-      colorBackgroundSegmentActive: ld(B[50], "#e3e1de"),
-      colorTextSegmentActive: ld(N[900], "#161512"),
+      // light: the console's pale-blue active segment is near-invisible on white,
+      // so mirror dark mode (solid inverted fill) — same as the primary button
+      colorBackgroundSegmentActive: ld(N[800], "#e3e1de"),
+      colorTextSegmentActive: ld(N[100], "#161512"),
       colorTextSegmentDefault: ld(N[700], "#e3e1de"),
       // blue = accent/selection/focus only; links stay neutral, blue on hover
       colorTextAccent: ld(B[600], "#7598ff"),

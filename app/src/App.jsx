@@ -37,12 +37,12 @@ const STATUS_BADGE = { legacy: "grey", preview: "blue", internal: "severity-medi
    Cloudscape Button does not passthrough aria-pressed, so the selected option is
    exposed to assistive tech via ariaLabel ("…, 선택됨") — the one a11y gap review
    flagged versus SegmentedControl, closed with public props only. */
-function ToggleGroup({ label, groupLabel, value, options, onSelect, navigationDirection = "horizontal" }) {
+function ToggleGroup({ label, groupLabel, value, options, onSelect, navigationDirection = "horizontal", segmented = false }) {
   return (
     <FormField label={label}>
       <NavigableGroup navigationDirection={navigationDirection}
         getItemKey={(el) => el.dataset.key || el.textContent}>
-        <div className="toggle-row" role="group" aria-label={groupLabel}>
+        <div className={segmented ? "toggle-row toggle-row-segmented" : "toggle-row"} role="group" aria-label={groupLabel}>
           {options.map((o) => {
             const selected = value === o.key;
             return (
@@ -316,7 +316,7 @@ export default function App({ snap }) {
                   <ToggleGroup label="응답 방식" groupLabel="응답 방식"
                     value={f.mode}
                     options={[{ key: "online", label: "즉시 응답" }, { key: "batch", label: "일괄 처리" }]}
-                    onSelect={(mode) => set({ mode })} />
+                    onSelect={(mode) => set({ mode })} segmented />
                 </ColumnLayout>
 
                 <ToggleGroup label="사용량 프리셋" groupLabel="사용량 프리셋" navigationDirection="both"

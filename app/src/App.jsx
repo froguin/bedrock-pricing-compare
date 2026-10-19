@@ -237,12 +237,11 @@ export default function App({ snap }) {
             overflowMenuBackIconAriaLabel: "뒤로",
           }}
           identity={{ href: "#", title: "Bedrock 비용 비교", logo: { src: bedrockIcon, alt: "Amazon Bedrock" } }}
-          utilities={[
-            { type: "button", text: `${newest} 기준`, disableUtilityCollapse: true },
-          ]}
+          utilities={[]}
         />
         </div>
-        <div style={{ display: "flex", alignItems: "center", padding: "0 12px", flexShrink: 0 }}>
+        <div className="top-nav-aside">
+          <span className="top-nav-date" title={`${newest} 기준`}>{newest} 기준</span>
           <Button variant="icon" iconName={theme === "dark" ? "star" : "star-filled"}
             ariaLabel={theme === "dark" ? "밝은 테마로 전환" : "어두운 테마로 전환"}
             onClick={toggleTheme} />

@@ -71,11 +71,12 @@ body.awsui-dark-mode .mine-chip { color: #94afff; background: rgba(92, 127, 255,
 .toggle-row-segmented > button[data-selected="true"]:hover {
   background: #0972d3 !important; color: #ffffff !important; font-weight: 700 !important;
 }
-/* dark theme: dark track, light text; selected stays blue */
-body.awsui-dark-mode .toggle-row-segmented { border-color: #5f6b7a; background: #161d26; }
-body.awsui-dark-mode .toggle-row-segmented > button { color: #d1d5db !important; }
-body.awsui-dark-mode .toggle-row-segmented > button:not(:first-child) { border-left-color: #5f6b7a !important; }
-body.awsui-dark-mode .toggle-row-segmented > button:hover { background: #232b38 !important; color: #ffffff !important; }
+/* dark theme: match the normal Button palette used by the preset buttons
+   (bg #201e1b, border #6f6b63, text #cbc9c3, hover #262420). Selected stays blue. */
+body.awsui-dark-mode .toggle-row-segmented { border-color: #6f6b63; background: #201e1b; }
+body.awsui-dark-mode .toggle-row-segmented > button { color: #cbc9c3 !important; }
+body.awsui-dark-mode .toggle-row-segmented > button:not(:first-child) { border-left-color: #6f6b63 !important; }
+body.awsui-dark-mode .toggle-row-segmented > button:hover { background: #262420 !important; color: #eeedeb !important; }
 body.awsui-dark-mode .toggle-row-segmented > button[data-selected="true"],
 body.awsui-dark-mode .toggle-row-segmented > button[data-selected="true"]:hover {
   background: #0972d3 !important; color: #ffffff !important;

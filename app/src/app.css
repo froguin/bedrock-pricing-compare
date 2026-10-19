@@ -43,19 +43,38 @@ body.awsui-dark-mode .mine-chip { color: #94afff; background: rgba(92, 127, 255,
    SpaceBetween does not wrap, so these use a flex-wrap row on the 8px scale. */
 .toggle-row { display: flex; flex-wrap: wrap; gap: 8px; }
 
-/* Segmented look for a small, non-wrapping toggle group (response mode): buttons
-   butt together, shared 1px seam, only the outer corners rounded — the visual
-   SegmentedControl conveys, kept on public Button+NavigableGroup so it never
-   collapses to a dropdown on mobile. */
-.toggle-row-segmented { gap: 0; flex-wrap: nowrap; }
-.toggle-row-segmented > :not(:first-child) { margin-left: -1px; }
-.toggle-row-segmented > * button {
-  border-radius: 0 !important;
-  position: relative;
+/* True segmented control look for a small, non-wrapping toggle (response mode).
+   The ROW is the bordered track; every button is borderless/transparent and the
+   selected cell alone gets a filled tone, with 1px dividers between cells. Built
+   on public Button+NavigableGroup so it never collapses to a dropdown on mobile.
+   Colors use Cloudscape tokens with console-neutral fallbacks for both themes. */
+.toggle-row-segmented {
+  gap: 0; flex-wrap: nowrap; display: inline-flex;
+  border: 1px solid var(--color-border-button-normal-default, #6f6b63);
+  border-radius: 8px; overflow: hidden;
+  background: var(--color-background-container-content, #201e1b);
 }
-.toggle-row-segmented > *:hover button, .toggle-row-segmented > * button:focus-visible { z-index: 1; }
-.toggle-row-segmented > :first-child button { border-top-left-radius: 8px !important; border-bottom-left-radius: 8px !important; }
-.toggle-row-segmented > :last-child button { border-top-right-radius: 8px !important; border-bottom-right-radius: 8px !important; }
+/* strip each Button's own chrome so only the track's border shows */
+.toggle-row-segmented > button {
+  border: 0 !important; border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--color-text-button-normal-default, #cbc9c3) !important;
+  font-weight: 500 !important;
+}
+.toggle-row-segmented > button:not(:first-child) {
+  border-left: 1px solid var(--color-border-button-normal-default, #6f6b63) !important;
+}
+.toggle-row-segmented > button:hover {
+  background: var(--color-background-button-normal-hover, #262420) !important;
+  color: var(--color-text-button-normal-hover, #eeedeb) !important;
+}
+/* selected cell: filled tone + strong text, like a chosen SegmentedControl segment */
+.toggle-row-segmented > button[data-selected="true"],
+.toggle-row-segmented > button[data-selected="true"]:hover {
+  background: var(--color-background-segment-active, #0972d3) !important;
+  color: var(--color-text-segment-active, #ffffff) !important;
+  font-weight: 700 !important;
+}
 
 /* Headline accent = Cloudscape's gen-AI gradient (--color-background-*-gen-ai,
    read from the live console). The pale #b8e7ff end stop is dropped for text.

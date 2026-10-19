@@ -21,6 +21,21 @@ body.awsui-dark-mode #top-nav { border-bottom-color: #2f2d28; }
   #top-nav [class*="awsui_title_"] { display: inline !important; font-size: 15px !important; }
   #top-nav [class*="awsui_logo_"] { max-height: 28px !important; }
 }
+/* Date + theme toggle live outside TopNavigation's collapsing utility slot, so
+   they never fold into a "메뉴" button. The date ellipsizes on narrow widths
+   but is never hidden; the icon keeps a readable color in both themes. */
+.top-nav-aside {
+  display: flex; align-items: center; gap: 6px; flex-shrink: 0;
+  padding: 0 8px 0 4px; min-width: 0;
+}
+.top-nav-date {
+  font-size: 14px; color: var(--color-text-top-navigation-title, #0f141a);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  max-width: 40vw;
+}
+.top-nav-aside [class*="awsui_button_"] { color: var(--color-text-interactive-default, #424650) !important; }
+body.awsui-dark-mode .top-nav-date { color: var(--color-text-top-navigation-title, #e9ebed); }
+body.awsui-dark-mode .top-nav-aside [class*="awsui_button_"] { color: var(--color-text-interactive-default, #c6c6cd) !important; }
 
 /* Headline accent = Cloudscape's gen-AI gradient (--color-background-*-gen-ai,
    read from the live console). The pale #b8e7ff end stop is dropped for text.

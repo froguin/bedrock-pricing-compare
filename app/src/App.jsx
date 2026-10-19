@@ -19,6 +19,7 @@ import StatusIndicator from "@cloudscape-design/components/status-indicator";
 import Popover from "@cloudscape-design/components/popover";
 import ExpandableSection from "@cloudscape-design/components/expandable-section";
 import Checkbox from "@cloudscape-design/components/checkbox";
+import Link from "@cloudscape-design/components/link";
 import Alert from "@cloudscape-design/components/alert";
 import bedrockIcon from "./bedrock-icon.svg";
 import {
@@ -501,7 +502,7 @@ export default function App({ snap }) {
               · 같은 조건에 단가가 2개인 경우 <b>범위로 표시</b>하고 "N배" 기준에서 제외합니다.
             </Box>
             <Box variant="small" color="text-body-secondary" textAlign="center">
-              © 2026 Bedrock 비용 비교 · <b>비공식 자료</b>이며 AWS와 무관합니다. 결제 전 AWS 공식 가격 페이지로 확인하세요.<br />
+              © 2026 Bedrock 비용 비교 · <b>비공식 자료</b>이며 AWS와 무관합니다. 결제 전 <Link href="https://aws.amazon.com/bedrock/pricing/" external variant="secondary" fontSize="body-s">AWS 공식 가격 페이지</Link>로 확인하세요.<br />
               AWS 공식 가격 · {englishChecked} 확인 · {snap.regions.length}개 리전 · {nModels}개 모델
             </Box>
             </SpaceBetween>

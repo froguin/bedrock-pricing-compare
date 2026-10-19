@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { applyMode, Mode } from "@cloudscape-design/global-styles";
-import TopNavigation from "@cloudscape-design/components/top-navigation";
 import ContentLayout from "@cloudscape-design/components/content-layout";
 import Header from "@cloudscape-design/components/header";
 import Container from "@cloudscape-design/components/container";
@@ -46,23 +45,7 @@ function readHash(regions) {
 function useTheme() {
   const [theme, setTheme] = useState(() => localStorage.getItem("theme")
     || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"));
-  useEffect(() => {
-    applyMode(theme === "dark" ? Mode.Dark : Mode.Light);
-    // The top-navigation surface is not a global CSS token, so copy the bar's
-    // actual background onto our #top-nav wrapper (which also holds the date and
-    // theme toggle) — otherwise that area renders transparent on mobile.
-    requestAnimationFrame(() => {
-      const nav = document.getElementById("top-nav");
-      const bar = nav?.querySelector('[class*="awsui_top-navigation_"]');
-      if (nav && bar) {
-        const cs = getComputedStyle(bar);
-        nav.style.background = cs.backgroundColor;
-        // The bar's own divider only spans the bar; extend the same line across
-        // the date/theme segment so the bottom edge is continuous.
-        nav.style.borderBottom = `${cs.borderBottomWidth} solid ${cs.borderBottomColor}`;
-      }
-    });
-  }, [theme]);
+  useEffect(() => { applyMode(theme === "dark" ? Mode.Dark : Mode.Light); }, [theme]);
   const toggle = () => setTheme((t) => { const n = t === "dark" ? "light" : "dark"; localStorage.setItem("theme", n); return n; });
   return [theme, toggle];
 }
@@ -243,26 +226,18 @@ export default function App({ snap }) {
 
   return (
     <>
-      <div id="top-nav" style={{ position: "sticky", top: 0, zIndex: 1002, display: "flex", alignItems: "stretch" }}>
-        <div style={{ flex: 1, minWidth: 0 }}>
-        <TopNavigation
-          i18nStrings={{
-            overflowMenuTriggerText: "메뉴",
-            overflowMenuTitleText: "메뉴",
-            overflowMenuDismissIconAriaLabel: "메뉴 닫기",
-            overflowMenuBackIconAriaLabel: "뒤로",
-          }}
-          identity={{ href: "#", title: "Bedrock 비용 비교", logo: { src: bedrockIcon, alt: "Amazon Bedrock" } }}
-          utilities={[]}
-        />
-        </div>
+      <header id="top-nav">
+        <a className="top-nav-brand" href="#" aria-label="Bedrock 비용 비교 홈">
+          <img src={bedrockIcon} alt="Amazon Bedrock" className="top-nav-logo" />
+          <span className="top-nav-product">Bedrock 비용 비교</span>
+        </a>
         <div className="top-nav-aside">
           <span className="top-nav-date" title={`${newest} 기준`}>{newest} 기준</span>
           <Button variant="icon" iconName={theme === "dark" ? "star" : "star-filled"}
             ariaLabel={theme === "dark" ? "밝은 테마로 전환" : "어두운 테마로 전환"}
             onClick={toggleTheme} />
         </div>
-      </div>
+      </header>
       <main style={{ maxWidth: 1120, margin: "0 auto", padding: "28px 20px 40px" }}>
         <ContentLayout disableOverlap
           header={

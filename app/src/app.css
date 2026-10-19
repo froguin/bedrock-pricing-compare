@@ -8,36 +8,36 @@ body.awsui-dark-mode { background: #100f0d; color: #bab7b0; }
   line-height: 20px; font-weight: 600; color: #295eff; background: #f5f7ff; box-shadow: inset 0 0 0 1px #295eff; }
 body.awsui-dark-mode .mine-chip { color: #94afff; background: rgba(92, 127, 255, .2); box-shadow: inset 0 0 0 1px #5c7fff; }
 
-/* Console top bar: the Cloudscape TopNavigation bar draws its own bottom
-   divider. The #top-nav wrapper must NOT add a second border, or the segment
-   under the date/theme area (outside the bar) gets a different-colored edge. */
-#top-nav { border-bottom: none; }
-/* TopNavigation ellipsizes the identity title; its rules carry an id-level
-   specificity hack, so these overrides need !important. */
-#top-nav [class*="awsui_identity_"] { flex-shrink: 0 !important; }
-#top-nav [class*="awsui_title_"] { overflow: visible !important; text-overflow: clip !important; white-space: nowrap !important; }
-/* On narrow viewports Cloudscape hides the identity title text and shrinks the
-   logo to save width. Keep the product name and a full-size logo on mobile. */
-@media (max-width: 688px) {
-  #top-nav [class*="awsui_title_"] { display: inline !important; font-size: 15px !important; }
-  #top-nav [class*="awsui_logo_"] { max-height: 28px !important; }
+/* Custom top bar (AWS Console style): a fixed dark surface in both themes, so
+   it is styled with explicit Console colors and Cloudscape tokens as fallback.
+   No Cloudscape internal (awsui_*) class selectors — nothing here breaks on a
+   component library upgrade. */
+#top-nav {
+  position: sticky; top: 0; z-index: 1002;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; height: 44px; padding: 0 16px;
+  background: #0f1b2d;
+  border-bottom: 1px solid var(--color-border-divider-default, #354150);
 }
-/* Date + theme toggle live outside TopNavigation's collapsing utility slot, so
-   they never fold into a "메뉴" button. The date ellipsizes on narrow widths
-   but is never hidden; the icon keeps a readable color in both themes. */
-.top-nav-aside {
-  display: flex; align-items: center; gap: 6px; flex-shrink: 0;
-  padding: 0 8px 0 4px; min-width: 0;
+.top-nav-brand { display: flex; align-items: center; gap: 10px; min-width: 0; text-decoration: none; }
+.top-nav-logo { height: 28px; width: auto; flex-shrink: 0; border-radius: 4px; }
+.top-nav-product {
+  font-family: "Ember Modern Text UI", "Amazon Ember", "Pretendard", -apple-system, system-ui, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  font-size: 16px; font-weight: 700; color: #ffffff;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
+.top-nav-aside { display: flex; align-items: center; gap: 6px; flex-shrink: 0; min-width: 0; }
 .top-nav-date {
   font-family: "Ember Modern Text UI", "Amazon Ember", "Pretendard", -apple-system, system-ui, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
   font-size: 14px; color: #d1d5db;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  max-width: 40vw;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 40vw;
 }
-/* The top-navigation bar is dark in BOTH themes, so the date and the icon must
-   stay light-on-dark regardless of the active Cloudscape mode. */
-.top-nav-aside [class*="awsui_button_"] { color: #d1d5db !important; }
+/* The theme toggle is a Cloudscape icon Button; force a light-on-dark color
+   since the bar stays dark regardless of the active mode. */
+.top-nav-aside button { color: #d1d5db !important; }
+@media (max-width: 480px) {
+  .top-nav-product { font-size: 15px; }
+}
 
 /* Headline accent = Cloudscape's gen-AI gradient (--color-background-*-gen-ai,
    read from the live console). The pale #b8e7ff end stop is dropped for text.

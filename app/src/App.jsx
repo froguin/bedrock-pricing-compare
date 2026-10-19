@@ -54,7 +54,13 @@ function useTheme() {
     requestAnimationFrame(() => {
       const nav = document.getElementById("top-nav");
       const bar = nav?.querySelector('[class*="awsui_top-navigation_"]');
-      if (nav && bar) nav.style.background = getComputedStyle(bar).backgroundColor;
+      if (nav && bar) {
+        const cs = getComputedStyle(bar);
+        nav.style.background = cs.backgroundColor;
+        // The bar's own divider only spans the bar; extend the same line across
+        // the date/theme segment so the bottom edge is continuous.
+        nav.style.borderBottom = `${cs.borderBottomWidth} solid ${cs.borderBottomColor}`;
+      }
     });
   }, [theme]);
   const toggle = () => setTheme((t) => { const n = t === "dark" ? "light" : "dark"; localStorage.setItem("theme", n); return n; });

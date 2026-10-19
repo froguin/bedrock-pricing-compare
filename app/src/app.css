@@ -15,3 +15,18 @@ body.awsui-dark-mode #top-nav { border-bottom-color: #2f2d28; }
    specificity hack, so these overrides need !important. */
 #top-nav [class*="awsui_identity_"] { flex-shrink: 0 !important; }
 #top-nav [class*="awsui_title_"] { overflow: visible !important; text-overflow: clip !important; white-space: nowrap !important; }
+
+/* Headline accent = Cloudscape's gen-AI gradient (--color-background-*-gen-ai,
+   read from the live console). The pale #b8e7ff end stop is dropped for text.
+   Light mode uses deeper stops so the large heading keeps >= 3:1 on white. */
+.title-grad {
+  background: linear-gradient(90deg, #0073e6 0%, #4d6bff 35%, #7a5cff 65%, #8a1fff 100%);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent; -webkit-text-fill-color: transparent;
+}
+body.awsui-dark-mode .title-grad {
+  background-image: linear-gradient(90deg, #0099ff 0%, #5c7fff 35%, #8575ff 65%, #962eff 100%);
+}
+@media (forced-colors: active) {
+  .title-grad { background: none; color: CanvasText; -webkit-text-fill-color: CanvasText; }
+}

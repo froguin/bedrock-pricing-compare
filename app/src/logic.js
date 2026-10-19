@@ -228,36 +228,52 @@ export const asOf = (v) => { const m = String(v || "").match(/^(\d{4})(\d{2})(\d
 
 export const isEmbeddingModel = (modelId) => /embed|embedding/i.test(String(modelId));
 
-// Embeddings are input-only by design. Their monthly cost is input rate × input
-// token volume; requiring an output rate incorrectly classified them as failures.
+// Embeddings are input-only by design. Build the complete regional index first,
+// then rank only offerings that are actually purchasable in the selected region.
 export function rankEmbeddings(P, f, matches) {
   const byModel = new Map();
   for (const p of P) {
-    if (!isEmbeddingModel(p.model_id) || p.dimension !== "input" || p.source_region !== f.region) continue;
+    if (!isEmbeddingModel(p.model_id) || p.dimension !== "input") continue;
     if ((p.execution_mode || "online") !== f.mode || !f.statuses.has(p.status || "ga")) continue;
     if (!f.tiers.has(p.service_tier) || !f.bands.has(p.context_band || "standard")) continue;
     if (!f.vendors.has(p.provider) || !matches(p.provider, p.model_id, f.q)) continue;
     if (!allowedPaths(f.resid).includes(p.endpoint_type)) continue;
     const key = `${p.provider}\u0001${p.model_id}`;
-    const x = byModel.get(key) || { key, provider:p.provider, model:p.model_id, status:p.status || "ga", options:[] };
-    x.options.push({ path:p.endpoint_type, rate:p.price_per_1m }); byModel.set(key,x);
+    const x = byModel.get(key) || { key, provider:p.provider, model:p.model_id, status:p.status || "ga", regions:{} };
+    const rates = ((x.regions[p.source_region] ??= {})[p.endpoint_type] ??= new Set());
+    rates.add(p.price_per_1m); byModel.set(key,x);
   }
-  const out=[];
+  const ranked=[], missing=[];
   for(const x of byModel.values()){
-    x.options.sort((a,b)=>a.rate-b.rate); const best=x.options[0];
-    const rates=[...new Set(x.options.filter(o=>o.path===best.path).map(o=>o.rate))].sort((a,b)=>a-b);
-    out.push({...x,path:best.path,rates,costLo:rates[0]*f.inM,costHi:rates.at(-1)*f.inM});
+    const here=x.regions[f.region];
+    if(!here){ missing.push({key:x.key,provider:x.provider,model:x.model,where:Object.keys(x.regions).length}); continue; }
+    const options=[];
+    for(const path of allowedPaths(f.resid)){
+      const rates=here[path];
+      if(rates?.size) options.push({path,rates:[...rates].sort((a,b)=>a-b)});
+    }
+    if(!options.length){ missing.push({key:x.key,provider:x.provider,model:x.model,where:Object.keys(x.regions).length}); continue; }
+    options.sort((a,b)=>a.rates[0]-b.rates[0]); const best=options[0];
+    ranked.push({...x,path:best.path,rates:best.rates,costLo:best.rates[0]*f.inM,costHi:best.rates.at(-1)*f.inM});
   }
-  return out.sort((a,b)=>a.costLo-b.costLo);
+  ranked.sort((a,b)=>a.costLo-b.costLo); missing.sort((a,b)=>b.where-a.where);
+  return { ranked, missing };
 }
 
-export function groupVideoPrices(points = []) {
+// Video generation is billed in the physical source region. As with token
+// models, the primary table contains only rows available in the selected region;
+// rows offered elsewhere are returned separately for the unavailable section.
+export function groupVideoPrices(points = [], selectedRegion = null) {
   const map=new Map();
   for(const p of points.filter(p=>p.category==="video-generation"&&p.billing_unit==="second")){
     const key=[p.provider,p.model_id,p.variant,p.price_per_unit].join("\u0001");
     const x=map.get(key)||{key,provider:p.provider,model:p.model_id,variant:p.variant,rate:p.price_per_unit,regions:[]};
     x.regions.push(p.source_region); map.set(key,x);
   }
-  return [...map.values()].map(x=>({...x,regions:[...new Set(x.regions)].sort()})).sort((a,b)=>a.rate-b.rate);
+  const rows=[...map.values()].map(x=>({...x,regions:[...new Set(x.regions)].sort()}));
+  if(!selectedRegion) return { ranked:rows.sort((a,b)=>a.rate-b.rate), missing:[] };
+  const ranked=rows.filter(x=>x.regions.includes(selectedRegion)).sort((a,b)=>a.rate-b.rate);
+  const missing=rows.filter(x=>!x.regions.includes(selectedRegion)).sort((a,b)=>b.regions.length-a.regions.length||a.rate-b.rate);
+  return { ranked, missing };
 }
 export const SRC_KO = { AmazonBedrock: "Bedrock", AmazonBedrockFoundationModels: "Marketplace 모델" };

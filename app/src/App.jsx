@@ -125,8 +125,10 @@ export default function App({ snap }) {
     options: snap.regions.filter(test).sort((a, b) => regionCount[b] - regionCount[a])
       .map((r) => ({ value: r, label: regionFull(r), tags: [`${regionCount[r]}개 모델`] })),
   })).filter((g) => g.options.length), [snap.regions, regionCount]);
-  const embeddingItems = useMemo(() => rankEmbeddings(P, f, matches), [P, f, matches]);
-  const videoItems = useMemo(() => groupVideoPrices(snap.special_prices), [snap.special_prices]);
+  const embeddingResult = useMemo(() => rankEmbeddings(P, f, matches), [P, f, matches]);
+  const embeddingItems = embeddingResult.ranked;
+  const videoResult = useMemo(() => groupVideoPrices(snap.special_prices, f.region), [snap.special_prices, f.region]);
+  const videoItems = videoResult.ranked;
   const regionSelected = { value: f.region, label: regionFull(f.region), tags: [`${regionCount[f.region]}개 모델`] };
 
   const result = useMemo(() => rank(P, f, matches), [P, f, matches]);
@@ -357,10 +359,21 @@ export default function App({ snap }) {
                   ariaLabels={{ tableLabel: "임베딩 모델 비용" }}
                   columnDefinitions={[
                     { id:"embedding-model", header:"모델", cell:(x)=><><b>{x.model}</b> <Box variant="span" color="text-body-secondary">{x.provider}</Box></> },
-                    { id:"embedding-path", header:"처리 방식", cell:(x)=><StatusIndicator type={PATH_KO[x.path].type}>{PATH_KO[x.path].label}</StatusIndicator> },
+                    { id:"embedding-path", header:"처리 방식", cell:(x)=><SpaceBetween direction="horizontal" size="xs"><StatusIndicator type={PATH_KO[x.path].type}>{PATH_KO[x.path].label}</StatusIndicator><span className="mine-chip">{regionName(f.region)}</span></SpaceBetween> },
                     { id:"embedding-rate", header:"입력 /1M", cell:(x)=>rateRange(x.rates) },
                     { id:"embedding-monthly", header:"월 비용", cell:(x)=><b>{x.costLo===x.costHi?money(x.costLo):`${money(x.costLo)}–${money(x.costHi)}`}</b> },
                   ]} />
+              </ExpandableSection>
+            )}
+
+            {embeddingResult.missing.length > 0 && (
+              <ExpandableSection variant="stacked" headerText={`${regionName(f.region)}에서 제공되지 않는 임베딩 모델`}
+                headerCounter={`(${embeddingResult.missing.length})`}>
+                <ColumnLayout columns={2}>
+                  {embeddingResult.missing.map((x) => (
+                    <Box key={x.key}>{x.model} <Box variant="span" color="text-body-secondary">{x.provider} · 다른 리전 {x.where}곳</Box></Box>
+                  ))}
+                </ColumnLayout>
               </ExpandableSection>
             )}
 
@@ -380,8 +393,19 @@ export default function App({ snap }) {
                       { id:"video-variant", header:"출력 유형", cell:(x)=>x.variant },
                       { id:"video-rate", header:"생성 1초", cell:(x)=>money(x.rate) },
                       { id:"video-monthly", header:`${videoSeconds.toLocaleString()}초 비용`, cell:(x)=><b>{money(x.rate*videoSeconds)}</b> },
-                      { id:"video-regions", header:"제공 리전", cell:(x)=><RegionChips regions={x.regions} selected={f.region} /> },
+                      { id:"video-region", header:"처리 방식", cell:()=><SpaceBetween direction="horizontal" size="xs"><StatusIndicator type="success">리전 내 처리</StatusIndicator><span className="mine-chip">{regionName(f.region)}</span></SpaceBetween> },
                     ]} />
+                </SpaceBetween>
+              </ExpandableSection>
+            )}
+
+            {videoResult.missing.length > 0 && (
+              <ExpandableSection variant="stacked" headerText={`${regionName(f.region)}에서 제공되지 않는 영상 생성 모델`}
+                headerCounter={`(${videoResult.missing.length})`}>
+                <SpaceBetween size="xxs">
+                  {videoResult.missing.map((x) => (
+                    <Box key={x.key}><b>{x.model}</b> <Box variant="span" color="text-body-secondary">{x.provider} · {x.variant}</Box>{" "}<RegionChips regions={x.regions} selected={f.region} /></Box>
+                  ))}
                 </SpaceBetween>
               </ExpandableSection>
             )}

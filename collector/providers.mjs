@@ -27,12 +27,15 @@ const ALIASES = {
   "nvidia": "Nvidia",
   "writer": "Writer",
   "twelvelabs": "TwelveLabs",
+  "luma": "Luma AI",
+  "luma ai": "Luma AI",
 };
 
 // model-name -> provider, for SKUs with no provider hint at all
 const BY_MODEL_NAME = [
   [/palmyra/i, "Writer"],
   [/twelvelabs|pegasus|marengo/i, "TwelveLabs"],
+  [/luma|ray\s?v?2/i, "Luma AI"],
   [/claude/i, "Anthropic"],
   [/nova|titan/i, "Amazon"],
   [/llama/i, "Meta"],

@@ -25,7 +25,7 @@ import bedrockIcon from "./bedrock-icon.svg";
 import {
   PATH_KO, TIER_KO, STATUS_KO, BAND_KO, MODE_KO, PRESETS, SIZES, REGION_ORDER,
   regionName, regionFull, makeMatcher, rank, expandTiers, money, rate, rateRange,
-  sizeBucket, asOf, SRC_KO,
+  sizeBucket, asOf, SRC_KO, rankEmbeddings, groupVideoPrices,
 } from "./logic.js";
 
 const STATUS_BADGE = { legacy: "grey", preview: "blue", internal: "severity-medium" };
@@ -103,6 +103,7 @@ export default function App({ snap }) {
   }));
   const set = (patch) => setF((s) => ({ ...s, ...patch }));
   const [sortKey, setSortKey] = useState("cost");
+  const [videoSeconds, setVideoSeconds] = useState(60);
   const [expanded, setExpanded] = useState([]);
 
   useEffect(() => {
@@ -124,6 +125,8 @@ export default function App({ snap }) {
     options: snap.regions.filter(test).sort((a, b) => regionCount[b] - regionCount[a])
       .map((r) => ({ value: r, label: regionFull(r), tags: [`${regionCount[r]}개 모델`] })),
   })).filter((g) => g.options.length), [snap.regions, regionCount]);
+  const embeddingItems = useMemo(() => rankEmbeddings(P, f, matches), [P, f, matches]);
+  const videoItems = useMemo(() => groupVideoPrices(snap.special_prices), [snap.special_prices]);
   const regionSelected = { value: f.region, label: regionFull(f.region), tags: [`${regionCount[f.region]}개 모델`] };
 
   const result = useMemo(() => rank(P, f, matches), [P, f, matches]);
@@ -338,6 +341,43 @@ export default function App({ snap }) {
                 </Header>
               }
             />
+
+            {embeddingItems.length > 0 && (
+              <ExpandableSection variant="stacked" headerText="임베딩 모델 비용"
+                headerCounter={`(${embeddingItems.length})`}
+                headerDescription={`출력 토큰이 없는 입력 전용 모델입니다. 월 입력 ${f.inM.toLocaleString()}백만 토큰으로 계산합니다.`}>
+                <Table variant="embedded" trackBy="key" items={embeddingItems}
+                  ariaLabels={{ tableLabel: "임베딩 모델 비용" }}
+                  columnDefinitions={[
+                    { id:"embedding-model", header:"모델", cell:(x)=><><b>{x.model}</b> <Box variant="span" color="text-body-secondary">{x.provider}</Box></> },
+                    { id:"embedding-path", header:"처리 방식", cell:(x)=><StatusIndicator type={PATH_KO[x.path].type}>{PATH_KO[x.path].label}</StatusIndicator> },
+                    { id:"embedding-rate", header:"입력 /1M", cell:(x)=>rateRange(x.rates) },
+                    { id:"embedding-monthly", header:"월 비용", cell:(x)=><b>{x.costLo===x.costHi?money(x.costLo):`${money(x.costLo)}–${money(x.costHi)}`}</b> },
+                  ]} />
+              </ExpandableSection>
+            )}
+
+            {videoItems.length > 0 && (
+              <ExpandableSection variant="stacked" headerText="영상 생성 모델 비용"
+                headerCounter={`(${videoItems.length})`}
+                headerDescription="출력 토큰이 아니라 생성된 영상 길이(초)로 과금됩니다.">
+                <SpaceBetween size="m">
+                  <FormField label="월 생성 영상 길이" description="초">
+                    <div style={{maxWidth:180}}><Input type="number" inputMode="numeric" value={String(videoSeconds)}
+                      ariaLabel="월 생성 영상 길이(초)" onChange={({detail})=>setVideoSeconds(Math.max(0,+detail.value||0))} /></div>
+                  </FormField>
+                  <Table variant="embedded" trackBy="key" items={videoItems}
+                    ariaLabels={{ tableLabel:"영상 생성 모델 비용" }}
+                    columnDefinitions={[
+                      { id:"video-model", header:"모델", cell:(x)=><><b>{x.model}</b> <Box variant="span" color="text-body-secondary">{x.provider}</Box></> },
+                      { id:"video-variant", header:"출력 유형", cell:(x)=>x.variant },
+                      { id:"video-rate", header:"생성 1초", cell:(x)=>money(x.rate) },
+                      { id:"video-monthly", header:`${videoSeconds.toLocaleString()}초 비용`, cell:(x)=><b>{money(x.rate*videoSeconds)}</b> },
+                      { id:"video-regions", header:"제공 리전", cell:(x)=><RegionChips regions={x.regions} selected={f.region} /> },
+                    ]} />
+                </SpaceBetween>
+              </ExpandableSection>
+            )}
 
             {pricePending.length > 0 && (
               <ExpandableSection variant="stacked"

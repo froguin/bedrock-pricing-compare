@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-18T22:55:15.611Z",
+  "generated_at": "2026-10-19T12:53:54.774Z",
   "offer_version": "20261016210806",
   "regions": [
     "eu-west-1",
@@ -40,6 +40,61 @@
     "af-south-1"
   ],
   "count": 12184,
+  "special_count": 4,
+  "special_prices": [
+    {
+      "category": "video-generation",
+      "provider": "Amazon",
+      "model_id": "Nova Reel",
+      "source_region": "ap-northeast-1",
+      "billing_unit": "second",
+      "price_per_unit": 0.08,
+      "variant": "I2V Medium fps HD Resolution",
+      "source": "price-list-api",
+      "sku": "3UX4Q425NPMSXE4K",
+      "effective_date": "2026-10-01T00:00:00Z",
+      "offer_version": "20261016210806"
+    },
+    {
+      "category": "video-generation",
+      "provider": "Amazon",
+      "model_id": "Nova Reel",
+      "source_region": "ap-northeast-1",
+      "billing_unit": "second",
+      "price_per_unit": 0.08,
+      "variant": "T2V Medium fps HD Resolution",
+      "source": "price-list-api",
+      "sku": "PTKWYG9GK2S2ADDY",
+      "effective_date": "2026-10-01T00:00:00Z",
+      "offer_version": "20261016210806"
+    },
+    {
+      "category": "video-generation",
+      "provider": "Amazon",
+      "model_id": "Nova Reel",
+      "source_region": "us-east-1",
+      "billing_unit": "second",
+      "price_per_unit": 0.08,
+      "variant": "I2V Medium fps HD Resolution",
+      "source": "price-list-api",
+      "sku": "MZVUYCDTABPBDX5B",
+      "effective_date": "2026-10-01T00:00:00Z",
+      "offer_version": "20261016210806"
+    },
+    {
+      "category": "video-generation",
+      "provider": "Amazon",
+      "model_id": "Nova Reel",
+      "source_region": "us-east-1",
+      "billing_unit": "second",
+      "price_per_unit": 0.08,
+      "variant": "T2V Medium fps HD Resolution",
+      "source": "price-list-api",
+      "sku": "GD75WHG8XCGESZ8A",
+      "effective_date": "2026-10-01T00:00:00Z",
+      "offer_version": "20261016210806"
+    }
+  ],
   "price_points": [
     {
       "provider": "Nvidia",

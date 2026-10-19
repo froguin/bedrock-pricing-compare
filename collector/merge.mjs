@@ -23,6 +23,7 @@ const abfm = JSON.parse(readFileSync(join(dir, pick(/^abfm-/))));
 const english = read(join(ROOT, "data/english-pricing.json"), { models: [], prices: [] });
 const docs = read(join(ROOT, "data/english-docs.json"), { models: [] });
 const apiPoints = [...bed.price_points, ...abfm.price_points];
+const specialPrices = [...(bed.special_prices || []), ...(abfm.special_prices || [])];
 
 const norm = (s) => String(s || "").toLowerCase()
   .replace(/\b(amazon|anthropic|meta|openai|xai|z ai|mistral ai|moonshot ai|nvidia)\b/g, "")
@@ -142,6 +143,8 @@ const merged = {
   english_page_points: pagePoints.length,
   api_fallback_points: apiFallback.length,
   source_conflicts: conflicts,
+  special_count: specialPrices.length,
+  special_prices: specialPrices,
   announced_models: announcedModels,
   price_points: pricePoints,
 };

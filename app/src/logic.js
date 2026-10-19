@@ -150,6 +150,7 @@ export function rank(P, f, matches) {
   const ranked = [], partial = [], missing = [];
   for (const [key, regions] of Object.entries(idx)) {
     const [provider, model] = key.split("\u0001");
+    if (isEmbeddingModel(model)) continue; // rendered in the input-only embedding section
     const here = regions[f.region];
     if (!here) { missing.push({ key, provider, model, where: Object.keys(regions).length }); continue; }
     let best = null;
@@ -209,4 +210,39 @@ export function expandTiers(r, f) {
 }
 
 export const asOf = (v) => { const m = String(v || "").match(/^(\d{4})(\d{2})(\d{2})/); return m ? `${m[1]}-${m[2]}-${m[3]}` : "?"; };
+
+export const isEmbeddingModel = (modelId) => /embed|embedding/i.test(String(modelId));
+
+// Embeddings are input-only by design. Their monthly cost is input rate × input
+// token volume; requiring an output rate incorrectly classified them as failures.
+export function rankEmbeddings(P, f, matches) {
+  const byModel = new Map();
+  for (const p of P) {
+    if (!isEmbeddingModel(p.model_id) || p.dimension !== "input" || p.source_region !== f.region) continue;
+    if ((p.execution_mode || "online") !== f.mode || !f.statuses.has(p.status || "ga")) continue;
+    if (!f.tiers.has(p.service_tier) || !f.bands.has(p.context_band || "standard")) continue;
+    if (!f.vendors.has(p.provider) || !matches(p.provider, p.model_id, f.q)) continue;
+    if (!allowedPaths(f.resid).includes(p.endpoint_type)) continue;
+    const key = `${p.provider}\u0001${p.model_id}`;
+    const x = byModel.get(key) || { key, provider:p.provider, model:p.model_id, status:p.status || "ga", options:[] };
+    x.options.push({ path:p.endpoint_type, rate:p.price_per_1m }); byModel.set(key,x);
+  }
+  const out=[];
+  for(const x of byModel.values()){
+    x.options.sort((a,b)=>a.rate-b.rate); const best=x.options[0];
+    const rates=[...new Set(x.options.filter(o=>o.path===best.path).map(o=>o.rate))].sort((a,b)=>a-b);
+    out.push({...x,path:best.path,rates,costLo:rates[0]*f.inM,costHi:rates.at(-1)*f.inM});
+  }
+  return out.sort((a,b)=>a.costLo-b.costLo);
+}
+
+export function groupVideoPrices(points = []) {
+  const map=new Map();
+  for(const p of points.filter(p=>p.category==="video-generation"&&p.billing_unit==="second")){
+    const key=[p.provider,p.model_id,p.variant,p.price_per_unit].join("\u0001");
+    const x=map.get(key)||{key,provider:p.provider,model:p.model_id,variant:p.variant,rate:p.price_per_unit,regions:[]};
+    x.regions.push(p.source_region); map.set(key,x);
+  }
+  return [...map.values()].map(x=>({...x,regions:[...new Set(x.regions)].sort()})).sort((a,b)=>a.rate-b.rate);
+}
 export const SRC_KO = { AmazonBedrock: "Bedrock", AmazonBedrockFoundationModels: "Marketplace 모델" };

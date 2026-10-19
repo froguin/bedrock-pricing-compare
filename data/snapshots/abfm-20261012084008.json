@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-19T11:34:18.661Z",
+  "generated_at": "2026-10-19T12:57:12.979Z",
   "offer_version": "20261012084008",
   "regions": [
     "ca-west-1",
@@ -39,7 +39,36 @@
     "ap-southeast-6"
   ],
   "count": 5595,
+  "special_count": 2,
   "source": "AmazonBedrockFoundationModels",
+  "special_prices": [
+    {
+      "category": "video-generation",
+      "provider": "Luma AI",
+      "model_id": "Luma Ray2",
+      "source_region": "us-west-2",
+      "billing_unit": "second",
+      "price_per_unit": 1.5,
+      "variant": "T2V Medium fps HD Resolution",
+      "source": "price-list-api",
+      "sku": "B8WQQQUJRYPU7ZY7",
+      "effective_date": "2026-07-01T00:00:00Z",
+      "offer_version": "20261012084008"
+    },
+    {
+      "category": "video-generation",
+      "provider": "Luma AI",
+      "model_id": "Luma Ray2",
+      "source_region": "us-west-2",
+      "billing_unit": "second",
+      "price_per_unit": 0.75,
+      "variant": "T2V Medium fps Standard Resolution",
+      "source": "price-list-api",
+      "sku": "NUQE4YNFZCPYCRJJ",
+      "effective_date": "2026-07-01T00:00:00Z",
+      "offer_version": "20261012084008"
+    }
+  ],
   "price_points": [
     {
       "provider": "Anthropic",

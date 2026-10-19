@@ -4,8 +4,9 @@ on:
   push:
     branches: [main]
   schedule:
-    # Every 30 minutes, off the :00/:30 rush. GitHub may start scheduled runs late.
-    - cron: "7,37 * * * *"
+    # Hourly, off the :00 rush. GitHub may start scheduled runs late or drop them
+    # under load; an hourly cadence is dropped less often than a sub-hour one.
+    - cron: "7 * * * *"
   workflow_dispatch:
     inputs:
       force:

@@ -12,5 +12,9 @@
   "page": {
     "tables_hash": "3bf24c8c9c13257ca654915c3bf5920e5cc73a477e9b162a3bb745c62af04694",
     "tables": 169
+  },
+  "docs": {
+    "tables_hash": "08e1bc68f9175305a9346d83599a494e39bee579502d3da93ea2228c44eb95bb",
+    "tables": 144
   }
 }

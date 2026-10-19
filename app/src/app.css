@@ -1,9 +1,17 @@
 /* Page chrome outside Cloudscape components — 2026 AWS Console ("one theme")
    neutrals. applyMode() toggles .awsui-dark-mode on <body>. */
 body { background: #f9f9f9; color: #201e1b; }
-body.awsui-dark-mode { background: #100f0d; color: #f3f3f1; }
+body.awsui-dark-mode { background: #100f0d; color: #bab7b0; }
 
 /* Selected region chip — console selection style: blue tint + blue text. */
 .mine-chip { display: inline-block; padding: 0 6px; border-radius: 4px; font-size: 12px;
   line-height: 20px; font-weight: 600; color: #295eff; background: #f5f7ff; box-shadow: inset 0 0 0 1px #295eff; }
-body.awsui-dark-mode .mine-chip { color: #94afff; background: #0b1433; box-shadow: inset 0 0 0 1px #7598ff; }
+body.awsui-dark-mode .mine-chip { color: #94afff; background: rgba(92, 127, 255, .2); box-shadow: inset 0 0 0 1px #5c7fff; }
+
+/* Console top bar: same surface as the page, hairline divider underneath. */
+#top-nav { border-bottom: 1px solid #e3e1de; }
+body.awsui-dark-mode #top-nav { border-bottom-color: #2f2d28; }
+/* TopNavigation ellipsizes the identity title; its rules carry an id-level
+   specificity hack, so these overrides need !important. */
+#top-nav [class*="awsui_identity_"] { flex-shrink: 0 !important; }
+#top-nav [class*="awsui_title_"] { overflow: visible !important; text-overflow: clip !important; white-space: nowrap !important; }

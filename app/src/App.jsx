@@ -262,12 +262,12 @@ export default function App({ snap }) {
                       onChange={({ detail }) => { setExpanded([]); set({ region: detail.selectedOption.value }); }} />
                   </FormField>
                   <FormField label="월 사용량 (백만 토큰)" description="입력 · 출력">
-                    <ColumnLayout columns={2}>
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
                       <Input type="number" inputMode="numeric" value={String(f.inM)} ariaLabel="월 입력 토큰(백만)"
                         onChange={({ detail }) => set({ inM: Math.max(0, +detail.value || 0) })} />
                       <Input type="number" inputMode="numeric" value={String(f.outM)} ariaLabel="월 출력 토큰(백만)"
                         onChange={({ detail }) => set({ outM: Math.max(0, +detail.value || 0) })} />
-                    </ColumnLayout>
+                    </div>
                   </FormField>
                   <FormField label="응답 방식">
                     <SegmentedControl selectedId={f.mode} label="응답 방식"

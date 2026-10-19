@@ -9,6 +9,9 @@ import "./app.css";
 import { applyTheme } from "@cloudscape-design/components/theming";
 import { applyDensity, Density } from "@cloudscape-design/global-styles";
 import App from "./App.jsx";
+import { initRum } from "./rum.js";
+
+initRum();
 
 // Compact density = the vanilla page's data-tool rhythm (Cloudscape's default
 // "comfortable" is tuned for sparse console forms).

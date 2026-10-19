@@ -38,6 +38,12 @@ test("custom-model training inference prices never override base model pricing",
   assert.notEqual(x.output, 0.39);
 });
 
+test("unsupported standard Grok SKU is not merged into its documented Global rate", () => {
+  for (const model of ["Grok 4.6", "Grok 4.7"]) {
+    assert.deepEqual(values(model, "ap-northeast-2", "global-cris"), { input: 2, output: 6 });
+  }
+});
+
 test("every cross-source mismatch is explicit and English values win", () => {
   assert.ok(snap.source_conflicts.length > 0);
   const c = snap.source_conflicts[0];

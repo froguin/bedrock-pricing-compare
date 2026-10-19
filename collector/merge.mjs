@@ -85,13 +85,16 @@ const documentedApi = apiPoints.flatMap((p) => {
   const current = docRegionsFor(doc, p.endpoint_type);
   if (current.includes(p.source_region)) return [{ ...p, status: doc.status, availability_source: "english-documentation" }];
   // The offer's UsageType does not always distinguish Geo from in-region
-  // (for example Llama 3.2 and Claude Opus 4.1). Documentation outranks that
-  // parser: remap a priced row to the documented route instead of deleting it.
-  const route = ["regional-cris", "global-cris", "in-region"]
-    .find((candidate) => docRegionsFor(doc, candidate).includes(p.source_region));
-  if (!route) return [];
-  return [{ ...p, endpoint_type: route, status: doc.status,
-    availability_source: "english-documentation", api_endpoint_type: p.endpoint_type }];
+  // (for example Llama 3.2 and Claude Opus 4.1). Only remap an invalid
+  // in-region classification to Geo when Documentation explicitly supports
+  // Geo in that source region. Never remap a generic/Geo SKU to Global: doing
+  // so merged Grok's $2/$6 Global rate with its $2.2/$6.6 standard rate and
+  // produced a fake "two prices" range.
+  if (p.endpoint_type === "in-region" && docRegionsFor(doc, "regional-cris").includes(p.source_region)) {
+    return [{ ...p, endpoint_type: "regional-cris", status: doc.status,
+      availability_source: "english-documentation", api_endpoint_type: p.endpoint_type }];
+  }
+  return [];
 });
 const apiByKey = new Map();
 for (const p of documentedApi) {

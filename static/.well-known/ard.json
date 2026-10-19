@@ -1,0 +1,28 @@
+{
+  "specVersion": "1.0",
+  "entries": [
+    {
+      "@context": "https://agenticresourcediscovery.org/context/v1",
+      "identifier": "urn:air:bedrock-compare.awskr.net:pricing:bedrock-compare",
+      "displayName": "Amazon Bedrock monthly cost comparison",
+      "description": "Read-only comparison of official AWS Bedrock model rates and monthly estimated costs by region, inference path, and token usage.",
+      "type": "application/vnd.awskr.bedrock-price-comparison+json",
+      "data": {
+        "homepage": "https://bedrock-compare.awskr.net/",
+        "access": "read-only",
+        "currency": "USD",
+        "capabilities": ["model-price-comparison", "region-availability", "monthly-cost-estimation"],
+        "priceSources": ["AmazonBedrock", "AmazonBedrockFoundationModels"]
+      },
+      "representativeQueries": [
+        "Compare Amazon Bedrock model prices in Seoul",
+        "What is the monthly cost of a Bedrock model?",
+        "Which Bedrock model supports in-region inference?"
+      ],
+      "trustManifest": {
+        "identity": "https://bedrock-compare.awskr.net",
+        "identityType": "https"
+      }
+    }
+  ]
+}

@@ -37,9 +37,11 @@ up() { aws s3 cp "$ROOT/$1" "s3://${BUCKET}/$2" --content-type "text/html; chars
 up dist/bedrock-pricing.html    index.html
 up dist/bedrock-pricing.html.br index.html.br --content-encoding br
 up dist/bedrock-pricing.html.gz index.html.gz --content-encoding gzip
+aws s3 cp "$ROOT/static/robots.txt" "s3://${BUCKET}/robots.txt" --content-type "text/plain; charset=utf-8" --cache-control "public, max-age=3600" --no-progress
+aws s3 cp "$ROOT/static/sitemap.xml" "s3://${BUCKET}/sitemap.xml" --content-type "application/xml; charset=utf-8" --cache-control "public, max-age=3600" --no-progress
 
 echo "==> invalidate edge cache"
-aws cloudfront create-invalidation --distribution-id "$DIST_ID" --paths "/index.html" "/" "/index.html.br" "/index.html.gz" \
+aws cloudfront create-invalidation --distribution-id "$DIST_ID" --paths "/index.html" "/" "/index.html.br" "/index.html.gz" "/robots.txt" "/sitemap.xml" \
   --query 'Invalidation.{Id:Id,Status:Status}' --output json
 
 echo

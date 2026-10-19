@@ -215,6 +215,12 @@ export default function App({ snap }) {
     <>
       <div id="top-nav" style={{ position: "sticky", top: 0, zIndex: 1002 }}>
         <TopNavigation
+          i18nStrings={{
+            overflowMenuTriggerText: "메뉴",
+            overflowMenuTitleText: "메뉴",
+            overflowMenuDismissIconAriaLabel: "메뉴 닫기",
+            overflowMenuBackIconAriaLabel: "뒤로",
+          }}
           identity={{ href: "#", title: "Bedrock 비용 비교", logo: { src: bedrockIcon, alt: "Amazon Bedrock" } }}
           utilities={[
             { type: "button", text: `${newest} 기준`, disableUtilityCollapse: true },
@@ -225,14 +231,14 @@ export default function App({ snap }) {
           ]}
         />
       </div>
-      <div style={{ maxWidth: 1120, margin: "0 auto", padding: "28px 20px 40px" }}>
+      <main style={{ maxWidth: 1120, margin: "0 auto", padding: "28px 20px 40px" }}>
         <ContentLayout disableOverlap
           header={
             <Header variant="h1"
               description={
                 <span>
                   AWS 공개 가격 파일 기준 · <b>{srcDates.join(" · ")}</b>{" "}
-                  <Popover header="날짜가 두 개인 이유" size="large" triggerType="custom"
+                  <Popover header="날짜가 두 개인 이유" size="large" triggerType="custom" dismissAriaLabel="설명 닫기"
                     content={<SpaceBetween size="xs">
                       <span>AWS는 Bedrock 가격을 <b>두 파일로 따로</b> 발행하고, 갱신 시점도 서로 다릅니다.</span>
                       <span>· <b>Bedrock</b>: Amazon Nova·Llama·Mistral 등 AWS가 직접 제공하는 모델</span>
@@ -312,7 +318,11 @@ export default function App({ snap }) {
                 onExpandableItemToggle: ({ detail }) => setExpanded((cur) => detail.expanded
                   ? [...cur, detail.item] : cur.filter((x) => x.id !== detail.item.id)),
               }}
-              ariaLabels={{ tableLabel: "월 비용 순위" }}
+              ariaLabels={{
+                tableLabel: "월 비용 순위",
+                expandButtonLabel: (item) => `${item.model} 리전별 단가 펼치기`,
+                collapseButtonLabel: (item) => `${item.model} 리전별 단가 접기`,
+              }}
               empty={<Box textAlign="center" color="inherit" padding="m">{emptyMsg}</Box>}
               header={
                 <Header counter={`(${items.length})`}
@@ -405,7 +415,7 @@ export default function App({ snap }) {
             </SpaceBetween>
           </SpaceBetween>
         </ContentLayout>
-      </div>
+      </main>
     </>
   );
 }

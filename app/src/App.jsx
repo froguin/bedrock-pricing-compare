@@ -224,8 +224,8 @@ export default function App({ snap }) {
           ]}
         />
       </div>
-      <div style={{ maxWidth: 1120, margin: "0 auto", padding: "0 20px 40px" }}>
-        <ContentLayout
+      <div style={{ maxWidth: 1120, margin: "0 auto", padding: "28px 20px 40px" }}>
+        <ContentLayout disableOverlap
           header={
             <Header variant="h1"
               description={

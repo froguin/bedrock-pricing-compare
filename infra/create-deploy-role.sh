@@ -3,7 +3,8 @@
 #
 # Trust: only froguin/bedrock-pricing-compare on refs/heads/main (scheduled and
 #        manual runs on main). Forks, PRs and other branches cannot assume it.
-# Power: PutObject on exactly s3://awskr-bedrock-pricing/index.html, and
+# Power: PutObject on exactly s3://awskr-bedrock-pricing/index.html (+ its .br/.gz
+#        pre-compressed copies), and
 #        CreateInvalidation on exactly the one CloudFront distribution.
 # No long-lived keys; each run gets 1h credentials.
 #
@@ -33,7 +34,7 @@ EOF
 PERM=$(cat <<EOF
 {"Version":"2012-10-17","Statement":[
  {"Sid":"UploadSitePage","Effect":"Allow","Action":"s3:PutObject",
-  "Resource":"arn:aws:s3:::${BUCKET}/index.html"},
+  "Resource":["arn:aws:s3:::${BUCKET}/index.html","arn:aws:s3:::${BUCKET}/index.html.br","arn:aws:s3:::${BUCKET}/index.html.gz"]},
  {"Sid":"InvalidateSiteCache","Effect":"Allow","Action":"cloudfront:CreateInvalidation",
   "Resource":"arn:aws:cloudfront::${ACCOUNT}:distribution/${DIST_ID}"}]}
 EOF

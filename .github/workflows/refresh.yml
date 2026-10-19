@@ -63,6 +63,7 @@ jobs:
           npm ci --prefix app --no-audit --no-fund
           npm exec --prefix app -- vite build app
           node collector/build-standalone.mjs --src app/dist/index.html --out dist/bedrock-pricing.html
+          node collector/precompress.mjs
 
       - name: AWS credentials (OIDC, 1h, upload + invalidate only)
         if: steps.build.outcome == 'success'
@@ -74,11 +75,14 @@ jobs:
       - name: Deploy
         if: steps.build.outcome == 'success'
         run: |
-          aws s3 cp dist/bedrock-pricing.html "s3://$BUCKET/index.html" \
-            --content-type "text/html; charset=utf-8" \
-            --cache-control "public, max-age=300" --no-progress
+          # plain + pre-compressed copies; a CloudFront Function picks one per Accept-Encoding
+          up() { aws s3 cp "$1" "s3://$BUCKET/$2" --content-type "text/html; charset=utf-8" \
+                   --cache-control "public, max-age=300" --no-progress "${@:3}"; }
+          up dist/bedrock-pricing.html    index.html
+          up dist/bedrock-pricing.html.br index.html.br --content-encoding br
+          up dist/bedrock-pricing.html.gz index.html.gz --content-encoding gzip
           aws cloudfront create-invalidation --distribution-id "$DIST_ID" \
-            --paths "/index.html" "/" --query 'Invalidation.Id' --output text
+            --paths "/index.html" "/" "/index.html.br" "/index.html.gz" --query 'Invalidation.Id' --output text
 
       - name: Note page-only change
         if: steps.check.outputs.page_changed == 'true' && steps.check.outputs.offer_changed != 'true'

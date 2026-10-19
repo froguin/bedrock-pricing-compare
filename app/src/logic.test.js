@@ -44,21 +44,29 @@ test("expand tiers cover every priced region exactly once", () => {
 });
 
 
-test("embedding models are excluded from chat ranking and calculated input-only", () => {
+test("embedding models are excluded from chat ranking and filtered by selected region", () => {
   const f = base();
   const normal = rank(P, f, matches);
   assert.ok(normal.ranked.every((x) => !isEmbeddingModel(x.model)));
   assert.ok(normal.partial.every((x) => !isEmbeddingModel(x.model)));
-  const embeddings = rankEmbeddings(P, f, matches);
-  assert.ok(embeddings.some((x) => x.model === "TitanEmbeddingsV2-Text-input" && x.costLo === 0.246));
-  assert.ok(embeddings.some((x) => x.model === "Cohere Embed 4 Model" && x.costLo === 1.2));
+  const { ranked, missing } = rankEmbeddings(P, f, matches);
+  assert.ok(ranked.some((x) => x.model === "TitanEmbeddingsV2-Text-input" && x.costLo === 0.246));
+  assert.ok(ranked.some((x) => x.model === "Cohere Embed 4 Model" && x.costLo === 1.2));
+  assert.ok(ranked.every((x) => x.regions[f.region]));
+  assert.ok(missing.some((x) => x.model === "Titan Embeddings G1 Text"));
+  assert.ok(missing.every((x) => !ranked.some((r) => r.key === x.key)));
 });
 
-test("video generation rates stay per-second and group regions without duplicates", () => {
-  const rows = groupVideoPrices(snap.special_prices);
-  assert.ok(rows.some((x) => x.model === "Nova Reel" && x.rate === 0.08 && x.regions.includes("us-east-1")));
-  assert.ok(rows.some((x) => x.model === "Luma Ray2" && x.rate === 0.75 && /Standard/.test(x.variant)));
-  assert.ok(rows.every((x) => x.regions.length === new Set(x.regions).size));
+test("video generation shows only variants supported in the selected region", () => {
+  const seoul = groupVideoPrices(snap.special_prices, "ap-northeast-2");
+  assert.equal(seoul.ranked.length, 0);
+  assert.ok(seoul.missing.every((x) => !x.regions.includes("ap-northeast-2")));
+
+  const tokyo = groupVideoPrices(snap.special_prices, "ap-northeast-1");
+  assert.equal(tokyo.ranked.length, 2);
+  assert.ok(tokyo.ranked.every((x) => x.model === "Nova Reel" && x.rate === 0.08 && x.regions.includes("ap-northeast-1")));
+  assert.ok(tokyo.missing.some((x) => x.model === "Luma Ray2" && x.rate === 0.75 && /Standard/.test(x.variant)));
+  assert.ok(tokyo.ranked.every((x) => x.regions.length === new Set(x.regions).size));
 });
 
 

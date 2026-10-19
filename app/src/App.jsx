@@ -21,7 +21,6 @@ import Popover from "@cloudscape-design/components/popover";
 import ExpandableSection from "@cloudscape-design/components/expandable-section";
 import Checkbox from "@cloudscape-design/components/checkbox";
 import Alert from "@cloudscape-design/components/alert";
-import Link from "@cloudscape-design/components/link";
 import bedrockIcon from "./bedrock-icon.svg";
 import {
   PATH_KO, TIER_KO, STATUS_KO, BAND_KO, MODE_KO, PRESETS, SIZES, REGION_ORDER,
@@ -29,7 +28,6 @@ import {
   sizeBucket, asOf, SRC_KO,
 } from "./logic.js";
 
-const REPO = "https://github.com/froguin/bedrock-pricing-compare";
 const STATUS_BADGE = { legacy: "grey", preview: "blue", internal: "severity-medium" };
 
 /* ---------------- URL hash state (same keys as the vanilla page) ---------------- */
@@ -216,7 +214,6 @@ export default function App({ snap }) {
           identity={{ href: "#", title: "Bedrock 비용 비교", logo: { src: bedrockIcon, alt: "Amazon Bedrock" } }}
           utilities={[
             { type: "button", text: `${newest} 기준`, disableUtilityCollapse: true },
-            { type: "button", text: "GitHub", href: REPO, external: true, externalIconAriaLabel: "(새 탭)" },
             { type: "button", iconName: theme === "dark" ? "star" : "star-filled",
               text: theme === "dark" ? "밝은 테마" : "어두운 테마",
               ariaLabel: theme === "dark" ? "밝은 테마로 전환" : "어두운 테마로 전환",
@@ -382,8 +379,7 @@ export default function App({ snap }) {
             </Box>
             <Box variant="small" color="text-body-secondary" textAlign="center">
               © 2026 Bedrock 비용 비교 · <b>비공식 자료</b>이며 AWS와 무관합니다. 결제 전 AWS 공식 가격 페이지로 확인하세요.<br />
-              AWS 공개 가격 파일 {srcDates.join(" · ")} · {snap.regions.length}개 리전 · {nModels}개 모델 ·{" "}
-              <Link href={REPO} external variant="secondary" fontSize="body-s">소스</Link>
+              AWS 공개 가격 파일 {srcDates.join(" · ")} · {snap.regions.length}개 리전 · {nModels}개 모델
             </Box>
             </SpaceBetween>
           </SpaceBetween>

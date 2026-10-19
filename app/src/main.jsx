@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 // index-base.css = global styles WITHOUT the bundled Open Sans faces: we set
 // Ember Modern / Amazon Ember + Pretendard, so inlining 8 unused font files would only add weight.
 import "@cloudscape-design/global-styles/index-base.css";
+import "./ember-modern.css";
 import "./ember.css";
 import "./app.css";
 import { applyTheme } from "@cloudscape-design/components/theming";
@@ -29,10 +30,9 @@ const ld = (light, dark) => ({ light, dark });
 applyTheme({
   theme: {
     tokens: {
-      // Ember Modern is used when the visitor has it (AWS ships it only inside
-      // its own CDN, not as a redistributable file); otherwise the embedded
-      // Amazon Ember, then Pretendard for Hangul.
-      fontFamilyBase: '"Ember Modern Text UI", "Amazon Ember Modern", "Ember Modern Text", "Amazon Ember", "Pretendard", -apple-system, system-ui, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif',
+      // Ember Modern Text UI is embedded (src/ember-modern.css); Amazon Ember
+      // and Pretendard follow for missing glyphs (Hangul).
+      fontFamilyBase: '"Ember Modern Text UI", "Amazon Ember", "Pretendard", -apple-system, system-ui, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif',
       // surfaces
       colorBackgroundLayoutMain: ld(N[100], "#100f0d"),
       colorBackgroundContainerContent: ld("#ffffff", "#161512"),

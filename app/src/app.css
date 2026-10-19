@@ -1,16 +1,9 @@
-/* Page chrome outside Cloudscape components — same tokens as web/index.html.
-   applyMode() toggles .awsui-dark-mode on <body>. */
-body { background: #f6f7fb; color: #39415a; }
-body.awsui-dark-mode { background: #0d0f17; color: #c3cadb; }
+/* Page chrome outside Cloudscape components — 2026 AWS Console ("one theme")
+   neutrals. applyMode() toggles .awsui-dark-mode on <body>. */
+body { background: #f9f9f9; color: #201e1b; }
+body.awsui-dark-mode { background: #100f0d; color: #f3f3f1; }
 
-/* gradient headline, as on the vanilla page (text only, no hero) */
-.page-title {
-  background: linear-gradient(90deg, #d6338f, #9333ea);
-  -webkit-background-clip: text; background-clip: text; color: transparent; }
-body.awsui-dark-mode .page-title { background-image: linear-gradient(90deg, #e24aa8, #a855f7); }
-
-/* Selected region = an interaction state, so it uses the accent, not the
-   blue "preview" status badge (purple = interaction, blue/green = status). */
-.mine-chip { display: inline-block; padding: 0 8px; border-radius: 999px; font-size: 12px;
-  line-height: 20px; font-weight: 700; color: #7e22ce; background: #f3e8ff; border: 1px solid #d8b4fe; }
-body.awsui-dark-mode .mine-chip { color: #d3bdf5; background: #2a1d44; border-color: #4b336e; }
+/* Selected region chip — console selection style: blue tint + blue text. */
+.mine-chip { display: inline-block; padding: 0 6px; border-radius: 4px; font-size: 12px;
+  line-height: 20px; font-weight: 600; color: #295eff; background: #f5f7ff; box-shadow: inset 0 0 0 1px #295eff; }
+body.awsui-dark-mode .mine-chip { color: #94afff; background: #0b1433; box-shadow: inset 0 0 0 1px #7598ff; }

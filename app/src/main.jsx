@@ -1,7 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 // index-base.css = global styles WITHOUT the bundled Open Sans faces: we set
-// Amazon Ember + Pretendard, so inlining 8 unused font files would only add weight.
+// Ember Modern / Amazon Ember + Pretendard, so inlining 8 unused font files would only add weight.
 import "@cloudscape-design/global-styles/index-base.css";
 import "./ember.css";
 import "./app.css";
@@ -13,121 +13,116 @@ import App from "./App.jsx";
 // "comfortable" is tuned for sparse console forms).
 applyDensity(Density.Compact);
 
-// awskr.net house accent (purple) + Amazon Ember. Green/blue stay as Cloudscape
-// status colours, so purple is used only for brand/interaction tokens.
-// awskr.net house palette — the SAME values as web/index.html's :root tokens
-// (dark) and :root[data-theme=light] (light), mapped onto Cloudscape tokens so
-// both pages share one colour system. Purple = brand/interaction only;
-// green/blue/amber stay status colours.
-const V = {
-  bg:        { light: "#f6f7fb", dark: "#0d0f17" },
-  surface1:  { light: "#ffffff", dark: "#141825" },
-  surface2:  { light: "#f0f2f8", dark: "#1b2030" },
-  surface3:  { light: "#e7eaf3", dark: "#232a3d" },
-  line:      { light: "#d9deea", dark: "#2a3146" },
-  lineSoft:  { light: "#e8ebf3", dark: "#1f2535" },
-  txt:       { light: "#1a1f2e", dark: "#e9ecf5" },
-  ink:       { light: "#39415a", dark: "#c3cadb" },
-  muted:     { light: "#5f6880", dark: "#8a92a8" },
-  faint:     { light: "#8a93aa", dark: "#5b6378" },
-  accent:    { light: "#9333ea", dark: "#a855f7" },
-  accentHov: { light: "#7e22ce", dark: "#b974f9" },
-  accentSoft:{ light: "#f3e8ff", dark: "#2a1d44" },
-  onAccent:  { light: "#ffffff", dark: "#0c0714" },
-  ok:        { light: "#15935c", dark: "#46c988" },
-  okSoft:    { light: "#dcf5e8", dark: "#10281c" },
-  info:      { light: "#2563eb", dark: "#5ea0ef" },
-  infoSoft:  { light: "#dbe8ff", dark: "#111f33" },
-  warn:      { light: "#a97b12", dark: "#e0b03a" },
-  warnSoft:  { light: "#fbf0d2", dark: "#2a2110" },
-};
+// 2026 AWS Console look ("one theme"). Values are read from the Cloudscape
+// bundle aws.amazon.com itself ships (.awsui-one-theme, light mode): warm
+// neutrals, near-black primary buttons, blue only for selection/focus/accent,
+// 2px containers / 4px controls, weight-500 headings with tight tracking,
+// borderless containers. aws.amazon.com ships light only, so the dark column is
+// derived from the same neutral/primary scales.
+const N = { 50:"#fcfcfc",100:"#f9f9f9",150:"#f8f8f7",200:"#f3f3f1",250:"#eeedeb",300:"#e3e1de",
+  350:"#cbc9c3",400:"#bab7b0",450:"#aca9a2",500:"#949088",550:"#868279",600:"#6f6b63",650:"#4c4942",
+  700:"#3e3b35",750:"#2f2d28",800:"#262420",850:"#201e1b",900:"#1b1a17",950:"#161512",1000:"#100f0d" };
+const B = { 50:"#f5f7ff",100:"#dbe4ff",200:"#c2d1ff",300:"#94afff",400:"#7598ff",500:"#5c7fff",
+  600:"#295eff",700:"#003efa",800:"#0033cc",900:"#001a99",1000:"#000833" };
+const ld = (light, dark) => ({ light, dark });
+
 applyTheme({
   theme: {
     tokens: {
-      fontFamilyBase: '"Amazon Ember", "Pretendard", -apple-system, system-ui, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif',
+      // Ember Modern is used when the visitor has it (AWS ships it only inside
+      // its own CDN, not as a redistributable file); otherwise the embedded
+      // Amazon Ember, then Pretendard for Hangul.
+      fontFamilyBase: '"Ember Modern Text UI", "Amazon Ember Modern", "Ember Modern Text", "Amazon Ember", "Pretendard", -apple-system, system-ui, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif',
       // surfaces
-      colorBackgroundLayoutMain: V.bg,
-      colorBackgroundContainerContent: V.surface1,
-      colorBackgroundContainerHeader: V.surface1,
-      colorBackgroundInputDefault: V.surface2,
-      colorBackgroundDropdownItemDefault: V.surface1,
-      colorBackgroundDropdownItemHover: V.surface3,
-      colorBackgroundCellShaded: V.surface2,
-      colorBackgroundButtonNormalDefault: V.surface1,
-      colorBackgroundButtonNormalHover: V.accentSoft,
-      colorBackgroundSegmentDefault: V.surface2,
-      colorBackgroundSegmentHover: V.surface3,
-      colorBackgroundItemSelected: V.accentSoft,
-      colorBorderDividerDefault: V.line,
-      colorBorderDividerSecondary: V.lineSoft,
-      colorBorderInputDefault: V.line,
-      colorBorderContainerTop: V.line,
+      colorBackgroundLayoutMain: ld(N[100], N[1000]),
+      colorBackgroundContainerContent: ld("#ffffff", N[950]),
+      colorBackgroundContainerHeader: ld("#ffffff", N[950]),
+      colorBackgroundInputDefault: ld("#ffffff", N[950]),
+      colorBackgroundDropdownItemDefault: ld("#ffffff", N[950]),
+      colorBackgroundDropdownItemHover: ld(N[200], N[850]),
+      colorBackgroundDropdownItemSelected: ld(B[50], "#0b1433"),
+      colorBackgroundCellShaded: ld(N[150], N[900]),
+      colorBackgroundItemSelected: ld(B[50], "#0b1433"),
+      colorBackgroundPopover: ld("#ffffff", N[900]),
+      colorBorderPopover: ld(N[350], N[700]),
+      colorBorderDividerDefault: ld(N[300], N[750]),
+      colorBorderDividerSecondary: ld(N[250], N[800]),
+      colorBorderContainerTop: ld("transparent", "transparent"),
+      colorBorderInputDefault: ld(N[500], N[600]),
+      colorBorderDropdownContainer: ld(N[400], N[650]),
       // text
-      colorTextBodyDefault: V.ink,
-      colorTextHeadingDefault: V.txt,
-      colorTextHeadingSecondary: V.muted,
-      colorTextBodySecondary: V.muted,
-      colorTextFormLabel: V.txt,
-      colorTextFormSecondary: V.muted,
-      colorTextGroupLabel: V.muted,
-      colorTextCounter: V.muted,
-      colorTextInputPlaceholder: V.faint,
-      colorTextStatusInactive: V.faint,
-      // accent (interaction)
-      colorBackgroundButtonPrimaryDefault: V.accent,
-      colorBackgroundButtonPrimaryHover: V.accentHov,
-      colorBackgroundButtonPrimaryActive: V.accentHov,
-      colorBorderButtonPrimaryDefault: V.accent,
-      colorBorderButtonPrimaryHover: V.accentHov,
-      colorBorderButtonNormalDefault: V.line,
-      colorBorderButtonNormalHover: V.accent,
-      colorTextButtonNormalDefault: V.ink,
-      colorTextButtonNormalHover: V.accent,
-      colorTextLinkDefault: V.accent,
-      colorTextLinkHover: V.accentHov,
-      colorTextAccent: V.accent,
-      colorTextInteractiveActive: V.accent,
-      colorBackgroundControlChecked: V.accent,
-      colorBackgroundSegmentActive: V.accent,
-      colorBorderItemFocused: V.accent,
-      colorBorderItemSelected: V.accent,
-      // status (never the accent)
-      colorTextStatusSuccess: V.ok,
-      colorTextStatusInfo: V.info,
-      colorTextStatusWarning: V.warn,
-      colorBackgroundStatusSuccess: V.okSoft,
-      colorBackgroundStatusInfo: V.infoSoft,
-      colorBackgroundStatusWarning: V.warnSoft,
-      colorBackgroundBadgeGrey: V.surface3,
-      colorBackgroundBadgeBlue: V.info,
-      colorBackgroundBadgeGreen: V.ok,
-      // shape — vanilla radii (r-md 10, r-lg 14, pill buttons/badges)
-      borderRadiusContainer: "14px",
-      borderRadiusInput: "10px",
-      borderRadiusDropdown: "10px",
-      borderRadiusPopover: "10px",
-      borderRadiusButton: "999px",
-      borderRadiusBadge: "999px",
-      borderRadiusAlert: "10px",
-      borderRadiusItem: "8px",
-      // review fixes: colours still on Cloudscape defaults
-      colorTextBadgeBlue: { light: "#ffffff", dark: "#0d0f17" },
-      colorTextBadgeGreen: { light: "#ffffff", dark: "#0d0f17" },
-      colorTextBadgeGrey: V.ink,
-      colorTextStatusError: { light: "#c0353c", dark: "#f0797f" },
-      colorBackgroundPopover: V.surface1,
-      colorBorderPopover: V.line,
-      colorBorderDropdownContainer: V.line,
-      colorBackgroundDropdownItemSelected: V.accentSoft,
-      colorTextTopNavigationTitle: V.txt,
-      colorTextLinkInfoDefault: V.accent,
-      // dark-mode row dividers were darker than the surface (inverted seam)
-      colorBorderDividerSecondary: { light: "#e8ebf3", dark: "#2a3146" },
-      // review fixes: rhythm + Hangul-friendly line height
-      spaceFieldVertical: "4px",
+      colorTextBodyDefault: ld(N[850], N[200]),
+      colorTextBodySecondary: ld(N[600], N[450]),
+      colorTextHeadingDefault: ld(N[950], N[100]),
+      colorTextHeadingSecondary: ld(N[600], N[450]),
+      colorTextFormLabel: ld(N[850], N[200]),
+      colorTextFormSecondary: ld(N[600], N[450]),
+      colorTextLabel: ld(N[600], N[450]),
+      colorTextGroupLabel: ld(N[600], N[450]),
+      colorTextCounter: ld(N[600], N[450]),
+      colorTextInputPlaceholder: ld(N[600], N[550]),
+      colorTextStatusInactive: ld(N[600], N[500]),
+      colorTextTopNavigationTitle: ld(N[950], N[100]),
+      // buttons: primary is near-black (inverted in dark), normal is neutral
+      colorBackgroundButtonPrimaryDefault: ld(N[800], N[300]),
+      colorBackgroundButtonPrimaryHover: ld(N[700], N[100]),
+      colorBackgroundButtonPrimaryActive: ld(N[700], N[100]),
+      colorBorderButtonPrimaryDefault: ld(N[800], N[300]),
+      colorBorderButtonPrimaryHover: ld(N[700], N[100]),
+      colorTextButtonPrimaryDefault: ld(N[100], N[950]),
+      colorBackgroundButtonNormalDefault: ld(N[100], N[950]),
+      colorBackgroundButtonNormalHover: ld(N[150], N[850]),
+      colorBorderButtonNormalDefault: ld(N[500], N[600]),
+      colorBorderButtonNormalHover: ld(N[600], N[450]),
+      colorTextButtonNormalDefault: ld(N[700], N[250]),
+      colorTextButtonNormalHover: ld(N[850], N[100]),
+      // segmented control
+      colorBackgroundSegmentWrapper: ld(N[100], N[900]),
+      colorBackgroundSegmentDefault: ld("transparent", "transparent"),
+      colorBackgroundSegmentHover: ld("#ffffff", N[850]),
+      colorBackgroundSegmentActive: ld(B[50], "#0b1433"),
+      colorTextSegmentActive: ld(N[900], N[100]),
+      colorTextSegmentDefault: ld(N[700], N[350]),
+      // blue = accent/selection/focus only; links stay neutral, blue on hover
+      colorTextAccent: ld(B[600], B[400]),
+      colorTextInteractiveActive: ld(B[600], B[400]),
+      colorTextLinkDefault: ld(N[850], N[200]),
+      colorTextLinkHover: ld(B[600], B[400]),
+      colorTextLinkInfoDefault: ld(N[850], N[200]),
+      colorBackgroundControlChecked: ld(B[600], B[400]),
+      colorBorderItemFocused: ld(B[600], B[400]),
+      colorBorderItemSelected: ld(B[600], B[400]),
+      // status + soft badges (tinted fill, coloured text)
+      colorTextStatusSuccess: ld("#00802f", "#4fd16a"),
+      colorTextStatusInfo: ld(B[600], B[400]),
+      colorTextStatusWarning: ld("#855900", "#f0b43c"),
+      colorTextStatusError: ld("#db0000", "#ff7a7a"),
+      colorBackgroundBadgeGrey: ld(N[250], N[800]),
+      colorTextBadgeGrey: ld(N[850], N[200]),
+      colorBackgroundBadgeBlue: ld(B[100], "#0f1d4d"),
+      colorTextBadgeBlue: ld(B[600], B[300]),
+      colorBackgroundBadgeGreen: ld("#d9f7de", "#0b2a12"),
+      colorTextBadgeGreen: ld("#00802f", "#4fd16a"),
+      // type
+      fontWeightHeadingXl: "500", fontWeightHeadingL: "500", fontWeightHeadingM: "500", fontWeightHeadingS: "500",
+      letterSpacingHeadingXl: "-0.02em", letterSpacingHeadingL: "-0.015em", letterSpacingHeadingM: "-0.01em",
+      fontWeightButton: "500",
+      fontWeightFormLabel: "600",
+      fontSizeHeadingXl: "24px", lineHeightHeadingXl: "30px",
+      // Hangul needs more leading than the 20px AWS uses for Latin
       lineHeightBodyM: "22px",
       fontSizeBodyS: "13px",
       lineHeightBodyS: "19px",
+      spaceFieldVertical: "4px",
+      // shape
+      borderRadiusContainer: "2px",
+      borderRadiusInput: "4px",
+      borderRadiusButton: "4px",
+      borderRadiusDropdown: "4px",
+      borderRadiusPopover: "4px",
+      borderRadiusItem: "4px",
+      borderRadiusBadge: "4px",
+      borderRadiusAlert: "2px",
     },
   },
 });

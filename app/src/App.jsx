@@ -9,7 +9,6 @@ import FormField from "@cloudscape-design/components/form-field";
 import Input from "@cloudscape-design/components/input";
 import Select from "@cloudscape-design/components/select";
 import Multiselect from "@cloudscape-design/components/multiselect";
-import SegmentedControl from "@cloudscape-design/components/segmented-control";
 import RadioGroup from "@cloudscape-design/components/radio-group";
 import Button from "@cloudscape-design/components/button";
 import Table from "@cloudscape-design/components/table";
@@ -285,19 +284,23 @@ export default function App({ snap }) {
                     </div>
                   </FormField>
                   <FormField label="응답 방식">
-                    <SegmentedControl selectedId={f.mode} label="응답 방식"
-                      options={[{ id: "online", text: "즉시 응답" }, { id: "batch", text: "일괄 처리" }]}
-                      onChange={({ detail }) => set({ mode: detail.selectedId })} />
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                      <Button variant={f.mode === "online" ? "primary" : "normal"}
+                        onClick={() => set({ mode: "online" })}>즉시 응답</Button>
+                      <Button variant={f.mode === "batch" ? "primary" : "normal"}
+                        onClick={() => set({ mode: "batch" })}>일괄 처리</Button>
+                    </div>
                   </FormField>
                 </ColumnLayout>
 
-                <SpaceBetween direction="horizontal" size="xxs" alignItems="center">
-                  <Box variant="small" color="text-body-secondary">사용량 프리셋</Box>
-                  {Object.entries(PRESETS).map(([n, [i, o]]) => (
-                    <Button key={n} variant={isPreset(i, o) ? "primary" : "normal"}
-                      onClick={() => set({ inM: i, outM: o })}>{n} {i}/{o}</Button>
-                  ))}
-                </SpaceBetween>
+                <FormField label="사용량 프리셋">
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                    {Object.entries(PRESETS).map(([n, [i, o]]) => (
+                      <Button key={n} variant={isPreset(i, o) ? "primary" : "normal"}
+                        onClick={() => set({ inM: i, outM: o })}>{n} {i}/{o}</Button>
+                    ))}
+                  </div>
+                </FormField>
 
                 <FormField label={<>데이터가 <b>{regionName(f.region)}</b> 밖에서 처리되어도 괜찮으신가요?</>}>
                   <RadioGroup direction="horizontal" value={f.resid}

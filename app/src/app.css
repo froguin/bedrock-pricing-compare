@@ -1,0 +1,10 @@
+/* Page chrome outside Cloudscape components — same tokens as web/index.html.
+   applyMode() toggles .awsui-dark-mode on <body>. */
+body { background: #f6f7fb; color: #39415a; }
+body.awsui-dark-mode { background: #0d0f17; color: #c3cadb; }
+
+/* gradient headline, as on the vanilla page (text only, no hero) */
+.page-title {
+  background: linear-gradient(90deg, #d6338f, #9333ea);
+  -webkit-background-clip: text; background-clip: text; color: transparent; }
+body.awsui-dark-mode .page-title { background-image: linear-gradient(90deg, #e24aa8, #a855f7); }

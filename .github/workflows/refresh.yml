@@ -1,6 +1,8 @@
 name: Refresh prices
 
 on:
+  push:
+    branches: [main]
   schedule:
     # Every 30 minutes, off the :00/:30 rush. GitHub may start scheduled runs late.
     - cron: "7,37 * * * *"
@@ -72,7 +74,9 @@ jobs:
       # The live page is the Cloudscape app (app/): Vite builds one HTML file,
       # then the same injector inlines the dictionary-encoded dataset.
       - name: Build single-file page
-        if: steps.build.outcome == 'success'
+        # A main push always publishes code/UI changes. Scheduled runs still
+        # build only when the pricing or documentation sources changed.
+        if: steps.build.outcome == 'success' || github.event_name == 'push'
         run: |
           npm ci --prefix app --no-audit --no-fund
           npm exec --prefix app -- vite build app
@@ -80,14 +84,14 @@ jobs:
           node collector/precompress.mjs
 
       - name: AWS credentials (OIDC, 1h, upload + invalidate only)
-        if: steps.build.outcome == 'success'
+        if: steps.build.outcome == 'success' || github.event_name == 'push'
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ vars.AWS_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Deploy
-        if: steps.build.outcome == 'success'
+        if: steps.build.outcome == 'success' || github.event_name == 'push'
         run: |
           # plain + pre-compressed copies; a CloudFront Function picks one per Accept-Encoding
           up() { aws s3 cp "$1" "s3://$BUCKET/$2" --content-type "text/html; charset=utf-8" \

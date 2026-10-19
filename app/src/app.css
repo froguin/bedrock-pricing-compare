@@ -45,35 +45,40 @@ body.awsui-dark-mode .mine-chip { color: #94afff; background: rgba(92, 127, 255,
 
 /* True segmented control look for a small, non-wrapping toggle (response mode).
    The ROW is the bordered track; every button is borderless/transparent and the
-   selected cell alone gets a filled tone, with 1px dividers between cells. Built
-   on public Button+NavigableGroup so it never collapses to a dropdown on mobile.
-   Colors use Cloudscape tokens with console-neutral fallbacks for both themes. */
+   selected cell alone gets a filled blue tone, with 1px dividers between cells.
+   Built on public Button+NavigableGroup so it never collapses on mobile.
+   Base styling is the LIGHT theme (white track, black text); .awsui-dark-mode
+   overrides to the dark console palette. Selected cell stays blue in both. */
 .toggle-row-segmented {
   gap: 0; flex-wrap: nowrap; display: inline-flex;
-  border: 1px solid var(--color-border-button-normal-default, #6f6b63);
-  border-radius: 8px; overflow: hidden;
-  background: var(--color-background-container-content, #201e1b);
+  border: 1px solid #b6bec9; border-radius: 8px; overflow: hidden;
+  background: #ffffff;
 }
-/* strip each Button's own chrome so only the track's border shows */
 .toggle-row-segmented > button {
   border: 0 !important; border-radius: 0 !important;
   background: transparent !important;
-  color: var(--color-text-button-normal-default, #cbc9c3) !important;
+  color: #0f1b2d !important;
   font-weight: 500 !important;
 }
 .toggle-row-segmented > button:not(:first-child) {
-  border-left: 1px solid var(--color-border-button-normal-default, #6f6b63) !important;
+  border-left: 1px solid #b6bec9 !important;
 }
 .toggle-row-segmented > button:hover {
-  background: var(--color-background-button-normal-hover, #262420) !important;
-  color: var(--color-text-button-normal-hover, #eeedeb) !important;
+  background: #f2f3f3 !important; color: #000716 !important;
 }
-/* selected cell: filled tone + strong text, like a chosen SegmentedControl segment */
+/* selected cell: filled blue + white text (both themes) */
 .toggle-row-segmented > button[data-selected="true"],
 .toggle-row-segmented > button[data-selected="true"]:hover {
-  background: var(--color-background-segment-active, #0972d3) !important;
-  color: var(--color-text-segment-active, #ffffff) !important;
-  font-weight: 700 !important;
+  background: #0972d3 !important; color: #ffffff !important; font-weight: 700 !important;
+}
+/* dark theme: dark track, light text; selected stays blue */
+body.awsui-dark-mode .toggle-row-segmented { border-color: #5f6b7a; background: #161d26; }
+body.awsui-dark-mode .toggle-row-segmented > button { color: #d1d5db !important; }
+body.awsui-dark-mode .toggle-row-segmented > button:not(:first-child) { border-left-color: #5f6b7a !important; }
+body.awsui-dark-mode .toggle-row-segmented > button:hover { background: #232b38 !important; color: #ffffff !important; }
+body.awsui-dark-mode .toggle-row-segmented > button[data-selected="true"],
+body.awsui-dark-mode .toggle-row-segmented > button[data-selected="true"]:hover {
+  background: #0972d3 !important; color: #ffffff !important;
 }
 
 /* Headline accent = Cloudscape's gen-AI gradient (--color-background-*-gen-ai,

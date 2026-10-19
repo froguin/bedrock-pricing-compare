@@ -43,44 +43,49 @@ body.awsui-dark-mode .mine-chip { color: #94afff; background: rgba(92, 127, 255,
    SpaceBetween does not wrap, so these use a flex-wrap row on the 8px scale. */
 .toggle-row { display: flex; flex-wrap: wrap; gap: 8px; }
 
-/* True segmented control look for a small, non-wrapping toggle (response mode).
-   The ROW is the bordered track; every button is borderless/transparent and the
-   selected cell alone gets a filled blue tone, with 1px dividers between cells.
-   Built on public Button+NavigableGroup so it never collapses on mobile.
-   Base styling is the LIGHT theme (white track, black text); .awsui-dark-mode
-   overrides to the dark console palette. Selected cell stays blue in both. */
+/* Toggle selection colour language — consistent with Tiles / radio selection
+   (colorBorderItemSelected = B[600]): the SELECTED cell is filled blue in every
+   toggle group, light #295eff / dark #5c7fff, white text. Preset (non-segmented)
+   shows individual chips; response-mode (segmented) is one bordered track. Both
+   read the same selected colour so selection means one thing site-wide. */
+
+/* selected cell — shared by preset chips and segmented track, both themes */
+.toggle-row > button[data-selected="true"],
+.toggle-row > button[data-selected="true"]:hover {
+  background: #295eff !important; border-color: #295eff !important;
+  color: #ffffff !important; font-weight: 700 !important;
+}
+body.awsui-dark-mode .toggle-row > button[data-selected="true"],
+body.awsui-dark-mode .toggle-row > button[data-selected="true"]:hover {
+  background: #5c7fff !important; border-color: #5c7fff !important; color: #ffffff !important;
+}
+
+/* segmented look (response mode): the ROW is a bordered track, buttons are
+   borderless cells with 1px dividers, only outer corners rounded. Built on public
+   Button+NavigableGroup so it never collapses to a dropdown on mobile. */
 .toggle-row-segmented {
   gap: 0; flex-wrap: nowrap; display: inline-flex;
-  border: 1px solid #b6bec9; border-radius: 8px; overflow: hidden;
-  background: #ffffff;
+  border: 1px solid #b6bec9; border-radius: 8px; overflow: hidden; background: #ffffff;
 }
 .toggle-row-segmented > button {
   border: 0 !important; border-radius: 0 !important;
-  background: transparent !important;
-  color: #0f1b2d !important;
-  font-weight: 500 !important;
+  background: transparent !important; color: #0f1b2d !important; font-weight: 500 !important;
 }
-.toggle-row-segmented > button:not(:first-child) {
-  border-left: 1px solid #b6bec9 !important;
-}
-.toggle-row-segmented > button:hover {
-  background: #f2f3f3 !important; color: #000716 !important;
-}
-/* selected cell: filled blue + white text (both themes) */
-.toggle-row-segmented > button[data-selected="true"],
-.toggle-row-segmented > button[data-selected="true"]:hover {
-  background: #0972d3 !important; color: #ffffff !important; font-weight: 700 !important;
-}
-/* dark theme: match the normal Button palette used by the preset buttons
-   (bg #201e1b, border #6f6b63, text #cbc9c3, hover #262420). Selected stays blue. */
+.toggle-row-segmented > button:not(:first-child) { border-left: 1px solid #b6bec9 !important; }
+.toggle-row-segmented > button:hover { background: #f2f3f3 !important; color: #000716 !important; }
 body.awsui-dark-mode .toggle-row-segmented { border-color: #6f6b63; background: #201e1b; }
 body.awsui-dark-mode .toggle-row-segmented > button { color: #cbc9c3 !important; }
 body.awsui-dark-mode .toggle-row-segmented > button:not(:first-child) { border-left-color: #6f6b63 !important; }
 body.awsui-dark-mode .toggle-row-segmented > button:hover { background: #262420 !important; color: #eeedeb !important; }
-body.awsui-dark-mode .toggle-row-segmented > button[data-selected="true"],
-body.awsui-dark-mode .toggle-row-segmented > button[data-selected="true"]:hover {
-  background: #0972d3 !important; color: #ffffff !important;
+/* in the segmented track the selected cell must drop its chip border/radius so it
+   fills the cell flush; the shared blue fill above still applies. */
+.toggle-row-segmented > button[data-selected="true"],
+.toggle-row-segmented > button[data-selected="true"]:hover { border: 0 !important; border-radius: 0 !important; }
+.toggle-row-segmented > button[data-selected="true"]:not(:first-child),
+body.awsui-dark-mode .toggle-row-segmented > button[data-selected="true"]:not(:first-child) {
+  border-left: 1px solid #b6bec9 !important;
 }
+body.awsui-dark-mode .toggle-row-segmented > button[data-selected="true"]:not(:first-child) { border-left-color: #6f6b63 !important; }
 
 /* Headline accent = Cloudscape's gen-AI gradient (--color-background-*-gen-ai,
    read from the live console). The pale #b8e7ff end stop is dropped for text.

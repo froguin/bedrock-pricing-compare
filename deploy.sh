@@ -12,8 +12,10 @@ DIST_ID=E1OQXWKSFOXAF
 ACCOUNT="${AWS_ACCOUNT_ID:-$(aws sts get-caller-identity --query Account --output text)}"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-echo "==> rebuild single-file page"
-node "$ROOT/collector/build-standalone.mjs"
+echo "==> rebuild single-file page (Cloudscape app + inlined dataset)"
+npm ci --prefix "$ROOT/app" --no-audit --no-fund
+npm exec --prefix "$ROOT/app" -- vite build "$ROOT/app"
+node "$ROOT/collector/build-standalone.mjs" --src app/dist/index.html --out dist/bedrock-pricing.html
 
 echo "==> bucket policy (CloudFront-only read; one-time, idempotent)"
 aws s3api put-bucket-policy --bucket "$BUCKET" --policy "{

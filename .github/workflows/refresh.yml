@@ -35,6 +35,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
 
       - name: Check sources (conditional GETs, ~20 KB)
         id: check
@@ -53,9 +55,14 @@ jobs:
         if: steps.build.outcome == 'success'
         run: node collector/gate.mjs "$RUNNER_TEMP/prev-pricing.json" web/pricing.json
 
+      # The live page is the Cloudscape app (app/): Vite builds one HTML file,
+      # then the same injector inlines the dictionary-encoded dataset.
       - name: Build single-file page
         if: steps.build.outcome == 'success'
-        run: node collector/build-standalone.mjs
+        run: |
+          npm ci --prefix app --no-audit --no-fund
+          npm exec --prefix app -- vite build app
+          node collector/build-standalone.mjs --src app/dist/index.html --out dist/bedrock-pricing.html
 
       - name: AWS credentials (OIDC, 1h, upload + invalidate only)
         if: steps.build.outcome == 'success'

@@ -6,7 +6,7 @@
   "description": "Cloudscape prototype of the Bedrock monthly-cost comparison page",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node ../collector/build-standalone.mjs --src app/dist/index.html --out dist/bedrock-pricing.cloudscape.html",
+    "build": "vite build && node ../collector/build-standalone.mjs --src app/dist/index.html --out dist/bedrock-pricing.html",
     "test": "node --test src/"
   },
   "dependencies": {

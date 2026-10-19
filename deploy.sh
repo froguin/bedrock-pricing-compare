@@ -30,14 +30,16 @@ aws s3api put-bucket-policy --bucket "$BUCKET" --policy "{
   }]
 }"
 
-echo "==> upload"
-aws s3 cp "$ROOT/dist/bedrock-pricing.html" "s3://${BUCKET}/index.html" \
-  --content-type "text/html; charset=utf-8" \
-  --cache-control "public, max-age=300" \
-  --no-progress
+echo "==> upload (plain + pre-compressed; infra/cf-precompressed.js picks one)"
+node "$ROOT/collector/precompress.mjs"
+up() { aws s3 cp "$ROOT/$1" "s3://${BUCKET}/$2" --content-type "text/html; charset=utf-8" \
+         --cache-control "public, max-age=300" --no-progress "${@:3}"; }
+up dist/bedrock-pricing.html    index.html
+up dist/bedrock-pricing.html.br index.html.br --content-encoding br
+up dist/bedrock-pricing.html.gz index.html.gz --content-encoding gzip
 
 echo "==> invalidate edge cache"
-aws cloudfront create-invalidation --distribution-id "$DIST_ID" --paths "/index.html" "/" \
+aws cloudfront create-invalidation --distribution-id "$DIST_ID" --paths "/index.html" "/" "/index.html.br" "/index.html.gz" \
   --query 'Invalidation.{Id:Id,Status:Status}' --output json
 
 echo

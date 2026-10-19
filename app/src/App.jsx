@@ -9,8 +9,9 @@ import FormField from "@cloudscape-design/components/form-field";
 import Input from "@cloudscape-design/components/input";
 import Select from "@cloudscape-design/components/select";
 import Multiselect from "@cloudscape-design/components/multiselect";
-import RadioGroup from "@cloudscape-design/components/radio-group";
+import Tiles from "@cloudscape-design/components/tiles";
 import Button from "@cloudscape-design/components/button";
+import NavigableGroup from "@cloudscape-design/components/navigable-group";
 import Table from "@cloudscape-design/components/table";
 import Box from "@cloudscape-design/components/box";
 import Badge from "@cloudscape-design/components/badge";
@@ -284,27 +285,34 @@ export default function App({ snap }) {
                     </div>
                   </FormField>
                   <FormField label="응답 방식">
-                    <div className="toggle-row">
-                      <Button variant={f.mode === "online" ? "primary" : "normal"}
-                        onClick={() => set({ mode: "online" })}>즉시 응답</Button>
-                      <Button variant={f.mode === "batch" ? "primary" : "normal"}
-                        onClick={() => set({ mode: "batch" })}>일괄 처리</Button>
-                    </div>
+                    <NavigableGroup navigationDirection="horizontal"
+                      getItemKey={(el) => el.dataset.key || el.textContent}>
+                      <div className="toggle-row">
+                        <Button data-key="online" variant={f.mode === "online" ? "primary" : "normal"}
+                          onClick={() => set({ mode: "online" })}>즉시 응답</Button>
+                        <Button data-key="batch" variant={f.mode === "batch" ? "primary" : "normal"}
+                          onClick={() => set({ mode: "batch" })}>일괄 처리</Button>
+                      </div>
+                    </NavigableGroup>
                   </FormField>
                 </ColumnLayout>
 
                 <FormField label="사용량 프리셋">
-                  <div className="toggle-row">
-                    {Object.entries(PRESETS).map(([n, [i, o]]) => (
-                      <Button key={n} variant={isPreset(i, o) ? "primary" : "normal"}
-                        onClick={() => set({ inM: i, outM: o })}>{n} {i}/{o}</Button>
-                    ))}
-                  </div>
+                  <NavigableGroup navigationDirection="both"
+                    getItemKey={(el) => el.dataset.key || el.textContent}>
+                    <div className="toggle-row">
+                      {Object.entries(PRESETS).map(([n, [i, o]]) => (
+                        <Button key={n} data-key={n} variant={isPreset(i, o) ? "primary" : "normal"}
+                          onClick={() => set({ inM: i, outM: o })}>{n} {i}/{o}</Button>
+                      ))}
+                    </div>
+                  </NavigableGroup>
                 </FormField>
 
                 <FormField label={<>데이터가 <b>{regionName(f.region)}</b> 밖에서 처리되어도 괜찮으신가요?</>}>
-                  <RadioGroup direction="horizontal" value={f.resid}
+                  <Tiles value={f.resid}
                     onChange={({ detail }) => { setExpanded([]); set({ resid: detail.value }); }}
+                    columns={2}
                     items={[
                       { value: "any", label: "상관없습니다", description: "가장 싼 경로를 고릅니다 (리전 밖에서 처리될 수 있음)" },
                       { value: "strict", label: "안 됩니다", description: "이 리전 안에서 처리되는 요금만" },

@@ -60,3 +60,22 @@ test("video generation rates stay per-second and group regions without duplicate
   assert.ok(rows.some((x) => x.model === "Luma Ray2" && x.rate === 0.75 && /Standard/.test(x.variant)));
   assert.ok(rows.every((x) => x.regions.length === new Set(x.regions).size));
 });
+
+
+test("Opus 5 exposes Seoul in-region alternative when cheapest path is Global", () => {
+  const any = base({ q: "Claude Opus 5", resid: "any" });
+  const opus = rank(P, any, matches).ranked.find((x) => x.model === "Claude Opus 5");
+  assert.equal(opus.path, "global-cris");
+  assert.equal(opus.cost.lo, 100);
+  assert.equal(opus.cheaperPathIsNonInRegion, true);
+  assert.equal(opus.inRegionCost.lo, 110);
+  const tiers = expandTiers(opus, any).tiers;
+  assert.ok(tiers.some((x) => x.isChosen && x.path === "global-cris" && x.c.lo === 100));
+  assert.ok(tiers.some((x) => x.isMine && !x.isChosen && x.path === "in-region" && x.c.lo === 110 && x.delta === 10));
+
+  const strict = base({ q: "Claude Opus 5", resid: "strict" });
+  const strictOpus = rank(P, strict, matches).ranked.find((x) => x.model === "Claude Opus 5");
+  assert.equal(strictOpus.path, "in-region");
+  assert.equal(strictOpus.cost.lo, 110);
+  assert.equal(strictOpus.cheaperPathIsNonInRegion, false);
+});

@@ -223,6 +223,8 @@ export default function App({ snap }) {
           }}
           identity={{ href: "#", title: "Bedrock 비용 비교", logo: { src: bedrockIcon, alt: "Amazon Bedrock" } }}
           utilities={[
+            { type: "button", text: "AWS 영문 공식 가격", href: "https://aws.amazon.com/bedrock/pricing/", external: true,
+              externalIconAriaLabel: "(새 탭)" },
             { type: "button", text: `${newest} 기준`, disableUtilityCollapse: true },
             { type: "button", iconName: theme === "dark" ? "star" : "star-filled",
               text: theme === "dark" ? "밝은 테마" : "어두운 테마",

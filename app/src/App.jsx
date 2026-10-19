@@ -141,9 +141,9 @@ export default function App({ snap }) {
   /* ---------------- provenance ---------------- */
   const srcDates = Object.entries(snap.as_of || {}).map(([k, v]) => `${SRC_KO[k] || k} ${asOf(v)}`);
   const dates = Object.values(snap.as_of || {}).map(asOf).sort();
+  const englishChecked = String(snap.english_pricing_checked_at || "").slice(0, 10) || "?";
   const newest = englishChecked !== "?" ? englishChecked : (dates[dates.length - 1] || "?");
   const ageDays = newest !== "?" ? Math.floor((Date.now() - new Date(newest))/864e5) : 999;
-  const englishChecked = String(snap.english_pricing_checked_at || "").slice(0, 10) || "?";
   const sourceConflicts = snap.source_conflicts?.length || 0;
   const nModels = useMemo(() => new Set(P.map((p) => p.provider + "/" + p.model_id)).size, [P]);
 

@@ -50,15 +50,14 @@ function cleanModelId(servicename) {
   return (servicename || "(unknown)").replace(/\s*\(Amazon Bedrock Edition\)\s*$/i, "").trim() || "(unknown)";
 }
 
-// ---- lifecycle status: keep GA visible by default, flag the rest ----
-// Anthropic internal codenames (Mythos/Fable) and unreleased future versions must NOT
-// be shown as real purchasable models. Conservative: flag, don't silently delete.
+// ---- lifecycle status: keep GA visible by default, flag only explicit evidence ----
+// Do NOT infer "future/unreleased" from a model version. That rule became stale
+// when Claude 5 launched and hid valid, billable Seoul in-region SKUs. A priced
+// offer is GA unless AWS names it Preview; internal aliases remain flagged.
 function modelStatus(modelId) {
   const m = modelId.toLowerCase();
-  if (/\b(mythos|fable)\b/.test(m)) return "internal";          // internal aliases, not real SKUs
+  if (/\b(mythos|fable)\b/.test(m)) return "internal";          // internal aliases, not real model names
   if (/preview/.test(m)) return "preview";
-  // unreleased future Claude versions (as of the offer snapshot): Opus 4.6/4.7/4.8, Opus 5, Sonnet 5
-  if (/claude (opus (4\.[678]|5)|sonnet 5)\b/.test(m)) return "preview";
   if (/^claude( \(100k\))?$/.test(m) || /instant/.test(m) || /claude 2\./.test(m)) return "legacy";
   return "ga";
 }

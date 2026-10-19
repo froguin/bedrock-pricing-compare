@@ -239,8 +239,8 @@ export default function App({ snap }) {
             <Header variant="h1"
               description={
                 <span>
-                  <b>AWS 영문 Pricing 우선</b> · 영문 Documentation으로 출시·리전 확인 · Price List API로 SKU 보강 · 확인 {englishChecked}{" "}
-                  <Popover header="가격 출처와 우선순위" size="large" triggerType="custom" dismissAriaLabel="설명 닫기"
+                  AWS 공식 가격 기준 · <b>{englishChecked} 확인</b>{" "}
+                  <Popover header="가격 출처" size="large" triggerType="custom" dismissAriaLabel="설명 닫기"
                     content={<SpaceBetween size="xs">
                       <span>① <b>영문 Pricing 페이지</b>의 명시 가격이 같은 조건의 API 가격보다 우선합니다.</span>
                       <span>② <b>영문 Documentation</b>으로 모델 출시와 in-region·Geo·Global 지원 리전을 확인합니다.</span>
@@ -248,7 +248,7 @@ export default function App({ snap }) {
                       <span>API 발행일: {srcDates.join(" · ")}</span>
                       {sourceConflicts > 0 && <span>영문 페이지와 API 값이 다른 키 <b>{sourceConflicts}개</b>는 영문 페이지 값을 표시합니다.</span>}
                     </SpaceBetween>}>
-                    <Button variant="inline-icon" iconName="status-info" ariaLabel="가격 출처와 우선순위 설명" />
+                    <Button variant="inline-icon" iconName="status-info" ariaLabel="가격 출처 설명" />
                   </Popover>
                   {" "}· 금액은 모두 <b>USD</b>
                 </span>
@@ -413,7 +413,7 @@ export default function App({ snap }) {
             </Box>
             <Box variant="small" color="text-body-secondary" textAlign="center">
               © 2026 Bedrock 비용 비교 · <b>비공식 자료</b>이며 AWS와 무관합니다. 결제 전 AWS 공식 가격 페이지로 확인하세요.<br />
-              영문 Pricing 우선 · 영문 Documentation 가용성 확인 · Price List API 보강 · {snap.regions.length}개 리전 · {nModels}개 모델
+              AWS 공식 가격 · {englishChecked} 확인 · {snap.regions.length}개 리전 · {nModels}개 모델
             </Box>
             </SpaceBetween>
           </SpaceBetween>

@@ -243,7 +243,7 @@ export default function App({ snap }) {
                   {" "}· 금액은 모두 <b>USD</b>
                 </span>
               }>
-              Bedrock 모델 비용, 한 달에 얼마인가요?
+              Bedrock 모델 비용, <span className="title-grad">한 달에 얼마인가요?</span>
             </Header>
           }>
           <SpaceBetween size="m">

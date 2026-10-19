@@ -201,6 +201,10 @@ export default function App({ snap }) {
     },
   ];
 
+
+  // The English AWS pricing page can announce models before the machine-readable
+  // billing offers carry rates. Surface them honestly, but never rank/estimate.
+  const pricePending = (snap.announced_models || []).filter((m) => !m.pricing_available);
   const emptyMsg = f.q
     ? `'${f.q}'에 맞는 모델이 이 조건(${regionName(f.region)} · ${MODE_KO[f.mode]})에서 없습니다. 한글(소넷, 노바프로)이나 API ID로도 찾을 수 있습니다.`
     : "이 조건에서 월 비용을 계산할 수 있는 모델이 없습니다. 리전이나 고급 설정을 바꿔보세요.";
@@ -321,6 +325,23 @@ export default function App({ snap }) {
                 </Header>
               }
             />
+
+            {pricePending.length > 0 && (
+              <ExpandableSection variant="stacked"
+                headerText="AWS 가격 페이지 발표 · 가격 파일 미반영"
+                headerCounter={`(${pricePending.length})`}
+                headerDescription="AWS 영문 가격 페이지에는 있지만 청구 가격 파일에 입력·출력 단가가 아직 없습니다. 추정하지 않고 계산 대기로 표시합니다.">
+                <ColumnLayout columns={2}>
+                  {pricePending.map((x) => (
+                    <Box key={`${x.provider}/${x.name}`}>
+                      <b>{x.name}</b>{" "}
+                      <Box variant="span" color="text-body-secondary">{x.provider}</Box>{" "}
+                      <Badge color="blue">가격 파일 대기</Badge>
+                    </Box>
+                  ))}
+                </ColumnLayout>
+              </ExpandableSection>
+            )}
 
             {result.partial.length > 0 && (
               <ExpandableSection variant="stacked" headerText="월 비용 계산 불가" headerCounter={`(${result.partial.length})`}

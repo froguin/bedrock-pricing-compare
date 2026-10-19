@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-10-19T11:40:03.594Z",
+  "source": "https://aws.amazon.com/bedrock/pricing/",
+  "models": [
+    {
+      "provider": "OpenAI",
+      "name": "Daybreak Blue: GPT-5.6 Sol",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-daybreak-blue.html"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "Daybreak Red: GPT-5.6 Cyber",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-56-cyber.html"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-5.4",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-54.html"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-5.5",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-55.html"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-5.6 Luna",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-56-luna.html"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-5.6 Sol",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-56-sol.html"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-5.6 Terra",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-56-terra.html"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-6 Astra",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-astra.html"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-6 Luna",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-luna.html"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-6 Sol",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-sol.html"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-6.1 Sol",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-openai.html"
+    },
+    {
+      "provider": "xAI",
+      "name": "Grok 4.3",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-xai-grok-4-3.html"
+    },
+    {
+      "provider": "xAI",
+      "name": "Grok 4.6",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-xai-grok-4-6.html"
+    },
+    {
+      "provider": "xAI",
+      "name": "Grok 4.7",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-xai-grok-4-7.html"
+    },
+    {
+      "provider": "Z AI",
+      "name": "GLM 4.7",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Z AI",
+      "name": "GLM 4.7 Flash",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Z AI",
+      "name": "GLM 5",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Z AI",
+      "name": "GLM 5.3",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    }
+  ]
+}

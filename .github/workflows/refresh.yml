@@ -44,11 +44,16 @@ jobs:
 
       - name: Collect + merge
         id: build
-        if: steps.check.outputs.offer_changed == 'true' || inputs.force
+        if: steps.check.outputs.offer_changed == 'true' || steps.check.outputs.page_changed == 'true' || inputs.force
         run: |
           cp web/pricing.json "$RUNNER_TEMP/prev-pricing.json"
-          node collector/collect.mjs all
-          node collector/parse-abfm.mjs all
+          if [[ "${{ steps.check.outputs.offer_changed }}" == "true" || "${{ inputs.force }}" == "true" ]]; then
+            node collector/collect.mjs all
+            node collector/parse-abfm.mjs all
+          fi
+          # The English page is discovery-only: named models without offer-file
+          # rates are surfaced as "price pending", never given guessed prices.
+          node collector/parse-pricing-page-models.mjs
           node collector/merge.mjs
 
       - name: Publish gate
@@ -93,8 +98,7 @@ jobs:
 
       - name: Note page-only change
         if: steps.check.outputs.page_changed == 'true' && steps.check.outputs.offer_changed != 'true'
-        run: |
-          echo "AWS pricing page tables changed; offer files did not. The page parser is not built yet, so nothing is redeployed." >> "$GITHUB_STEP_SUMMARY"
+        run: echo "AWS pricing page changed; explicit model names were refreshed and price-pending models redeployed." >> "$GITHUB_STEP_SUMMARY"
 
       # Only commit when something actually changed -- no empty commits every 30 min.
       - name: Commit data back to main

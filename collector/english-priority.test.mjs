@@ -25,6 +25,15 @@ test("Kimi K3 uses the English page Global CRIS rate", () => {
   assert.deepEqual(values("Kimi K3", "ap-northeast-2", "global-cris", "english-pricing-page"), { input: 3, output: 15 });
 });
 
+test("GPT-6 Astra is priced while Sol/Luna/6.1 remain explicitly price-unpublished", () => {
+  assert.deepEqual(values("OpenAI GPT-6 Astra", "ap-northeast-2", "global-cris"), { input: 10, output: 50 });
+  const pending = new Map(snap.announced_models.filter((m) => /^GPT-6/.test(m.name)).map((m) => [m.name, m.pricing_available]));
+  assert.equal(pending.get("GPT-6 Astra"), true);
+  assert.equal(pending.get("GPT-6 Sol"), false);
+  assert.equal(pending.get("GPT-6 Luna"), false);
+  assert.equal(pending.get("GPT-6.1 Sol"), false);
+});
+
 test("documentation remaps mislabeled API in-region rows to Geo", () => {
   const rows = P.filter((p) => ["Llama 3.2 3B", "Claude Opus 4.1"].includes(p.model_id));
   assert.ok(rows.some((p) => p.model_id === "Llama 3.2 3B"));

@@ -168,7 +168,10 @@ export function rank(P, f, matches) {
                         : `${only} 단가만 있어 월 비용을 계산할 수 없습니다` });
       continue;
     }
+    const inRegionCost = costFor(here["in-region"], f.inM, f.outM);
     ranked.push({ key, provider, model, status: statusOf[key], ...best, regions,
+                  inRegionCost,
+                  cheaperPathIsNonInRegion: best.path !== "in-region" && !!inRegionCost,
                   noInRegionHere: best.path !== "in-region" && !here["in-region"] });
   }
   ranked.sort((a, b) => a.cost.lo - b.cost.lo);
@@ -185,8 +188,19 @@ export function rank(P, f, matches) {
 export function expandTiers(r, f) {
   const rows = [];
   for (const [rg, byPath] of Object.entries(r.regions)) {
+    const paths = allowedPaths(f.resid);
+    if (rg === f.region) {
+      // Preserve every purchasable path for the selected region. The main row
+      // still uses the cheapest path, but expansion must not hide its in-region
+      // alternative (for example Opus 5 Seoul: Global $100, in-region $110).
+      for (const path of paths) {
+        const c = costFor(byPath[path], f.inM, f.outM);
+        if (c) rows.push({ rg, path, c });
+      }
+      continue;
+    }
     let best = null;
-    for (const path of allowedPaths(f.resid)) {
+    for (const path of paths) {
       const c = costFor(byPath[path], f.inM, f.outM);
       if (c && (!best || c.lo < best.c.lo)) best = { path, c };
     }
@@ -200,13 +214,14 @@ export function expandTiers(r, f) {
     if (!t) { t = { sig, c: x.c, path: x.path, regions: [] }; tiers.push(t); }
     t.regions.push(x.rg);
   }
-  const mine = rows.find((x) => x.rg === f.region) || null;
+  const mine = rows.find((x) => x.rg === f.region && x.path === r.path) || rows.find((x) => x.rg === f.region) || null;
   for (const t of tiers) {
     t.isMine = t.regions.includes(f.region);
-    t.delta = mine && !t.isMine ? Math.round((t.c.lo / mine.c.lo - 1) * 100) : null;
+    t.isChosen = !!(mine && t.isMine && t.path === mine.path && t.c.lo === mine.c.lo && t.c.hi === mine.c.hi);
+    t.delta = mine && !t.isChosen ? Math.round((t.c.lo / mine.c.lo - 1) * 100) : null;
     t.regions.sort((a, b) => (b === f.region) - (a === f.region) || regionName(a).localeCompare(regionName(b), "ko"));
   }
-  return { tiers, nRegions: rows.length, cheapest: rows[0] || null, mine };
+  return { tiers, nRegions: new Set(rows.map((x) => x.rg)).size, cheapest: rows[0] || null, mine };
 }
 
 export const asOf = (v) => { const m = String(v || "").match(/^(\d{4})(\d{2})(\d{2})/); return m ? `${m[1]}-${m[2]}-${m[3]}` : "?"; };

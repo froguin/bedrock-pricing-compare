@@ -167,6 +167,9 @@ export default function App({ snap }) {
             <StatusIndicator type={PATH_KO[it.path].type}>{PATH_KO[it.path].label}</StatusIndicator>
             {it.status && it.status !== "ga" && <Badge color={STATUS_BADGE[it.status] || "grey"}>{STATUS_KO[it.status] || it.status}</Badge>}
             {it.cost.ambiguous && <StatusIndicator type="warning">단가 2개</StatusIndicator>}
+            {it.cheaperPathIsNonInRegion && <Badge color="green">
+              리전 내 {it.inRegionCost.lo===it.inRegionCost.hi?money(it.inRegionCost.lo):`${money(it.inRegionCost.lo)}–${money(it.inRegionCost.hi)}`}도 가능
+            </Badge>}
             {it.noInRegionHere && <Badge color="grey">이 리전엔 리전 내 단가 없음</Badge>}
           </SpaceBetween>
         </SpaceBetween>
@@ -194,7 +197,11 @@ export default function App({ snap }) {
       id: "mult", header: "배수 · 리전 대비", sortingField: "mult",
       cell: (it) => {
         if (it.kind === "tier") {
-          if (it.isMine) return <span className="mine-chip">선택 리전</span>;
+          if (it.isChosen) return <span className="mine-chip">현재 선택 경로</span>;
+          if (it.isMine && it.path === "in-region") return <StatusIndicator type="info">
+            리전 내 {it.delta>0?"+":""}{it.delta||0}%
+          </StatusIndicator>;
+          if (it.isMine) return <StatusIndicator type="info">대안 {it.delta>0?"+":""}{it.delta||0}%</StatusIndicator>;
           if (it.delta == null) return "—";
           if (it.delta === 0) return <Box color="text-body-secondary">동일</Box>;
           return <StatusIndicator type={it.delta < 0 ? "success" : "warning"}>{it.delta > 0 ? "+" : ""}{it.delta}%</StatusIndicator>;
@@ -301,7 +308,7 @@ export default function App({ snap }) {
                   <RadioGroup direction="horizontal" value={f.resid}
                     onChange={({ detail }) => { setExpanded([]); set({ resid: detail.value }); }}
                     items={[
-                      { value: "any", label: "상관없습니다", description: "가장 싼 경로를 고릅니다" },
+                      { value: "any", label: "상관없습니다", description: "가장 싼 경로를 고릅니다 (리전 밖에서 처리될 수 있음)" },
                       { value: "strict", label: "안 됩니다", description: "이 리전 안에서 처리되는 요금만" },
                     ]} />
                 </FormField>
@@ -381,15 +388,15 @@ export default function App({ snap }) {
 
             {pricePending.length > 0 && (
               <ExpandableSection variant="stacked"
-                headerText="AWS 가격 페이지 발표 · 가격 파일 미반영"
+                headerText="출시 확인 · 공개 단가 없음"
                 headerCounter={`(${pricePending.length})`}
-                headerDescription="AWS 영문 가격 페이지에는 있지만 청구 가격 파일에 입력·출력 단가가 아직 없습니다. 추정하지 않고 계산 대기로 표시합니다.">
+                headerDescription="AWS 영문 Pricing과 Documentation에는 모델이 게시됐지만, 영문 페이지에 숫자 단가가 없고 현재 Price List에도 입력·출력 SKU가 없습니다.">
                 <ColumnLayout columns={2}>
                   {pricePending.map((x) => (
                     <Box key={`${x.provider}/${x.name}`}>
                       <b>{x.name}</b>{" "}
                       <Box variant="span" color="text-body-secondary">{x.provider}</Box>{" "}
-                      <Badge color="blue">가격 파일 대기</Badge>
+                      <Badge color="blue">가격 미공개</Badge>
                     </Box>
                   ))}
                 </ColumnLayout>

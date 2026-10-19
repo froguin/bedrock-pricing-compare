@@ -1,0 +1,3448 @@
+{
+  "generated_at": "2026-10-19T12:33:05.036Z",
+  "source": "https://aws.amazon.com/bedrock/pricing/",
+  "table_count": 169,
+  "static_table_count": 69,
+  "models": [
+    {
+      "provider": "DeepSeek",
+      "name": "DeepSeek v3.1",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "DeepSeek",
+      "name": "DeepSeek v3.2",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Google",
+      "name": "Gemma 3 12B",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Google",
+      "name": "Gemma 3 27B",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Google",
+      "name": "Gemma 3 4B",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Google",
+      "name": "Gemma 4 26B A4B",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Google",
+      "name": "Gemma 4 31B",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Google",
+      "name": "Gemma 4 E2B",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Meta",
+      "name": "Llama 2 Chat (13B)",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Meta",
+      "name": "Llama 2 Chat (70B)",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "MiniMax AI",
+      "name": "Minimax M2",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "MiniMax AI",
+      "name": "Minimax M2.1",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "MiniMax AI",
+      "name": "Minimax M2.5",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "MiniMax AI",
+      "name": "MiniMax M2.5",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Mistral AI",
+      "name": "Devstral 2 123B",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Mistral AI",
+      "name": "Magistral Small 1.2",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Mistral AI",
+      "name": "Ministral 14B 3.0",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Mistral AI",
+      "name": "Ministral 3B 3.0",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Mistral AI",
+      "name": "Ministral 8B 3.0",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Mistral AI",
+      "name": "Mistral Large 3",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Mistral AI",
+      "name": "Voxtral Mini 1.0",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Mistral AI",
+      "name": "Voxtral Small 1.0",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Moonshot AI",
+      "name": "Kimi 3",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Moonshot AI",
+      "name": "Kimi K2 Thinking",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Moonshot AI",
+      "name": "Kimi K2.5",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "NVIDIA",
+      "name": "NVIDIA Nemotron 3 Nano 30B A3B",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "NVIDIA",
+      "name": "NVIDIA Nemotron 3 Super 120B A12B",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "NVIDIA",
+      "name": "NVIDIA Nemotron Nano 2",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "NVIDIA",
+      "name": "NVIDIA Nemotron Nano 2 VL",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "Daybreak Blue: GPT-5.6 Sol",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-daybreak-blue.html"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "Daybreak Red: GPT-5.6 Cyber",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-56-cyber.html"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT OSS Safeguard 120B",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT OSS Safeguard 20B",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-5.4",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-54.html"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-5.5",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-55.html"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-5.6 Luna",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-56-luna.html"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-5.6 Sol",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-56-sol.html"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-5.6 Terra",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-56-terra.html"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-6 Astra",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-astra.html"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-6 Luna",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-luna.html"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-6 Sol",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-sol.html"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-6.1 Sol",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-openai.html"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "gpt-oss-120b",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "gpt-oss-20b",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Qwen",
+      "name": "Qwen3 235B A22B 2507",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Qwen",
+      "name": "Qwen3 32B",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Qwen",
+      "name": "Qwen3 Coder 30B A3B",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Qwen",
+      "name": "Qwen3 Coder Next",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Qwen",
+      "name": "Qwen3 Next 80B A3B",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Qwen",
+      "name": "Qwen3 VL 235B A22B",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Writer",
+      "name": "Palmyra Vision 7B",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Writer",
+      "name": "Palmyra X4",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Writer",
+      "name": "Palmyra X5",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "xAI",
+      "name": "Grok 4.3",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-xai-grok-4-3.html"
+    },
+    {
+      "provider": "xAI",
+      "name": "Grok 4.6",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-xai-grok-4-6.html"
+    },
+    {
+      "provider": "xAI",
+      "name": "Grok 4.7",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-xai-grok-4-7.html"
+    },
+    {
+      "provider": "Z AI",
+      "name": "GLM 4.7",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Z AI",
+      "name": "GLM 4.7 Flash",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Z AI",
+      "name": "GLM 5",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Z AI",
+      "name": "GLM 5.3",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    }
+  ],
+  "prices": [
+    {
+      "provider": "DeepSeek",
+      "model_id": "DeepSeek v3.2",
+      "input": 0.62,
+      "output": 1.85,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 42
+    },
+    {
+      "provider": "DeepSeek",
+      "model_id": "DeepSeek v3.2",
+      "input": 0.74,
+      "output": 2.22,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1",
+        "ap-southeast-3",
+        "ap-northeast-1",
+        "eu-north-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 43
+    },
+    {
+      "provider": "DeepSeek",
+      "model_id": "DeepSeek v3.1",
+      "input": 0.5974,
+      "output": 1.7304,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 44
+    },
+    {
+      "provider": "DeepSeek",
+      "model_id": "DeepSeek v3.2",
+      "input": 0.6386,
+      "output": 1.9055,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 44
+    },
+    {
+      "provider": "DeepSeek",
+      "model_id": "DeepSeek v3.1",
+      "input": 1.0455,
+      "output": 3.0282,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "priority",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 46
+    },
+    {
+      "provider": "DeepSeek",
+      "model_id": "DeepSeek v3.1",
+      "input": 0.2987,
+      "output": 0.8652,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "flex",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 48
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 4 31B",
+      "input": 0.14,
+      "output": 0.4,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 49
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 4 26B A4B",
+      "input": 0.13,
+      "output": 0.4,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 49
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 4 E2B",
+      "input": 0.04,
+      "output": 0.08,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 49
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 3 4B",
+      "input": 0.04,
+      "output": 0.08,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 49
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 3 12B",
+      "input": 0.09,
+      "output": 0.29,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 49
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 3 27B",
+      "input": 0.23,
+      "output": 0.38,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 49
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 4 31B",
+      "input": 0.17,
+      "output": 0.48,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-central-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 50
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 4 26B A4B",
+      "input": 0.16,
+      "output": 0.48,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-central-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 50
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 4 E2B",
+      "input": 0.05,
+      "output": 0.1,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-central-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 50
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 3 4B",
+      "input": 0.05,
+      "output": 0.09,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1",
+        "eu-west-1",
+        "eu-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 51
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 3 12B",
+      "input": 0.11,
+      "output": 0.34,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1",
+        "eu-west-1",
+        "eu-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 51
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 3 27B",
+      "input": 0.27,
+      "output": 0.45,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1",
+        "eu-west-1",
+        "eu-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 51
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 3 4B",
+      "input": 0.05,
+      "output": 0.1,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 52
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 3 12B",
+      "input": 0.11,
+      "output": 0.35,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 52
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 3 27B",
+      "input": 0.28,
+      "output": 0.46,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 52
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 3 4B",
+      "input": 0.06,
+      "output": 0.12,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 53
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 3 12B",
+      "input": 0.14,
+      "output": 0.45,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 53
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 3 27B",
+      "input": 0.36,
+      "output": 0.59,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 53
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 3 4B",
+      "input": 0.0412,
+      "output": 0.0824,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 54
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 3 12B",
+      "input": 0.0927,
+      "output": 0.2987,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 54
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 3 27B",
+      "input": 0.2369,
+      "output": 0.3914,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 54
+    },
+    {
+      "provider": "Meta",
+      "model_id": "Llama 2 Chat (13B)",
+      "input": 0.75,
+      "output": 1,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 65
+    },
+    {
+      "provider": "Meta",
+      "model_id": "Llama 2 Chat (70B)",
+      "input": 1.95,
+      "output": 2.56,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 65
+    },
+    {
+      "provider": "MiniMax AI",
+      "model_id": "Minimax M2",
+      "input": 0.3,
+      "output": 1.2,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 68
+    },
+    {
+      "provider": "MiniMax AI",
+      "model_id": "Minimax M2.1",
+      "input": 0.3,
+      "output": 1.2,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 68
+    },
+    {
+      "provider": "MiniMax AI",
+      "model_id": "MiniMax M2.5",
+      "input": 0.3,
+      "output": 1.2,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 68
+    },
+    {
+      "provider": "MiniMax AI",
+      "model_id": "Minimax M2",
+      "input": 0.35,
+      "output": 1.41,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1",
+        "eu-west-1",
+        "eu-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 69
+    },
+    {
+      "provider": "MiniMax AI",
+      "model_id": "Minimax M2.1",
+      "input": 0.36,
+      "output": 1.44,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1",
+        "eu-west-1",
+        "eu-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 69
+    },
+    {
+      "provider": "MiniMax AI",
+      "model_id": "Minimax M2.5",
+      "input": 0.36,
+      "output": 1.44,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1",
+        "eu-west-1",
+        "eu-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 69
+    },
+    {
+      "provider": "MiniMax AI",
+      "model_id": "Minimax M2",
+      "input": 0.36,
+      "output": 1.45,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 70
+    },
+    {
+      "provider": "MiniMax AI",
+      "model_id": "Minimax M2.1",
+      "input": 0.36,
+      "output": 1.44,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 70
+    },
+    {
+      "provider": "MiniMax AI",
+      "model_id": "Minimax M2.5",
+      "input": 0.36,
+      "output": 1.44,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 70
+    },
+    {
+      "provider": "MiniMax AI",
+      "model_id": "Minimax M2",
+      "input": 0.47,
+      "output": 1.86,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 71
+    },
+    {
+      "provider": "MiniMax AI",
+      "model_id": "Minimax M2.1",
+      "input": 0.47,
+      "output": 1.86,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 71
+    },
+    {
+      "provider": "MiniMax AI",
+      "model_id": "Minimax M2.5",
+      "input": 0.47,
+      "output": 1.86,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 71
+    },
+    {
+      "provider": "MiniMax AI",
+      "model_id": "Minimax M2.1",
+      "input": 0.36,
+      "output": 1.44,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 72
+    },
+    {
+      "provider": "MiniMax AI",
+      "model_id": "Minimax M2.5",
+      "input": 0.36,
+      "output": 1.44,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 72
+    },
+    {
+      "provider": "MiniMax AI",
+      "model_id": "Minimax M2",
+      "input": 0.309,
+      "output": 1.236,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 73
+    },
+    {
+      "provider": "MiniMax AI",
+      "model_id": "Minimax M2.1",
+      "input": 0.309,
+      "output": 1.236,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 73
+    },
+    {
+      "provider": "MiniMax AI",
+      "model_id": "Minimax M2.5",
+      "input": 0.31,
+      "output": 1.24,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 73
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Devstral 2 123B",
+      "input": 0.4,
+      "output": 2,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 75
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Magistral Small 1.2",
+      "input": 0.5,
+      "output": 1.5,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 75
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Voxtral Mini 1.0",
+      "input": 0.04,
+      "output": 0.04,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 75
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Voxtral Small 1.0",
+      "input": 0.1,
+      "output": 0.3,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 75
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 3B 3.0",
+      "input": 0.1,
+      "output": 0.1,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 75
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 8B 3.0",
+      "input": 0.15,
+      "output": 0.15,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 75
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 14B 3.0",
+      "input": 0.2,
+      "output": 0.2,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 75
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Mistral Large 3",
+      "input": 0.5,
+      "output": 1.5,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 75
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Devstral 2 123B",
+      "input": 0.48,
+      "output": 2.4,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 76
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Magistral Small 1.2",
+      "input": 0.59,
+      "output": 1.76,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 76
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Voxtral Mini 1.0",
+      "input": 0.05,
+      "output": 0.05,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 76
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Voxtral Small 1.0",
+      "input": 0.12,
+      "output": 0.35,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 76
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 3B 3.0",
+      "input": 0.12,
+      "output": 0.12,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 76
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 8B 3.0",
+      "input": 0.18,
+      "output": 0.18,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 76
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 14B 3.0",
+      "input": 0.24,
+      "output": 0.24,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 76
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Mistral Large 3",
+      "input": 0.59,
+      "output": 1.76,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 76
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Devstral 2 123B",
+      "input": 0.48,
+      "output": 2.4,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 77
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Magistral Small 1.2",
+      "input": 0.61,
+      "output": 1.82,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 77
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Voxtral Mini 1.0",
+      "input": 0.05,
+      "output": 0.05,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 77
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Voxtral Small 1.0",
+      "input": 0.12,
+      "output": 0.36,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 77
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 3B 3.0",
+      "input": 0.12,
+      "output": 0.12,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 77
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 8B 3.0",
+      "input": 0.18,
+      "output": 0.18,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 77
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 14B 3.0",
+      "input": 0.24,
+      "output": 0.24,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 77
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Mistral Large 3",
+      "input": 0.61,
+      "output": 1.82,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 77
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Devstral 2 123B",
+      "input": 0.48,
+      "output": 2.4,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-1",
+        "eu-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 78
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Magistral Small 1.2",
+      "input": 0.59,
+      "output": 1.76,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-1",
+        "eu-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 78
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Voxtral Mini 1.0",
+      "input": 0.05,
+      "output": 0.05,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-1",
+        "eu-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 78
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Voxtral Small 1.0",
+      "input": 0.12,
+      "output": 0.35,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-1",
+        "eu-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 78
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 3B 3.0",
+      "input": 0.12,
+      "output": 0.12,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-1",
+        "eu-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 78
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 8B 3.0",
+      "input": 0.18,
+      "output": 0.18,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-1",
+        "eu-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 78
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 14B 3.0",
+      "input": 0.24,
+      "output": 0.24,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-1",
+        "eu-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 78
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Devstral 2 123B",
+      "input": 0.62,
+      "output": 3.1,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 79
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Magistral Small 1.2",
+      "input": 0.78,
+      "output": 2.33,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 79
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Voxtral Mini 1.0",
+      "input": 0.06,
+      "output": 0.06,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 79
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Voxtral Small 1.0",
+      "input": 0.16,
+      "output": 0.47,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 79
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 3B 3.0",
+      "input": 0.16,
+      "output": 0.16,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 79
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 8B 3.0",
+      "input": 0.23,
+      "output": 0.23,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 79
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 14B 3.0",
+      "input": 0.31,
+      "output": 0.31,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 79
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Devstral 2 123B",
+      "input": 0.41,
+      "output": 2.06,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 80
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Magistral Small 1.2",
+      "input": 0.515,
+      "output": 1.545,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 80
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Voxtral Mini 1.0",
+      "input": 0.0412,
+      "output": 0.0412,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 80
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Voxtral Small 1.0",
+      "input": 0.103,
+      "output": 0.309,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 80
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 3B 3.0",
+      "input": 0.103,
+      "output": 0.103,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 80
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 8B 3.0",
+      "input": 0.1545,
+      "output": 0.1545,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 80
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 14B 3.0",
+      "input": 0.206,
+      "output": 0.206,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 80
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Mistral Large 3",
+      "input": 0.515,
+      "output": 1.545,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 80
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Devstral 2 123B",
+      "input": 0.48,
+      "output": 2.4,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 81
+    },
+    {
+      "provider": "Moonshot AI",
+      "model_id": "Kimi 3",
+      "input": 3,
+      "output": 15,
+      "endpoint_type": "global-cris",
+      "regions": [],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 82
+    },
+    {
+      "provider": "Moonshot AI",
+      "model_id": "Kimi 3",
+      "input": 3.3,
+      "output": 16.5,
+      "endpoint_type": "regional-cris",
+      "regions": [],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 82
+    },
+    {
+      "provider": "Moonshot AI",
+      "model_id": "Kimi K2 Thinking",
+      "input": 0.6,
+      "output": 2.5,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 83
+    },
+    {
+      "provider": "Moonshot AI",
+      "model_id": "Kimi K2.5",
+      "input": 0.6,
+      "output": 3,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 83
+    },
+    {
+      "provider": "Moonshot AI",
+      "model_id": "Kimi K2 Thinking",
+      "input": 0.71,
+      "output": 2.94,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 84
+    },
+    {
+      "provider": "Moonshot AI",
+      "model_id": "Kimi K2.5",
+      "input": 0.72,
+      "output": 3.6,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 84
+    },
+    {
+      "provider": "Moonshot AI",
+      "model_id": "Kimi K2 Thinking",
+      "input": 0.73,
+      "output": 3.03,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 85
+    },
+    {
+      "provider": "Moonshot AI",
+      "model_id": "Kimi K2.5",
+      "input": 0.72,
+      "output": 3.6,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 85
+    },
+    {
+      "provider": "Moonshot AI",
+      "model_id": "Kimi K2.5",
+      "input": 0.72,
+      "output": 3.6,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-3",
+        "eu-north-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 86
+    },
+    {
+      "provider": "Moonshot AI",
+      "model_id": "Kimi K2 Thinking",
+      "input": 0.618,
+      "output": 2.575,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 87
+    },
+    {
+      "provider": "Moonshot AI",
+      "model_id": "Kimi K2.5",
+      "input": 0.618,
+      "output": 3.09,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 87
+    },
+    {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron Nano 2",
+      "input": 0.06,
+      "output": 0.23,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 88
+    },
+    {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron Nano 2 VL",
+      "input": 0.2,
+      "output": 0.6,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 88
+    },
+    {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron 3 Nano 30B A3B",
+      "input": 0.06,
+      "output": 0.24,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 88
+    },
+    {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron 3 Super 120B A12B",
+      "input": 0.15,
+      "output": 0.65,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 88
+    },
+    {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron Nano 2",
+      "input": 0.072,
+      "output": 0.276,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-gov-east-1",
+        "us-gov-west-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 89
+    },
+    {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron Nano 2 VL",
+      "input": 0.24,
+      "output": 0.72,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-gov-east-1",
+        "us-gov-west-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 89
+    },
+    {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron 3 Nano 30B A3B",
+      "input": 0.072,
+      "output": 0.288,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-gov-east-1",
+        "us-gov-west-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 89
+    },
+    {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron 3 Super 120B A12B",
+      "input": 0.18,
+      "output": 0.78,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-gov-east-1",
+        "us-gov-west-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 89
+    },
+    {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron Nano 2",
+      "input": 0.07,
+      "output": 0.28,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 91
+    },
+    {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron Nano 2 VL",
+      "input": 0.24,
+      "output": 0.73,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 91
+    },
+    {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron 3 Nano 30B A3B",
+      "input": 0.07,
+      "output": 0.29,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 91
+    },
+    {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron 3 Super 120B A12B",
+      "input": 0.18,
+      "output": 0.78,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 91
+    },
+    {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron Nano 2",
+      "input": 0.0618,
+      "output": 0.2369,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 93
+    },
+    {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron Nano 2 VL",
+      "input": 0.206,
+      "output": 0.618,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 93
+    },
+    {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron 3 Nano 30B A3B",
+      "input": 0.0618,
+      "output": 0.2472,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 93
+    },
+    {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron 3 Super 120B A12B",
+      "input": 0.15,
+      "output": 0.67,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 93
+    },
+    {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron 3 Super 120B A12B",
+      "input": 0.18,
+      "output": 0.78,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 94
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "gpt-oss-20b",
+      "input": 0.0721,
+      "output": 0.309,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 96
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "gpt-oss-120b",
+      "input": 0.1545,
+      "output": 0.618,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 96
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "gpt-oss-20b",
+      "input": 0.1262,
+      "output": 0.5408,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "priority",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 98
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "gpt-oss-120b",
+      "input": 0.2704,
+      "output": 1.0815,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "priority",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 98
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "gpt-oss-20b",
+      "input": 0.0361,
+      "output": 0.1545,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "flex",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 100
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "gpt-oss-120b",
+      "input": 0.0773,
+      "output": 0.309,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "flex",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 100
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "gpt-oss-20b",
+      "input": 0.0361,
+      "output": 0.1545,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "batch",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 102
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "gpt-oss-120b",
+      "input": 0.0773,
+      "output": 0.309,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "batch",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 102
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "GPT OSS Safeguard 20B",
+      "input": 0.07,
+      "output": 0.2,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 104
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "GPT OSS Safeguard 120B",
+      "input": 0.15,
+      "output": 0.6,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 104
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "GPT OSS Safeguard 20B",
+      "input": 0.08,
+      "output": 0.24,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1",
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 105
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "GPT OSS Safeguard 120B",
+      "input": 0.18,
+      "output": 0.71,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1",
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 105
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "GPT OSS Safeguard 20B",
+      "input": 0.08,
+      "output": 0.23,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-1",
+        "eu-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 106
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "GPT OSS Safeguard 120B",
+      "input": 0.18,
+      "output": 0.7,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-1",
+        "eu-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 106
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "GPT OSS Safeguard 20B",
+      "input": 0.11,
+      "output": 0.31,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 107
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "GPT OSS Safeguard 120B",
+      "input": 0.23,
+      "output": 0.93,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 107
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "GPT OSS Safeguard 20B",
+      "input": 0.0721,
+      "output": 0.206,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 108
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "GPT OSS Safeguard 120B",
+      "input": 0.1545,
+      "output": 0.618,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 108
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 Coder 30B A3B",
+      "input": 0.1545,
+      "output": 0.618,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 110
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 32B",
+      "input": 0.1545,
+      "output": 0.618,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 110
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 235B A22B 2507",
+      "input": 0.2266,
+      "output": 0.9064,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 110
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 Coder 30B A3B",
+      "input": 0.2704,
+      "output": 1.0815,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "priority",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 112
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 32B",
+      "input": 0.2704,
+      "output": 1.0815,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "priority",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 112
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 235B A22B 2507",
+      "input": 0.3966,
+      "output": 1.5862,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "priority",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 112
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 Coder 30B A3B",
+      "input": 0.0773,
+      "output": 0.309,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "flex",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 114
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 32B",
+      "input": 0.0773,
+      "output": 0.309,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "flex",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 114
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 235B A22B 2507",
+      "input": 0.1133,
+      "output": 0.4532,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "flex",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 114
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 Coder 30B A3B",
+      "input": 0.0773,
+      "output": 0.309,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "batch",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 116
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 32B",
+      "input": 0.0773,
+      "output": 0.309,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "batch",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 116
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 235B A22B 2507",
+      "input": 0.1133,
+      "output": 0.4532,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "batch",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 116
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 Next 80B A3B",
+      "input": 0.15,
+      "output": 1.2,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 118
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 VL 235B A22B",
+      "input": 0.53,
+      "output": 2.66,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 118
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 Coder Next",
+      "input": 0.5,
+      "output": 1.2,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 118
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 Next 80B A3B",
+      "input": 0.18,
+      "output": 1.41,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1",
+        "eu-west-1",
+        "eu-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 119
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 VL 235B A22B",
+      "input": 0.62,
+      "output": 3.13,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1",
+        "eu-west-1",
+        "eu-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 119
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 Coder Next",
+      "input": 0.6,
+      "output": 1.44,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1",
+        "eu-west-1",
+        "eu-south-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 119
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 Next 80B A3B",
+      "input": 0.18,
+      "output": 1.45,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 120
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 VL 235B A22B",
+      "input": 0.64,
+      "output": 3.22,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 120
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 Coder Next",
+      "input": 0.6,
+      "output": 1.44,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-northeast-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 120
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 Next 80B A3B",
+      "input": 0.23,
+      "output": 1.86,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 121
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 VL 235B A22B",
+      "input": 0.82,
+      "output": 4.12,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 121
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 Coder Next",
+      "input": 0.78,
+      "output": 1.86,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 121
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 Coder Next",
+      "input": 0.6,
+      "output": 1.44,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-3",
+        "eu-central-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 122
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 Next 80B A3B",
+      "input": 0.1545,
+      "output": 1.236,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 123
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 VL 235B A22B",
+      "input": 0.5459,
+      "output": 2.7398,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 123
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 Coder Next",
+      "input": 0.515,
+      "output": 1.236,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 123
+    },
+    {
+      "provider": "Writer",
+      "model_id": "Palmyra X4",
+      "input": 2.5,
+      "output": 10,
+      "endpoint_type": "in-region",
+      "regions": [],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 128
+    },
+    {
+      "provider": "Writer",
+      "model_id": "Palmyra X5",
+      "input": 0.6,
+      "output": 6,
+      "endpoint_type": "in-region",
+      "regions": [],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 128
+    },
+    {
+      "provider": "Writer",
+      "model_id": "Palmyra Vision 7B",
+      "input": 0.15,
+      "output": 0.6,
+      "endpoint_type": "in-region",
+      "regions": [],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 128
+    },
+    {
+      "provider": "Z AI",
+      "model_id": "GLM 5.3",
+      "input": 1.68,
+      "output": 5.28,
+      "endpoint_type": "global-cris",
+      "regions": [],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 129
+    },
+    {
+      "provider": "Z AI",
+      "model_id": "GLM 5.3",
+      "input": 1.848,
+      "output": 5.808,
+      "endpoint_type": "regional-cris",
+      "regions": [],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 129
+    },
+    {
+      "provider": "Z AI",
+      "model_id": "GLM 5",
+      "input": 1,
+      "output": 3.2,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 130
+    },
+    {
+      "provider": "Z AI",
+      "model_id": "GLM 5",
+      "input": 1.2,
+      "output": 3.84,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1",
+        "ap-southeast-3",
+        "ap-northeast-1",
+        "eu-north-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 131
+    },
+    {
+      "provider": "Z AI",
+      "model_id": "GLM 5",
+      "input": 1.55,
+      "output": 4.96,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 132
+    },
+    {
+      "provider": "Z AI",
+      "model_id": "GLM 5",
+      "input": 1.03,
+      "output": 3.3,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 133
+    },
+    {
+      "provider": "Z AI",
+      "model_id": "GLM 4.7",
+      "input": 0.6,
+      "output": 2.2,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 134
+    },
+    {
+      "provider": "Z AI",
+      "model_id": "GLM 4.7",
+      "input": 0.72,
+      "output": 2.64,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1",
+        "ap-southeast-3",
+        "ap-northeast-1",
+        "eu-north-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 135
+    },
+    {
+      "provider": "Z AI",
+      "model_id": "GLM 4.7",
+      "input": 0.618,
+      "output": 2.266,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 136
+    },
+    {
+      "provider": "Z AI",
+      "model_id": "GLM 4.7 Flash",
+      "input": 0.07,
+      "output": 0.4,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 137
+    },
+    {
+      "provider": "Z AI",
+      "model_id": "GLM 5",
+      "input": 1,
+      "output": 3.2,
+      "endpoint_type": "in-region",
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 137
+    },
+    {
+      "provider": "Z AI",
+      "model_id": "GLM 4.7 Flash",
+      "input": 0.08,
+      "output": 0.48,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1",
+        "ap-southeast-3",
+        "ap-northeast-1",
+        "eu-central-1",
+        "eu-west-1",
+        "eu-south-1",
+        "eu-north-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 138
+    },
+    {
+      "provider": "Z AI",
+      "model_id": "GLM 5",
+      "input": 1.2,
+      "output": 3.84,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-south-1",
+        "ap-southeast-3",
+        "ap-northeast-1",
+        "eu-central-1",
+        "eu-north-1",
+        "sa-east-1"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 139
+    },
+    {
+      "provider": "Z AI",
+      "model_id": "GLM 4.7 Flash",
+      "input": 0.11,
+      "output": 0.62,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 140
+    },
+    {
+      "provider": "Z AI",
+      "model_id": "GLM 5",
+      "input": 1.55,
+      "output": 4.96,
+      "endpoint_type": "in-region",
+      "regions": [
+        "eu-west-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 140
+    },
+    {
+      "provider": "Z AI",
+      "model_id": "GLM 4.7 Flash",
+      "input": 0.0721,
+      "output": 0.412,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 141
+    },
+    {
+      "provider": "Z AI",
+      "model_id": "GLM 5",
+      "input": 1.03,
+      "output": 3.3,
+      "endpoint_type": "in-region",
+      "regions": [
+        "ap-southeast-2"
+      ],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 141
+    }
+  ]
+}

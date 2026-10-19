@@ -42,18 +42,20 @@ jobs:
         id: check
         run: node collector/check-sources.mjs
 
-      - name: Collect + merge
+      - name: Collect + merge (English Pricing -> English Docs -> APIs)
         id: build
-        if: steps.check.outputs.offer_changed == 'true' || steps.check.outputs.page_changed == 'true' || inputs.force
+        if: steps.check.outputs.offer_changed == 'true' || steps.check.outputs.page_changed == 'true' || steps.check.outputs.docs_changed == 'true' || inputs.force
         run: |
           cp web/pricing.json "$RUNNER_TEMP/prev-pricing.json"
+          # Source 1: English Pricing page — literal prices win exact key conflicts.
+          node collector/collect-english-pricing.mjs
+          # Source 2: English Documentation — release and route/region availability.
+          node collector/collect-english-docs.mjs
+          # Source 3: Price List APIs — SKU dimensions and all page gaps.
           if [[ "${{ steps.check.outputs.offer_changed }}" == "true" || "${{ inputs.force }}" == "true" ]]; then
             node collector/collect.mjs all
             node collector/parse-abfm.mjs all
           fi
-          # The English page is discovery-only: named models without offer-file
-          # rates are surfaced as "price pending", never given guessed prices.
-          node collector/parse-pricing-page-models.mjs
           node collector/merge.mjs
 
       - name: Publish gate

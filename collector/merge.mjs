@@ -1,10 +1,14 @@
 #!/usr/bin/env node
 /**
- * Merge the two source snapshots (AmazonBedrock + AmazonBedrockFoundationModels)
- * into the single normalized dataset the front-end loads.
- * Run collect.mjs and parse-abfm.mjs first.
+ * Merge sources in strict priority order:
+ *   1. English AWS Pricing page literal prices
+ *   2. English AWS Documentation availability/release status
+ *   3. Price List offer files for SKU-level dimensions and every gap
+ *
+ * The page wins an exact price-key collision. Documentation decides where a
+ * page-only route is available. The APIs fill keys the page does not publish.
  */
-import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
+import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { writeJsonIfChanged } from "./write-stable.mjs";
@@ -13,38 +17,131 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dir = join(ROOT, "data/snapshots");
 const files = readdirSync(dir);
 const pick = (re) => files.filter((f) => re.test(f)).sort().pop();
-
+const read = (path, fallback) => existsSync(path) ? JSON.parse(readFileSync(path, "utf8")) : fallback;
 const bed = JSON.parse(readFileSync(join(dir, pick(/^\d+\.json$/))));
 const abfm = JSON.parse(readFileSync(join(dir, pick(/^abfm-/))));
-const pageModelsPath = join(ROOT, "data/pricing-page-models.json");
-const pageModels = existsSync(pageModelsPath) ? JSON.parse(readFileSync(pageModelsPath, "utf8")) : { models: [] };
-const normalizeModel = (s) => String(s).toLowerCase()
-  .replace(/^(openai|xai|z ai|moonshot ai)\s+/, "")
-  .replace(/[^a-z0-9]+/g, "");
-const pricedModels = new Set([...bed.price_points, ...abfm.price_points]
-  .map((p) => `${p.provider}|${normalizeModel(p.model_id)}`));
-const announcedModels = pageModels.models.map((m) => ({
-  ...m,
-  pricing_available: pricedModels.has(`${m.provider}|${normalizeModel(m.name)}`),
-}));
+const english = read(join(ROOT, "data/english-pricing.json"), { models: [], prices: [] });
+const docs = read(join(ROOT, "data/english-docs.json"), { models: [] });
+const apiPoints = [...bed.price_points, ...abfm.price_points];
+
+const norm = (s) => String(s || "").toLowerCase()
+  .replace(/\b(amazon|anthropic|meta|openai|xai|z ai|mistral ai|moonshot ai|nvidia)\b/g, "")
+  .replace(/\b(instruct|preview)\b/g, "")
+  .replace(/\.0\b/g, "")
+  .replace(/[^a-z0-9]+/g, "")
+  .replace(/^kimik(?=\d)/, "kimi");
+const id = (provider, model) => `${provider}|${norm(model)}`;
+const docsById = new Map(docs.models.map((m) => [id(m.provider, m.model_id), m]));
+const apiNames = new Map();
+for (const p of apiPoints) apiNames.set(id(p.provider, p.model_id), p.model_id);
+const canonicalName = (provider, model) => apiNames.get(id(provider, model)) || docsById.get(id(provider, model))?.model_id || model;
+const docsFor = (provider, model) => docsById.get(id(provider, model));
+const apiRegions = (provider, model, endpoint) => [...new Set(apiPoints
+  .filter((p) => p.provider === provider && norm(p.model_id) === norm(model) && p.endpoint_type === endpoint)
+  .map((p) => p.source_region))].sort();
+
+const pagePoints = [];
+for (const p of english.prices || []) {
+  const model = canonicalName(p.provider, p.model_id);
+  const doc = docsFor(p.provider, model);
+  let regions = p.regions || [];
+  let availabilitySource = "english-pricing-page";
+  if (!regions.length && doc) {
+    regions = doc.availability?.[p.endpoint_type] || [];
+    if (p.endpoint_type === "in-region") regions = [...new Set([...(doc.availability?.["in-region"] || []), ...(doc.availability?.["in-region-mantle"] || [])])];
+    availabilitySource = "english-documentation";
+  }
+  if (!regions.length) {
+    regions = apiRegions(p.provider, model, p.endpoint_type);
+    availabilitySource = "price-list-api";
+  }
+  // "US CRIS" is a geo route; do not expose it from a non-US source region.
+  if (p.endpoint_type === "regional-cris") regions = regions.filter((r) => r.startsWith("us-"));
+  for (const region of regions) for (const [dimension, price] of [["input", p.input], ["output", p.output]]) {
+    pagePoints.push({
+      provider: p.provider, model_id: model, status: doc?.status || p.status || "ga",
+      endpoint_type: p.endpoint_type, source_region: region,
+      service_tier: p.service_tier, execution_mode: p.execution_mode,
+      dimension, context_band: p.context_band || "standard", price_per_1m: price,
+      raw_unit: "USD per 1M tokens", source: "english-pricing-page",
+      availability_source: availabilitySource, source_url: p.source_url,
+      effective_date: english.generated_at, offer_version: `english-page:${english.generated_at}`,
+    });
+  }
+}
+
+const key = (p) => [p.provider, norm(p.model_id), p.endpoint_type, p.source_region,
+  p.service_tier, p.execution_mode, p.dimension, p.context_band || "standard"].join("|");
+const pageKeys = new Set(pagePoints.map(key));
+const docRegionsFor = (doc, endpoint) => endpoint === "in-region"
+  ? [...new Set([...(doc?.availability?.["in-region"] || []), ...(doc?.availability?.["in-region-mantle"] || [])])]
+  : (doc?.availability?.[endpoint] || []);
+// Documentation is source #2: for documented models it determines release
+// status and filters API-priced routes that the compatibility table does not
+// advertise. Models not yet in that doc remain available via API fallback.
+const documentedApi = apiPoints.flatMap((p) => {
+  const doc = docsFor(p.provider, p.model_id);
+  if (!doc) return [p];
+  const current = docRegionsFor(doc, p.endpoint_type);
+  if (current.includes(p.source_region)) return [{ ...p, status: doc.status, availability_source: "english-documentation" }];
+  // The offer's UsageType does not always distinguish Geo from in-region
+  // (for example Llama 3.2 and Claude Opus 4.1). Documentation outranks that
+  // parser: remap a priced row to the documented route instead of deleting it.
+  const route = ["regional-cris", "global-cris", "in-region"]
+    .find((candidate) => docRegionsFor(doc, candidate).includes(p.source_region));
+  if (!route) return [];
+  return [{ ...p, endpoint_type: route, status: doc.status,
+    availability_source: "english-documentation", api_endpoint_type: p.endpoint_type }];
+});
+const apiByKey = new Map();
+for (const p of documentedApi) {
+  const k = key(p); const values = apiByKey.get(k) || new Set(); values.add(p.price_per_1m); apiByKey.set(k, values);
+}
+const conflicts = [];
+for (const p of pagePoints) {
+  const values = apiByKey.get(key(p));
+  if (values && !values.has(p.price_per_1m)) {
+    const api_prices = [...values].sort((a,b)=>a-b);
+    p.source_conflict = true;
+    p.api_price_per_1m = api_prices;
+    conflicts.push({ key: key(p), english_price: p.price_per_1m, api_prices });
+  }
+}
+// Page first: remove exact API keys the page publishes, then append page points.
+const apiFallback = documentedApi.filter((p) => !pageKeys.has(key(p)));
+const pricePoints = [...pagePoints, ...apiFallback];
+
+const priced = new Set(pricePoints.filter((p) => /^(input|output)$/.test(p.dimension)).map((p) => id(p.provider, p.model_id)));
+const allNamed = new Map();
+// Only models explicitly present on the English pricing page are candidates for
+// "price pending". Documentation contains image/embedding/non-token models that
+// do not belong in this token-cost view; it validates launch/availability only.
+for (const m of english.models || []) allNamed.set(id(m.provider, m.name), m);
+const announcedModels = [...allNamed.values()].map((m) => ({ ...m, pricing_available: priced.has(id(m.provider, m.name)),
+  validation_source: docsById.has(id(m.provider,m.name)) ? "english-documentation" : "english-pricing-page" }))
+  .sort((a,b)=>a.provider.localeCompare(b.provider)||a.name.localeCompare(b.name));
 
 const merged = {
   generated_at: new Date().toISOString(),
+  source_priority: ["english-pricing-page", "english-documentation", "price-list-api"],
+  english_pricing_checked_at: english.generated_at || null,
+  english_documentation_checked_at: docs.generated_at || null,
   offer_version: `${bed.offer_version} + ${abfm.offer_version}`,
-  as_of: {
-    "AmazonBedrock": bed.offer_version,
-    "AmazonBedrockFoundationModels": abfm.offer_version,
-  },
+  as_of: { AmazonBedrock: bed.offer_version, AmazonBedrockFoundationModels: abfm.offer_version },
   sources: [
+    { code: "EnglishPricingPage", url: english.source, price_pairs: english.prices?.length || 0 },
+    { code: "EnglishDocumentation", url: docs.source, models: docs.models?.length || 0 },
     { code: "AmazonBedrock", version: bed.offer_version, count: bed.count },
     { code: "AmazonBedrockFoundationModels", version: abfm.offer_version, count: abfm.count },
   ],
-  regions: [...new Set([...bed.regions, ...abfm.regions])].sort(),
-  count: bed.count + abfm.count,
+  regions: [...new Set(pricePoints.map((p) => p.source_region))].sort(),
+  count: pricePoints.length,
+  english_page_points: pagePoints.length,
+  api_fallback_points: apiFallback.length,
+  source_conflicts: conflicts,
   announced_models: announcedModels,
-  price_points: [...bed.price_points, ...abfm.price_points],
+  price_points: pricePoints,
 };
-
 const wrote = writeJsonIfChanged(join(ROOT, "web/pricing.json"), merged);
 if (!wrote) console.log("web/pricing.json unchanged apart from generated_at -- kept");
-console.log(`merged ${merged.count} price_points -> web/pricing.json (${merged.regions.length} regions)`);
+console.log(`merged ${merged.count} points: English page ${pagePoints.length} first, API fallback ${apiFallback.length}; ${conflicts.length} source conflicts`);

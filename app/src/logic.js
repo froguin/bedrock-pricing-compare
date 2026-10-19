@@ -4,7 +4,7 @@
 export const PATH_KO = {
   "in-region":     { label: "리전 내 처리",     help: "이 리전 안에서 처리됩니다", type: "success" },
   "global-cris":   { label: "글로벌 분산 처리", help: "데이터가 리전 밖에서 처리될 수 있습니다", type: "info" },
-  "regional-cris": { label: "묶음 경로",       help: "별도 단가 없음", type: "stopped" },
+  "regional-cris": { label: "지역 묶음 분산 처리", help: "문서화된 지리적 리전 그룹 안에서 처리됩니다", type: "info" },
 };
 export const TIER_KO = { standard: "표준", priority: "우선 처리", flex: "유연", "latency-optimized": "지연 최소화" };
 export const STATUS_KO = { ga: "정식 제공", legacy: "구형", preview: "미리보기", internal: "내부 코드명" };
@@ -131,7 +131,7 @@ export function buildIndex(P, f, matches) {
   return { idx, statusOf };
 }
 
-export const allowedPaths = (resid) => (resid === "strict" ? ["in-region"] : ["in-region", "global-cris"]);
+export const allowedPaths = (resid) => (resid === "strict" ? ["in-region"] : ["in-region", "regional-cris", "global-cris"]);
 
 // monthly cost for one path, or null when a dimension is missing
 export function costFor(pathNode, inM, outM) {
@@ -161,14 +161,14 @@ export function rank(P, f, matches) {
       const have = new Set();
       for (const path of Object.keys(here)) for (const d of Object.keys(here[path])) have.add(d);
       const only = [...have].map((d) => (d === "input" ? "입력" : "출력")).join(" · ");
-      const blocked = f.resid === "strict" && here["global-cris"] && !here["in-region"];
+      const blocked = f.resid === "strict" && (here["global-cris"] || here["regional-cris"]) && !here["in-region"];
       partial.push({ key, provider, model,
         reason: blocked ? "이 리전 안에서 처리되는 요금이 없습니다 (글로벌 분산 처리만 제공)"
                         : `${only} 단가만 있어 월 비용을 계산할 수 없습니다` });
       continue;
     }
     ranked.push({ key, provider, model, status: statusOf[key], ...best, regions,
-                  noInRegionHere: best.path === "global-cris" && !here["in-region"] });
+                  noInRegionHere: best.path !== "in-region" && !here["in-region"] });
   }
   ranked.sort((a, b) => a.cost.lo - b.cost.lo);
   // "N배" baseline: cheapest row with a settled (non-ambiguous) price

@@ -35,8 +35,13 @@ const index = (snap) => {
 };
 
 const fails = [];
-if (next.regions.length < prev.regions.length) {
+const sourcePriorityMigration = !prev.source_priority &&
+  JSON.stringify(next.source_priority) === JSON.stringify(["english-pricing-page", "english-documentation", "price-list-api"]);
+if (next.regions.length < prev.regions.length && !sourcePriorityMigration) {
   fails.push(`regions dropped ${prev.regions.length} -> ${next.regions.length}`);
+}
+if (sourcePriorityMigration && next.regions.length < prev.regions.length) {
+  console.log(`source-priority migration: accepting documented region set ${prev.regions.length} -> ${next.regions.length} once`);
 }
 if (next.count < prev.count * 0.8) {
   fails.push(`price points dropped ${prev.count} -> ${next.count} (>20%)`);

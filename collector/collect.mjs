@@ -145,6 +145,28 @@ async function fetchJson(url) {
   return r.json();
 }
 
+// Non-token output models use a different calculator. Keep their native unit
+// instead of forcing them into the input/output-token matrix.
+function normalizeVideoGeneration(offer, regionCode) {
+  const out = [], P = offer.products || {}, T = offer.terms?.OnDemand || {};
+  for (const [sku, product] of Object.entries(P)) {
+    const a = product.attributes || {};
+    const modelRaw = recoverModelId(a);
+    const provider = canonProvider(inferProvider(a), modelRaw);
+    if (!(/Nova\s*Reel/i.test(modelRaw) || (provider === "Luma AI" && /Ray/i.test(modelRaw)))) continue;
+    if (/Customization|Provisioned|Training|Storage/i.test(`${a.feature || ""} ${a.usagetype || ""}`)) continue;
+    for (const term of Object.values(T[sku] || {})) for (const pd of Object.values(term.priceDimensions || {})) {
+      const unit = String(pd.unit || "").toLowerCase();
+      const price = Number(pd.pricePerUnit?.USD);
+      if (!Number.isFinite(price) || price <= 0 || !/^(video|seconds?)$/.test(unit)) continue;
+      out.push({ category:"video-generation", provider, model_id:prettyModelId(modelRaw), source_region:regionCode,
+        billing_unit:"second", price_per_unit:price, variant:a.inferenceType || "generated video",
+        source:"price-list-api", sku, effective_date:term.effectiveDate, offer_version:offer.version });
+    }
+  }
+  return out;
+}
+
 function normalizeRegion(offer, regionCode) {
   const out = [];
   const P = offer.products, T = offer.terms?.OnDemand || {};
@@ -203,15 +225,17 @@ async function main() {
     : args;
   regions = regions.filter((r) => idx.regions[r]);
 
-  let all = [], version = null;
+  let all = [], special = [], version = null;
   for (const rc of regions) {
     const url = "https://pricing.us-east-1.amazonaws.com" + idx.regions[rc].currentVersionUrl;
     process.stderr.write(`fetch ${rc} ...\n`);
     const offer = await fetchJson(url);
     version = offer.version;
     const rows = normalizeRegion(offer, rc);
-    process.stderr.write(`  ${rc}: ${rows.length} price_points\n`);
+    const videoRows = normalizeVideoGeneration(offer, rc);
+    process.stderr.write(`  ${rc}: ${rows.length} price_points; ${videoRows.length} video rates\n`);
     all = all.concat(rows);
+    special = special.concat(videoRows);
   }
 
   await mkdir(join(ROOT, "data/snapshots"), { recursive: true });
@@ -220,6 +244,8 @@ async function main() {
     offer_version: version,
     regions,
     count: all.length,
+    special_count: special.length,
+    special_prices: special,
     price_points: all,
   };
   const out = join(ROOT, "data/snapshots", `${version}.json`);

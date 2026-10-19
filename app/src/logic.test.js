@@ -2,7 +2,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { rank, makeMatcher, expandTiers, SIZES } from "./logic.js";
+import { rank, makeMatcher, expandTiers, rankEmbeddings, groupVideoPrices, isEmbeddingModel, SIZES } from "./logic.js";
 
 const snap = JSON.parse(readFileSync(new URL("../../web/pricing.json", import.meta.url), "utf8"));
 const P = snap.price_points;
@@ -41,4 +41,22 @@ test("expand tiers cover every priced region exactly once", () => {
   assert.equal(all.length, new Set(all).size);
   assert.equal(all.length, x.nRegions);
   assert.ok(x.tiers.filter((t) => t.isMine).length <= 1);
+});
+
+
+test("embedding models are excluded from chat ranking and calculated input-only", () => {
+  const f = base();
+  const normal = rank(P, f, matches);
+  assert.ok(normal.ranked.every((x) => !isEmbeddingModel(x.model)));
+  assert.ok(normal.partial.every((x) => !isEmbeddingModel(x.model)));
+  const embeddings = rankEmbeddings(P, f, matches);
+  assert.ok(embeddings.some((x) => x.model === "TitanEmbeddingsV2-Text-input" && x.costLo === 0.246));
+  assert.ok(embeddings.some((x) => x.model === "Cohere Embed 4 Model" && x.costLo === 1.2));
+});
+
+test("video generation rates stay per-second and group regions without duplicates", () => {
+  const rows = groupVideoPrices(snap.special_prices);
+  assert.ok(rows.some((x) => x.model === "Nova Reel" && x.rate === 0.08 && x.regions.includes("us-east-1")));
+  assert.ok(rows.some((x) => x.model === "Luma Ray2" && x.rate === 0.75 && /Standard/.test(x.variant)));
+  assert.ok(rows.every((x) => x.regions.length === new Set(x.regions).size));
 });

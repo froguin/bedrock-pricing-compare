@@ -34,7 +34,7 @@ EOF
 PERM=$(cat <<EOF
 {"Version":"2012-10-17","Statement":[
  {"Sid":"UploadSitePage","Effect":"Allow","Action":"s3:PutObject",
-  "Resource":["arn:aws:s3:::${BUCKET}/index.html","arn:aws:s3:::${BUCKET}/index.html.br","arn:aws:s3:::${BUCKET}/index.html.gz","arn:aws:s3:::${BUCKET}/robots.txt","arn:aws:s3:::${BUCKET}/sitemap.xml"]},
+  "Resource":["arn:aws:s3:::${BUCKET}/index.html","arn:aws:s3:::${BUCKET}/index.html.br","arn:aws:s3:::${BUCKET}/index.html.gz","arn:aws:s3:::${BUCKET}/robots.txt","arn:aws:s3:::${BUCKET}/sitemap.xml","arn:aws:s3:::${BUCKET}/llms.txt","arn:aws:s3:::${BUCKET}/.well-known/ard.json","arn:aws:s3:::${BUCKET}/.well-known/ai-catalog.json"]},
  {"Sid":"InvalidateSiteCache","Effect":"Allow","Action":"cloudfront:CreateInvalidation",
   "Resource":"arn:aws:cloudfront::${ACCOUNT}:distribution/${DIST_ID}"}]}
 EOF

@@ -55,6 +55,13 @@ jobs:
         if: steps.build.outcome == 'success'
         run: node collector/gate.mjs "$RUNNER_TEMP/prev-pricing.json" web/pricing.json
 
+      # Every model/region/path transition is derived from the two snapshots —
+      # no release names are hard-coded. Keeps tombstones for removed models and
+      # writes additions/removals/availability changes to the Actions summary.
+      - name: Audit model catalog lifecycle
+        if: steps.build.outcome == 'success'
+        run: node collector/audit-model-catalog.mjs "$RUNNER_TEMP/prev-pricing.json" web/pricing.json
+
       # The live page is the Cloudscape app (app/): Vite builds one HTML file,
       # then the same injector inlines the dictionary-encoded dataset.
       - name: Build single-file page

@@ -1,0 +1,6030 @@
+{
+  "schema": 1,
+  "as_of": {
+    "AmazonBedrock": "20261016210806",
+    "AmazonBedrockFoundationModels": "20261012084008"
+  },
+  "models": {
+    "AI21 Labs\u0001Jamba 1.5 Large": {
+      "provider": "AI21 Labs",
+      "model_id": "Jamba 1.5 Large",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "eu-central-1",
+        "us-east-1"
+      ],
+      "complete_regions": [
+        "eu-central-1",
+        "us-east-1"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "AI21 Labs\u0001Jamba 1.5 Mini": {
+      "provider": "AI21 Labs",
+      "model_id": "Jamba 1.5 Mini",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "eu-central-1",
+        "us-east-1"
+      ],
+      "complete_regions": [
+        "eu-central-1",
+        "us-east-1"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "AI21 Labs\u0001Jamba-Instruct": {
+      "provider": "AI21 Labs",
+      "model_id": "Jamba-Instruct",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "us-east-1"
+      ],
+      "complete_regions": [
+        "us-east-1"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "AI21 Labs\u0001Jurassic-2 Mid": {
+      "provider": "AI21 Labs",
+      "model_id": "Jurassic-2 Mid",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "AI21 Labs\u0001Jurassic-2 Ultra": {
+      "provider": "AI21 Labs",
+      "model_id": "Jurassic-2 Ultra",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Amazon\u0001Nova 2.0 Lite": {
+      "provider": "Amazon",
+      "model_id": "Nova 2.0 Lite",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-south-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-south-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "Amazon\u0001Nova 2.0 Omni": {
+      "provider": "Amazon",
+      "model_id": "Nova 2.0 Omni",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-south-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-south-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "Amazon\u0001Nova 2.0 Pro": {
+      "provider": "Amazon",
+      "model_id": "Nova 2.0 Pro",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-south-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-south-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "Amazon\u0001Nova 2.5 Sonic": {
+      "provider": "Amazon",
+      "model_id": "Nova 2.5 Sonic",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "eu-north-1",
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "eu-north-1",
+        "us-east-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Amazon\u0001Nova Lite": {
+      "provider": "Amazon",
+      "model_id": "Nova Lite",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-south-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-south-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Amazon\u0001Nova Micro": {
+      "provider": "Amazon",
+      "model_id": "Nova Micro",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-south-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-south-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-7",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Amazon\u0001Nova Premier": {
+      "provider": "Amazon",
+      "model_id": "Nova Premier",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Amazon\u0001Nova Pro": {
+      "provider": "Amazon",
+      "model_id": "Nova Pro",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-south-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-south-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Amazon\u0001Nova Pro Latency Optimized": {
+      "provider": "Amazon",
+      "model_id": "Nova Pro Latency Optimized",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Amazon\u0001Nova Sonic": {
+      "provider": "Amazon",
+      "model_id": "Nova Sonic",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "eu-north-1",
+        "us-east-1"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "eu-north-1",
+        "us-east-1"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Amazon\u0001Nova Sonic 2.0": {
+      "provider": "Amazon",
+      "model_id": "Nova Sonic 2.0",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "eu-north-1",
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "eu-north-1",
+        "us-east-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Amazon\u0001Titan Embeddings G1 Image": {
+      "provider": "Amazon",
+      "model_id": "Titan Embeddings G1 Image",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "legacy"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-south-1",
+        "ap-southeast-2",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "sa-east-1",
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Amazon\u0001Titan Embeddings G1 Text": {
+      "provider": "Amazon",
+      "model_id": "Titan Embeddings G1 Text",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "legacy"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "eu-central-1",
+        "eu-west-1",
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Amazon\u0001Titan Text G1 Express": {
+      "provider": "Amazon",
+      "model_id": "Titan Text G1 Express",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "legacy"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "sa-east-1",
+        "us-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "sa-east-1",
+        "us-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Amazon\u0001Titan Text G1 Lite": {
+      "provider": "Amazon",
+      "model_id": "Titan Text G1 Lite",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "legacy"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-south-1",
+        "ap-southeast-2",
+        "ca-central-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "sa-east-1",
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-south-1",
+        "ap-southeast-2",
+        "ca-central-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "sa-east-1",
+        "us-east-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Amazon\u0001Titan Text G1 Premier": {
+      "provider": "Amazon",
+      "model_id": "Titan Text G1 Premier",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "legacy"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "us-east-1"
+      ],
+      "complete_regions": [
+        "us-east-1"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Amazon\u0001TitanEmbeddingsV2-Text-input": {
+      "provider": "Amazon",
+      "model_id": "TitanEmbeddingsV2-Text-input",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "legacy"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude": {
+      "provider": "Anthropic",
+      "model_id": "Claude",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "legacy"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-southeast-1",
+        "eu-central-1",
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-southeast-1",
+        "eu-central-1",
+        "us-east-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude (100K)": {
+      "provider": "Anthropic",
+      "model_id": "Claude (100K)",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "legacy"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude 2.0": {
+      "provider": "Anthropic",
+      "model_id": "Claude 2.0",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "legacy"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude 2.1": {
+      "provider": "Anthropic",
+      "model_id": "Claude 2.1",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "legacy"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude 3 Haiku": {
+      "provider": "Anthropic",
+      "model_id": "Claude 3 Haiku",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer",
+        "offer-abfm"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-south-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-south-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude 3 Opus": {
+      "provider": "Anthropic",
+      "model_id": "Claude 3 Opus",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude 3 Sonnet": {
+      "provider": "Anthropic",
+      "model_id": "Claude 3 Sonnet",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer",
+        "offer-abfm"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-south-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "sa-east-1",
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-south-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "sa-east-1",
+        "us-east-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude 3.5 Haiku": {
+      "provider": "Anthropic",
+      "model_id": "Claude 3.5 Haiku",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude 3.5 Sonnet": {
+      "provider": "Anthropic",
+      "model_id": "Claude 3.5 Sonnet",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-south-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-west-1",
+        "eu-west-3",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-south-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-west-1",
+        "eu-west-3",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude 3.5 Sonnet v2": {
+      "provider": "Anthropic",
+      "model_id": "Claude 3.5 Sonnet v2",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-3",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-3",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude 3.7 Sonnet": {
+      "provider": "Anthropic",
+      "model_id": "Claude 3.7 Sonnet",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude Fable 5": {
+      "provider": "Anthropic",
+      "model_id": "Claude Fable 5",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "internal"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude Fable 5.1": {
+      "provider": "Anthropic",
+      "model_id": "Claude Fable 5.1",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "internal"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude Haiku 4.5": {
+      "provider": "Anthropic",
+      "model_id": "Claude Haiku 4.5",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude Haiku 5.5": {
+      "provider": "Anthropic",
+      "model_id": "Claude Haiku 5.5",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude Instant": {
+      "provider": "Anthropic",
+      "model_id": "Claude Instant",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "legacy"
+      ],
+      "sources": [
+        "offer",
+        "offer-abfm"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-southeast-1",
+        "eu-central-1",
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-southeast-1",
+        "eu-central-1",
+        "us-east-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude Instant (100K)": {
+      "provider": "Anthropic",
+      "model_id": "Claude Instant (100K)",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "legacy"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude Mythos 5": {
+      "provider": "Anthropic",
+      "model_id": "Claude Mythos 5",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "internal"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "us-east-1"
+      ],
+      "complete_regions": [
+        "us-east-1"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude Mythos 5.1": {
+      "provider": "Anthropic",
+      "model_id": "Claude Mythos 5.1",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "internal"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude Mythos Preview": {
+      "provider": "Anthropic",
+      "model_id": "Claude Mythos Preview",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "internal"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "ap-southeast-4",
+        "us-east-1"
+      ],
+      "complete_regions": [
+        "ap-southeast-4",
+        "us-east-1"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude Opus 4": {
+      "provider": "Anthropic",
+      "model_id": "Claude Opus 4",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude Opus 4.1": {
+      "provider": "Anthropic",
+      "model_id": "Claude Opus 4.1",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude Opus 4.5": {
+      "provider": "Anthropic",
+      "model_id": "Claude Opus 4.5",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-2",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-3",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-2",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-3",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude Opus 4.6": {
+      "provider": "Anthropic",
+      "model_id": "Claude Opus 4.6",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude Opus 4.7": {
+      "provider": "Anthropic",
+      "model_id": "Claude Opus 4.7",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude Opus 4.8": {
+      "provider": "Anthropic",
+      "model_id": "Claude Opus 4.8",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude Opus 5": {
+      "provider": "Anthropic",
+      "model_id": "Claude Opus 5",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude Opus 5.5": {
+      "provider": "Anthropic",
+      "model_id": "Claude Opus 5.5",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude Sonnet 4": {
+      "provider": "Anthropic",
+      "model_id": "Claude Sonnet 4",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude Sonnet 4.5": {
+      "provider": "Anthropic",
+      "model_id": "Claude Sonnet 4.5",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude Sonnet 4.6": {
+      "provider": "Anthropic",
+      "model_id": "Claude Sonnet 4.6",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude Sonnet 5": {
+      "provider": "Anthropic",
+      "model_id": "Claude Sonnet 5",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "Anthropic\u0001Claude Sonnet 5.5": {
+      "provider": "Anthropic",
+      "model_id": "Claude Sonnet 5.5",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-2",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-2",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "Cohere\u0001Cohere Command R": {
+      "provider": "Cohere",
+      "model_id": "Cohere Command R",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Cohere\u0001Cohere Command R+": {
+      "provider": "Cohere",
+      "model_id": "Cohere Command R+",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Cohere\u0001Cohere Embed 3 Model - English": {
+      "provider": "Cohere",
+      "model_id": "Cohere Embed 3 Model - English",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "sa-east-1",
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Cohere\u0001Cohere Embed 4 Model": {
+      "provider": "Cohere",
+      "model_id": "Cohere Embed 4 Model",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Cohere\u0001Cohere Embed Model 3 - Multilingual": {
+      "provider": "Cohere",
+      "model_id": "Cohere Embed Model 3 - Multilingual",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "sa-east-1",
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Cohere\u0001Cohere Generate Model - Command": {
+      "provider": "Cohere",
+      "model_id": "Cohere Generate Model - Command",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Cohere\u0001Cohere Generate Model - Command-Light": {
+      "provider": "Cohere",
+      "model_id": "Cohere Generate Model - Command-Light",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "DeepSeek\u0001DeepSeek V3.1": {
+      "provider": "DeepSeek",
+      "model_id": "DeepSeek V3.1",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "DeepSeek\u0001DeepSeek v3.2": {
+      "provider": "DeepSeek",
+      "model_id": "DeepSeek v3.2",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "DeepSeek\u0001R1": {
+      "provider": "DeepSeek",
+      "model_id": "R1",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Google\u0001Gemma 3 12B": {
+      "provider": "Google",
+      "model_id": "Gemma 3 12B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Google\u0001Gemma 3 27B": {
+      "provider": "Google",
+      "model_id": "Gemma 3 27B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Google\u0001Gemma 3 4B": {
+      "provider": "Google",
+      "model_id": "Gemma 3 4B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Google\u0001Gemma 4 26B A4B": {
+      "provider": "Google",
+      "model_id": "Gemma 4 26B A4B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "eu-central-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "eu-central-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Google\u0001Gemma 4 31B": {
+      "provider": "Google",
+      "model_id": "Gemma 4 31B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "eu-central-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "eu-central-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Google\u0001Gemma 4 E2B": {
+      "provider": "Google",
+      "model_id": "Gemma 4 E2B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "eu-central-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "eu-central-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Meta\u0001Llama 3 70B": {
+      "provider": "Meta",
+      "model_id": "Llama 3 70B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-south-1",
+        "ca-central-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-south-1",
+        "ca-central-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Meta\u0001Llama 3 8B": {
+      "provider": "Meta",
+      "model_id": "Llama 3 8B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-south-1",
+        "ca-central-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-south-1",
+        "ca-central-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Meta\u0001Llama 3.1 405B": {
+      "provider": "Meta",
+      "model_id": "Llama 3.1 405B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Meta\u0001Llama 3.1 405B Latency Optimized": {
+      "provider": "Meta",
+      "model_id": "Llama 3.1 405B Latency Optimized",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "us-east-2"
+      ],
+      "complete_regions": [
+        "us-east-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Meta\u0001Llama 3.1 70B": {
+      "provider": "Meta",
+      "model_id": "Llama 3.1 70B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Meta\u0001Llama 3.1 70B Latency Optimized": {
+      "provider": "Meta",
+      "model_id": "Llama 3.1 70B Latency Optimized",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Meta\u0001Llama 3.1 8B": {
+      "provider": "Meta",
+      "model_id": "Llama 3.1 8B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Meta\u0001Llama 3.2 11B": {
+      "provider": "Meta",
+      "model_id": "Llama 3.2 11B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Meta\u0001Llama 3.2 1B": {
+      "provider": "Meta",
+      "model_id": "Llama 3.2 1B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "eu-central-1",
+        "eu-west-1",
+        "eu-west-3",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "eu-central-1",
+        "eu-west-1",
+        "eu-west-3",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Meta\u0001Llama 3.2 3B": {
+      "provider": "Meta",
+      "model_id": "Llama 3.2 3B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "eu-central-1",
+        "eu-west-1",
+        "eu-west-3",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "eu-central-1",
+        "eu-west-1",
+        "eu-west-3",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Meta\u0001Llama 3.2 90B": {
+      "provider": "Meta",
+      "model_id": "Llama 3.2 90B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Meta\u0001Llama 3.3 70B": {
+      "provider": "Meta",
+      "model_id": "Llama 3.3 70B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Meta\u0001Llama 4 Maverick 17B": {
+      "provider": "Meta",
+      "model_id": "Llama 4 Maverick 17B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Meta\u0001Llama 4 Scout 17B": {
+      "provider": "Meta",
+      "model_id": "Llama 4 Scout 17B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Meta\u0001Meta Llama 2 Chat 13B": {
+      "provider": "Meta",
+      "model_id": "Meta Llama 2 Chat 13B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Meta\u0001Meta Llama 2 Chat 70B": {
+      "provider": "Meta",
+      "model_id": "Meta Llama 2 Chat 70B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Minimax AI\u0001Minimax M2": {
+      "provider": "Minimax AI",
+      "model_id": "Minimax M2",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Minimax AI\u0001Minimax M2.1": {
+      "provider": "Minimax AI",
+      "model_id": "Minimax M2.1",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Minimax AI\u0001MiniMax M2.5": {
+      "provider": "Minimax AI",
+      "model_id": "MiniMax M2.5",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Mistral\u0001Devstral": {
+      "provider": "Mistral",
+      "model_id": "Devstral",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Mistral\u0001Magistral Small 1.2": {
+      "provider": "Mistral",
+      "model_id": "Magistral Small 1.2",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Mistral\u0001Ministral 14B 3.0": {
+      "provider": "Mistral",
+      "model_id": "Ministral 14B 3.0",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Mistral\u0001Ministral 3B 3.0": {
+      "provider": "Mistral",
+      "model_id": "Ministral 3B 3.0",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Mistral\u0001Ministral 8B 3.0": {
+      "provider": "Mistral",
+      "model_id": "Ministral 8B 3.0",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Mistral\u0001Mistral 7B": {
+      "provider": "Mistral",
+      "model_id": "Mistral 7B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-south-1",
+        "ap-southeast-2",
+        "ca-central-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "sa-east-1",
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-south-1",
+        "ap-southeast-2",
+        "ca-central-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "sa-east-1",
+        "us-east-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Mistral\u0001Mistral Large": {
+      "provider": "Mistral",
+      "model_id": "Mistral Large",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-south-1",
+        "ap-southeast-2",
+        "ca-central-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "sa-east-1",
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-south-1",
+        "ap-southeast-2",
+        "ca-central-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "sa-east-1",
+        "us-east-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Mistral\u0001Mistral Large 2407": {
+      "provider": "Mistral",
+      "model_id": "Mistral Large 2407",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Mistral\u0001Mistral Large 3": {
+      "provider": "Mistral",
+      "model_id": "Mistral Large 3",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Mistral\u0001Mistral Small": {
+      "provider": "Mistral",
+      "model_id": "Mistral Small",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "us-east-1"
+      ],
+      "complete_regions": [
+        "us-east-1"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Mistral\u0001Mixtral 8x7B": {
+      "provider": "Mistral",
+      "model_id": "Mixtral 8x7B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-south-1",
+        "ap-southeast-2",
+        "ca-central-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "sa-east-1",
+        "us-east-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-south-1",
+        "ap-southeast-2",
+        "ca-central-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "sa-east-1",
+        "us-east-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Mistral\u0001Pixtral Large 25.02": {
+      "provider": "Mistral",
+      "model_id": "Pixtral Large 25.02",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "eu-central-1",
+        "eu-north-1",
+        "eu-west-1",
+        "eu-west-3",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "eu-central-1",
+        "eu-north-1",
+        "eu-west-1",
+        "eu-west-3",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Mistral\u0001Voxtral Mini 1.0": {
+      "provider": "Mistral",
+      "model_id": "Voxtral Mini 1.0",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Mistral\u0001Voxtral Small 1.0": {
+      "provider": "Mistral",
+      "model_id": "Voxtral Small 1.0",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Moonshot AI\u0001Kimi K2 Thinking": {
+      "provider": "Moonshot AI",
+      "model_id": "Kimi K2 Thinking",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Moonshot AI\u0001Kimi K2.5": {
+      "provider": "Moonshot AI",
+      "model_id": "Kimi K2.5",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Moonshot AI\u0001Kimi K3": {
+      "provider": "Moonshot AI",
+      "model_id": "Kimi K3",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "Nvidia\u0001Nemotron Nano 3 30B": {
+      "provider": "Nvidia",
+      "model_id": "Nemotron Nano 3 30B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Nvidia\u0001NVIDIA Nemotron 3 Super 120B A12B": {
+      "provider": "Nvidia",
+      "model_id": "NVIDIA Nemotron 3 Super 120B A12B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Nvidia\u0001NVIDIA Nemotron Nano 2": {
+      "provider": "Nvidia",
+      "model_id": "NVIDIA Nemotron Nano 2",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Nvidia\u0001NVIDIA Nemotron Nano 2 VL": {
+      "provider": "Nvidia",
+      "model_id": "NVIDIA Nemotron Nano 2 VL",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "OpenAI\u0001GPT 5.4": {
+      "provider": "OpenAI",
+      "model_id": "GPT 5.4",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "us-gov-east-1",
+        "us-gov-west-1"
+      ],
+      "complete_regions": [
+        "us-gov-east-1",
+        "us-gov-west-1"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "OpenAI\u0001GPT OSS 120B": {
+      "provider": "OpenAI",
+      "model_id": "GPT OSS 120B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "OpenAI\u0001GPT OSS 20B": {
+      "provider": "OpenAI",
+      "model_id": "GPT OSS 20B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "OpenAI\u0001GPT OSS Safeguard 120B": {
+      "provider": "OpenAI",
+      "model_id": "GPT OSS Safeguard 120B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "OpenAI\u0001GPT OSS Safeguard 20B": {
+      "provider": "OpenAI",
+      "model_id": "GPT OSS Safeguard 20B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "OpenAI\u0001OpenAI GPT-6 Astra": {
+      "provider": "OpenAI",
+      "model_id": "OpenAI GPT-6 Astra",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "Qwen\u0001Qwen3 235B A22B 2507": {
+      "provider": "Qwen",
+      "model_id": "Qwen3 235B A22B 2507",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Qwen\u0001Qwen3 32B": {
+      "provider": "Qwen",
+      "model_id": "Qwen3 32B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Qwen\u0001Qwen3 Coder 30B A3B": {
+      "provider": "Qwen",
+      "model_id": "Qwen3 Coder 30B A3B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Qwen\u0001Qwen3 Coder 480B A35B": {
+      "provider": "Qwen",
+      "model_id": "Qwen3 Coder 480B A35B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Qwen\u0001Qwen3 Coder Next": {
+      "provider": "Qwen",
+      "model_id": "Qwen3 Coder Next",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Qwen\u0001Qwen3 Next 80B A3B": {
+      "provider": "Qwen",
+      "model_id": "Qwen3 Next 80B A3B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Qwen\u0001Qwen3 VL 235B A22B": {
+      "provider": "Qwen",
+      "model_id": "Qwen3 VL 235B A22B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "TwelveLabs\u0001TwelveLabs Pegasus 1.2": {
+      "provider": "TwelveLabs",
+      "model_id": "TwelveLabs Pegasus 1.2",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "TwelveLabs\u0001TwelveLabs Pegasus 1.5": {
+      "provider": "TwelveLabs",
+      "model_id": "TwelveLabs Pegasus 1.5",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "Writer\u0001Palmyra X4": {
+      "provider": "Writer",
+      "model_id": "Palmyra X4",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Writer\u0001Palmyra X5": {
+      "provider": "Writer",
+      "model_id": "Palmyra X5",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Writer\u0001Writer Palmyra Vision 7B": {
+      "provider": "Writer",
+      "model_id": "Writer Palmyra Vision 7B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "xAI\u0001Grok 4.3": {
+      "provider": "xAI",
+      "model_id": "Grok 4.3",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-south-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-south-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "xAI\u0001Grok 4.6": {
+      "provider": "xAI",
+      "model_id": "Grok 4.6",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "xAI\u0001Grok 4.7": {
+      "provider": "xAI",
+      "model_id": "Grok 4.7",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region"
+      ]
+    },
+    "Z AI\u0001GLM 4.7": {
+      "provider": "Z AI",
+      "model_id": "GLM 4.7",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Z AI\u0001GLM 4.7 Flash": {
+      "provider": "Z AI",
+      "model_id": "GLM 4.7 Flash",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Z AI\u0001GLM 5": {
+      "provider": "Z AI",
+      "model_id": "GLM 5",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    }
+  }
+}

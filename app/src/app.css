@@ -49,7 +49,10 @@ body.awsui-dark-mode .mine-chip { color: #94afff; background: rgba(92, 127, 255,
    shows individual chips; response-mode (segmented) is one bordered track. Both
    read the same selected colour so selection means one thing site-wide. */
 
-/* selected cell — shared by preset chips and segmented track, both themes */
+/* selected cell — shared by preset chips and segmented track.
+   Matches the table's blue: light B[600] #295eff (as StatusInfo/BadgeBlue text),
+   dark a lower-saturation blue like the table's dark blue, with dark-navy text
+   for contrast (the table reads blue softer in dark mode). */
 .toggle-row > button[data-selected="true"],
 .toggle-row > button[data-selected="true"]:hover {
   background: #295eff !important; border-color: #295eff !important;
@@ -57,7 +60,7 @@ body.awsui-dark-mode .mine-chip { color: #94afff; background: rgba(92, 127, 255,
 }
 body.awsui-dark-mode .toggle-row > button[data-selected="true"],
 body.awsui-dark-mode .toggle-row > button[data-selected="true"]:hover {
-  background: #5c7fff !important; border-color: #5c7fff !important; color: #ffffff !important;
+  background: #7598ff !important; border-color: #7598ff !important; color: #10131c !important;
 }
 
 /* segmented look (response mode): the ROW is a bordered track, buttons are

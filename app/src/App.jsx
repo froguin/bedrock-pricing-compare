@@ -284,7 +284,7 @@ export default function App({ snap }) {
                     </div>
                   </FormField>
                   <FormField label="응답 방식">
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                    <div className="toggle-row">
                       <Button variant={f.mode === "online" ? "primary" : "normal"}
                         onClick={() => set({ mode: "online" })}>즉시 응답</Button>
                       <Button variant={f.mode === "batch" ? "primary" : "normal"}
@@ -294,7 +294,7 @@ export default function App({ snap }) {
                 </ColumnLayout>
 
                 <FormField label="사용량 프리셋">
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                  <div className="toggle-row">
                     {Object.entries(PRESETS).map(([n, [i, o]]) => (
                       <Button key={n} variant={isPreset(i, o) ? "primary" : "normal"}
                         onClick={() => set({ inM: i, outM: o })}>{n} {i}/{o}</Button>

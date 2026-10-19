@@ -39,6 +39,10 @@ body.awsui-dark-mode .mine-chip { color: #94afff; background: rgba(92, 127, 255,
   .top-nav-product { font-size: 15px; }
 }
 
+/* Shared wrap row for Button-group toggles (response mode, usage presets).
+   SpaceBetween does not wrap, so these use a flex-wrap row on the 8px scale. */
+.toggle-row { display: flex; flex-wrap: wrap; gap: 8px; }
+
 /* Headline accent = Cloudscape's gen-AI gradient (--color-background-*-gen-ai,
    read from the live console). The pale #b8e7ff end stop is dropped for text.
    Light mode uses deeper stops so the large heading keeps >= 3:1 on white. */

@@ -25,7 +25,7 @@ import bedrockIcon from "./bedrock-icon.svg";
 import {
   PATH_KO, TIER_KO, STATUS_KO, BAND_KO, MODE_KO, PRESETS, SIZES, REGION_ORDER,
   regionName, regionFull, makeMatcher, rank, expandTiers, money, rate, rateRange,
-  sizeBucket, asOf, SRC_KO, rankEmbeddings, groupVideoPrices,
+  sizeBucket, asOf, asOfTime, isoTime, SRC_KO, rankEmbeddings, groupVideoPrices,
 } from "./logic.js";
 
 const STATUS_BADGE = { legacy: "grey", preview: "blue", internal: "severity-medium" };
@@ -172,9 +172,10 @@ export default function App({ snap }) {
   };
 
   /* ---------------- provenance ---------------- */
-  const srcDates = Object.entries(snap.as_of || {}).map(([k, v]) => `${SRC_KO[k] || k} ${asOf(v)}`);
+  const srcDatesTime = Object.entries(snap.as_of || {}).map(([k, v]) => `${SRC_KO[k] || k} ${asOfTime(v)}`);
   const dates = Object.values(snap.as_of || {}).map(asOf).sort();
   const englishChecked = String(snap.english_pricing_checked_at || "").slice(0, 10) || "?";
+  const englishCheckedTime = isoTime(snap.english_pricing_checked_at);
   const newest = englishChecked !== "?" ? englishChecked : (dates[dates.length - 1] || "?");
   const ageDays = newest !== "?" ? Math.floor((Date.now() - new Date(newest))/864e5) : 999;
   const sourceConflicts = snap.source_conflicts?.length || 0;
@@ -273,7 +274,7 @@ export default function App({ snap }) {
             <Header variant="h1"
               description={
                 <span>
-                  <Link href="https://aws.amazon.com/bedrock/pricing/" external variant="secondary" fontSize="body-s">영문 Pricing</Link> <b>{englishChecked}</b> · {srcDates.join(" · ")} · 금액은 모두 <b>USD</b>{" "}
+                  <Link href="https://aws.amazon.com/bedrock/pricing/" external variant="secondary" fontSize="body-s">영문 Pricing</Link> <b>{englishCheckedTime}</b> · {srcDatesTime.join(" · ")} · 금액은 모두 <b>USD</b>{" "}
                   <Popover header="가격 출처" size="large" triggerType="custom" dismissAriaLabel="설명 닫기"
                     content={<SpaceBetween size="xs">
                       <span>① <b><Link href="https://aws.amazon.com/bedrock/pricing/" external variant="secondary">영문 Pricing 페이지</Link></b>의 명시 가격이 같은 조건의 API 가격보다 우선합니다.</span>

@@ -225,6 +225,15 @@ export function expandTiers(r, f) {
 }
 
 export const asOf = (v) => { const m = String(v || "").match(/^(\d{4})(\d{2})(\d{2})/); return m ? `${m[1]}-${m[2]}-${m[3]}` : "?"; };
+// KST (UTC+9) time. as_of "20261016210806" (UTC) -> "2026-10-17 06:08 KST"
+const toKst = (d) => isNaN(d) ? "?" : (() => {
+  const k = new Date(d.getTime() + 9 * 3600 * 1000);
+  const p = (n) => String(n).padStart(2, "0");
+  return `${k.getUTCFullYear()}-${p(k.getUTCMonth() + 1)}-${p(k.getUTCDate())} ${p(k.getUTCHours())}:${p(k.getUTCMinutes())} KST`;
+})();
+export const asOfTime = (v) => { const m = String(v || "").match(/^(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})?/); return m ? toKst(new Date(Date.UTC(+m[1], +m[2]-1, +m[3], +m[4], +m[5], +(m[6]||0)))) : "?"; };
+// ISO "2026-10-19T12:33:05.036Z" (UTC) -> "2026-10-19 21:33 KST"
+export const isoTime = (v) => { const d = new Date(v); return isNaN(d) ? "?" : toKst(d); };
 
 export const isEmbeddingModel = (modelId) => /embed|embedding/i.test(String(modelId));
 

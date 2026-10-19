@@ -8,3 +8,9 @@ body.awsui-dark-mode { background: #0d0f17; color: #c3cadb; }
   background: linear-gradient(90deg, #d6338f, #9333ea);
   -webkit-background-clip: text; background-clip: text; color: transparent; }
 body.awsui-dark-mode .page-title { background-image: linear-gradient(90deg, #e24aa8, #a855f7); }
+
+/* Selected region = an interaction state, so it uses the accent, not the
+   blue "preview" status badge (purple = interaction, blue/green = status). */
+.mine-chip { display: inline-block; padding: 0 8px; border-radius: 999px; font-size: 12px;
+  line-height: 20px; font-weight: 700; color: #7e22ce; background: #f3e8ff; border: 1px solid #d8b4fe; }
+body.awsui-dark-mode .mine-chip { color: #d3bdf5; background: #2a1d44; border-color: #4b336e; }

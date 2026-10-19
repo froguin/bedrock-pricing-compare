@@ -29,6 +29,34 @@ import {
 
 const STATUS_BADGE = { legacy: "grey", preview: "blue", internal: "severity-medium" };
 
+/* Button-group toggle used for single-select rows (response mode, usage preset).
+   Deliberately not SegmentedControl, which collapses to a Select dropdown below
+   688px; these must stay as toggles at every width. NavigableGroup adds arrow-key
+   roving focus and a single tab stop; role="group" + aria-label name the set.
+   Cloudscape Button does not passthrough aria-pressed, so the selected option is
+   exposed to assistive tech via ariaLabel ("…, 선택됨") — the one a11y gap review
+   flagged versus SegmentedControl, closed with public props only. */
+function ToggleGroup({ label, groupLabel, value, options, onSelect, navigationDirection = "horizontal" }) {
+  return (
+    <FormField label={label}>
+      <NavigableGroup navigationDirection={navigationDirection}
+        getItemKey={(el) => el.dataset.key || el.textContent}>
+        <div className="toggle-row" role="group" aria-label={groupLabel}>
+          {options.map((o) => {
+            const selected = value === o.key;
+            return (
+              <Button key={o.key} data-key={o.key}
+                ariaLabel={selected ? `${o.label}, 선택됨` : o.label}
+                variant={selected ? "primary" : "normal"}
+                onClick={() => onSelect(o.key)}>{o.label}</Button>
+            );
+          })}
+        </div>
+      </NavigableGroup>
+    </FormField>
+  );
+}
+
 /* ---------------- URL hash state (same keys as the vanilla page) ---------------- */
 function readHash(regions) {
   const h = new URLSearchParams(location.hash.replace(/^#/, ""));
@@ -222,7 +250,7 @@ export default function App({ snap }) {
     ? `'${f.q}'에 맞는 모델이 이 조건(${regionName(f.region)} · ${MODE_KO[f.mode]})에서 없습니다. 한글(소넷, 노바프로)이나 API ID로도 찾을 수 있습니다.`
     : "이 조건에서 월 비용을 계산할 수 있는 모델이 없습니다. 리전이나 고급 설정을 바꿔보세요.";
 
-  const isPreset = (i, o) => f.inM === i && f.outM === o;
+  const presetKey = (i, o) => Object.entries(PRESETS).find(([, [pi, po]]) => pi === i && po === o)?.[0] || null;
 
   return (
     <>
@@ -284,30 +312,16 @@ export default function App({ snap }) {
                         onChange={({ detail }) => set({ outM: Math.max(0, +detail.value || 0) })} />
                     </div>
                   </FormField>
-                  <FormField label="응답 방식">
-                    <NavigableGroup navigationDirection="horizontal"
-                      getItemKey={(el) => el.dataset.key || el.textContent}>
-                      <div className="toggle-row">
-                        <Button data-key="online" variant={f.mode === "online" ? "primary" : "normal"}
-                          onClick={() => set({ mode: "online" })}>즉시 응답</Button>
-                        <Button data-key="batch" variant={f.mode === "batch" ? "primary" : "normal"}
-                          onClick={() => set({ mode: "batch" })}>일괄 처리</Button>
-                      </div>
-                    </NavigableGroup>
-                  </FormField>
+                  <ToggleGroup label="응답 방식" groupLabel="응답 방식"
+                    value={f.mode}
+                    options={[{ key: "online", label: "즉시 응답" }, { key: "batch", label: "일괄 처리" }]}
+                    onSelect={(mode) => set({ mode })} />
                 </ColumnLayout>
 
-                <FormField label="사용량 프리셋">
-                  <NavigableGroup navigationDirection="both"
-                    getItemKey={(el) => el.dataset.key || el.textContent}>
-                    <div className="toggle-row">
-                      {Object.entries(PRESETS).map(([n, [i, o]]) => (
-                        <Button key={n} data-key={n} variant={isPreset(i, o) ? "primary" : "normal"}
-                          onClick={() => set({ inM: i, outM: o })}>{n} {i}/{o}</Button>
-                      ))}
-                    </div>
-                  </NavigableGroup>
-                </FormField>
+                <ToggleGroup label="사용량 프리셋" groupLabel="사용량 프리셋" navigationDirection="both"
+                  value={presetKey(f.inM, f.outM)}
+                  options={Object.entries(PRESETS).map(([n, [i, o]]) => ({ key: n, label: `${n} ${i}/${o}` }))}
+                  onSelect={(n) => { const [i, o] = PRESETS[n]; set({ inM: i, outM: o }); }} />
 
                 <FormField label={<>데이터가 <b>{regionName(f.region)}</b> 밖에서 처리되어도 괜찮으신가요?</>}>
                   <Tiles value={f.resid}

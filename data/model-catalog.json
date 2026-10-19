@@ -12,17 +12,15 @@
       "first_seen": "20261016210806",
       "last_seen": "20261016210806",
       "statuses": [
-        "ga"
+        "legacy"
       ],
       "sources": [
         "offer-abfm"
       ],
       "regions": [
-        "eu-central-1",
         "us-east-1"
       ],
       "complete_regions": [
-        "eu-central-1",
         "us-east-1"
       ],
       "paths": [
@@ -36,17 +34,15 @@
       "first_seen": "20261016210806",
       "last_seen": "20261016210806",
       "statuses": [
-        "ga"
+        "legacy"
       ],
       "sources": [
         "offer-abfm"
       ],
       "regions": [
-        "eu-central-1",
         "us-east-1"
       ],
       "complete_regions": [
-        "eu-central-1",
         "us-east-1"
       ],
       "paths": [
@@ -193,7 +189,7 @@
       ],
       "paths": [
         "global-cris",
-        "in-region"
+        "regional-cris"
       ]
     },
     "Amazon\u0001Nova 2.0 Omni": {
@@ -383,15 +379,11 @@
         "offer"
       ],
       "regions": [
-        "ap-east-2",
         "ap-northeast-1",
         "ap-northeast-2",
         "ap-south-1",
         "ap-southeast-1",
         "ap-southeast-2",
-        "ap-southeast-4",
-        "ap-southeast-5",
-        "ap-southeast-7",
         "ca-central-1",
         "eu-central-1",
         "eu-north-1",
@@ -409,15 +401,11 @@
         "us-west-2"
       ],
       "complete_regions": [
-        "ap-east-2",
         "ap-northeast-1",
         "ap-northeast-2",
         "ap-south-1",
         "ap-southeast-1",
         "ap-southeast-2",
-        "ap-southeast-4",
-        "ap-southeast-5",
-        "ap-southeast-7",
         "ca-central-1",
         "eu-central-1",
         "eu-north-1",
@@ -435,7 +423,8 @@
         "us-west-2"
       ],
       "paths": [
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "Amazon\u0001Nova Micro": {
@@ -456,8 +445,6 @@
         "ap-south-1",
         "ap-southeast-1",
         "ap-southeast-2",
-        "ap-southeast-5",
-        "ap-southeast-7",
         "eu-central-1",
         "eu-north-1",
         "eu-south-1",
@@ -466,7 +453,6 @@
         "eu-west-2",
         "eu-west-3",
         "il-central-1",
-        "me-central-1",
         "us-east-1",
         "us-east-2",
         "us-gov-west-1",
@@ -478,7 +464,6 @@
         "ap-south-1",
         "ap-southeast-1",
         "ap-southeast-2",
-        "ap-southeast-7",
         "eu-central-1",
         "eu-north-1",
         "eu-south-1",
@@ -487,14 +472,14 @@
         "eu-west-2",
         "eu-west-3",
         "il-central-1",
-        "me-central-1",
         "us-east-1",
         "us-east-2",
         "us-gov-west-1",
         "us-west-2"
       ],
       "paths": [
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "Amazon\u0001Nova Premier": {
@@ -588,7 +573,8 @@
         "us-west-2"
       ],
       "paths": [
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "Amazon\u0001Nova Pro Latency Optimized": {
@@ -707,16 +693,14 @@
       "first_seen": "20261016210806",
       "last_seen": "20261016210806",
       "statuses": [
-        "legacy"
+        "ga"
       ],
       "sources": [
         "offer"
       ],
       "regions": [
         "ap-northeast-1",
-        "ap-south-1",
         "eu-central-1",
-        "eu-west-1",
         "us-east-1",
         "us-west-2"
       ],
@@ -974,7 +958,7 @@
       "first_seen": "20261016210806",
       "last_seen": "20261016210806",
       "statuses": [
-        "ga"
+        "legacy"
       ],
       "sources": [
         "offer",
@@ -1019,7 +1003,8 @@
         "us-west-2"
       ],
       "paths": [
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "Anthropic\u0001Claude 3 Opus": {
@@ -1278,7 +1263,7 @@
       "first_seen": "20261016210806",
       "last_seen": "20261016210806",
       "statuses": [
-        "internal"
+        "ga"
       ],
       "sources": [
         "offer-abfm"
@@ -1355,7 +1340,8 @@
       ],
       "paths": [
         "global-cris",
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "Anthropic\u0001Claude Fable 5.1": {
@@ -1365,7 +1351,7 @@
       "first_seen": "20261016210806",
       "last_seen": "20261016210806",
       "statuses": [
-        "internal"
+        "ga"
       ],
       "sources": [
         "offer-abfm"
@@ -1446,7 +1432,8 @@
       ],
       "paths": [
         "global-cris",
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "Anthropic\u0001Claude Haiku 4.5": {
@@ -1533,7 +1520,8 @@
       ],
       "paths": [
         "global-cris",
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "Anthropic\u0001Claude Haiku 5.5": {
@@ -1624,7 +1612,8 @@
       ],
       "paths": [
         "global-cris",
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "Anthropic\u0001Claude Instant": {
@@ -1689,7 +1678,7 @@
       "first_seen": "20261016210806",
       "last_seen": "20261016210806",
       "statuses": [
-        "internal"
+        "ga"
       ],
       "sources": [
         "offer-abfm"
@@ -1711,7 +1700,7 @@
       "first_seen": "20261016210806",
       "last_seen": "20261016210806",
       "statuses": [
-        "internal"
+        "ga"
       ],
       "sources": [
         "offer-abfm"
@@ -1788,7 +1777,7 @@
       ],
       "paths": [
         "global-cris",
-        "in-region"
+        "regional-cris"
       ]
     },
     "Anthropic\u0001Claude Mythos Preview": {
@@ -1848,7 +1837,7 @@
       "first_seen": "20261016210806",
       "last_seen": "20261016210806",
       "statuses": [
-        "ga"
+        "legacy"
       ],
       "sources": [
         "offer-abfm"
@@ -1864,7 +1853,7 @@
         "us-west-2"
       ],
       "paths": [
-        "in-region"
+        "regional-cris"
       ]
     },
     "Anthropic\u0001Claude Opus 4.5": {
@@ -1938,7 +1927,7 @@
       ],
       "paths": [
         "global-cris",
-        "in-region"
+        "regional-cris"
       ]
     },
     "Anthropic\u0001Claude Opus 4.6": {
@@ -2025,7 +2014,8 @@
       ],
       "paths": [
         "global-cris",
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "Anthropic\u0001Claude Opus 4.7": {
@@ -2112,7 +2102,8 @@
       ],
       "paths": [
         "global-cris",
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "Anthropic\u0001Claude Opus 4.8": {
@@ -2203,7 +2194,8 @@
       ],
       "paths": [
         "global-cris",
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "Anthropic\u0001Claude Opus 5": {
@@ -2294,7 +2286,8 @@
       ],
       "paths": [
         "global-cris",
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "Anthropic\u0001Claude Opus 5.5": {
@@ -2385,7 +2378,8 @@
       ],
       "paths": [
         "global-cris",
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "Anthropic\u0001Claude Sonnet 4": {
@@ -2395,7 +2389,7 @@
       "first_seen": "20261016210806",
       "last_seen": "20261016210806",
       "statuses": [
-        "ga"
+        "legacy"
       ],
       "sources": [
         "offer-abfm"
@@ -2418,7 +2412,6 @@
         "eu-west-1",
         "eu-west-3",
         "il-central-1",
-        "me-central-1",
         "us-east-1",
         "us-east-2",
         "us-west-1",
@@ -2442,7 +2435,6 @@
         "eu-west-1",
         "eu-west-3",
         "il-central-1",
-        "me-central-1",
         "us-east-1",
         "us-east-2",
         "us-west-1",
@@ -2450,7 +2442,7 @@
       ],
       "paths": [
         "global-cris",
-        "in-region"
+        "regional-cris"
       ]
     },
     "Anthropic\u0001Claude Sonnet 4.5": {
@@ -2460,7 +2452,7 @@
       "first_seen": "20261016210806",
       "last_seen": "20261016210806",
       "statuses": [
-        "ga"
+        "legacy"
       ],
       "sources": [
         "offer-abfm"
@@ -2540,7 +2532,7 @@
       ],
       "paths": [
         "global-cris",
-        "in-region"
+        "regional-cris"
       ]
     },
     "Anthropic\u0001Claude Sonnet 4.6": {
@@ -2627,7 +2619,8 @@
       ],
       "paths": [
         "global-cris",
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "Anthropic\u0001Claude Sonnet 5": {
@@ -2718,7 +2711,8 @@
       ],
       "paths": [
         "global-cris",
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "Anthropic\u0001Claude Sonnet 5.5": {
@@ -2805,7 +2799,8 @@
       ],
       "paths": [
         "global-cris",
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "Cohere\u0001Cohere Command R": {
@@ -3018,6 +3013,7 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
@@ -3025,13 +3021,8 @@
         "ap-south-1",
         "ap-southeast-2",
         "ap-southeast-3",
-        "eu-central-1",
         "eu-north-1",
-        "eu-south-1",
-        "eu-west-1",
         "eu-west-2",
-        "sa-east-1",
-        "us-east-1",
         "us-east-2",
         "us-west-2"
       ],
@@ -3040,13 +3031,8 @@
         "ap-south-1",
         "ap-southeast-2",
         "ap-southeast-3",
-        "eu-central-1",
         "eu-north-1",
-        "eu-south-1",
-        "eu-west-1",
         "eu-west-2",
-        "sa-east-1",
-        "us-east-1",
         "us-east-2",
         "us-west-2"
       ],
@@ -3064,6 +3050,7 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
@@ -3071,10 +3058,7 @@
         "ap-south-1",
         "ap-southeast-2",
         "ap-southeast-3",
-        "eu-central-1",
         "eu-north-1",
-        "eu-south-1",
-        "eu-west-1",
         "eu-west-2",
         "sa-east-1",
         "us-east-1",
@@ -3086,10 +3070,7 @@
         "ap-south-1",
         "ap-southeast-2",
         "ap-southeast-3",
-        "eu-central-1",
         "eu-north-1",
-        "eu-south-1",
-        "eu-west-1",
         "eu-west-2",
         "sa-east-1",
         "us-east-1",
@@ -3136,6 +3117,7 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
@@ -3182,6 +3164,7 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
@@ -3228,6 +3211,7 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
@@ -3274,6 +3258,7 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
@@ -3304,6 +3289,7 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
@@ -3334,6 +3320,7 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
@@ -3370,7 +3357,6 @@
         "ap-south-1",
         "ca-central-1",
         "eu-west-2",
-        "sa-east-1",
         "us-east-1",
         "us-gov-west-1",
         "us-west-2"
@@ -3379,7 +3365,6 @@
         "ap-south-1",
         "ca-central-1",
         "eu-west-2",
-        "sa-east-1",
         "us-east-1",
         "us-gov-west-1",
         "us-west-2"
@@ -3404,7 +3389,6 @@
         "ap-south-1",
         "ca-central-1",
         "eu-west-2",
-        "sa-east-1",
         "us-east-1",
         "us-gov-west-1",
         "us-west-2"
@@ -3413,7 +3397,6 @@
         "ap-south-1",
         "ca-central-1",
         "eu-west-2",
-        "sa-east-1",
         "us-east-1",
         "us-gov-west-1",
         "us-west-2"
@@ -3429,23 +3412,22 @@
       "first_seen": "20261016210806",
       "last_seen": "20261016210806",
       "statuses": [
-        "ga"
+        "legacy"
       ],
       "sources": [
         "offer"
       ],
       "regions": [
-        "us-east-1",
         "us-east-2",
         "us-west-2"
       ],
       "complete_regions": [
-        "us-east-1",
         "us-east-2",
         "us-west-2"
       ],
       "paths": [
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "Meta\u0001Llama 3.1 405B Latency Optimized": {
@@ -3493,7 +3475,8 @@
         "us-west-2"
       ],
       "paths": [
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "Meta\u0001Llama 3.1 70B Latency Optimized": {
@@ -3545,7 +3528,8 @@
         "us-west-2"
       ],
       "paths": [
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "Meta\u0001Llama 3.2 11B": {
@@ -3555,7 +3539,7 @@
       "first_seen": "20261016210806",
       "last_seen": "20261016210806",
       "statuses": [
-        "ga"
+        "legacy"
       ],
       "sources": [
         "offer"
@@ -3571,7 +3555,7 @@
         "us-west-2"
       ],
       "paths": [
-        "in-region"
+        "regional-cris"
       ]
     },
     "Meta\u0001Llama 3.2 1B": {
@@ -3581,7 +3565,7 @@
       "first_seen": "20261016210806",
       "last_seen": "20261016210806",
       "statuses": [
-        "ga"
+        "legacy"
       ],
       "sources": [
         "offer"
@@ -3603,7 +3587,7 @@
         "us-west-2"
       ],
       "paths": [
-        "in-region"
+        "regional-cris"
       ]
     },
     "Meta\u0001Llama 3.2 3B": {
@@ -3613,7 +3597,7 @@
       "first_seen": "20261016210806",
       "last_seen": "20261016210806",
       "statuses": [
-        "ga"
+        "legacy"
       ],
       "sources": [
         "offer"
@@ -3635,7 +3619,7 @@
         "us-west-2"
       ],
       "paths": [
-        "in-region"
+        "regional-cris"
       ]
     },
     "Meta\u0001Llama 3.2 90B": {
@@ -3645,7 +3629,7 @@
       "first_seen": "20261016210806",
       "last_seen": "20261016210806",
       "statuses": [
-        "ga"
+        "legacy"
       ],
       "sources": [
         "offer"
@@ -3661,7 +3645,7 @@
         "us-west-2"
       ],
       "paths": [
-        "in-region"
+        "regional-cris"
       ]
     },
     "Meta\u0001Llama 3.3 70B": {
@@ -3687,7 +3671,8 @@
         "us-west-2"
       ],
       "paths": [
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "Meta\u0001Llama 4 Maverick 17B": {
@@ -3715,7 +3700,7 @@
         "us-west-2"
       ],
       "paths": [
-        "in-region"
+        "regional-cris"
       ]
     },
     "Meta\u0001Llama 4 Scout 17B": {
@@ -3743,7 +3728,7 @@
         "us-west-2"
       ],
       "paths": [
-        "in-region"
+        "regional-cris"
       ]
     },
     "Meta\u0001Meta Llama 2 Chat 13B": {
@@ -3756,7 +3741,7 @@
         "ga"
       ],
       "sources": [
-        "offer-abfm"
+        "english-pricing-page"
       ],
       "regions": [
         "us-east-1",
@@ -3780,7 +3765,7 @@
         "ga"
       ],
       "sources": [
-        "offer-abfm"
+        "english-pricing-page"
       ],
       "regions": [
         "us-east-1",
@@ -3840,6 +3825,46 @@
         "in-region"
       ]
     },
+    "MiniMax AI\u0001MiniMax M2": {
+      "provider": "MiniMax AI",
+      "model_id": "MiniMax M2",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-pricing-page"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
     "Minimax AI\u0001Minimax M2.1": {
       "provider": "Minimax AI",
       "model_id": "Minimax M2.1",
@@ -3851,6 +3876,52 @@
       ],
       "sources": [
         "offer"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "MiniMax AI\u0001MiniMax M2.1": {
+      "provider": "MiniMax AI",
+      "model_id": "MiniMax M2.1",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-pricing-page"
       ],
       "regions": [
         "ap-northeast-1",
@@ -3920,6 +3991,372 @@
         "ap-southeast-3",
         "eu-central-1",
         "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "MiniMax AI\u0001MiniMax M2.5": {
+      "provider": "MiniMax AI",
+      "model_id": "MiniMax M2.5",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-pricing-page"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Mistral AI\u0001Devstral 2 123B": {
+      "provider": "Mistral AI",
+      "model_id": "Devstral 2 123B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-pricing-page"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Mistral AI\u0001Magistral Small 1.2": {
+      "provider": "Mistral AI",
+      "model_id": "Magistral Small 1.2",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-pricing-page"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Mistral AI\u0001Ministral 14B 3.0": {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 14B 3.0",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-pricing-page"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Mistral AI\u0001Ministral 3B 3.0": {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 3B 3.0",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-pricing-page"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Mistral AI\u0001Ministral 8B 3.0": {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 8B 3.0",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-pricing-page"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Mistral AI\u0001Mistral Large 3": {
+      "provider": "Mistral AI",
+      "model_id": "Mistral Large 3",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-pricing-page"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Mistral AI\u0001Voxtral Mini 1.0": {
+      "provider": "Mistral AI",
+      "model_id": "Voxtral Mini 1.0",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-pricing-page"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "Mistral AI\u0001Voxtral Small 1.0": {
+      "provider": "Mistral AI",
+      "model_id": "Voxtral Small 1.0",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-pricing-page"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
+        "eu-south-1",
+        "eu-west-1",
+        "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-south-1",
+        "ap-southeast-2",
         "eu-south-1",
         "eu-west-1",
         "eu-west-2",
@@ -4502,6 +4939,7 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
@@ -4548,6 +4986,7 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
@@ -4555,10 +4994,7 @@
         "ap-south-1",
         "ap-southeast-2",
         "ap-southeast-3",
-        "eu-central-1",
         "eu-north-1",
-        "eu-south-1",
-        "eu-west-1",
         "eu-west-2",
         "sa-east-1",
         "us-east-1",
@@ -4570,10 +5006,7 @@
         "ap-south-1",
         "ap-southeast-2",
         "ap-southeast-3",
-        "eu-central-1",
         "eu-north-1",
-        "eu-south-1",
-        "eu-west-1",
         "eu-west-2",
         "sa-east-1",
         "us-east-1",
@@ -4594,11 +5027,11 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
         "af-south-1",
-        "ap-east-1",
         "ap-east-2",
         "ap-northeast-1",
         "ap-northeast-2",
@@ -4625,18 +5058,14 @@
         "il-central-1",
         "me-central-1",
         "me-south-1",
-        "mx-central-1",
         "sa-east-1",
         "us-east-1",
         "us-east-2",
-        "us-gov-east-1",
-        "us-gov-west-1",
         "us-west-1",
         "us-west-2"
       ],
       "complete_regions": [
         "af-south-1",
-        "ap-east-1",
         "ap-east-2",
         "ap-northeast-1",
         "ap-northeast-2",
@@ -4663,18 +5092,15 @@
         "il-central-1",
         "me-central-1",
         "me-south-1",
-        "mx-central-1",
         "sa-east-1",
         "us-east-1",
         "us-east-2",
-        "us-gov-east-1",
-        "us-gov-west-1",
         "us-west-1",
         "us-west-2"
       ],
       "paths": [
         "global-cris",
-        "in-region"
+        "regional-cris"
       ]
     },
     "Nvidia\u0001Nemotron Nano 3 30B": {
@@ -4716,6 +5142,42 @@
         "eu-south-1",
         "eu-west-1",
         "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "NVIDIA\u0001NVIDIA Nemotron 3 Nano 30B A3B": {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron 3 Nano 30B A3B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-pricing-page"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-southeast-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-southeast-2",
         "sa-east-1",
         "us-east-1",
         "us-east-2",
@@ -4777,6 +5239,48 @@
         "in-region"
       ]
     },
+    "NVIDIA\u0001NVIDIA Nemotron 3 Super 120B A12B": {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron 3 Super 120B A12B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-pricing-page"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "eu-central-1",
+        "eu-north-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
     "Nvidia\u0001NVIDIA Nemotron Nano 2": {
       "provider": "Nvidia",
       "model_id": "NVIDIA Nemotron Nano 2",
@@ -4816,6 +5320,42 @@
         "eu-south-1",
         "eu-west-1",
         "eu-west-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "NVIDIA\u0001NVIDIA Nemotron Nano 2": {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron Nano 2",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-pricing-page"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-southeast-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-southeast-2",
         "sa-east-1",
         "us-east-1",
         "us-east-2",
@@ -4877,6 +5417,42 @@
         "in-region"
       ]
     },
+    "NVIDIA\u0001NVIDIA Nemotron Nano 2 VL": {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron Nano 2 VL",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-pricing-page"
+      ],
+      "regions": [
+        "ap-northeast-1",
+        "ap-southeast-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-northeast-1",
+        "ap-southeast-2",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
     "OpenAI\u0001GPT 5.4": {
       "provider": "OpenAI",
       "model_id": "GPT 5.4",
@@ -4890,11 +5466,9 @@
         "offer"
       ],
       "regions": [
-        "us-gov-east-1",
         "us-gov-west-1"
       ],
       "complete_regions": [
-        "us-gov-east-1",
         "us-gov-west-1"
       ],
       "paths": [
@@ -4911,6 +5485,7 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
@@ -4948,7 +5523,8 @@
         "us-west-2"
       ],
       "paths": [
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "OpenAI\u0001GPT OSS 20B": {
@@ -4961,6 +5537,7 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
@@ -4998,7 +5575,8 @@
         "us-west-2"
       ],
       "paths": [
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "OpenAI\u0001GPT OSS Safeguard 120B": {
@@ -5011,15 +5589,13 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
         "ap-northeast-1",
         "ap-south-1",
         "ap-southeast-2",
-        "ap-southeast-3",
-        "eu-central-1",
-        "eu-north-1",
         "eu-south-1",
         "eu-west-1",
         "eu-west-2",
@@ -5032,9 +5608,6 @@
         "ap-northeast-1",
         "ap-south-1",
         "ap-southeast-2",
-        "ap-southeast-3",
-        "eu-central-1",
-        "eu-north-1",
         "eu-south-1",
         "eu-west-1",
         "eu-west-2",
@@ -5057,15 +5630,13 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
         "ap-northeast-1",
         "ap-south-1",
         "ap-southeast-2",
-        "ap-southeast-3",
-        "eu-central-1",
-        "eu-north-1",
         "eu-south-1",
         "eu-west-1",
         "eu-west-2",
@@ -5078,9 +5649,6 @@
         "ap-northeast-1",
         "ap-south-1",
         "ap-southeast-2",
-        "ap-southeast-3",
-        "eu-central-1",
-        "eu-north-1",
         "eu-south-1",
         "eu-west-1",
         "eu-west-2",
@@ -5145,7 +5713,8 @@
       ],
       "paths": [
         "global-cris",
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "Qwen\u0001Qwen3 235B A22B 2507": {
@@ -5158,6 +5727,7 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
@@ -5168,10 +5738,7 @@
         "eu-central-1",
         "eu-north-1",
         "eu-south-1",
-        "eu-west-1",
         "eu-west-2",
-        "sa-east-1",
-        "us-east-1",
         "us-east-2",
         "us-west-2"
       ],
@@ -5183,10 +5750,7 @@
         "eu-central-1",
         "eu-north-1",
         "eu-south-1",
-        "eu-west-1",
         "eu-west-2",
-        "sa-east-1",
-        "us-east-1",
         "us-east-2",
         "us-west-2"
       ],
@@ -5204,6 +5768,7 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
@@ -5250,6 +5815,7 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
@@ -5303,13 +5869,8 @@
         "ap-south-1",
         "ap-southeast-2",
         "ap-southeast-3",
-        "eu-central-1",
         "eu-north-1",
-        "eu-south-1",
-        "eu-west-1",
         "eu-west-2",
-        "sa-east-1",
-        "us-east-1",
         "us-east-2",
         "us-west-2"
       ],
@@ -5318,13 +5879,8 @@
         "ap-south-1",
         "ap-southeast-2",
         "ap-southeast-3",
-        "eu-central-1",
         "eu-north-1",
-        "eu-south-1",
-        "eu-west-1",
         "eu-west-2",
-        "sa-east-1",
-        "us-east-1",
         "us-east-2",
         "us-west-2"
       ],
@@ -5342,6 +5898,7 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
@@ -5350,7 +5907,6 @@
         "ap-southeast-2",
         "ap-southeast-3",
         "eu-central-1",
-        "eu-north-1",
         "eu-south-1",
         "eu-west-1",
         "eu-west-2",
@@ -5365,7 +5921,6 @@
         "ap-southeast-2",
         "ap-southeast-3",
         "eu-central-1",
-        "eu-north-1",
         "eu-south-1",
         "eu-west-1",
         "eu-west-2",
@@ -5388,15 +5943,13 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
         "ap-northeast-1",
         "ap-south-1",
         "ap-southeast-2",
-        "ap-southeast-3",
-        "eu-central-1",
-        "eu-north-1",
         "eu-south-1",
         "eu-west-1",
         "eu-west-2",
@@ -5409,9 +5962,6 @@
         "ap-northeast-1",
         "ap-south-1",
         "ap-southeast-2",
-        "ap-southeast-3",
-        "eu-central-1",
-        "eu-north-1",
         "eu-south-1",
         "eu-west-1",
         "eu-west-2",
@@ -5434,15 +5984,13 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
         "ap-northeast-1",
         "ap-south-1",
         "ap-southeast-2",
-        "ap-southeast-3",
-        "eu-central-1",
-        "eu-north-1",
         "eu-south-1",
         "eu-west-1",
         "eu-west-2",
@@ -5455,9 +6003,6 @@
         "ap-northeast-1",
         "ap-south-1",
         "ap-southeast-2",
-        "ap-southeast-3",
-        "eu-central-1",
-        "eu-north-1",
         "eu-south-1",
         "eu-west-1",
         "eu-west-2",
@@ -5572,6 +6117,32 @@
         "in-region"
       ]
     },
+    "Writer\u0001Palmyra Vision 7B": {
+      "provider": "Writer",
+      "model_id": "Palmyra Vision 7B",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-pricing-page"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
     "Writer\u0001Palmyra X4": {
       "provider": "Writer",
       "model_id": "Palmyra X4",
@@ -5582,6 +6153,7 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer-abfm"
       ],
       "regions": [
@@ -5597,7 +6169,8 @@
         "us-west-2"
       ],
       "paths": [
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "Writer\u0001Palmyra X5": {
@@ -5610,6 +6183,7 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer-abfm"
       ],
       "regions": [
@@ -5625,7 +6199,8 @@
         "us-west-2"
       ],
       "paths": [
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "Writer\u0001Writer Palmyra Vision 7B": {
@@ -5687,14 +6262,12 @@
         "offer"
       ],
       "regions": [
-        "ap-south-1",
         "us-east-1",
         "us-east-2",
         "us-gov-west-1",
         "us-west-2"
       ],
       "complete_regions": [
-        "ap-south-1",
         "us-east-1",
         "us-east-2",
         "us-gov-west-1",
@@ -5717,8 +6290,6 @@
         "offer"
       ],
       "regions": [
-        "af-south-1",
-        "ap-east-1",
         "ap-east-2",
         "ap-northeast-1",
         "ap-northeast-2",
@@ -5730,7 +6301,6 @@
         "ap-southeast-3",
         "ap-southeast-4",
         "ap-southeast-5",
-        "ap-southeast-6",
         "ap-southeast-7",
         "ca-central-1",
         "ca-west-1",
@@ -5745,7 +6315,6 @@
         "il-central-1",
         "me-central-1",
         "me-south-1",
-        "mx-central-1",
         "sa-east-1",
         "us-east-1",
         "us-east-2",
@@ -5755,8 +6324,6 @@
         "us-west-2"
       ],
       "complete_regions": [
-        "af-south-1",
-        "ap-east-1",
         "ap-east-2",
         "ap-northeast-1",
         "ap-northeast-2",
@@ -5768,7 +6335,6 @@
         "ap-southeast-3",
         "ap-southeast-4",
         "ap-southeast-5",
-        "ap-southeast-6",
         "ap-southeast-7",
         "ca-central-1",
         "ca-west-1",
@@ -5783,7 +6349,6 @@
         "il-central-1",
         "me-central-1",
         "me-south-1",
-        "mx-central-1",
         "sa-east-1",
         "us-east-1",
         "us-east-2",
@@ -5794,7 +6359,8 @@
       ],
       "paths": [
         "global-cris",
-        "in-region"
+        "in-region",
+        "regional-cris"
       ]
     },
     "xAI\u0001Grok 4.7": {
@@ -5810,7 +6376,6 @@
         "offer"
       ],
       "regions": [
-        "af-south-1",
         "ap-east-2",
         "ap-northeast-1",
         "ap-northeast-2",
@@ -5822,7 +6387,6 @@
         "ap-southeast-3",
         "ap-southeast-4",
         "ap-southeast-5",
-        "ap-southeast-6",
         "ap-southeast-7",
         "ca-central-1",
         "ca-west-1",
@@ -5836,18 +6400,13 @@
         "eu-west-3",
         "il-central-1",
         "me-central-1",
-        "me-south-1",
-        "mx-central-1",
         "sa-east-1",
         "us-east-1",
         "us-east-2",
-        "us-gov-east-1",
-        "us-gov-west-1",
         "us-west-1",
         "us-west-2"
       ],
       "complete_regions": [
-        "af-south-1",
         "ap-east-2",
         "ap-northeast-1",
         "ap-northeast-2",
@@ -5859,7 +6418,6 @@
         "ap-southeast-3",
         "ap-southeast-4",
         "ap-southeast-5",
-        "ap-southeast-6",
         "ap-southeast-7",
         "ca-central-1",
         "ca-west-1",
@@ -5873,19 +6431,15 @@
         "eu-west-3",
         "il-central-1",
         "me-central-1",
-        "me-south-1",
-        "mx-central-1",
         "sa-east-1",
         "us-east-1",
         "us-east-2",
-        "us-gov-east-1",
-        "us-gov-west-1",
         "us-west-1",
         "us-west-2"
       ],
       "paths": [
         "global-cris",
-        "in-region"
+        "regional-cris"
       ]
     },
     "Z AI\u0001GLM 4.7": {
@@ -5898,6 +6452,7 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
@@ -5905,10 +6460,7 @@
         "ap-south-1",
         "ap-southeast-2",
         "ap-southeast-3",
-        "eu-central-1",
         "eu-north-1",
-        "eu-south-1",
-        "eu-west-1",
         "eu-west-2",
         "sa-east-1",
         "us-east-1",
@@ -5920,10 +6472,7 @@
         "ap-south-1",
         "ap-southeast-2",
         "ap-southeast-3",
-        "eu-central-1",
         "eu-north-1",
-        "eu-south-1",
-        "eu-west-1",
         "eu-west-2",
         "sa-east-1",
         "us-east-1",
@@ -5944,6 +6493,7 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
@@ -5990,6 +6540,7 @@
         "ga"
       ],
       "sources": [
+        "english-pricing-page",
         "offer"
       ],
       "regions": [
@@ -5999,8 +6550,6 @@
         "ap-southeast-3",
         "eu-central-1",
         "eu-north-1",
-        "eu-south-1",
-        "eu-west-1",
         "eu-west-2",
         "sa-east-1",
         "us-east-1",
@@ -6014,8 +6563,6 @@
         "ap-southeast-3",
         "eu-central-1",
         "eu-north-1",
-        "eu-south-1",
-        "eu-west-1",
         "eu-west-2",
         "sa-east-1",
         "us-east-1",
@@ -6024,6 +6571,89 @@
       ],
       "paths": [
         "in-region"
+      ]
+    },
+    "Z AI\u0001GLM 5.3": {
+      "provider": "Z AI",
+      "model_id": "GLM 5.3",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-pricing-page"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "regional-cris"
       ]
     }
   }

@@ -1,0 +1,4424 @@
+{
+  "generated_at": "2026-10-19T12:33:59.033Z",
+  "source": "https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html",
+  "models": [
+    {
+      "provider": "AI21 Labs",
+      "model_id": "Jamba 1.5 Large",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-ai21-labs-jamba-1-5-large.html",
+      "status": "legacy",
+      "availability": {
+        "in-region": [
+          "us-east-1"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "AI21 Labs",
+      "model_id": "Jamba 1.5 Mini",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-ai21-labs-jamba-1-5-mini.html",
+      "status": "legacy",
+      "availability": {
+        "in-region": [
+          "us-east-1"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Amazon",
+      "model_id": "Amazon Nova Multimodal Embeddings",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-amazon-nova-multimodal-embeddings.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "us-east-1",
+          "us-gov-west-1"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Amazon",
+      "model_id": "Nova 2 Lite",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-nova-2-lite.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "ap-northeast-1",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-3",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-south-1",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-6",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "Amazon",
+      "model_id": "Nova 2 Sonic",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-nova-2-sonic.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "eu-north-1",
+          "us-east-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Amazon",
+      "model_id": "Nova Canvas",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-nova-canvas.html",
+      "status": "legacy",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "eu-west-1",
+          "us-east-1"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Amazon",
+      "model_id": "Nova Lite",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-nova-lite.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-north-1",
+          "eu-west-2",
+          "me-central-1",
+          "us-east-1",
+          "us-east-2",
+          "us-gov-west-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-south-1",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-3",
+          "il-central-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Amazon",
+      "model_id": "Nova Micro",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-nova-micro.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-southeast-2",
+          "eu-west-2",
+          "us-east-1",
+          "us-gov-west-1"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-south-1",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-3",
+          "il-central-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Amazon",
+      "model_id": "Nova Pro",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-nova-pro.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-west-2",
+          "me-central-1",
+          "us-east-1",
+          "us-gov-west-1"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-south-1",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-7",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Amazon",
+      "model_id": "Nova Reel",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-nova-reel.html",
+      "status": "legacy",
+      "availability": {
+        "in-region": [
+          "us-east-1"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Amazon",
+      "model_id": "Nova Reel",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-nova-reel.html",
+      "status": "legacy",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "eu-west-1",
+          "us-east-1"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Amazon",
+      "model_id": "Titan Embeddings G1 - Text",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-titan-embeddings-g1---text.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "eu-central-1",
+          "us-east-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Amazon",
+      "model_id": "Titan Embeddings G1 - Text v2",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-titan-text-embeddings-v2-2.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "us-east-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Amazon",
+      "model_id": "Titan Multimodal Embeddings G1",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-titan-multimodal-embeddings-g1.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-south-1",
+          "ap-southeast-2",
+          "ca-central-1",
+          "eu-central-1",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "sa-east-1",
+          "us-east-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Amazon",
+      "model_id": "Titan Text Embeddings V2",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-titan-text-embeddings-v2.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-2",
+          "ca-central-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-gov-east-1",
+          "us-gov-west-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Anthropic",
+      "model_id": "Claude 3 Haiku",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-3-haiku.html",
+      "status": "legacy",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-south-1",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ca-central-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "sa-east-1",
+          "us-east-1",
+          "us-gov-west-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-south-1",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "eu-central-1",
+          "eu-west-1",
+          "eu-west-3",
+          "us-east-1",
+          "us-east-2",
+          "us-gov-east-1",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Anthropic",
+      "model_id": "Claude Fable 5",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-fable-5.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [
+          "us-east-1"
+        ],
+        "regional-cris": [
+          "ca-central-1",
+          "ca-west-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "af-south-1",
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-6",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "me-south-1",
+          "mx-central-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "Anthropic",
+      "model_id": "Claude Fable 5.1",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-fable-5-1.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [
+          "us-gov-west-1"
+        ],
+        "regional-cris": [
+          "ca-central-1",
+          "ca-west-1",
+          "us-east-1",
+          "us-east-2",
+          "us-gov-east-1",
+          "us-gov-west-1",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "af-south-1",
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-6",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "me-south-1",
+          "mx-central-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "Anthropic",
+      "model_id": "Claude Haiku 4.5",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-haiku-4-5.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-southeast-4",
+          "eu-north-1",
+          "eu-west-1",
+          "us-east-1",
+          "us-east-2",
+          "us-gov-west-1",
+          "us-west-2"
+        ],
+        "regional-cris": [
+          "ap-northeast-1",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-2",
+          "ap-southeast-4",
+          "ap-southeast-6",
+          "ca-central-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "us-east-1",
+          "us-east-2",
+          "us-gov-east-1",
+          "us-gov-west-1",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "af-south-1",
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-6",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "me-south-1",
+          "mx-central-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "Anthropic",
+      "model_id": "Claude Haiku 5.5",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-haiku-5-5.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [
+          "us-gov-west-1"
+        ],
+        "regional-cris": [
+          "ap-northeast-1",
+          "ap-northeast-3",
+          "ap-southeast-2",
+          "ap-southeast-4",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "us-east-1",
+          "us-east-2",
+          "us-gov-east-1",
+          "us-gov-west-1",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "af-south-1",
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-6",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "me-south-1",
+          "mx-central-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "Anthropic",
+      "model_id": "Claude Mythos 5",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-mythos-5.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [
+          "us-east-1"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Anthropic",
+      "model_id": "Claude Mythos 5.1",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-mythos-5-1.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "ca-central-1",
+          "ca-west-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "af-south-1",
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-6",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "me-south-1",
+          "mx-central-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "Anthropic",
+      "model_id": "Claude Opus 4.1",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-opus-4-1.html",
+      "status": "legacy",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Anthropic",
+      "model_id": "Claude Opus 4.5",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-opus-4-5.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "ca-central-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "af-south-1",
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-6",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "me-south-1",
+          "mx-central-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "Anthropic",
+      "model_id": "Claude Opus 4.6",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-opus-4-6.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "eu-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "ap-southeast-2",
+          "ap-southeast-4",
+          "ap-southeast-6",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "af-south-1",
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-6",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "me-south-1",
+          "mx-central-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "Anthropic",
+      "model_id": "Claude Opus 4.7",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-opus-4-7.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-southeast-4",
+          "eu-north-1",
+          "eu-west-1",
+          "us-east-1"
+        ],
+        "regional-cris": [
+          "ap-northeast-1",
+          "ap-northeast-3",
+          "ap-southeast-2",
+          "ap-southeast-4",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "af-south-1",
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-6",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "me-south-1",
+          "mx-central-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "Anthropic",
+      "model_id": "Claude Opus 4.8",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-opus-4-8.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-southeast-4",
+          "eu-north-1",
+          "eu-west-1",
+          "us-east-1",
+          "us-gov-west-1"
+        ],
+        "regional-cris": [
+          "ap-northeast-1",
+          "ap-northeast-3",
+          "ap-southeast-2",
+          "ap-southeast-4",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "us-east-1",
+          "us-east-2",
+          "us-gov-east-1",
+          "us-gov-west-1",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "af-south-1",
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-6",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "me-south-1",
+          "mx-central-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "Anthropic",
+      "model_id": "Claude Opus 5",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-opus-5.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-2",
+          "ap-south-1",
+          "ap-southeast-4",
+          "eu-north-1",
+          "eu-west-1",
+          "us-east-1",
+          "us-gov-west-1"
+        ],
+        "regional-cris": [
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-2",
+          "ap-southeast-4",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "us-east-1",
+          "us-east-2",
+          "us-gov-east-1",
+          "us-gov-west-1",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "af-south-1",
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-6",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "me-south-1",
+          "mx-central-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "Anthropic",
+      "model_id": "Claude Opus 5.5",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-opus-5-5.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "eu-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-southeast-4",
+          "us-east-1",
+          "us-gov-west-1"
+        ],
+        "regional-cris": [
+          "ap-northeast-1",
+          "ap-northeast-3",
+          "ap-southeast-2",
+          "ap-southeast-4",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "us-east-1",
+          "us-east-2",
+          "us-gov-east-1",
+          "us-gov-west-1",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "af-south-1",
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-6",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "me-south-1",
+          "mx-central-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "Anthropic",
+      "model_id": "Claude Sonnet 4",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-sonnet-4.html",
+      "status": "legacy",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-7",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-3",
+          "il-central-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "ap-northeast-1",
+          "eu-west-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "Anthropic",
+      "model_id": "Claude Sonnet 4.5",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-sonnet-4-5.html",
+      "status": "legacy",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "ap-northeast-1",
+          "ap-northeast-3",
+          "ap-southeast-2",
+          "ap-southeast-4",
+          "ap-southeast-6",
+          "ca-central-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "us-east-1",
+          "us-east-2",
+          "us-gov-east-1",
+          "us-gov-west-1",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "af-south-1",
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-6",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "me-south-1",
+          "mx-central-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "Anthropic",
+      "model_id": "Claude Sonnet 4.6",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-sonnet-4-6.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "eu-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "ap-northeast-1",
+          "ap-northeast-3",
+          "ap-southeast-2",
+          "ap-southeast-4",
+          "ap-southeast-6",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "af-south-1",
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-6",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "me-south-1",
+          "mx-central-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "Anthropic",
+      "model_id": "Claude Sonnet 5",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-sonnet-5.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-2",
+          "ap-southeast-1",
+          "eu-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-2",
+          "ap-south-1",
+          "ap-southeast-1",
+          "ap-southeast-4",
+          "eu-north-1",
+          "eu-west-1",
+          "us-east-1",
+          "us-gov-west-1"
+        ],
+        "regional-cris": [
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-2",
+          "ap-southeast-4",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "us-east-1",
+          "us-east-2",
+          "us-gov-east-1",
+          "us-gov-west-1",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "af-south-1",
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-6",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "me-south-1",
+          "mx-central-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "Anthropic",
+      "model_id": "Claude Sonnet 5.5",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-sonnet-5-5.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [
+          "us-gov-west-1"
+        ],
+        "regional-cris": [
+          "ap-southeast-2",
+          "ap-southeast-4",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "us-east-1",
+          "us-east-2",
+          "us-gov-east-1",
+          "us-gov-west-1",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "af-south-1",
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-6",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "me-south-1",
+          "mx-central-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "Cohere",
+      "model_id": "Command R",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-cohere-command-r.html",
+      "status": "legacy",
+      "availability": {
+        "in-region": [
+          "us-east-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Cohere",
+      "model_id": "Command R+",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-cohere-command-r-plus.html",
+      "status": "legacy",
+      "availability": {
+        "in-region": [
+          "us-east-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Cohere",
+      "model_id": "Embed English",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-cohere-embed-english.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ca-central-1",
+          "eu-central-1",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "sa-east-1",
+          "us-east-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Cohere",
+      "model_id": "Embed Multilingual",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-cohere-embed-multilingual.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ca-central-1",
+          "eu-central-1",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "sa-east-1",
+          "us-east-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Cohere",
+      "model_id": "Embed v4",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-cohere-embed-v4.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "eu-west-1",
+          "us-east-1"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ca-central-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "Cohere",
+      "model_id": "Rerank 3.5",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-cohere-rerank-3-5.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ca-central-1",
+          "eu-central-1",
+          "us-east-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "DeepSeek",
+      "model_id": "DeepSeek V3.2",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-deepseek-deepseek-v3-2.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-north-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-north-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "DeepSeek",
+      "model_id": "DeepSeek-R1",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-deepseek-deepseek-r1.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "DeepSeek",
+      "model_id": "DeepSeek-V3.1",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-deepseek-deepseek-v3-1.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-north-1",
+          "eu-west-2",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-north-1",
+          "eu-west-2",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 3 12B IT",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-google-gemma-3-12b-it.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 3 27B PT",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-google-gemma-3-27b-pt.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 3 4B IT",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-google-gemma-3-4b-it.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 4 26B-A4B",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-google-gemma-4-26b-a4b.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "us-gov-west-1"
+        ],
+        "in-region-mantle": [
+          "eu-central-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 4 31B",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-google-gemma-4-31b.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "us-gov-west-1"
+        ],
+        "in-region-mantle": [
+          "eu-central-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Google",
+      "model_id": "Gemma 4 E2B",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-google-gemma-4-e2b.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "us-gov-west-1"
+        ],
+        "in-region-mantle": [
+          "eu-central-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Meta",
+      "model_id": "Llama 3 70B Instruct",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-meta-llama-3-70b-instruct.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-south-1",
+          "ca-central-1",
+          "eu-west-2",
+          "us-east-1",
+          "us-gov-west-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Meta",
+      "model_id": "Llama 3 8B Instruct",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-meta-llama-3-8b-instruct.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-south-1",
+          "ca-central-1",
+          "eu-west-2",
+          "us-east-1",
+          "us-gov-west-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Meta",
+      "model_id": "Llama 3.1 405B Instruct",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-meta-llama-3-1-405b-instruct.html",
+      "status": "legacy",
+      "availability": {
+        "in-region": [
+          "us-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Meta",
+      "model_id": "Llama 3.1 70B Instruct",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-meta-llama-3-1-70b-instruct.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "us-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Meta",
+      "model_id": "Llama 3.1 8B Instruct",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-meta-llama-3-1-8b-instruct.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "us-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Meta",
+      "model_id": "Llama 3.2 11B Instruct",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-meta-llama-3-2-11b-instruct.html",
+      "status": "legacy",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Meta",
+      "model_id": "Llama 3.2 1B Instruct",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-meta-llama-3-2-1b-instruct.html",
+      "status": "legacy",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "eu-central-1",
+          "eu-west-1",
+          "eu-west-3",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Meta",
+      "model_id": "Llama 3.2 3B Instruct",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-meta-llama-3-2-3b-instruct.html",
+      "status": "legacy",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "eu-central-1",
+          "eu-west-1",
+          "eu-west-3",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Meta",
+      "model_id": "Llama 3.2 90B Instruct",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-meta-llama-3-2-90b-instruct.html",
+      "status": "legacy",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Meta",
+      "model_id": "Llama 3.3 70B Instruct",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-meta-llama-3-3-70b-instruct.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "us-east-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Meta",
+      "model_id": "Llama 4 Maverick 17B Instruct",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-meta-llama-4-maverick-17b-instruct.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Meta",
+      "model_id": "Llama 4 Scout 17B Instruct",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-meta-llama-4-scout-17b-instruct.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "MiniMax AI",
+      "model_id": "MiniMax M2",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-minimax-minimax-m2.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "MiniMax AI",
+      "model_id": "MiniMax M2.1",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-minimax-minimax-m2-1.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "MiniMax AI",
+      "model_id": "MiniMax M2.5",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-minimax-minimax-m2-5.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "us-east-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "us-east-1",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "MiniMax AI",
+      "model_id": "MiniMax M2.5",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-minimax-minimax-m2-5.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Devstral 2 123B",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-mistral-ai-devstral-2-123b.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Magistral Small 2509",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-mistral-ai-magistral-small-2509.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 14B 3.0",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-mistral-ai-ministral-14b-3-0.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 3 8B",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-mistral-ai-ministral-3-8b.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Ministral 3B",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-mistral-ai-ministral-3b.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Mistral 7B Instruct",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-mistral-ai-mistral-7b-instruct.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-south-1",
+          "ap-southeast-2",
+          "ca-central-1",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "sa-east-1",
+          "us-east-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Mistral Large",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-mistral-ai-mistral-large.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-south-1",
+          "ap-southeast-2",
+          "ca-central-1",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "sa-east-1",
+          "us-east-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Mistral Large 3",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-mistral-ai-mistral-large-3.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Mistral Small",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-mistral-ai-mistral-small.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "us-east-1"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Mixtral 8x7B Instruct",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-mistral-ai-mixtral-8x7b-instruct.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-south-1",
+          "ap-southeast-2",
+          "ca-central-1",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "sa-east-1",
+          "us-east-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Pixtral Large",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-mistral-ai-pixtral-large.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "eu-central-1",
+          "eu-north-1",
+          "eu-west-1",
+          "eu-west-3",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Voxtral Mini 3B 2507",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-mistral-ai-voxtral-mini-3b-2507.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Mistral AI",
+      "model_id": "Voxtral Small 24B 2507",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-mistral-ai-voxtral-small-24b-2507.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Moonshot AI",
+      "model_id": "Kimi K2.5",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-moonshot-ai-kimi-k2-5.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-north-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-north-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Moonshot AI",
+      "model_id": "Kimi K3",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-moonshot-ai-kimi-k3.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "ap-south-1",
+          "ap-south-2",
+          "ca-central-1",
+          "ca-west-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "af-south-1",
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-6",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "me-south-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "NVIDIA",
+      "model_id": "Nemotron Nano 3 30B",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-nvidia-nemotron-nano-3-30b.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-gov-west-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [
+          "us-gov-east-1",
+          "us-gov-west-1"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron 3 Super 120B",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-nvidia-nemotron-super-3-120b.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-gov-west-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [
+          "us-gov-east-1",
+          "us-gov-west-1"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron Nano 12B v2 VL BF16",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-nvidia-nvidia-nemotron-nano-12b-v2-vl-bf16.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-gov-west-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [
+          "us-gov-east-1",
+          "us-gov-west-1"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "NVIDIA",
+      "model_id": "NVIDIA Nemotron Nano 9B v2",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-nvidia-nvidia-nemotron-nano-9b-v2.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-gov-west-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [
+          "us-gov-east-1",
+          "us-gov-west-1"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "Daybreak Blue: GPT-5.6 Sol",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-daybreak-blue-56-sol.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "us-east-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "Daybreak Red: GPT-5.6 Cyber",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-56-cyber.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "us-east-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "GPT OSS Safeguard 120B",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-oss-safeguard-120b.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "GPT OSS Safeguard 20B",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-oss-safeguard-20b.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "GPT-5.4",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-54.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "us-gov-west-1"
+        ],
+        "in-region-mantle": [
+          "us-east-1",
+          "us-east-2",
+          "us-gov-west-1",
+          "us-west-2"
+        ],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "GPT-5.5",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-55.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [
+          "us-east-1",
+          "us-east-2"
+        ],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2"
+        ],
+        "global-cris": [
+          "us-east-1",
+          "us-east-2"
+        ]
+      }
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "GPT-5.6 Luna",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-56-luna.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "us-gov-east-1",
+          "us-gov-west-1"
+        ],
+        "in-region-mantle": [
+          "us-east-1",
+          "us-east-2",
+          "us-gov-east-1",
+          "us-gov-west-1",
+          "us-west-2"
+        ],
+        "regional-cris": [
+          "ap-south-1",
+          "ap-south-2",
+          "ca-central-1",
+          "ca-west-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-7",
+          "ca-central-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "me-south-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "GPT-5.6 Sol",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-56-sol.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [
+          "us-east-1",
+          "us-east-2"
+        ],
+        "regional-cris": [
+          "ca-central-1",
+          "ca-west-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-7",
+          "ca-central-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "me-south-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "GPT-5.6 Terra",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-56-terra.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "us-gov-east-1",
+          "us-gov-west-1"
+        ],
+        "in-region-mantle": [
+          "us-east-1",
+          "us-east-2",
+          "us-gov-east-1",
+          "us-gov-west-1",
+          "us-west-2"
+        ],
+        "regional-cris": [
+          "ap-south-1",
+          "ap-south-2",
+          "ca-central-1",
+          "ca-west-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-7",
+          "ca-central-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "me-south-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "GPT-6 Astra",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-astra.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [
+          "us-east-1",
+          "us-west-2"
+        ],
+        "regional-cris": [
+          "ca-central-1",
+          "ca-west-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "af-south-1",
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-6",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "mx-central-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "GPT-6 Luna",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-luna.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [
+          "us-east-1"
+        ],
+        "regional-cris": [
+          "ca-central-1",
+          "ca-west-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "af-south-1",
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-6",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "mx-central-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "GPT-6 Sol",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-sol.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [
+          "us-east-1"
+        ],
+        "regional-cris": [
+          "ca-central-1",
+          "ca-west-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "af-south-1",
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-6",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "mx-central-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "GPT-6.1 Sol",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-1-sol.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [
+          "us-east-1"
+        ],
+        "regional-cris": [
+          "ca-central-1",
+          "ca-west-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "af-south-1",
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-6",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "mx-central-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "gpt-oss-120b",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-oss-120b.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-gov-west-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [
+          "us-gov-east-1",
+          "us-gov-west-1"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "OpenAI",
+      "model_id": "gpt-oss-20b",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-oss-20b.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-gov-west-1",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [
+          "us-gov-east-1",
+          "us-gov-west-1"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 235B A22B 2507",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-qwen-qwen3-235b-a22b-2507.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-west-2",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-west-2",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 32B",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-qwen-qwen3-32b.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 Coder 480B A35B Instruct",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-qwen-qwen3-coder-480b-a35b-instruct.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-north-1",
+          "eu-west-2",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-north-1",
+          "eu-west-2",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 Coder Next",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-qwen-qwen3-coder-next.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-southeast-2",
+          "eu-west-2",
+          "us-east-1"
+        ],
+        "in-region-mantle": [
+          "ap-southeast-2",
+          "eu-west-2",
+          "us-east-1"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 Next 80B A3B",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-qwen-qwen3-next-80b-a3b.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3 VL 235B A22B",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-qwen-qwen3-vl-235b-a22b.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Qwen",
+      "model_id": "Qwen3-Coder-30B-A3B-Instruct",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-qwen-qwen3-coder-30b-a3b-instruct.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Stability AI",
+      "model_id": "Stable Diffusion 3.5 Large",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-stability-ai-stable-diffusion-3-5-large.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "us-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Stability AI",
+      "model_id": "Stable Image Conservative Upscale",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-stability-ai-stable-image-conservative-upscale.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Stability AI",
+      "model_id": "Stable Image Control Sketch",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-stability-ai-stable-image-control-sketch.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Stability AI",
+      "model_id": "Stable Image Control Structure",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-stability-ai-stable-image-control-structure.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Stability AI",
+      "model_id": "Stable Image Core 1.0",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-stability-ai-stable-image-core-1-0.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "us-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Stability AI",
+      "model_id": "Stable Image Creative Upscale",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-stability-ai-stable-image-creative-upscale.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Stability AI",
+      "model_id": "Stable Image Erase Object",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-stability-ai-stable-image-erase-object.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Stability AI",
+      "model_id": "Stable Image Fast Upscale",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-stability-ai-stable-image-fast-upscale.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Stability AI",
+      "model_id": "Stable Image Inpaint",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-stability-ai-stable-image-inpaint.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Stability AI",
+      "model_id": "Stable Image Outpaint",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-stability-ai-stable-image-outpaint.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Stability AI",
+      "model_id": "Stable Image Remove Background",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-stability-ai-stable-image-remove-background.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Stability AI",
+      "model_id": "Stable Image Search and Recolor",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-stability-ai-stable-image-search-and-recolor.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Stability AI",
+      "model_id": "Stable Image Search and Replace",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-stability-ai-stable-image-search-and-replace.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Stability AI",
+      "model_id": "Stable Image Style Guide",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-stability-ai-stable-image-style-guide.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Stability AI",
+      "model_id": "Stable Image Style Transfer",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-stability-ai-stable-image-style-transfer.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Stability AI",
+      "model_id": "Stable Image Ultra 1.0",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-stability-ai-stable-image-ultra-1-0.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "us-west-2"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "TwelveLabs",
+      "model_id": "Marengo Embed 3.0",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-twelvelabs-marengo-embed-3-0.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-2",
+          "us-east-1"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "eu-west-1",
+          "us-east-1"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "TwelveLabs",
+      "model_id": "Marengo Embed v2.7",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-twelvelabs-marengo-embed-v2-7.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "eu-west-1",
+          "us-east-1"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "TwelveLabs",
+      "model_id": "Pegasus v1.2",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-twelvelabs-pegasus-v1-2.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-2",
+          "us-east-1"
+        ],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "ap-northeast-2",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "af-south-1",
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "me-south-1",
+          "mx-central-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "TwelveLabs",
+      "model_id": "Pegasus v1.5",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-twelvelabs-pegasus-v1-5.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "af-south-1",
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-6",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "mx-central-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "Writer",
+      "model_id": "Palmyra Vision 7B",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-writer-palmyra-vision-7b.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Writer",
+      "model_id": "Palmyra X4",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-writer-palmyra-x4.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Writer",
+      "model_id": "Palmyra X5",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-writer-palmyra-x5.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "xAI",
+      "model_id": "Grok 4.3",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-xai-grok-4-3.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "us-gov-west-1"
+        ],
+        "in-region-mantle": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "xAI",
+      "model_id": "Grok 4.6",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-xai-grok-4-6.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "us-gov-east-1"
+        ],
+        "in-region-mantle": [
+          "us-gov-east-1",
+          "us-west-2"
+        ],
+        "regional-cris": [
+          "ca-central-1",
+          "ca-west-1",
+          "us-east-1",
+          "us-east-2",
+          "us-gov-east-1",
+          "us-gov-west-1",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-7",
+          "ca-central-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "me-south-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "xAI",
+      "model_id": "Grok 4.7",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-xai-grok-4-7.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "ca-central-1",
+          "ca-west-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-7",
+          "ca-central-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "me-central-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    },
+    {
+      "provider": "Z AI",
+      "model_id": "GLM 4.7",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-zai-glm-4-7.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-north-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-north-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Z AI",
+      "model_id": "GLM 4.7 Flash",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-zai-glm-4-7-flash.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-central-1",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-west-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Z AI",
+      "model_id": "GLM 5",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-zai-glm-5.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-north-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "in-region-mantle": [
+          "ap-northeast-1",
+          "ap-south-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "eu-north-1",
+          "eu-west-2",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-2"
+        ],
+        "regional-cris": [],
+        "global-cris": []
+      }
+    },
+    {
+      "provider": "Z AI",
+      "model_id": "GLM 5.3",
+      "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-zai-glm-5-3.html",
+      "status": "ga",
+      "availability": {
+        "in-region": [],
+        "in-region-mantle": [],
+        "regional-cris": [
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ],
+        "global-cris": [
+          "af-south-1",
+          "ap-east-2",
+          "ap-northeast-1",
+          "ap-northeast-2",
+          "ap-northeast-3",
+          "ap-south-1",
+          "ap-south-2",
+          "ap-southeast-1",
+          "ap-southeast-2",
+          "ap-southeast-3",
+          "ap-southeast-4",
+          "ap-southeast-5",
+          "ap-southeast-6",
+          "ap-southeast-7",
+          "ca-central-1",
+          "ca-west-1",
+          "eu-central-1",
+          "eu-central-2",
+          "eu-north-1",
+          "eu-south-1",
+          "eu-south-2",
+          "eu-west-1",
+          "eu-west-2",
+          "eu-west-3",
+          "il-central-1",
+          "mx-central-1",
+          "sa-east-1",
+          "us-east-1",
+          "us-east-2",
+          "us-west-1",
+          "us-west-2"
+        ]
+      }
+    }
+  ]
+}

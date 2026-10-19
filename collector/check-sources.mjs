@@ -21,6 +21,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const STATE = join(ROOT, "data/state.json");
 const SERVICES = ["AmazonBedrock", "AmazonBedrockFoundationModels"];
 const PAGE = "https://aws.amazon.com/bedrock/pricing/";
+const DOCS = "https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html";
 
 // Seed from the newest committed snapshots so the first run compares against
 // what is actually deployed, not against nothing.
@@ -28,12 +29,12 @@ function seedState() {
   const pricing = JSON.parse(readFileSync(join(ROOT, "web/pricing.json"), "utf8"));
   const offer = {};
   for (const s of SERVICES) offer[s] = { version: pricing.as_of?.[s] ?? null, etag: null };
-  return { offer, page: { tables_hash: null } };
+  return { offer, page: { tables_hash: null }, docs: { tables_hash: null } };
 }
 
 const state = existsSync(STATE) ? JSON.parse(readFileSync(STATE, "utf8")) : seedState();
 const next = structuredClone(state);
-let offerChanged = false, pageChanged = false;
+let offerChanged = false, pageChanged = false, docsChanged = false;
 const notes = [];
 
 for (const s of SERVICES) {
@@ -74,10 +75,27 @@ for (const s of SERVICES) {
   }
 }
 
+// English documentation is source #2 for release and regional availability.
+// Hash only compatibility tables so navigation/chrome changes do not rebuild.
+{
+  const r = await fetch(DOCS);
+  if (!r.ok) throw new Error(`HTTP ${r.status} ${DOCS}`);
+  const html = await r.text();
+  const tables = (html.match(/<table[\s\S]*?<\/table>/gi) || [])
+    .map((t) => t.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim());
+  if (tables.length < 50) throw new Error(`documentation has only ${tables.length} compatibility tables -- refusing to record`);
+  const hash = createHash("sha256").update(tables.join("\n")).digest("hex");
+  if (hash !== state.docs?.tables_hash) {
+    docsChanged = state.docs?.tables_hash != null;
+    notes.push(`English documentation: ${docsChanged ? "CHANGED" : "baseline recorded"} (${tables.length} tables)`);
+    next.docs = { tables_hash: hash, tables: tables.length };
+  } else notes.push(`English documentation: unchanged (${tables.length} tables)`);
+}
+
 const dirty = JSON.stringify(next) !== JSON.stringify(state);
 if (dirty) writeFileSync(STATE, JSON.stringify(next, null, 2) + "\n");
 
-const out = `offer_changed=${offerChanged}\npage_changed=${pageChanged}\nstate_dirty=${dirty}\n`;
+const out = `offer_changed=${offerChanged}\npage_changed=${pageChanged}\ndocs_changed=${docsChanged}\nstate_dirty=${dirty}\n`;
 if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, out);
 if (process.env.GITHUB_STEP_SUMMARY) {
   appendFileSync(process.env.GITHUB_STEP_SUMMARY, "### Source check\n\n" + notes.map((n) => `- ${n}`).join("\n") + "\n");

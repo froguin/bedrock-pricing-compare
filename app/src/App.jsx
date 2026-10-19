@@ -141,8 +141,10 @@ export default function App({ snap }) {
   /* ---------------- provenance ---------------- */
   const srcDates = Object.entries(snap.as_of || {}).map(([k, v]) => `${SRC_KO[k] || k} ${asOf(v)}`);
   const dates = Object.values(snap.as_of || {}).map(asOf).sort();
-  const newest = dates[dates.length - 1] || "?";
-  const ageDays = newest !== "?" ? Math.floor((Date.now() - new Date(newest)) / 864e5) : 999;
+  const newest = englishChecked !== "?" ? englishChecked : (dates[dates.length - 1] || "?");
+  const ageDays = newest !== "?" ? Math.floor((Date.now() - new Date(newest))/864e5) : 999;
+  const englishChecked = String(snap.english_pricing_checked_at || "").slice(0, 10) || "?";
+  const sourceConflicts = snap.source_conflicts?.length || 0;
   const nModels = useMemo(() => new Set(P.map((p) => p.provider + "/" + p.model_id)).size, [P]);
 
   /* ---------------- columns ---------------- */
@@ -237,15 +239,16 @@ export default function App({ snap }) {
             <Header variant="h1"
               description={
                 <span>
-                  AWS 공개 가격 파일 기준 · <b>{srcDates.join(" · ")}</b>{" "}
-                  <Popover header="날짜가 두 개인 이유" size="large" triggerType="custom" dismissAriaLabel="설명 닫기"
+                  <b>AWS 영문 Pricing 우선</b> · 영문 Documentation으로 출시·리전 확인 · Price List API로 SKU 보강 · 확인 {englishChecked}{" "}
+                  <Popover header="가격 출처와 우선순위" size="large" triggerType="custom" dismissAriaLabel="설명 닫기"
                     content={<SpaceBetween size="xs">
-                      <span>AWS는 Bedrock 가격을 <b>두 파일로 따로</b> 발행하고, 갱신 시점도 서로 다릅니다.</span>
-                      <span>· <b>Bedrock</b>: Amazon Nova·Llama·Mistral 등 AWS가 직접 제공하는 모델</span>
-                      <span>· <b>Marketplace 모델</b>: 최신 Claude·GPT·Grok 등 AWS Marketplace를 거쳐 제공하는 모델</span>
-                      <span>날짜는 각 파일이 마지막으로 발행된 날입니다. 이 사이트는 두 파일을 30분마다 확인해 새 판이 나오면 자동으로 반영합니다.</span>
+                      <span>① <b>영문 Pricing 페이지</b>의 명시 가격이 같은 조건의 API 가격보다 우선합니다.</span>
+                      <span>② <b>영문 Documentation</b>으로 모델 출시와 in-region·Geo·Global 지원 리전을 확인합니다.</span>
+                      <span>③ <b>Price List API</b>는 페이지에 없는 리전·실행 모드·서비스 티어·컨텍스트 밴드를 보강합니다.</span>
+                      <span>API 발행일: {srcDates.join(" · ")}</span>
+                      {sourceConflicts > 0 && <span>영문 페이지와 API 값이 다른 키 <b>{sourceConflicts}개</b>는 영문 페이지 값을 표시합니다.</span>}
                     </SpaceBetween>}>
-                    <Button variant="inline-icon" iconName="status-info" ariaLabel="날짜가 두 개인 이유" />
+                    <Button variant="inline-icon" iconName="status-info" ariaLabel="가격 출처와 우선순위 설명" />
                   </Popover>
                   {" "}· 금액은 모두 <b>USD</b>
                 </span>
@@ -405,12 +408,12 @@ export default function App({ snap }) {
             <SpaceBetween size="s">
             <Box variant="small" color="text-body-secondary" padding={{ top: "s" }}>
               · 모든 금액은 <b>USD</b>입니다. 환율 정보가 원본 데이터에 없어 원화로 환산하지 않습니다.<br />
-              · <b>묶음 경로(geo CRIS)</b>는 별도 단가가 없습니다. 출발 리전의 "리전 내 처리" 요금으로 과금됩니다.<br />
+              · <b>지역 묶음(Geo CRIS)</b>과 <b>Global CRIS</b>는 영문 Pricing/Documentation에 별도 경로가 확인된 경우에만 표시합니다.<br />
               · 같은 조건에 단가가 2개인 경우 <b>범위로 표시</b>하고 "N배" 기준에서 제외합니다.
             </Box>
             <Box variant="small" color="text-body-secondary" textAlign="center">
               © 2026 Bedrock 비용 비교 · <b>비공식 자료</b>이며 AWS와 무관합니다. 결제 전 AWS 공식 가격 페이지로 확인하세요.<br />
-              AWS 공개 가격 파일 {srcDates.join(" · ")} · {snap.regions.length}개 리전 · {nModels}개 모델
+              영문 Pricing 우선 · 영문 Documentation 가용성 확인 · Price List API 보강 · {snap.regions.length}개 리전 · {nModels}개 모델
             </Box>
             </SpaceBetween>
           </SpaceBetween>

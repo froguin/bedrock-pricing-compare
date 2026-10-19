@@ -46,9 +46,9 @@ function ToggleGroup({ label, groupLabel, value, options, onSelect, navigationDi
           {options.map((o) => {
             const selected = value === o.key;
             return (
-              <Button key={o.key} data-key={o.key} data-selected={segmented && selected ? "true" : undefined}
+              <Button key={o.key} data-key={o.key} data-selected={selected ? "true" : undefined}
                 ariaLabel={selected ? `${o.label}, 선택됨` : o.label}
-                variant={segmented ? "normal" : (selected ? "primary" : "normal")}
+                variant="normal"
                 onClick={() => onSelect(o.key)}>{o.label}</Button>
             );
           })}

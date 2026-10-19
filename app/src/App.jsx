@@ -227,7 +227,8 @@ export default function App({ snap }) {
 
   return (
     <>
-      <div id="top-nav" style={{ position: "sticky", top: 0, zIndex: 1002 }}>
+      <div id="top-nav" style={{ position: "sticky", top: 0, zIndex: 1002, display: "flex", alignItems: "stretch" }}>
+        <div style={{ flex: 1, minWidth: 0 }}>
         <TopNavigation
           i18nStrings={{
             overflowMenuTriggerText: "메뉴",
@@ -238,12 +239,14 @@ export default function App({ snap }) {
           identity={{ href: "#", title: "Bedrock 비용 비교", logo: { src: bedrockIcon, alt: "Amazon Bedrock" } }}
           utilities={[
             { type: "button", text: `${newest} 기준`, disableUtilityCollapse: true },
-            { type: "button", iconName: theme === "dark" ? "star" : "star-filled",
-              text: theme === "dark" ? "밝은 테마" : "어두운 테마",
-              ariaLabel: theme === "dark" ? "밝은 테마로 전환" : "어두운 테마로 전환",
-              onClick: toggleTheme },
           ]}
         />
+        </div>
+        <div style={{ display: "flex", alignItems: "center", padding: "0 12px", flexShrink: 0 }}>
+          <Button variant="icon" iconName={theme === "dark" ? "star" : "star-filled"}
+            ariaLabel={theme === "dark" ? "밝은 테마로 전환" : "어두운 테마로 전환"}
+            onClick={toggleTheme} />
+        </div>
       </div>
       <main style={{ maxWidth: 1120, margin: "0 auto", padding: "28px 20px 40px" }}>
         <ContentLayout disableOverlap

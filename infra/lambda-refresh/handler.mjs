@@ -156,14 +156,16 @@ async function deploy() {
 }
 
 export async function handler(event = {}) {
-  const force = String(process.env.FORCE || event.force || "") === "true";
+  // The invoke payload wins over the env default ("false" is a truthy string,
+  // so `env || event` would always ignore event.force).
+  const force = String(event.force ?? process.env.FORCE ?? "") === "true";
   await hydrate();
 
   const flags = parseFlags(run("check-sources.mjs"));
   const changed = flags.offer_changed || flags.page_changed || flags.docs_changed;
   if (!changed && !force) {
-    // Nothing moved — persist the refreshed etags/state and stop. Cheapest path.
-    await persistState();
+    // Nothing moved. Persist only if check-sources refreshed etags/state.
+    if (flags.state_dirty) await persistState();
     return { status: "unchanged", flags };
   }
 

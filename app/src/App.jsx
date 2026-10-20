@@ -175,8 +175,6 @@ export default function App({ snap }) {
   };
 
   /* ---------------- provenance ---------------- */
-  // "2026-10-19 21:33 KST" -> "2026-10-19 21:33" (KST is stated once in the header).
-  const shortKst = (s) => (s && s !== "?" ? s.replace(/ KST$/, "") : "?");
   // Heartbeat written by the hourly refresh Lambda. Absent when the page is
   // opened from disk or the file is missing, in which case nothing is shown.
   const [lastChecked, setLastChecked] = useState(null);
@@ -282,8 +280,8 @@ export default function App({ snap }) {
           <span className="top-nav-date" title={lastChecked ? `마지막 확인 ${isoTime(lastChecked)}` : `${newest} 기준`}>
             {lastChecked
               ? (() => {
-                  const [d, t] = shortKst(isoTime(lastChecked)).split(" ");
-                  return <><span className="tnd-part">확인 {d}</span>{" "}<span className="tnd-part">{t}</span></>;
+                  const [d, t, z] = isoTime(lastChecked).split(" ");
+                  return <><span className="tnd-part">확인 {d}</span>{" "}<span className="tnd-part">{t} {z}</span></>;
                 })()
               : <span className="tnd-part">{newest} 기준</span>}
           </span>
@@ -298,10 +296,10 @@ export default function App({ snap }) {
             <Header variant="h1"
               description={
                 <span className="header-meta">
-                  <span className="hm-item">데이터 기준(KST) —</span>{" "}
-                  <span className="hm-item">영문 Pricing <b>{shortKst(englishCheckedTime)}</b> ·</span>{" "}
+                  <span className="hm-item">데이터 기준 —</span>{" "}
+                  <span className="hm-item">영문 Pricing <b>{englishCheckedTime}</b> ·</span>{" "}
                   {srcDatesTime.map((s, i) => (
-                    <span className="hm-item" key={i}>{s.replace(/^가격 API/, "API").replace(/ KST$/, "")} ·</span>
+                    <span className="hm-item" key={i}>{s.replace(/^가격 API/, "API")} ·</span>
                   ))}{" "}
                   <span className="hm-item">금액은 <b>USD</b></span>{" "}
                   <span className="hm-item">

@@ -563,9 +563,6 @@ export default function App({ snap }) {
             <div className="page-foot">
               <Box variant="small" color="text-body-secondary" padding={{ top: "s" }}>
                 <ul className="foot-notes">
-                  <li>모든 금액은 <b>USD</b>입니다. 환율 정보가 원본 데이터에 없어 원화로 환산하지 않습니다.</li>
-                  <li><b>지역 묶음(Geo CRIS)</b>과 <b>Global CRIS</b>는 영문 Pricing/Documentation에 별도 경로가 확인된 경우에만 표시합니다.</li>
-                  <li>같은 조건에 단가가 2개인 경우 <b>범위로 표시</b>하고 "N배" 기준에서 제외합니다.</li>
                   <li>
                     <span className="fm-item">출처별 데이터 기준:</span>{" "}
                     <span className="fm-item">영문 Pricing <b>{englishCheckedTime}</b> ·</span>{" "}
@@ -573,6 +570,9 @@ export default function App({ snap }) {
                       <span className="fm-item" key={i}>{s.label} <b>{s.time}</b>{i < srcDatesTime.length - 1 ? " ·" : ""}</span>
                     ))}
                   </li>
+                  <li>모든 금액은 <b>USD</b>입니다. 환율 정보가 원본 데이터에 없어 원화로 환산하지 않습니다.</li>
+                  <li><b>지역 묶음(Geo CRIS)</b>과 <b>Global CRIS</b>는 영문 Pricing/Documentation에 별도 경로가 확인된 경우에만 표시합니다.</li>
+                  <li>같은 조건에 단가가 2개인 경우 <b>범위로 표시</b>하고 "N배" 기준에서 제외합니다.</li>
                 </ul>
               </Box>
               <Box variant="small" color="text-body-secondary" textAlign="center" padding={{ top: "m" }}>

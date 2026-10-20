@@ -172,6 +172,8 @@ export default function App({ snap }) {
   };
 
   /* ---------------- provenance ---------------- */
+  // "2026-10-19 21:33 KST" -> "10-19 21:33" for the compact header/top bar.
+  const shortKst = (s) => (s && s !== "?" ? s.slice(5, 16) : "?");
   // Heartbeat written by the hourly refresh Lambda. Absent when the page is
   // opened from disk or the file is missing, in which case nothing is shown.
   const [lastChecked, setLastChecked] = useState(null);
@@ -274,7 +276,9 @@ export default function App({ snap }) {
           <span className="top-nav-product">Bedrock 비용 비교</span>
         </a>
         <div className="top-nav-aside">
-          <span className="top-nav-date" title={`${newest} 기준`}>{newest} 기준</span>
+          <span className="top-nav-date" title={lastChecked ? `마지막 확인 ${isoTime(lastChecked)}` : `${newest} 기준`}>
+            {lastChecked ? `확인 ${shortKst(isoTime(lastChecked))}` : `${newest} 기준`}
+          </span>
           <Button variant="icon" iconName={theme === "dark" ? "star" : "star-filled"}
             ariaLabel={theme === "dark" ? "밝은 테마로 전환" : "어두운 테마로 전환"}
             onClick={toggleTheme} />
@@ -286,20 +290,18 @@ export default function App({ snap }) {
             <Header variant="h1"
               description={
                 <span className="header-meta">
-                  {lastChecked && <span className="hm-item">마지막 확인 <b>{isoTime(lastChecked)}</b>.</span>}{" "}
-                  <span className="hm-item">데이터 기준 시점 —</span>{" "}
-                  <span className="hm-item">영문 Pricing <b>{englishCheckedTime}</b>,</span>{" "}
-                  {srcDatesTime.map((s, i) => (
-                    <span className="hm-item" key={i}>{s}{i < srcDatesTime.length - 1 ? "," : "."}{" "}</span>
-                  ))}
-                  <span className="hm-item">금액은 모두 <b>USD</b>.</span>{" "}
+                  <span className="hm-item">데이터 기준 <b>{shortKst(englishCheckedTime)}</b> ·</span>{" "}
+                  <span className="hm-item">금액은 <b>USD</b></span>{" "}
                   <span className="hm-item">
                     <Popover header="가격 출처" size="large" triggerType="custom" dismissAriaLabel="설명 닫기"
                       content={<SpaceBetween size="xs">
+                        {lastChecked && <span><b>마지막 확인</b> {isoTime(lastChecked)} (매시간 자동 점검)</span>}
+                        <span><b>데이터 기준</b> (KST) — 영문 Pricing {englishCheckedTime}</span>
+                        {srcDatesTime.map((s, i) => <span key={i}>{s}</span>)}
+                        <span>가격이 바뀌지 않으면 데이터 기준 시각은 그대로이고, 마지막 확인만 갱신됩니다.</span>
                         <span>① <b><Link href="https://aws.amazon.com/bedrock/pricing/" external variant="secondary">영문 Pricing 페이지</Link></b>의 명시 가격이 같은 조건의 API 가격보다 우선합니다.</span>
                         <span>② <b><Link href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html" external variant="secondary">영문 Documentation</Link></b>으로 모델 출시와 in-region·Geo·Global 지원 리전을 확인합니다.</span>
                         <span>③ <b>Price List API</b>는 페이지에 없는 리전·실행 모드·서비스 티어·컨텍스트 밴드를 보강합니다.</span>
-                        <span>마지막 확인은 가격 출처를 점검한 가장 최근 시각(매시간 자동)이고, 데이터 기준 시점은 각 출처 데이터의 발행·수집 시각(KST)입니다. 가격이 바뀌지 않으면 기준 시점은 그대로입니다.</span>
                         {sourceConflicts > 0 && <span>영문 페이지와 API 값이 다른 키 <b>{sourceConflicts}개</b>는 영문 페이지 값을 표시합니다.</span>}
                       </SpaceBetween>}>
                       <Button variant="inline-icon" iconName="status-info" ariaLabel="가격 출처 설명" />

@@ -155,6 +155,24 @@ async function deploy() {
   return inv.Invalidation?.Id;
 }
 
+// Tiny heartbeat the page reads to show "마지막 확인". Written on EVERY successful
+// run (changed or not) so it advances even when pricing data did not move. A
+// failed run never writes it, so the shown time is always a real success.
+// max-age=60 lets CloudFront refresh it without an invalidation.
+async function publishStatus(result, flags) {
+  const body = JSON.stringify({
+    last_checked_at: new Date().toISOString(),
+    result,
+    offer_changed: !!flags.offer_changed,
+    page_changed: !!flags.page_changed,
+    docs_changed: !!flags.docs_changed,
+  });
+  await s3.send(new PutObjectCommand({
+    Bucket: SITE_BUCKET, Key: "status.json", Body: body,
+    ContentType: "application/json; charset=utf-8", CacheControl: "public, max-age=60",
+  }));
+}
+
 export async function handler(event = {}) {
   // The invoke payload wins over the env default ("false" is a truthy string,
   // so `env || event` would always ignore event.force).
@@ -166,6 +184,7 @@ export async function handler(event = {}) {
   if (!changed && !force) {
     // Nothing moved. Persist only if check-sources refreshed etags/state.
     if (flags.state_dirty) await persistState();
+    await publishStatus("unchanged", flags);
     return { status: "unchanged", flags };
   }
 
@@ -194,5 +213,6 @@ export async function handler(event = {}) {
 
   const invalidationId = await deploy();
   await persistState();
+  await publishStatus("deployed", flags);
   return { status: "deployed", flags, invalidationId };
 }

@@ -68,7 +68,9 @@ Resources:
             - Sid: WriteSitePage
               Effect: Allow
               Action: ["s3:PutObject"]
-              Resource: !Sub "arn:aws:s3:::${SiteBucket}/index.html*"
+              Resource:
+                - !Sub "arn:aws:s3:::${SiteBucket}/index.html*"
+                - !Sub "arn:aws:s3:::${SiteBucket}/status.json"
             - Sid: InvalidateCdn
               Effect: Allow
               Action: ["cloudfront:CreateInvalidation"]

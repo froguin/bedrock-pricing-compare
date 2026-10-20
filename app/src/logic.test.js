@@ -2,7 +2,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { rank, makeMatcher, expandTiers, rankEmbeddings, groupVideoPrices, isEmbeddingModel, relativeKo, SIZES } from "./logic.js";
+import { rank, makeMatcher, expandTiers, rankEmbeddings, rankSpeech, groupVideoPrices, isEmbeddingModel, relativeKo, SIZES } from "./logic.js";
 
 const snap = JSON.parse(readFileSync(new URL("../../web/pricing.json", import.meta.url), "utf8"));
 const P = snap.price_points;
@@ -86,6 +86,27 @@ test("Opus 5 exposes Seoul in-region alternative when cheapest path is Global", 
   assert.equal(strictOpus.path, "in-region");
   assert.equal(strictOpus.cost.lo, 110);
   assert.equal(strictOpus.cheaperPathIsNonInRegion, false);
+});
+
+test("speech models leave the token ranking and are costed on speech tokens", () => {
+  const f = base({ region: "us-east-1" });
+  const isSonic = (m) => /sonic/i.test(m);
+  const normal = rank(P, f, matches);
+  assert.ok(normal.ranked.every((x) => !isSonic(x.model)));
+  assert.ok(normal.partial.every((x) => !isSonic(x.model)));
+  assert.ok(normal.missing.every((x) => !isSonic(x.model)));
+  const { ranked, missing } = rankSpeech(P, f, matches, 10, 2);
+  const get = (m) => ranked.find((x) => x.model === m);
+  // 10M speech in + 2M speech out: Nova Sonic 3.4*10 + 13.6*2, Nova Sonic 2.0 3*10 + 12*2
+  assert.ok(Math.abs(get("Nova Sonic").costLo - 61.2) < 1e-9);
+  assert.ok(Math.abs(get("Nova Sonic 2.0").costLo - 54) < 1e-9);
+  assert.deepEqual(get("Nova Sonic").textIn, [0.06]);
+  for (let i = 1; i < ranked.length; i++) assert.ok(ranked[i - 1].costLo <= ranked[i].costLo);
+  assert.equal(missing.length, 0);
+  // Seoul has no Sonic offering: it is reported as unavailable, never ranked.
+  const seoul = rankSpeech(P, base(), matches, 10, 2);
+  assert.equal(seoul.ranked.length, 0);
+  assert.ok(seoul.missing.some((x) => x.model === "Nova Sonic"));
 });
 
 test("relativeKo formats elapsed time in Korean", () => {

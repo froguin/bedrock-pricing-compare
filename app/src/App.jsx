@@ -25,7 +25,7 @@ import bedrockIcon from "./bedrock-icon.svg";
 import {
   PATH_KO, TIER_KO, STATUS_KO, BAND_KO, MODE_KO, PRESETS, SIZES, REGION_ORDER,
   regionName, regionFull, makeMatcher, rank, expandTiers, money, rate, rateRange,
-  sizeBucket, asOf, asOfTime, isoTime, relativeKo, SRC_KO, rankEmbeddings, groupVideoPrices,
+  sizeBucket, asOf, asOfTime, isoTime, relativeKo, SRC_KO, rankEmbeddings, rankSpeech, groupVideoPrices,
 } from "./logic.js";
 
 const STATUS_BADGE = { legacy: "grey", preview: "blue", internal: "severity-medium" };
@@ -146,6 +146,8 @@ export default function App({ snap }) {
   const set = (patch) => setF((s) => ({ ...s, ...patch }));
   const [sortKey, setSortKey] = useState("cost");
   const [videoSeconds, setVideoSeconds] = useState(60);
+  const [speechIn, setSpeechIn] = useState(10);
+  const [speechOut, setSpeechOut] = useState(2);
   const [expanded, setExpanded] = useState([]);
 
   useEffect(() => {
@@ -169,6 +171,8 @@ export default function App({ snap }) {
   })).filter((g) => g.options.length), [snap.regions, regionCount]);
   const embeddingResult = useMemo(() => rankEmbeddings(P, f, matches), [P, f, matches]);
   const embeddingItems = embeddingResult.ranked;
+  const speechResult = useMemo(() => rankSpeech(P, f, matches, speechIn, speechOut), [P, f, matches, speechIn, speechOut]);
+  const speechItems = speechResult.ranked;
   const videoResult = useMemo(() => groupVideoPrices(snap.special_prices, f.region), [snap.special_prices, f.region]);
   const videoItems = videoResult.ranked;
   const regionSelected = { value: f.region, label: regionFull(f.region), tags: [`${regionCount[f.region]}개 모델`] };
@@ -447,6 +451,56 @@ export default function App({ snap }) {
                 headerCounter={`(${embeddingResult.missing.length})`}>
                 <ColumnLayout columns={2}>
                   {embeddingResult.missing.map((x) => (
+                    <Box key={x.key}>{x.model} <Box variant="span" color="text-body-secondary">{x.provider} · 다른 리전 {x.where}곳</Box></Box>
+                  ))}
+                </ColumnLayout>
+              </ExpandableSection>
+            )}
+
+            {speechItems.length > 0 && (
+              <ExpandableSection variant="stacked" headerText="음성 대화 모델 비용"
+                headerCounter={`(${speechItems.length})`}
+                headerDescription="음성 토큰으로 과금되는 모델이라 월 비용 순위와 따로 계산합니다. 텍스트 토큰 요금은 월 비용에 포함하지 않고 참고로만 표시합니다.">
+                <SpaceBetween size="m">
+                  <FormField label="월 음성 사용량 (백만 토큰)" description="입력 · 출력">
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, maxWidth: 360 }}>
+                      <Input type="number" inputMode="numeric" value={String(speechIn)} ariaLabel="월 음성 입력 토큰(백만)"
+                        onChange={({ detail }) => setSpeechIn(Math.max(0, +detail.value || 0))} />
+                      <Input type="number" inputMode="numeric" value={String(speechOut)} ariaLabel="월 음성 출력 토큰(백만)"
+                        onChange={({ detail }) => setSpeechOut(Math.max(0, +detail.value || 0))} />
+                    </div>
+                  </FormField>
+                  <Table variant="embedded" contentDensity="compact" trackBy="key" items={speechItems}
+                    ariaLabels={{ tableLabel: "음성 대화 모델 비용" }}
+                    columnDefinitions={[
+                      { id:"speech-rank", header:"#", width:56, cell:(x)=>speechItems.indexOf(x)+1 },
+                      { id:"speech-model", header:"모델", isRowHeader:true, cell:(x)=>(
+                        <SpaceBetween size="xxxs">
+                          <Box fontWeight="bold">{x.model} <Box variant="span" color="text-body-secondary" fontSize="body-s">{x.provider}</Box></Box>
+                          <SpaceBetween direction="horizontal" size="xs">
+                            <StatusIndicator type={PATH_KO[x.path].type}>{PATH_KO[x.path].label}</StatusIndicator>
+                            {x.status && x.status !== "ga" && <Badge color={STATUS_BADGE[x.status] || "grey"}>{STATUS_KO[x.status] || x.status}</Badge>}
+                            {x.ambiguous && <StatusIndicator type="warning">단가 2개</StatusIndicator>}
+                          </SpaceBetween>
+                        </SpaceBetween>) },
+                      { id:"speech-cost", header:"월 비용 (USD/월)", cell:(x)=><Box fontWeight="bold" fontSize="heading-s">{x.costLo===x.costHi?money(x.costLo):`${money(x.costLo)}–${money(x.costHi)}`}</Box> },
+                      { id:"speech-rate", header:"단가 /1M (음성 입력 · 출력)", cell:(x)=>(
+                        <Box variant="small" color="text-body-secondary">
+                          음성 입력 {rateRange(x.inRates)}×{speechIn.toLocaleString()}<br />
+                          음성 출력 {rateRange(x.outRates)}×{speechOut.toLocaleString()}
+                          {(x.textIn || x.textOut) && <><br />참고 · 텍스트 입력 {x.textIn ? rateRange(x.textIn) : "—"} · 출력 {x.textOut ? rateRange(x.textOut) : "—"}</>}
+                        </Box>) },
+                      { id:"speech-regions", header:"제공 리전", cell:(x)=><RegionChips regions={Object.keys(x.regions).sort()} selected={f.region} limit={3} /> },
+                    ]} />
+                </SpaceBetween>
+              </ExpandableSection>
+            )}
+
+            {speechResult.missing.length > 0 && (
+              <ExpandableSection variant="stacked" headerText={`${regionName(f.region)}에서 제공되지 않는 음성 대화 모델`}
+                headerCounter={`(${speechResult.missing.length})`}>
+                <ColumnLayout columns={2}>
+                  {speechResult.missing.map((x) => (
                     <Box key={x.key}>{x.model} <Box variant="span" color="text-body-secondary">{x.provider} · 다른 리전 {x.where}곳</Box></Box>
                   ))}
                 </ColumnLayout>

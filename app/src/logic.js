@@ -144,13 +144,25 @@ export function costFor(pathNode, inM, outM) {
   return { lo, hi, ambiguous: lo !== hi, inRates: iv, outRates: ov };
 }
 
+// Speech (voice-conversation) models are identified from the data, not the name:
+// any model with a speech_input / speech_output price. They are billed mainly in
+// speech tokens, so ranking them on their text-token rates would be misleading.
+export const isSpeechDim = (d) => d === "speech_input" || d === "speech_output";
+export function speechModelKeys(P) {
+  const s = new Set();
+  for (const p of P) if (isSpeechDim(p.dimension)) s.add(p.provider + "\u0001" + p.model_id);
+  return s;
+}
+
 export function rank(P, f, matches) {
   const { idx, statusOf } = buildIndex(P, f, matches);
   const paths = allowedPaths(f.resid);
+  const speechKeys = speechModelKeys(P);
   const ranked = [], partial = [], missing = [];
   for (const [key, regions] of Object.entries(idx)) {
     const [provider, model] = key.split("\u0001");
     if (isEmbeddingModel(model)) continue; // rendered in the input-only embedding section
+    if (speechKeys.has(key)) continue;     // rendered in the speech-token section
     const here = regions[f.region];
     if (!here) { missing.push({ key, provider, model, where: Object.keys(regions).length }); continue; }
     let best = null;
@@ -280,6 +292,47 @@ export function rankEmbeddings(P, f, matches) {
     ranked.push({...x,path:best.path,rates:best.rates,costLo:best.rates[0]*f.inM,costHi:best.rates.at(-1)*f.inM});
   }
   ranked.sort((a,b)=>a.costLo-b.costLo); missing.sort((a,b)=>b.where-a.where);
+  return { ranked, missing };
+}
+
+// Speech models (Nova Sonic family) are billed per speech token. The monthly
+// cost uses speech_input / speech_output only; the text-token rates (also billed,
+// but a minor part of a voice session) are returned for reference, not summed.
+export function rankSpeech(P, f, matches, sIn, sOut) {
+  const keys = speechModelKeys(P);
+  const byModel = new Map();
+  for (const p of P) {
+    if (p.dimension !== "input" && p.dimension !== "output" && !isSpeechDim(p.dimension)) continue;
+    const key = `${p.provider}\u0001${p.model_id}`;
+    if (!keys.has(key)) continue;
+    if ((p.execution_mode || "online") !== f.mode || !f.statuses.has(p.status || "ga")) continue;
+    if (!f.tiers.has(p.service_tier) || !f.bands.has(p.context_band || "standard")) continue;
+    if (!f.vendors.has(p.provider) || !matches(p.provider, p.model_id, f.q)) continue;
+    if (!allowedPaths(f.resid).includes(p.endpoint_type)) continue;
+    const x = byModel.get(key) || { key, provider: p.provider, model: p.model_id, status: p.status || "ga", regions: {} };
+    const node = ((x.regions[p.source_region] ??= {})[p.endpoint_type] ??= {});
+    (node[p.dimension] ??= new Set()).add(p.price_per_1m);
+    byModel.set(key, x);
+  }
+  const sorted = (s) => (s ? [...s].sort((a, b) => a - b) : null);
+  const ranked = [], missing = [];
+  for (const x of byModel.values()) {
+    const here = x.regions[f.region];
+    let best = null;
+    if (here) {
+      for (const path of allowedPaths(f.resid)) {
+        const n = here[path];
+        if (!n?.speech_input?.size || !n?.speech_output?.size) continue;
+        const iv = sorted(n.speech_input), ov = sorted(n.speech_output);
+        const lo = iv[0] * sIn + ov[0] * sOut, hi = iv.at(-1) * sIn + ov.at(-1) * sOut;
+        if (!best || lo < best.costLo) best = { path, inRates: iv, outRates: ov, costLo: lo, costHi: hi,
+          textIn: sorted(n.input), textOut: sorted(n.output) };
+      }
+    }
+    if (!best) { missing.push({ key: x.key, provider: x.provider, model: x.model, where: Object.keys(x.regions).length }); continue; }
+    ranked.push({ ...x, ...best, ambiguous: best.costLo !== best.costHi });
+  }
+  ranked.sort((a, b) => a.costLo - b.costLo); missing.sort((a, b) => b.where - a.where);
   return { ranked, missing };
 }
 

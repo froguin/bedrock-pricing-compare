@@ -94,6 +94,7 @@ body.awsui-dark-mode .toggle-row-segmented > button[data-selected="true"]:not(:f
    read from the live console). The pale #b8e7ff end stop is dropped for text.
    Light mode uses deeper stops so the large heading keeps >= 3:1 on white. */
 .title-grad {
+  display: block;
   background: linear-gradient(90deg, #0073e6 0%, #4d6bff 35%, #7a5cff 65%, #8a1fff 100%);
   -webkit-background-clip: text; background-clip: text;
   color: transparent; -webkit-text-fill-color: transparent;

@@ -564,16 +564,28 @@ export default function App({ snap }) {
               </ColumnLayout>
             </ExpandableSection>
 
-            <SpaceBetween size="s">
-            <Box variant="small" color="text-body-secondary" padding={{ top: "s" }}>
-              · 모든 금액은 <b>USD</b>입니다. 환율 정보가 원본 데이터에 없어 원화로 환산하지 않습니다.<br />
-              · <b>지역 묶음(Geo CRIS)</b>과 <b>Global CRIS</b>는 영문 Pricing/Documentation에 별도 경로가 확인된 경우에만 표시합니다.<br />
-              · 같은 조건에 단가가 2개인 경우 <b>범위로 표시</b>하고 "N배" 기준에서 제외합니다.
-            </Box>
-            <Box variant="small" color="text-body-secondary" textAlign="center">
-              © 2026 Bedrock 비용 비교 · <b>비공식 자료</b>이며 AWS와 무관합니다. 결제 전 <Link href="https://aws.amazon.com/bedrock/pricing/" external variant="secondary" fontSize="body-s">AWS 공식 가격 페이지</Link>로 확인하세요.<br />
-              AWS 공식 가격 · 데이터 기준 {englishCheckedTime} · {snap.regions.length}개 리전 · {nModels}개 모델
-            </Box>
+            <div className="page-foot">
+              <Box variant="small" color="text-body-secondary" padding={{ top: "s" }}>
+                <ul className="foot-notes">
+                  <li>모든 금액은 <b>USD</b>입니다. 환율 정보가 원본 데이터에 없어 원화로 환산하지 않습니다.</li>
+                  <li><b>지역 묶음(Geo CRIS)</b>과 <b>Global CRIS</b>는 영문 Pricing/Documentation에 별도 경로가 확인된 경우에만 표시합니다.</li>
+                  <li>같은 조건에 단가가 2개인 경우 <b>범위로 표시</b>하고 "N배" 기준에서 제외합니다.</li>
+                </ul>
+              </Box>
+              <Box variant="small" color="text-body-secondary" textAlign="center" padding={{ top: "m" }}>
+                <div className="foot-line">
+                  <span className="fm-item">© 2026 Bedrock 비용 비교 ·</span>{" "}
+                  <span className="fm-item"><b>비공식 자료</b>이며 AWS와 무관합니다.</span>{" "}
+                  <span className="fm-item">결제 전 <Link href="https://aws.amazon.com/bedrock/pricing/" external variant="secondary" fontSize="body-s">AWS 공식 가격 페이지</Link>로 확인하세요.</span>
+                </div>
+                <div className="foot-line">
+                  <span className="fm-item">AWS 공식 가격 ·</span>{" "}
+                  <span className="fm-item">데이터 기준 <b>{englishCheckedTime}</b> ·</span>{" "}
+                  <span className="fm-item">{snap.regions.length}개 리전 ·</span>{" "}
+                  <span className="fm-item">{nModels}개 모델</span>
+                </div>
+              </Box>
+            </div>
             </SpaceBetween>
           </SpaceBetween>
         </ContentLayout>

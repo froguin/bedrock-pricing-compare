@@ -86,7 +86,7 @@ applyTheme({
       colorTextSegmentDefault: ld(N[700], "#e3e1de"),
       // blue = accent/selection/focus only; links stay neutral, blue on hover
       colorTextAccent: ld(B[600], "#7598ff"),
-      colorTextInteractiveActive: ld(B[600], "#f9f9f9"),
+      colorTextInteractiveActive: ld(B[600], "#94afff"),
       colorTextLinkDefault: ld(N[850], "#cbc9c3"),
       colorTextLinkHover: ld(B[600], "#7598ff"),
       colorTextLinkInfoDefault: ld(N[850], "#cbc9c3"),

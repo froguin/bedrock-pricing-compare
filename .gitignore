@@ -5,3 +5,4 @@ app/dist/
 dist/bedrock-pricing.cloudscape.html
 dist/*.br
 dist/*.gz
+infra/lambda-refresh/build/

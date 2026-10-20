@@ -9,7 +9,7 @@ import { readFileSync, writeFileSync, existsSync, appendFileSync } from "node:fs
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+const ROOT = process.env.BPC_ROOT || join(dirname(fileURLToPath(import.meta.url)), "..");
 const [prevPath, nextPath, catalogArg] = process.argv.slice(2);
 if (!prevPath || !nextPath) {
   console.error("usage: audit-model-catalog.mjs <prev> <next> [catalog]");

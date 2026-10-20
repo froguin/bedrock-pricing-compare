@@ -11,7 +11,7 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { brotliCompressSync, gzipSync, constants as Z } from "node:zlib";
 
-const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const ROOT = process.env.BPC_ROOT || resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SRC = resolve(ROOT, "dist/bedrock-pricing.html");
 const buf = readFileSync(SRC);
 

@@ -203,7 +203,6 @@ export default function App({ snap }) {
   const newest = englishChecked !== "?" ? englishChecked : (dates[dates.length - 1] || "?");
   const ageDays = newest !== "?" ? Math.floor((Date.now() - new Date(newest))/864e5) : 999;
   const sourceConflicts = snap.source_conflicts?.length || 0;
-  const nModels = useMemo(() => new Set(P.map((p) => p.provider + "/" + p.model_id)).size, [P]);
 
   /* ---------------- columns ---------------- */
   const columns = [
@@ -577,11 +576,6 @@ export default function App({ snap }) {
                   <span className="fm-item">© 2026 Bedrock 비용 비교 ·</span>{" "}
                   <span className="fm-item"><b>비공식 자료</b>이며 AWS와 무관합니다.</span>{" "}
                   <span className="fm-item">결제 전 <Link href="https://aws.amazon.com/bedrock/pricing/" external variant="secondary" fontSize="body-s">AWS 공식 가격 페이지</Link>로 확인하세요.</span>
-                </div>
-                <div className="foot-line">
-                  <span className="fm-item">AWS 공식 가격 ·</span>{" "}
-                  <span className="fm-item">{snap.regions.length}개 리전 ·</span>{" "}
-                  <span className="fm-item">{nModels}개 모델</span>
                 </div>
               </Box>
             </div>

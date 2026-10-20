@@ -115,3 +115,15 @@ body.awsui-dark-mode .title-grad {
    on one line, so on a narrow screen the line wraps BETWEEN items, never through
    a timestamp — reads naturally on mobile without manual <br>. */
 .header-meta .hm-item { display: inline-block; white-space: nowrap; }
+
+/* Page gutters + table cell padding. On narrow screens the 20px page gutters and
+   Cloudscape's roomy cell padding push the "월 비용" column off-screen, so both
+   are tightened. Plain element selectors scoped to .page-main (no awsui_* classes);
+   !important because Cloudscape cell rules are class-based with equal/higher
+   specificity. */
+.page-main { padding: 28px 20px 40px; }
+@media (max-width: 600px) {
+  .page-main { padding: 20px 10px 32px; }
+  .page-main table th,
+  .page-main table td { padding-left: 8px !important; padding-right: 8px !important; }
+}

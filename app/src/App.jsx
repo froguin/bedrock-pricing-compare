@@ -314,7 +314,7 @@ export default function App({ snap }) {
             onClick={toggleTheme} />
         </div>
       </header>
-      <main style={{ maxWidth: 1120, margin: "0 auto", padding: "28px 20px 40px" }}>
+      <main className="page-main" style={{ maxWidth: 1120, margin: "0 auto" }}>
         <ContentLayout disableOverlap
           header={
             <Header variant="h1"

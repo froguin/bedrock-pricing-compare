@@ -24,6 +24,7 @@ permissions:
 
 env:
   BUCKET: awskr-bedrock-pricing
+  STATE_BUCKET: awskr-bedrock-pricing-refresh-state
   DIST_ID: E1OQXWKSFOXAF
   AWS_REGION: ap-northeast-2
 
@@ -89,6 +90,23 @@ jobs:
         with:
           role-to-assume: ${{ vars.AWS_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
+
+      # The refresh Lambda cannot run vite, so it re-inlines fresh data into THIS
+      # shell. Upload it BEFORE the site deploy so an hourly Lambda run that lands
+      # in between already uses the new UI (never the reverse). Needs the
+      # SyncLambdaShell statement in infra/lambda-refresh/deploy-role-policy.json;
+      # until that is applied the step fails visibly but does not block the deploy.
+      - name: Sync UI shell to the refresh Lambda state
+        id: shell
+        if: steps.build.outcome == 'success' || github.event_name == 'push'
+        continue-on-error: true
+        run: |
+          aws s3 cp app/dist/index.html "s3://$STATE_BUCKET/refresh-state/shell.html" --no-progress
+          echo "Lambda shell updated" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Warn if the shell sync failed
+        if: steps.shell.outcome == 'failure'
+        run: echo "::warning::Lambda shell was NOT updated -- apply infra/lambda-refresh/deploy-role-policy.json or run seed-state.sh, otherwise the next hourly run reverts the UI."
 
       - name: Deploy
         if: steps.build.outcome == 'success' || github.event_name == 'push'

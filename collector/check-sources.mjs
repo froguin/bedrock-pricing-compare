@@ -17,7 +17,7 @@ import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+const ROOT = process.env.BPC_ROOT || join(dirname(fileURLToPath(import.meta.url)), "..");
 const STATE = join(ROOT, "data/state.json");
 const SERVICES = ["AmazonBedrock", "AmazonBedrockFoundationModels"];
 const PAGE = "https://aws.amazon.com/bedrock/pricing/";

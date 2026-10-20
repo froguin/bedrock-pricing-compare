@@ -3,10 +3,9 @@ name: Refresh prices
 on:
   push:
     branches: [main]
-  schedule:
-    # Hourly, off the :00 rush. GitHub may start scheduled runs late or drop them
-    # under load; an hourly cadence is dropped less often than a sub-hour one.
-    - cron: "7 * * * *"
+  # Scheduled refresh moved to AWS EventBridge + Lambda (reliable cadence) —
+  # see infra/lambda-refresh/. GitHub's schedule cron dropped most runs under
+  # load, so it is no longer used here. push still deploys UI/code changes.
   workflow_dispatch:
     inputs:
       force:

@@ -6,7 +6,7 @@
 import { writeJsonIfChanged } from "./write-stable.mjs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+const ROOT = process.env.BPC_ROOT || join(dirname(fileURLToPath(import.meta.url)), "..");
 const DOC_URL = "https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html";
 const r = await fetch(DOC_URL); if (!r.ok) throw new Error(`HTTP ${r.status} ${DOC_URL}`);
 const html = await r.text();

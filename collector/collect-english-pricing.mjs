@@ -8,7 +8,7 @@ import { writeJsonIfChanged } from "./write-stable.mjs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+const ROOT = process.env.BPC_ROOT || join(dirname(fileURLToPath(import.meta.url)), "..");
 const URL = "https://aws.amazon.com/bedrock/pricing/";
 const r = await fetch(URL);
 if (!r.ok) throw new Error(`HTTP ${r.status} ${URL}`);

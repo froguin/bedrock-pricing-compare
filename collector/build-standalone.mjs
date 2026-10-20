@@ -9,7 +9,7 @@ import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const ROOT = process.env.BPC_ROOT || resolve(dirname(fileURLToPath(import.meta.url)), "..");
 // --src / --out (repo-relative) let the Cloudscape prototype (app/) reuse this
 // injector; defaults keep the production build unchanged.
 const arg = (name, def) => {

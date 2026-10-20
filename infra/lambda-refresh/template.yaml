@@ -1,0 +1,111 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Scheduled Bedrock-pricing refresh. An EventBridge Scheduler fires a Lambda
+  hourly; the Lambda re-collects pricing, re-inlines it into the vite shell, and
+  ships the page to the existing site bucket + CloudFront. Replaces the
+  unreliable GitHub Actions schedule cron. See infra/lambda-refresh/README.md.
+
+Parameters:
+  SiteBucket:
+    Type: String
+    Default: awskr-bedrock-pricing
+    Description: S3 bucket CloudFront serves (index.html + .br/.gz).
+  DistributionId:
+    Type: String
+    Default: E1OQXWKSFOXAF
+    Description: CloudFront distribution to invalidate after a deploy.
+  ScheduleExpression:
+    Type: String
+    Default: "rate(1 hour)"
+    Description: EventBridge Scheduler cadence (rate() or cron()).
+  StatePrefix:
+    Type: String
+    Default: refresh-state
+    Description: Key prefix inside the state bucket.
+
+Resources:
+  # Versioned bucket that holds the collector state + the vite shell. Versioning
+  # keeps the data-snapshot history that the old git-commit-back used to keep.
+  StateBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "${SiteBucket}-refresh-state"
+      VersioningConfiguration:
+        Status: Enabled
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      LifecycleConfiguration:
+        Rules:
+          - Id: expire-old-versions
+            Status: Enabled
+            NoncurrentVersionExpiration:
+              NoncurrentDays: 90
+
+  RefreshFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: bedrock-pricing-refresh
+      Runtime: nodejs22.x
+      Handler: handler.handler
+      CodeUri: ./build/            # populated by package.sh (handler + collector/)
+      MemorySize: 1024
+      Timeout: 300
+      Environment:
+        Variables:
+          STATE_BUCKET: !Ref StateBucket
+          STATE_PREFIX: !Ref StatePrefix
+          SITE_BUCKET: !Ref SiteBucket
+          DIST_ID: !Ref DistributionId
+          FORCE: "false"
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref StateBucket
+        - Statement:
+            - Sid: WriteSitePage
+              Effect: Allow
+              Action: ["s3:PutObject"]
+              Resource: !Sub "arn:aws:s3:::${SiteBucket}/index.html*"
+            - Sid: InvalidateCdn
+              Effect: Allow
+              Action: ["cloudfront:CreateInvalidation"]
+              Resource: !Sub "arn:aws:cloudfront::${AWS::AccountId}:distribution/${DistributionId}"
+
+  SchedulerRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal: { Service: scheduler.amazonaws.com }
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: invoke-refresh
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: lambda:InvokeFunction
+                Resource: !GetAtt RefreshFunction.Arn
+
+  RefreshSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: bedrock-pricing-refresh-hourly
+      FlexibleTimeWindow: { Mode: "OFF" }
+      ScheduleExpression: !Ref ScheduleExpression
+      ScheduleExpressionTimezone: "Asia/Seoul"
+      Target:
+        Arn: !GetAtt RefreshFunction.Arn
+        RoleArn: !GetAtt SchedulerRole.Arn
+
+Outputs:
+  StateBucketName:
+    Value: !Ref StateBucket
+    Description: Upload the vite shell + current data here with seed-state.sh.
+  FunctionName:
+    Value: !Ref RefreshFunction

@@ -299,4 +299,4 @@ export function groupVideoPrices(points = [], selectedRegion = null) {
   const missing=rows.filter(x=>!x.regions.includes(selectedRegion)).sort((a,b)=>b.regions.length-a.regions.length||a.rate-b.rate);
   return { ranked, missing };
 }
-export const SRC_KO = { AmazonBedrock: "가격 API(Bedrock)", AmazonBedrockFoundationModels: "가격 API(Marketplace)" };
+export const SRC_KO = { AmazonBedrock: "Price List API(Bedrock)", AmazonBedrockFoundationModels: "Price List API(Marketplace)" };

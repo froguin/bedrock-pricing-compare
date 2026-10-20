@@ -172,8 +172,8 @@ export default function App({ snap }) {
   };
 
   /* ---------------- provenance ---------------- */
-  // "2026-10-19 21:33 KST" -> "10-19 21:33" for the compact header/top bar.
-  const shortKst = (s) => (s && s !== "?" ? s.slice(5, 16) : "?");
+  // "2026-10-19 21:33 KST" -> "2026-10-19 21:33" (KST is stated once in the header).
+  const shortKst = (s) => (s && s !== "?" ? s.replace(/ KST$/, "") : "?");
   // Heartbeat written by the hourly refresh Lambda. Absent when the page is
   // opened from disk or the file is missing, in which case nothing is shown.
   const [lastChecked, setLastChecked] = useState(null);
@@ -293,7 +293,7 @@ export default function App({ snap }) {
                   <span className="hm-item">데이터 기준(KST) —</span>{" "}
                   <span className="hm-item">영문 Pricing <b>{shortKst(englishCheckedTime)}</b> ·</span>{" "}
                   {srcDatesTime.map((s, i) => (
-                    <span className="hm-item" key={i}>{s.replace(/^가격 API/, "API").replace(/\d{4}-(\d\d-\d\d \d\d:\d\d) KST$/, "$1")} ·</span>
+                    <span className="hm-item" key={i}>{s.replace(/^가격 API/, "API").replace(/ KST$/, "")} ·</span>
                   ))}{" "}
                   <span className="hm-item">금액은 <b>USD</b></span>{" "}
                   <span className="hm-item">

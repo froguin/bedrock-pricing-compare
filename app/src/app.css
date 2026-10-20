@@ -143,6 +143,10 @@ body.awsui-dark-mode .title-grad {
    wide screens). Credit lines wrap between items, never inside one, so a narrow
    screen breaks at natural boundaries instead of mid-phrase. */
 .page-foot { max-width: 760px; margin: 0 auto; }
+/* Cloudscape Box variant=small renders an inline-block <small> that shrink-wraps to
+   its content, so text-align:center had nothing to centre within (measured:
+   credit lines sat left of centre). Make the boxes fill the column. */
+.page-foot > * { display: block !important; }
 .page-foot .foot-notes { margin: 0; padding-left: 1.1em; }
 .page-foot .foot-notes li { margin: 0 0 4px; }
 .page-foot .foot-line { margin: 0 0 2px; }

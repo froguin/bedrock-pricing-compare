@@ -331,7 +331,7 @@ export default function App({ snap }) {
               description={
                 <span className="header-meta">
                   <span className="hm-item"><Src k="pricing" /> 기준 ·</span>{" "}
-                  <span className="hm-item"><Src k="docs" />·<Src k="api" />로 보강 ·</span>{" "}
+                  <span className="hm-item"><b>비공식</b> 자료 ·</span>{" "}
                   <span className="hm-item">금액은 <b>USD</b></span>
                 </span>
               }>
@@ -563,19 +563,22 @@ export default function App({ snap }) {
               <Box variant="small" color="text-body-secondary" padding={{ top: "s" }}>
                 <ul className="foot-notes">
                   <li>모든 금액은 <b>USD</b>입니다. 환율 정보가 원본 데이터에 없어 원화로 환산하지 않습니다.</li>
-                  <li><b>지역 묶음(Geo CRIS)</b>과 <b>Global CRIS</b>는 <Src k="pricing" small />과 <Src k="docs" small />에 별도 경로가 확인된 경우에만 표시합니다.</li>
+                  <li><b>지역 묶음 분산 처리</b>(지리적 리전 간 추론)와 <b>글로벌 분산 처리</b>(글로벌 리전 간 추론)는 <Src k="pricing" small />과 <Src k="docs" small />에 별도 경로가 확인된 경우에만 표시합니다.</li>
                   <li>같은 조건에 단가가 2개인 경우 <b>범위로 표시</b>하고 "N배" 기준에서 제외합니다.</li>
                   <li>
-                    <span className="fm-item">출처별 데이터 기준:</span>{" "}
+                    <span className="fm-item"><Src k="pricing" small />의 명시 가격을 우선합니다.</span>{" "}
+                    <span className="fm-item"><Src k="docs" small />으로 모델별 리전 제공 현황을 확인하고,</span>{" "}
+                    <span className="fm-item"><Src k="api" small />로 요금 페이지에 없는 리전·응답 방식·서비스 티어·입력 길이 요금 구간을 보완합니다.</span>
+                  </li>
+                  <li>
+                    <span className="fm-item">출처별 데이터 기준 시각:</span>{" "}
                     <span className="fm-item">Bedrock 요금(영문) <b>{englishCheckedTime}</b> ·</span>{" "}
                     {srcDatesTime.map((s, i) => (
-                      <span className="fm-item" key={i}>{s.label} <b>{s.time}</b>{i < srcDatesTime.length - 1 ? " ·" : ""}</span>
-                    ))}
+                      <span className="fm-item" key={i}>{s.label} <b>{s.time}</b>{i < srcDatesTime.length - 1 ? " ·" : "."}</span>
+                    ))}{" "}
+                    <span className="fm-item">우상단 <b>최종 확인</b>은 매시간 점검한 시각이고, 이 시각들은 가격이 바뀔 때만 갱신됩니다.</span>
                   </li>
-                  <li><b><Src k="pricing" small /></b>의 명시 가격이 같은 조건의 Price List Bulk API 가격보다 우선합니다.</li>
-                  <li><b><Src k="docs" small /></b>으로 모델 출시와 in-region·Geo·Global 지원 리전을 확인합니다.</li>
-                  <li><b><Src k="api" small /></b>는 Bedrock 요금(영문)에 없는 리전·실행 모드·서비스 티어·컨텍스트 밴드를 보강합니다.</li>
-                  {sourceConflicts > 0 && <li>Bedrock 요금(영문)과 Price List Bulk API 값이 다른 키 <b>{sourceConflicts}개</b>는 Bedrock 요금(영문) 값을 표시합니다.</li>}
+                  {sourceConflicts > 0 && <li>Bedrock 요금(영문)과 Price List Bulk API 값이 다른 가격 항목 <b>{sourceConflicts}개</b>는 Bedrock 요금(영문) 값을 표시합니다.</li>}
                 </ul>
               </Box>
               <Box variant="small" color="text-body-secondary" textAlign="center" padding={{ top: "m" }}>

@@ -295,7 +295,17 @@ export default function App({ snap }) {
                   return <><span className="tnd-part">{label} <b>{d}</b></span>{" "}<span className="tnd-part"><b>{t} {z}</b></span></>;
                 })()}
           </span>
-          <Button variant="icon" iconName={theme === "dark" ? "star" : "star-filled"}
+          <Button variant="icon"
+            iconSvg={theme === "dark"
+              ? (/* sun: shown in dark mode -> switch to light */
+                <svg viewBox="0 0 16 16" focusable="false" aria-hidden="true">
+                  <circle cx="8" cy="8" r="3" fill="currentColor" stroke="none" />
+                  <path d="M8 1.5v1.8M8 12.7v1.8M1.5 8h1.8M12.7 8h1.8M3.4 3.4l1.3 1.3M11.3 11.3l1.3 1.3M3.4 12.6l1.3-1.3M11.3 4.7l1.3-1.3" />
+                </svg>)
+              : (/* moon: shown in light mode -> switch to dark */
+                <svg viewBox="0 0 16 16" focusable="false" aria-hidden="true">
+                  <path d="M13.5 9.6A5.8 5.8 0 0 1 6.4 2.5a5.8 5.8 0 1 0 7.1 7.1z" fill="currentColor" />
+                </svg>)}
             ariaLabel={theme === "dark" ? "밝은 테마로 전환" : "어두운 테마로 전환"}
             onClick={toggleTheme} />
         </div>

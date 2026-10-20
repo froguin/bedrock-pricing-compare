@@ -297,15 +297,9 @@ export default function App({ snap }) {
           </span>
           <Button variant="icon"
             iconSvg={theme === "dark"
-              ? (/* sun: shown in dark mode -> switch to light */
-                <svg viewBox="0 0 16 16" focusable="false" aria-hidden="true">
-                  <circle cx="8" cy="8" r="3" fill="currentColor" stroke="none" />
-                  <path d="M8 1.5v1.8M8 12.7v1.8M1.5 8h1.8M12.7 8h1.8M3.4 3.4l1.3 1.3M11.3 11.3l1.3 1.3M3.4 12.6l1.3-1.3M11.3 4.7l1.3-1.3" />
-                </svg>)
-              : (/* moon: shown in light mode -> switch to dark */
-                <svg viewBox="0 0 16 16" focusable="false" aria-hidden="true">
-                  <path d="M13.5 9.6A5.8 5.8 0 0 1 6.4 2.5a5.8 5.8 0 1 0 7.1 7.1z" fill="currentColor" />
-                </svg>)}
+              ? (/* same SVGs as release.awskr.net; icon = current mode (moon in dark) */
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" /></svg>)
+              : (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20" aria-hidden="true"><circle cx="10" cy="10" r="4" /><path d="M10 1v2m0 14v2m-7-9H1m18 0h-2m-1.3-5.3l-1.4 1.4M5.7 14.3l-1.4 1.4m0-11.4l1.4 1.4m8.6 8.6l1.4 1.4" /></svg>)}
             ariaLabel={theme === "dark" ? "밝은 테마로 전환" : "어두운 테마로 전환"}
             onClick={toggleTheme} />
         </div>

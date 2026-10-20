@@ -116,14 +116,25 @@ body.awsui-dark-mode .title-grad {
    a timestamp — reads naturally on mobile without manual <br>. */
 .header-meta .hm-item { display: inline-block; white-space: nowrap; }
 
-/* Page gutters + table cell padding. On narrow screens the 20px page gutters and
-   Cloudscape's roomy cell padding push the "월 비용" column off-screen, so both
-   are tightened. Plain element selectors scoped to .page-main (no awsui_* classes);
-   !important because Cloudscape cell rules are class-based with equal/higher
-   specificity. */
+/* Narrow screens: keep the model name AND the "월 비용" column in view.
+   Measured in a 375px viewport (iframe, live page): 20px gutters + the model
+   cell's long one-line badge row made the model column 219px wide, which pushed
+   월 비용 to x=318..461 (mostly off-screen behind the horizontal scroll).
+   Fix: 10px page gutters, 8px cell padding (Cloudscape's content wrapper has 15px;
+   the td/th themselves only 1-4px, so the padding lives on the wrapper <div>),
+   a slimmer "#" column, a model column of ~160px whose badges wrap, and a "월 비용"
+   header that may wrap. Only element/structure selectors under .page-main, no
+   awsui_* class names. Column 2 is the model column in all three tables
+   (rank / embedding / video); the model cell is a <th> (row header). */
 .page-main { padding: 28px 20px 40px; }
 @media (max-width: 600px) {
   .page-main { padding: 20px 10px 32px; }
-  .page-main table th,
-  .page-main table td { padding-left: 8px !important; padding-right: 8px !important; }
+  .page-main tbody tr > * > div:first-child,
+  .page-main thead th > div { padding-left: 8px !important; padding-right: 8px !important; }
+  .page-main tbody tr > *:first-child > div:first-child,
+  .page-main thead th:first-child > div { padding-left: 4px !important; padding-right: 2px !important; }
+  .page-main tbody tr > *:nth-child(2) * { white-space: normal !important; }
+  .page-main tbody tr > *:nth-child(2) > div:first-child,
+  .page-main thead th:nth-child(2) > div { min-width: 160px; box-sizing: border-box; }
+  .page-main thead th:nth-child(3) * { white-space: normal !important; }
 }

@@ -175,16 +175,19 @@ export default function App({ snap }) {
   };
 
   /* ---------------- provenance ---------------- */
-  // Heartbeat written by the hourly refresh Lambda. Absent when the page is
-  // opened from disk or the file is missing, in which case nothing is shown.
-  const [lastChecked, setLastChecked] = useState(null);
+  // Heartbeat written by the hourly refresh Lambda.
+  //   undefined = still loading  -> invisible same-width placeholder (no flicker)
+  //   null      = unavailable    -> fall back to the data timestamp
+  //   string    = ISO time of the last successful check
+  const [lastChecked, setLastChecked] = useState(() =>
+    /^https?:$/.test(window.location.protocol) ? undefined : null);
   useEffect(() => {
     if (!/^https?:$/.test(window.location.protocol)) return undefined;
     let alive = true;
     fetch("/status.json", { cache: "no-cache" })
       .then((r) => (r.ok ? r.json() : null))
-      .then((j) => { if (alive && j?.last_checked_at) setLastChecked(j.last_checked_at); })
-      .catch(() => {});
+      .then((j) => { if (alive) setLastChecked(j?.last_checked_at || null); })
+      .catch(() => { if (alive) setLastChecked(null); });
     return () => { alive = false; };
   }, []);
   const srcDatesTime = Object.entries(snap.as_of || {}).map(([k, v]) => ({ label: SRC_KO[k] || k, time: asOfTime(v) }));
@@ -277,13 +280,20 @@ export default function App({ snap }) {
           <span className="top-nav-product">Bedrock 비용 비교</span>
         </a>
         <div className="top-nav-aside">
-          <span className="top-nav-date" title={lastChecked ? `마지막 확인 ${isoTime(lastChecked)}` : `${newest} 기준`}>
-            {lastChecked
-              ? (() => {
-                  const [d, t, z] = isoTime(lastChecked).split(" ");
-                  return <><span className="tnd-part">확인 <b>{d}</b></span>{" "}<span className="tnd-part"><b>{t} {z}</b></span></>;
-                })()
-              : <span className="tnd-part">{newest} 기준</span>}
+          <span className="top-nav-date"
+            title={lastChecked ? `최종 확인 ${isoTime(lastChecked)}` : lastChecked === null ? `데이터 기준 ${englishCheckedTime}` : undefined}>
+            {lastChecked === undefined
+              ? <>
+                  <span className="tnd-part tnd-ghost" aria-hidden="true">최종 확인 0000-00-00</span>{" "}
+                  <span className="tnd-part tnd-ghost" aria-hidden="true">00:00 KST</span>
+                </>
+              : (() => {
+                  const full = isoTime(lastChecked || snap.english_pricing_checked_at);
+                  if (full === "?") return null;
+                  const [d, t, z] = full.split(" ");
+                  const label = lastChecked ? "최종 확인" : "데이터 기준";
+                  return <><span className="tnd-part">{label} <b>{d}</b></span>{" "}<span className="tnd-part"><b>{t} {z}</b></span></>;
+                })()}
           </span>
           <Button variant="icon" iconName={theme === "dark" ? "star" : "star-filled"}
             ariaLabel={theme === "dark" ? "밝은 테마로 전환" : "어두운 테마로 전환"}
@@ -308,7 +318,7 @@ export default function App({ snap }) {
                         <span>① <b><Link href="https://aws.amazon.com/bedrock/pricing/" external variant="secondary">영문 Pricing 페이지</Link></b>의 명시 가격이 같은 조건의 API 가격보다 우선합니다.</span>
                         <span>② <b><Link href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html" external variant="secondary">영문 Documentation</Link></b>으로 모델 출시와 in-region·Geo·Global 지원 리전을 확인합니다.</span>
                         <span>③ <b>Price List API</b>는 페이지에 없는 리전·실행 모드·서비스 티어·컨텍스트 밴드를 보강합니다.</span>
-                        <span>우상단 <b>확인</b>은 매시간 자동 점검한 시각이고, 위 데이터 기준 시각은 가격이 바뀔 때만 갱신됩니다.</span>
+                        <span>우상단 <b>최종 확인</b>은 매시간 자동 점검한 시각이고, 위 데이터 기준 시각은 가격이 바뀔 때만 갱신됩니다.</span>
                         {sourceConflicts > 0 && <span>영문 페이지와 API 값이 다른 키 <b>{sourceConflicts}개</b>는 영문 페이지 값을 표시합니다.</span>}
                       </SpaceBetween>}>
                       <Button variant="inline-icon" iconName="status-info" ariaLabel="가격 출처 설명" />
@@ -548,7 +558,7 @@ export default function App({ snap }) {
             </Box>
             <Box variant="small" color="text-body-secondary" textAlign="center">
               © 2026 Bedrock 비용 비교 · <b>비공식 자료</b>이며 AWS와 무관합니다. 결제 전 <Link href="https://aws.amazon.com/bedrock/pricing/" external variant="secondary" fontSize="body-s">AWS 공식 가격 페이지</Link>로 확인하세요.<br />
-              AWS 공식 가격 · {englishChecked} 확인 · {snap.regions.length}개 리전 · {nModels}개 모델
+              AWS 공식 가격 · 데이터 기준 {englishCheckedTime} · {snap.regions.length}개 리전 · {nModels}개 모델
             </Box>
             </SpaceBetween>
           </SpaceBetween>

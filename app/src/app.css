@@ -35,6 +35,7 @@ body.awsui-dark-mode .mine-chip { color: #94afff; background: rgba(92, 127, 255,
   white-space: normal; text-align: right; line-height: 1.25; max-width: 46vw;
 }
 .top-nav-date .tnd-part { display: inline-block; white-space: nowrap; }
+.top-nav-date .tnd-ghost { visibility: hidden; } /* transparent placeholder: reserves width while status.json loads */
 /* The theme toggle is a Cloudscape icon Button; force a light-on-dark color
    since the bar stays dark regardless of the active mode. */
 .top-nav-aside button { color: #d1d5db !important; }

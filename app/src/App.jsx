@@ -25,7 +25,7 @@ import bedrockIcon from "./bedrock-icon.svg";
 import {
   PATH_KO, TIER_KO, STATUS_KO, BAND_KO, MODE_KO, PRESETS, SIZES, REGION_ORDER,
   regionName, regionFull, makeMatcher, rank, expandTiers, money, rate, rateRange,
-  sizeBucket, asOf, asOfTime, isoTime, relativeKo, SRC_KO, rankEmbeddings, groupVideoPrices,
+  sizeBucket, asOf, asOfTime, isoTime, relativeKo, latestDataTime, SRC_KO, rankEmbeddings, groupVideoPrices,
 } from "./logic.js";
 
 const STATUS_BADGE = { legacy: "grey", preview: "blue", internal: "severity-medium" };
@@ -200,6 +200,7 @@ export default function App({ snap }) {
   const dates = Object.values(snap.as_of || {}).map(asOf).sort();
   const englishChecked = String(snap.english_pricing_checked_at || "").slice(0, 10) || "?";
   const englishCheckedTime = isoTime(snap.english_pricing_checked_at);
+  const latestChange = latestDataTime(snap);
   const newest = englishChecked !== "?" ? englishChecked : (dates[dates.length - 1] || "?");
   const ageDays = newest !== "?" ? Math.floor((Date.now() - new Date(newest))/864e5) : 999;
   const sourceConflicts = snap.source_conflicts?.length || 0;
@@ -319,11 +320,7 @@ export default function App({ snap }) {
             <Header variant="h1"
               description={
                 <span className="header-meta">
-                  <span className="hm-item">데이터 기준 —</span>{" "}
-                  <span className="hm-item">영문 Pricing <b>{englishCheckedTime}</b> ·</span>{" "}
-                  {srcDatesTime.map((s, i) => (
-                    <span className="hm-item" key={i}>{s.label.replace(/^가격 API/, "API")} <b>{s.time}</b> ·</span>
-                  ))}{" "}
+                  <span className="hm-item">데이터 기준 <b>{latestChange}</b> ·</span>{" "}
                   <span className="hm-item">금액은 <b>USD</b></span>{" "}
                   <span className="hm-item">
                     <Popover header="가격 출처" size="large" triggerType="custom" dismissAriaLabel="설명 닫기"
@@ -331,7 +328,7 @@ export default function App({ snap }) {
                         <span>① <b><Link href="https://aws.amazon.com/bedrock/pricing/" external variant="secondary">영문 Pricing 페이지</Link></b>의 명시 가격이 같은 조건의 API 가격보다 우선합니다.</span>
                         <span>② <b><Link href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html" external variant="secondary">영문 Documentation</Link></b>으로 모델 출시와 in-region·Geo·Global 지원 리전을 확인합니다.</span>
                         <span>③ <b>Price List API</b>는 페이지에 없는 리전·실행 모드·서비스 티어·컨텍스트 밴드를 보강합니다.</span>
-                        <span>우상단 <b>최종 확인</b>은 매시간 자동 점검한 시각이고, 위 데이터 기준 시각은 가격이 바뀔 때만 갱신됩니다.</span>
+                        <span>우상단 <b>최종 확인</b>은 매시간 자동 점검한 시각이고, 데이터 기준 시각은 가격이 바뀔 때만 갱신되며, 출처별 시각은 페이지 하단에 있습니다.</span>
                         {sourceConflicts > 0 && <span>영문 페이지와 API 값이 다른 키 <b>{sourceConflicts}개</b>는 영문 페이지 값을 표시합니다.</span>}
                       </SpaceBetween>}>
                       <Button variant="inline-icon" iconName="status-info" ariaLabel="가격 출처 설명" />
@@ -569,6 +566,13 @@ export default function App({ snap }) {
                   <li>모든 금액은 <b>USD</b>입니다. 환율 정보가 원본 데이터에 없어 원화로 환산하지 않습니다.</li>
                   <li><b>지역 묶음(Geo CRIS)</b>과 <b>Global CRIS</b>는 영문 Pricing/Documentation에 별도 경로가 확인된 경우에만 표시합니다.</li>
                   <li>같은 조건에 단가가 2개인 경우 <b>범위로 표시</b>하고 "N배" 기준에서 제외합니다.</li>
+                  <li>
+                    <span className="fm-item">출처별 데이터 기준:</span>{" "}
+                    <span className="fm-item">영문 Pricing <b>{englishCheckedTime}</b> ·</span>{" "}
+                    {srcDatesTime.map((s, i) => (
+                      <span className="fm-item" key={i}>{s.label} <b>{s.time}</b>{i < srcDatesTime.length - 1 ? " ·" : ""}</span>
+                    ))}
+                  </li>
                 </ul>
               </Box>
               <Box variant="small" color="text-body-secondary" textAlign="center" padding={{ top: "m" }}>

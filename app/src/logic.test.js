@@ -2,7 +2,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { rank, makeMatcher, expandTiers, rankEmbeddings, groupVideoPrices, isEmbeddingModel, relativeKo, SIZES } from "./logic.js";
+import { rank, makeMatcher, expandTiers, rankEmbeddings, groupVideoPrices, isEmbeddingModel, relativeKo, latestDataTime, SIZES } from "./logic.js";
 
 const snap = JSON.parse(readFileSync(new URL("../../web/pricing.json", import.meta.url), "utf8"));
 const P = snap.price_points;
@@ -97,4 +97,11 @@ test("relativeKo formats elapsed time in Korean", () => {
   assert.equal(relativeKo(ago(3 * 86400), now), "3일 전");
   assert.equal(relativeKo(new Date(now + 60000).toISOString(), now), "방금 전");
   assert.equal(relativeKo("garbage", now), "?");
+});
+
+test("latestDataTime picks the newest source timestamp in KST", () => {
+  assert.equal(latestDataTime({ english_pricing_checked_at: "2026-10-19T12:33:05.036Z", as_of: { A: "20261016210806", B: "20261012084008" } }), "2026-10-19 21:33 KST");
+  // API newer than the English check: 2026-10-20 21:08 UTC -> 2026-10-21 06:08 KST
+  assert.equal(latestDataTime({ english_pricing_checked_at: "2026-10-19T12:33:05Z", as_of: { A: "20261020210806" } }), "2026-10-21 06:08 KST");
+  assert.equal(latestDataTime({}), "?");
 });

@@ -138,3 +138,12 @@ body.awsui-dark-mode .title-grad {
   .page-main thead th:nth-child(2) > div { min-width: 160px; box-sizing: border-box; }
   .page-main thead th:nth-child(3) * { white-space: normal !important; }
 }
+
+/* Footer: one readable column (same width for notes and credit lines, centred on
+   wide screens). Credit lines wrap between items, never inside one, so a narrow
+   screen breaks at natural boundaries instead of mid-phrase. */
+.page-foot { max-width: 760px; margin: 0 auto; }
+.page-foot .foot-notes { margin: 0; padding-left: 1.1em; }
+.page-foot .foot-notes li { margin: 0 0 4px; }
+.page-foot .foot-line { margin: 0 0 2px; }
+.page-foot .fm-item { display: inline-block; white-space: nowrap; }

@@ -586,7 +586,6 @@ export default function App({ snap }) {
                 </div>
               </Box>
             </div>
-            </SpaceBetween>
           </SpaceBetween>
         </ContentLayout>
       </main>

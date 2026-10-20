@@ -15,7 +15,7 @@ body.awsui-dark-mode .mine-chip { color: #94afff; background: rgba(92, 127, 255,
 #top-nav {
   position: sticky; top: 0; z-index: 1002;
   display: flex; align-items: center; justify-content: space-between;
-  gap: 12px; height: 44px; padding: 0 16px;
+  gap: 12px; min-height: 44px; padding: 4px 16px;
   background: #0f1b2d;
   border-bottom: 1px solid var(--color-border-divider-default, #354150);
 }
@@ -30,13 +30,17 @@ body.awsui-dark-mode .mine-chip { color: #94afff; background: rgba(92, 127, 255,
 .top-nav-date {
   font-family: "Ember Modern Text UI", "Amazon Ember", "Pretendard", -apple-system, system-ui, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
   font-size: 14px; color: #d1d5db;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 40vw;
+  /* Wrap between the date and the time (each part stays whole) rather than
+     clipping with an ellipsis when the bar gets narrow. */
+  white-space: normal; text-align: right; line-height: 1.25; max-width: 46vw;
 }
+.top-nav-date .tnd-part { display: inline-block; white-space: nowrap; }
 /* The theme toggle is a Cloudscape icon Button; force a light-on-dark color
    since the bar stays dark regardless of the active mode. */
 .top-nav-aside button { color: #d1d5db !important; }
 @media (max-width: 480px) {
   .top-nav-product { font-size: 15px; }
+  .top-nav-date { font-size: 12px; }
 }
 
 /* Shared wrap row for Button-group toggles (response mode, usage presets).

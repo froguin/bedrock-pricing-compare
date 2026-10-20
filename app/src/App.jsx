@@ -319,19 +319,11 @@ export default function App({ snap }) {
             <Header variant="h1"
               description={
                 <span className="header-meta">
-                  <span className="hm-item">금액은 <b>USD</b></span>{" "}
-                  <span className="hm-item">
-                    <Popover header="가격 출처" size="large" triggerType="custom" dismissAriaLabel="설명 닫기"
-                      content={<SpaceBetween size="xs">
-                        <span>① <b><Link href="https://aws.amazon.com/bedrock/pricing/" external variant="secondary">영문 Pricing 페이지</Link></b>의 명시 가격이 같은 조건의 API 가격보다 우선합니다.</span>
-                        <span>② <b><Link href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html" external variant="secondary">영문 Documentation</Link></b>으로 모델 출시와 in-region·Geo·Global 지원 리전을 확인합니다.</span>
-                        <span>③ <b>Price List API</b>는 페이지에 없는 리전·실행 모드·서비스 티어·컨텍스트 밴드를 보강합니다.</span>
-                        <span>우상단 <b>최종 확인</b>은 매시간 자동 점검한 시각이고, 페이지 하단의 출처별 데이터 기준 시각은 가격이 바뀔 때만 갱신됩니다.</span>
-                        {sourceConflicts > 0 && <span>영문 페이지와 API 값이 다른 키 <b>{sourceConflicts}개</b>는 영문 페이지 값을 표시합니다.</span>}
-                      </SpaceBetween>}>
-                      <Button variant="inline-icon" iconName="status-info" ariaLabel="가격 출처 설명" />
-                    </Popover>
-                  </span>
+                  <span className="hm-item"><Link href="https://aws.amazon.com/bedrock/pricing/" external variant="secondary">영문 Pricing</Link> 가격 우선 ·</span>{" "}
+                  <span className="hm-item"><Link href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html" external variant="secondary">영문 Documentation</Link>으로 출시·경로 확인 ·</span>{" "}
+                  <span className="hm-item">Price List API로 리전·모드·티어 보강 ·</span>{" "}
+                  <span className="hm-item">금액은 <b>USD</b></span>
+                  {sourceConflicts > 0 && <>{" "}<span className="hm-item">· 값이 다른 <b>{sourceConflicts}개</b> 키는 영문 페이지 값 표시</span></>}
                 </span>
               }>
               Bedrock 모델 비용, <span className="title-grad">한 달에 얼마인가요?</span>

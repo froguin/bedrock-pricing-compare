@@ -30,6 +30,17 @@ import {
 
 const STATUS_BADGE = { legacy: "grey", preview: "blue", internal: "severity-medium" };
 
+/* Canonical source names + links: one definition so wording and URLs never drift. */
+const SOURCES = {
+  pricing: { label: "영문 Pricing", href: "https://aws.amazon.com/bedrock/pricing/" },
+  docs: { label: "영문 Documentation", href: "https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html" },
+  api: { label: "Price List API", href: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/using-the-aws-price-list-bulk-api.html" },
+};
+function Src({ k, small = false }) {
+  const x = SOURCES[k];
+  return <Link href={x.href} external variant="secondary" fontSize={small ? "body-s" : undefined}>{x.label}</Link>;
+}
+
 /* Button-group toggle used for single-select rows (response mode, usage preset).
    Deliberately not SegmentedControl, which collapses to a Select dropdown below
    688px; these must stay as toggles at every width. NavigableGroup adds arrow-key
@@ -319,8 +330,8 @@ export default function App({ snap }) {
             <Header variant="h1"
               description={
                 <span className="header-meta">
-                  <span className="hm-item"><Link href="https://aws.amazon.com/bedrock/pricing/" external variant="secondary">AWS 영문 Pricing</Link> 기준 ·</span>{" "}
-                  <span className="hm-item">Documentation·Price List API로 보강 ·</span>{" "}
+                  <span className="hm-item"><Src k="pricing" /> 기준 ·</span>{" "}
+                  <span className="hm-item"><Src k="docs" />·<Src k="api" />로 보강 ·</span>{" "}
                   <span className="hm-item">금액은 <b>USD</b></span>
                 </span>
               }>
@@ -486,7 +497,7 @@ export default function App({ snap }) {
               <ExpandableSection variant="stacked"
                 headerText="출시 확인 · 공개 단가 없음"
                 headerCounter={`(${pricePending.length})`}
-                headerDescription="AWS 영문 Pricing과 Documentation에는 모델이 게시됐지만, 영문 페이지에 숫자 단가가 없고 현재 Price List에도 입력·출력 SKU가 없습니다.">
+                headerDescription="영문 Pricing과 영문 Documentation에는 모델이 게시됐지만, 영문 Pricing에 숫자 단가가 없고 현재 Price List API에도 입력·출력 SKU가 없습니다.">
                 <ColumnLayout columns={2}>
                   {pricePending.map((x) => (
                     <Box key={`${x.provider}/${x.name}`}>
@@ -552,7 +563,7 @@ export default function App({ snap }) {
               <Box variant="small" color="text-body-secondary" padding={{ top: "s" }}>
                 <ul className="foot-notes">
                   <li>모든 금액은 <b>USD</b>입니다. 환율 정보가 원본 데이터에 없어 원화로 환산하지 않습니다.</li>
-                  <li><b>지역 묶음(Geo CRIS)</b>과 <b>Global CRIS</b>는 영문 Pricing/Documentation에 별도 경로가 확인된 경우에만 표시합니다.</li>
+                  <li><b>지역 묶음(Geo CRIS)</b>과 <b>Global CRIS</b>는 <Src k="pricing" small />과 <Src k="docs" small />에 별도 경로가 확인된 경우에만 표시합니다.</li>
                   <li>같은 조건에 단가가 2개인 경우 <b>범위로 표시</b>하고 "N배" 기준에서 제외합니다.</li>
                   <li>
                     <span className="fm-item">출처별 데이터 기준:</span>{" "}
@@ -561,17 +572,17 @@ export default function App({ snap }) {
                       <span className="fm-item" key={i}>{s.label} <b>{s.time}</b>{i < srcDatesTime.length - 1 ? " ·" : ""}</span>
                     ))}
                   </li>
-                  <li><b><Link href="https://aws.amazon.com/bedrock/pricing/" external variant="secondary" fontSize="body-s">영문 Pricing 페이지</Link></b>의 명시 가격이 같은 조건의 API 가격보다 우선합니다.</li>
-                  <li><b><Link href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html" external variant="secondary" fontSize="body-s">영문 Documentation</Link></b>으로 모델 출시와 in-region·Geo·Global 지원 리전을 확인합니다.</li>
-                  <li><b>Price List API</b>는 페이지에 없는 리전·실행 모드·서비스 티어·컨텍스트 밴드를 보강합니다.</li>
-                  {sourceConflicts > 0 && <li>영문 페이지와 API 값이 다른 키 <b>{sourceConflicts}개</b>는 영문 페이지 값을 표시합니다.</li>}
+                  <li><b><Src k="pricing" small /></b>의 명시 가격이 같은 조건의 Price List API 가격보다 우선합니다.</li>
+                  <li><b><Src k="docs" small /></b>으로 모델 출시와 in-region·Geo·Global 지원 리전을 확인합니다.</li>
+                  <li><b><Src k="api" small /></b>는 영문 Pricing에 없는 리전·실행 모드·서비스 티어·컨텍스트 밴드를 보강합니다.</li>
+                  {sourceConflicts > 0 && <li>영문 Pricing과 Price List API 값이 다른 키 <b>{sourceConflicts}개</b>는 영문 Pricing 값을 표시합니다.</li>}
                 </ul>
               </Box>
               <Box variant="small" color="text-body-secondary" textAlign="center" padding={{ top: "m" }}>
                 <div className="foot-line">
                   <span className="fm-item">© 2026 Bedrock 비용 비교 ·</span>{" "}
                   <span className="fm-item"><b>비공식 자료</b>이며 AWS와 무관합니다.</span>{" "}
-                  <span className="fm-item">결제 전 <Link href="https://aws.amazon.com/bedrock/pricing/" external variant="secondary" fontSize="body-s">AWS 공식 가격 페이지</Link>로 확인하세요.</span>
+                  <span className="fm-item">결제 전 <Src k="pricing" small />으로 확인하세요.</span>
                 </div>
               </Box>
             </div>

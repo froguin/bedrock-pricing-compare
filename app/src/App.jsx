@@ -187,7 +187,7 @@ export default function App({ snap }) {
       .catch(() => {});
     return () => { alive = false; };
   }, []);
-  const srcDatesTime = Object.entries(snap.as_of || {}).map(([k, v]) => `${SRC_KO[k] || k} ${asOfTime(v)}`);
+  const srcDatesTime = Object.entries(snap.as_of || {}).map(([k, v]) => ({ label: SRC_KO[k] || k, time: asOfTime(v) }));
   const dates = Object.values(snap.as_of || {}).map(asOf).sort();
   const englishChecked = String(snap.english_pricing_checked_at || "").slice(0, 10) || "?";
   const englishCheckedTime = isoTime(snap.english_pricing_checked_at);
@@ -281,7 +281,7 @@ export default function App({ snap }) {
             {lastChecked
               ? (() => {
                   const [d, t, z] = isoTime(lastChecked).split(" ");
-                  return <><span className="tnd-part">확인 {d}</span>{" "}<span className="tnd-part">{t} {z}</span></>;
+                  return <><span className="tnd-part">확인 <b>{d}</b></span>{" "}<span className="tnd-part"><b>{t} {z}</b></span></>;
                 })()
               : <span className="tnd-part">{newest} 기준</span>}
           </span>
@@ -299,7 +299,7 @@ export default function App({ snap }) {
                   <span className="hm-item">데이터 기준 —</span>{" "}
                   <span className="hm-item">영문 Pricing <b>{englishCheckedTime}</b> ·</span>{" "}
                   {srcDatesTime.map((s, i) => (
-                    <span className="hm-item" key={i}>{s.replace(/^가격 API/, "API")} ·</span>
+                    <span className="hm-item" key={i}>{s.label.replace(/^가격 API/, "API")} <b>{s.time}</b> ·</span>
                   ))}{" "}
                   <span className="hm-item">금액은 <b>USD</b></span>{" "}
                   <span className="hm-item">

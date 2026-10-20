@@ -33,7 +33,7 @@ const STATUS_BADGE = { legacy: "grey", preview: "blue", internal: "severity-medi
 /* Canonical source names + links: one definition so wording and URLs never drift. */
 const SOURCES = {
   pricing: { label: "Bedrock 요금(영문)", href: "https://aws.amazon.com/bedrock/pricing/" },
-  docs: { label: "Bedrock 사용 설명서(영문)", href: "https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html" },
+  docs: { label: "Bedrock 사용 설명서(영문)", href: "https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html" },
   api: { label: "Price List Bulk API", href: "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/using-the-aws-price-list-bulk-api.html" },
 };
 function Src({ k, small = false }) {

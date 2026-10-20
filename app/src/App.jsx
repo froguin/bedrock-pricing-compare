@@ -94,8 +94,11 @@ function CheckList({ items, set, onChange, label }) {
 }
 
 function RegionChips({ regions, selected, limit = 6 }) {
-  const shown = regions.slice(0, limit);
-  const rest = regions.slice(limit);
+  // Selected region first, so its highlighted chip is never hidden behind "+N".
+  const ordered = selected && regions.includes(selected)
+    ? [selected, ...regions.filter((rg) => rg !== selected)] : regions;
+  const shown = ordered.slice(0, limit);
+  const rest = ordered.slice(limit);
   return (
     <SpaceBetween direction="horizontal" size="xxs">
       <Box variant="small" color="text-body-secondary">{regions.length}개 리전</Box>
@@ -402,13 +405,22 @@ export default function App({ snap }) {
               <ExpandableSection variant="stacked" headerText="임베딩 모델 비용"
                 headerCounter={`(${embeddingItems.length})`}
                 headerDescription={`출력 토큰이 없는 입력 전용 모델입니다. 월 입력 ${f.inM.toLocaleString()}백만 토큰으로 계산합니다.`}>
-                <Table variant="embedded" trackBy="key" items={embeddingItems}
+                <Table variant="embedded" contentDensity="compact" trackBy="key" items={embeddingItems}
                   ariaLabels={{ tableLabel: "임베딩 모델 비용" }}
                   columnDefinitions={[
-                    { id:"embedding-model", header:"모델", cell:(x)=><><b>{x.model}</b> <Box variant="span" color="text-body-secondary">{x.provider}</Box></> },
-                    { id:"embedding-path", header:"처리 방식", cell:(x)=><SpaceBetween direction="horizontal" size="xs"><StatusIndicator type={PATH_KO[x.path].type}>{PATH_KO[x.path].label}</StatusIndicator><span className="mine-chip">{regionName(f.region)}</span></SpaceBetween> },
-                    { id:"embedding-rate", header:"입력 /1M", cell:(x)=>rateRange(x.rates) },
-                    { id:"embedding-monthly", header:"월 비용", cell:(x)=><b>{x.costLo===x.costHi?money(x.costLo):`${money(x.costLo)}–${money(x.costHi)}`}</b> },
+                    { id:"embedding-rank", header:"#", width:56, cell:(x)=>embeddingItems.indexOf(x)+1 },
+                    { id:"embedding-model", header:"모델", isRowHeader:true, cell:(x)=>(
+                      <SpaceBetween size="xxxs">
+                        <Box fontWeight="bold">{x.model} <Box variant="span" color="text-body-secondary" fontSize="body-s">{x.provider}</Box></Box>
+                        <SpaceBetween direction="horizontal" size="xs">
+                          <StatusIndicator type={PATH_KO[x.path].type}>{PATH_KO[x.path].label}</StatusIndicator>
+                          {x.status && x.status !== "ga" && <Badge color={STATUS_BADGE[x.status] || "grey"}>{STATUS_KO[x.status] || x.status}</Badge>}
+                          {x.rates.length > 1 && <StatusIndicator type="warning">단가 2개</StatusIndicator>}
+                        </SpaceBetween>
+                      </SpaceBetween>) },
+                    { id:"embedding-cost", header:"월 비용 (USD/월)", cell:(x)=><Box fontWeight="bold" fontSize="heading-s">{x.costLo===x.costHi?money(x.costLo):`${money(x.costLo)}–${money(x.costHi)}`}</Box> },
+                    { id:"embedding-rate", header:"단가 /1M (입력)", cell:(x)=><Box variant="small" color="text-body-secondary">입력 {rateRange(x.rates)}×{f.inM}</Box> },
+                    { id:"embedding-regions", header:"제공 리전", cell:(x)=><RegionChips regions={Object.keys(x.regions).sort()} selected={f.region} limit={3} /> },
                   ]} />
               </ExpandableSection>
             )}
@@ -433,14 +445,21 @@ export default function App({ snap }) {
                     <div style={{maxWidth:180}}><Input type="number" inputMode="numeric" value={String(videoSeconds)}
                       ariaLabel="월 생성 영상 길이(초)" onChange={({detail})=>setVideoSeconds(Math.max(0,+detail.value||0))} /></div>
                   </FormField>
-                  <Table variant="embedded" trackBy="key" items={videoItems}
+                  <Table variant="embedded" contentDensity="compact" trackBy="key" items={videoItems}
                     ariaLabels={{ tableLabel:"영상 생성 모델 비용" }}
                     columnDefinitions={[
-                      { id:"video-model", header:"모델", cell:(x)=><><b>{x.model}</b> <Box variant="span" color="text-body-secondary">{x.provider}</Box></> },
+                      { id:"video-rank", header:"#", width:56, cell:(x)=>videoItems.indexOf(x)+1 },
+                      { id:"video-model", header:"모델", isRowHeader:true, cell:(x)=>(
+                        <SpaceBetween size="xxxs">
+                          <Box fontWeight="bold">{x.model} <Box variant="span" color="text-body-secondary" fontSize="body-s">{x.provider}</Box></Box>
+                          <SpaceBetween direction="horizontal" size="xs">
+                            <StatusIndicator type={PATH_KO["in-region"].type}>{PATH_KO["in-region"].label}</StatusIndicator>
+                          </SpaceBetween>
+                        </SpaceBetween>) },
+                      { id:"video-cost", header:"월 비용 (USD/월)", cell:(x)=><Box fontWeight="bold" fontSize="heading-s">{money(x.rate*videoSeconds)}</Box> },
+                      { id:"video-rate", header:"단가 (생성 1초)", cell:(x)=><Box variant="small" color="text-body-secondary">생성 1초 {money(x.rate)}×{videoSeconds.toLocaleString()}</Box> },
                       { id:"video-variant", header:"출력 유형", cell:(x)=>x.variant },
-                      { id:"video-rate", header:"생성 1초", cell:(x)=>money(x.rate) },
-                      { id:"video-monthly", header:`${videoSeconds.toLocaleString()}초 비용`, cell:(x)=><b>{money(x.rate*videoSeconds)}</b> },
-                      { id:"video-region", header:"처리 방식", cell:()=><SpaceBetween direction="horizontal" size="xs"><StatusIndicator type="success">리전 내 처리</StatusIndicator><span className="mine-chip">{regionName(f.region)}</span></SpaceBetween> },
+                      { id:"video-regions", header:"제공 리전", cell:(x)=><RegionChips regions={x.regions} selected={f.region} limit={3} /> },
                     ]} />
                 </SpaceBetween>
               </ExpandableSection>

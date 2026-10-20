@@ -294,7 +294,7 @@ export default function App({ snap }) {
                   </span>
                 </span>
               }>
-              Bedrock 모델 비용, <span className="title-grad">한 달에 얼마인가요?</span>
+              Bedrock 모델 비용<span className="title-grad">한 달에 얼마인가요?</span>
             </Header>
           }>
           <SpaceBetween size="m">

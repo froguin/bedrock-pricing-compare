@@ -331,7 +331,7 @@ export default function App({ snap }) {
               description={
                 <span className="header-meta">
                   <span className="hm-item"><Src k="pricing" /> 기준 ·</span>{" "}
-                  <span className="hm-item"><b>비공식</b> 자료 ·</span>{" "}
+                  <span className="hm-item"><b>비공식</b> 추정치 ·</span>{" "}
                   <span className="hm-item">금액은 <b>USD</b></span>
                 </span>
               }>

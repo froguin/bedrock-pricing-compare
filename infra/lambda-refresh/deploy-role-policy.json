@@ -1,0 +1,32 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "UploadSitePage",
+      "Effect": "Allow",
+      "Action": "s3:PutObject",
+      "Resource": [
+        "arn:aws:s3:::awskr-bedrock-pricing/index.html",
+        "arn:aws:s3:::awskr-bedrock-pricing/index.html.br",
+        "arn:aws:s3:::awskr-bedrock-pricing/index.html.gz",
+        "arn:aws:s3:::awskr-bedrock-pricing/robots.txt",
+        "arn:aws:s3:::awskr-bedrock-pricing/sitemap.xml",
+        "arn:aws:s3:::awskr-bedrock-pricing/llms.txt",
+        "arn:aws:s3:::awskr-bedrock-pricing/.well-known/ard.json",
+        "arn:aws:s3:::awskr-bedrock-pricing/.well-known/ai-catalog.json"
+      ]
+    },
+    {
+      "Sid": "InvalidateSiteCache",
+      "Effect": "Allow",
+      "Action": "cloudfront:CreateInvalidation",
+      "Resource": "arn:aws:cloudfront::090451331601:distribution/E1OQXWKSFOXAF"
+    },
+    {
+      "Sid": "SyncLambdaShell",
+      "Effect": "Allow",
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::awskr-bedrock-pricing-refresh-state/refresh-state/shell.html"
+    }
+  ]
+}

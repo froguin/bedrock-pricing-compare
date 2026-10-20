@@ -17,7 +17,13 @@ So the Lambda does **not** run vite. It:
 3. uploads the standalone HTML (+ brotli/gzip) to S3 and invalidates CloudFront.
 
 UI builds stay where they are: a `push` to `main` still triggers the GitHub
-Actions workflow, which runs vite and uploads a fresh shell + page.
+Actions workflow, which runs vite, uploads the page, and also syncs the fresh
+shell to the Lambda state bucket (step "Sync UI shell to the refresh Lambda
+state"). That step needs the `SyncLambdaShell` statement from
+`deploy-role-policy.json` on the deploy role; apply it once:
+
+    aws iam put-role-policy --role-name gh-bedrock-compare-deploy \
+      --policy-name site-deploy --policy-document file://deploy-role-policy.json
 
 ```
 EventBridge Scheduler (hourly, rate or cron)

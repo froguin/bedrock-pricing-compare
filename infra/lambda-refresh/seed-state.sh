@@ -4,7 +4,8 @@
 # The scheduled Lambda hydrates from here.
 #
 # The vite shell is the ONE thing the Lambda cannot produce (it does not run
-# vite), so re-run this after any UI change that you deployed via git push.
+# vite). The push workflow (refresh.yml, "Sync UI shell") now uploads it on every
+# main push, so this script is only needed for first-time seeding or recovery.
 #
 #   STATE_BUCKET=awskr-bedrock-pricing-refresh-state ./seed-state.sh
 set -euo pipefail

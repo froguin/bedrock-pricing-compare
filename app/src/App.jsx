@@ -580,7 +580,6 @@ export default function App({ snap }) {
                 </div>
                 <div className="foot-line">
                   <span className="fm-item">AWS 공식 가격 ·</span>{" "}
-                  <span className="fm-item">데이터 기준 <b>{englishCheckedTime}</b> ·</span>{" "}
                   <span className="fm-item">{snap.regions.length}개 리전 ·</span>{" "}
                   <span className="fm-item">{nModels}개 모델</span>
                 </div>

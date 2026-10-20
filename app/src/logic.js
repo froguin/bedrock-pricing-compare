@@ -235,6 +235,20 @@ export const asOfTime = (v) => { const m = String(v || "").match(/^(\d{4})(\d{2}
 // ISO "2026-10-19T12:33:05.036Z" (UTC) -> "2026-10-19 21:33 KST"
 export const isoTime = (v) => { const d = new Date(v); return isNaN(d) ? "?" : toKst(d); };
 
+// Korean relative time ("방금 전", "3분 전", "2시간 전", "3일 전"). Clock skew
+// (future timestamps) reads as "방금 전"; an unparsable value returns "?".
+export const relativeKo = (v, now = Date.now()) => {
+  const t = new Date(v).getTime();
+  if (isNaN(t)) return "?";
+  const sec = Math.max(0, Math.floor((now - t) / 1000));
+  if (sec < 60) return "방금 전";
+  const min = Math.floor(sec / 60);
+  if (min < 60) return `${min}분 전`;
+  const hr = Math.floor(min / 60);
+  if (hr < 24) return `${hr}시간 전`;
+  return `${Math.floor(hr / 24)}일 전`;
+};
+
 export const isEmbeddingModel = (modelId) => /embed|embedding/i.test(String(modelId));
 
 // Embeddings are input-only by design. Build the complete regional index first,

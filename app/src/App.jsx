@@ -25,7 +25,7 @@ import bedrockIcon from "./bedrock-icon.svg";
 import {
   PATH_KO, TIER_KO, STATUS_KO, BAND_KO, MODE_KO, PRESETS, SIZES, REGION_ORDER,
   regionName, regionFull, makeMatcher, rank, expandTiers, money, rate, rateRange,
-  sizeBucket, asOf, asOfTime, isoTime, SRC_KO, rankEmbeddings, groupVideoPrices,
+  sizeBucket, asOf, asOfTime, isoTime, relativeKo, SRC_KO, rankEmbeddings, groupVideoPrices,
 } from "./logic.js";
 
 const STATUS_BADGE = { legacy: "grey", preview: "blue", internal: "severity-medium" };
@@ -190,6 +190,12 @@ export default function App({ snap }) {
       .catch(() => { if (alive) setLastChecked(null); });
     return () => { alive = false; };
   }, []);
+  // Re-render once a minute so the relative "N분 전" label stays current.
+  const [nowMs, setNowMs] = useState(() => Date.now());
+  useEffect(() => {
+    const id = setInterval(() => setNowMs(Date.now()), 60000);
+    return () => clearInterval(id);
+  }, []);
   const srcDatesTime = Object.entries(snap.as_of || {}).map(([k, v]) => ({ label: SRC_KO[k] || k, time: asOfTime(v) }));
   const dates = Object.values(snap.as_of || {}).map(asOf).sort();
   const englishChecked = String(snap.english_pricing_checked_at || "").slice(0, 10) || "?";
@@ -284,15 +290,19 @@ export default function App({ snap }) {
             title={lastChecked ? `최종 확인 ${isoTime(lastChecked)}` : lastChecked === null ? `데이터 기준 ${englishCheckedTime}` : undefined}>
             {lastChecked === undefined
               ? <>
-                  <span className="tnd-part tnd-ghost" aria-hidden="true">최종 확인 0000-00-00</span>{" "}
-                  <span className="tnd-part tnd-ghost" aria-hidden="true">00:00 KST</span>
+                  <span className="tnd-part tnd-ghost" aria-hidden="true">최종 확인 59분 전</span>
                 </>
               : (() => {
-                  const full = isoTime(lastChecked || snap.english_pricing_checked_at);
+                  if (lastChecked) {
+                    const rel = relativeKo(lastChecked, nowMs);
+                    if (rel === "?") return null;
+                    return <span className="tnd-part">최종 확인 <b>{rel}</b></span>;
+                  }
+                  // status.json unavailable (e.g. opened from a local file): absolute data timestamp.
+                  const full = isoTime(snap.english_pricing_checked_at);
                   if (full === "?") return null;
                   const [d, t, z] = full.split(" ");
-                  const label = lastChecked ? "최종 확인" : "데이터 기준";
-                  return <><span className="tnd-part">{label} <b>{d}</b></span>{" "}<span className="tnd-part"><b>{t} {z}</b></span></>;
+                  return <><span className="tnd-part">데이터 기준 <b>{d}</b></span>{" "}<span className="tnd-part"><b>{t} {z}</b></span></>;
                 })()}
           </span>
           <Button variant="icon"

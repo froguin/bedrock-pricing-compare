@@ -2,7 +2,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { rank, makeMatcher, expandTiers, rankEmbeddings, groupVideoPrices, isEmbeddingModel, SIZES } from "./logic.js";
+import { rank, makeMatcher, expandTiers, rankEmbeddings, groupVideoPrices, isEmbeddingModel, relativeKo, SIZES } from "./logic.js";
 
 const snap = JSON.parse(readFileSync(new URL("../../web/pricing.json", import.meta.url), "utf8"));
 const P = snap.price_points;
@@ -86,4 +86,15 @@ test("Opus 5 exposes Seoul in-region alternative when cheapest path is Global", 
   assert.equal(strictOpus.path, "in-region");
   assert.equal(strictOpus.cost.lo, 110);
   assert.equal(strictOpus.cheaperPathIsNonInRegion, false);
+});
+
+test("relativeKo formats elapsed time in Korean", () => {
+  const now = Date.parse("2026-10-20T12:00:00Z");
+  const ago = (s) => new Date(now - s * 1000).toISOString();
+  assert.equal(relativeKo(ago(5), now), "방금 전");
+  assert.equal(relativeKo(ago(180), now), "3분 전");
+  assert.equal(relativeKo(ago(2 * 3600 + 10), now), "2시간 전");
+  assert.equal(relativeKo(ago(3 * 86400), now), "3일 전");
+  assert.equal(relativeKo(new Date(now + 60000).toISOString(), now), "방금 전");
+  assert.equal(relativeKo("garbage", now), "?");
 });

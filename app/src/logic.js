@@ -235,19 +235,6 @@ export const asOfTime = (v) => { const m = String(v || "").match(/^(\d{4})(\d{2}
 // ISO "2026-10-19T12:33:05.036Z" (UTC) -> "2026-10-19 21:33 KST"
 export const isoTime = (v) => { const d = new Date(v); return isNaN(d) ? "?" : toKst(d); };
 
-// Newest of the three source timestamps (English Pricing check/change time and the
-// two Price List API publication times), formatted as KST. "?" if none parse.
-export const latestDataTime = (snap) => {
-  const ms = [];
-  const e = Date.parse(snap?.english_pricing_checked_at);
-  if (!isNaN(e)) ms.push(e);
-  for (const v of Object.values(snap?.as_of || {})) {
-    const m = String(v || "").match(/^(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})?/);
-    if (m) ms.push(Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +(m[6] || 0)));
-  }
-  return ms.length ? toKst(new Date(Math.max(...ms))) : "?";
-};
-
 // Korean relative time ("방금 전", "3분 전", "2시간 전", "3일 전"). Clock skew
 // (future timestamps) reads as "방금 전"; an unparsable value returns "?".
 export const relativeKo = (v, now = Date.now()) => {

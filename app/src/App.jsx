@@ -277,7 +277,12 @@ export default function App({ snap }) {
         </a>
         <div className="top-nav-aside">
           <span className="top-nav-date" title={lastChecked ? `마지막 확인 ${isoTime(lastChecked)}` : `${newest} 기준`}>
-            {lastChecked ? `확인 ${shortKst(isoTime(lastChecked))}` : `${newest} 기준`}
+            {lastChecked
+              ? (() => {
+                  const [d, t] = shortKst(isoTime(lastChecked)).split(" ");
+                  return <><span className="tnd-part">확인 {d}</span>{" "}<span className="tnd-part">{t}</span></>;
+                })()
+              : <span className="tnd-part">{newest} 기준</span>}
           </span>
           <Button variant="icon" iconName={theme === "dark" ? "star" : "star-filled"}
             ariaLabel={theme === "dark" ? "밝은 테마로 전환" : "어두운 테마로 전환"}

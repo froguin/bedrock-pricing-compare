@@ -128,7 +128,7 @@ body.awsui-dark-mode .title-grad {
    (rank / embedding / video); the model cell is a <th> (row header). */
 .page-main { padding: 28px 20px 40px; }
 @media (max-width: 600px) {
-  .page-main { padding: 20px 10px 32px; }
+  .page-main { padding: 20px 16px 32px; }
   .page-main tbody tr > * > div:first-child,
   .page-main thead th > div { padding-left: 8px !important; padding-right: 8px !important; }
   .page-main tbody tr > *:first-child > div:first-child,

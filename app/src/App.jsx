@@ -563,7 +563,7 @@ export default function App({ snap }) {
               <Box variant="small" color="text-body-secondary" padding={{ top: "s" }}>
                 <ul className="foot-notes">
                   <li>모든 금액은 <b>USD</b>입니다. 환율 정보가 원본 데이터에 없어 원화로 환산하지 않습니다.</li>
-                  <li><b>지역 묶음 분산 처리</b>(지리적 리전 간 추론)와 <b>글로벌 분산 처리</b>(글로벌 리전 간 추론)는 <Src k="pricing" small />과 <Src k="docs" small />에 별도 경로가 확인된 경우에만 표시합니다.</li>
+                  <li><b>지리적 리전 간 추론</b>과 <b>글로벌 리전 간 추론</b>은 <Src k="pricing" small />과 <Src k="docs" small />에 별도 경로가 확인된 경우에만 표시합니다.</li>
                   <li>같은 조건에 단가가 2개인 경우 <b>범위로 표시</b>하고 "N배" 기준에서 제외합니다.</li>
                   <li>
                     <span className="fm-item"><Src k="pricing" small />의 명시 가격을 우선합니다.</span>{" "}

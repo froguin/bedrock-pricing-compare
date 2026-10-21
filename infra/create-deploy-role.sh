@@ -14,7 +14,7 @@ set -euo pipefail
 ROLE=gh-bedrock-compare-deploy
 REPO=froguin/bedrock-pricing-compare
 BUCKET=awskr-bedrock-pricing
-DIST_ID=E1OQXWKSFOXAF
+DIST_ID=E43RB5R0916YO
 ACCOUNT="${AWS_ACCOUNT_ID:-$(aws sts get-caller-identity --query Account --output text)}"
 OIDC="arn:aws:iam::${ACCOUNT}:oidc-provider/token.actions.githubusercontent.com"
 # GitHub may issue "immutable" subjects (repo:owner@<id>/name@<id>:...) instead

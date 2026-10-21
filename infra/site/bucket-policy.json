@@ -1,0 +1,21 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowCloudFrontServicePrincipalReadOnly",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "cloudfront.amazonaws.com"
+      },
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::awskr-bedrock-pricing/*",
+      "Condition": {
+        "StringEquals": {
+          "AWS:SourceArn": [
+            "arn:aws:cloudfront::090451331601:distribution/E43RB5R0916YO"
+          ]
+        }
+      }
+    }
+  ]
+}

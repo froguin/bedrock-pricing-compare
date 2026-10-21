@@ -25,7 +25,7 @@ permissions:
 env:
   BUCKET: awskr-bedrock-pricing
   STATE_BUCKET: awskr-bedrock-pricing-refresh-state
-  DIST_ID: E1OQXWKSFOXAF
+  DIST_ID: E43RB5R0916YO
   AWS_REGION: ap-northeast-2
 
 jobs:

@@ -20,7 +20,7 @@
       "Sid": "InvalidateSiteCache",
       "Effect": "Allow",
       "Action": "cloudfront:CreateInvalidation",
-      "Resource": "arn:aws:cloudfront::090451331601:distribution/E1OQXWKSFOXAF"
+      "Resource": "arn:aws:cloudfront::090451331601:distribution/E43RB5R0916YO"
     },
     {
       "Sid": "SyncLambdaShell",

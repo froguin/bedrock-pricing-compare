@@ -13,7 +13,7 @@ Parameters:
     Description: S3 bucket CloudFront serves (index.html + .br/.gz).
   DistributionId:
     Type: String
-    Default: E1OQXWKSFOXAF
+    Default: E43RB5R0916YO
     Description: CloudFront distribution to invalidate after a deploy.
   ScheduleExpression:
     Type: String

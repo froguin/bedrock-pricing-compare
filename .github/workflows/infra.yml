@@ -1,0 +1,30 @@
+name: Site infra
+
+# Deploys this site's CloudFront / WAF / flat-rate plan stack when infra/site/params.env changes
+# on main. The template and scripts live in froguin/aws-whats-new-korean (infra/).
+# Needs the repository variable AWS_INFRA_ROLE_ARN (see aws-whats-new-korean/infra/README.md).
+# Run manually with preview=true first to see the change set without executing it.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'infra/site/params.env'
+      - '.github/workflows/infra.yml'
+  workflow_dispatch:
+    inputs:
+      preview:
+        description: Create the change set only, do not execute it
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  infra:
+    uses: froguin/aws-whats-new-korean/.github/workflows/deploy-site-infra.yml@main
+    with:
+      params_file: infra/site/params.env
+      preview: ${{ github.event_name == 'workflow_dispatch' && inputs.preview }}

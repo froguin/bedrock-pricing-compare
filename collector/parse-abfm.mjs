@@ -146,6 +146,30 @@ function normalizeVideoGeneration(offer, regionCode) {
   return out;
 }
 
+// Video understanding (TwelveLabs Pegasus): the input is billed per SECOND of video, not per
+// token, so it never fits the token index. The output is still a normal per-1M-token price and
+// stays in price_points. Without this the model showed up as "output price only" and had no cost.
+function normalizeVideoUnderstanding(offer, regionCode) {
+  const out = [], P = offer.products || {}, T = offer.terms?.OnDemand || {};
+  for (const [sku, product] of Object.entries(P)) {
+    const a = product.attributes || {};
+    if (!/inputVideoSecond/i.test(a.usagetype || "")) continue;
+    const model = cleanModelId(a.servicename || a.model);
+    if (/embed/i.test(model)) continue; // Marengo Embed also has a per-second video input price, but it is an embedding model
+    const provider = canonProvider(providerFromServiceName(a.servicename), model);
+    for (const term of Object.values(T[sku] || {})) for (const pd of Object.values(term.priceDimensions || {})) {
+      const unit = String(pd.unit || "").toLowerCase();
+      const price = Number(pd.pricePerUnit?.USD);
+      if (!Number.isFinite(price) || price <= 0 || !/^seconds?$/.test(unit)) continue;
+      out.push({ category: "video-understanding", provider, model_id: model, source_region: regionCode,
+        endpoint_type: /_Global/i.test(a.usagetype || "") ? "global-cris" : "in-region",
+        billing_unit: "second", price_per_unit: price, variant: "video input",
+        source: "price-list-api", sku, effective_date: term.effectiveDate, offer_version: offer.version });
+    }
+  }
+  return out;
+}
+
 function normalizeRegion(offer, regionCode) {
   const out = [];
   const P = offer.products, T = offer.terms?.OnDemand || {};
@@ -203,7 +227,7 @@ async function main() {
     const offer = await fetchJson(url);
     version = offer.version;
     const rows = normalizeRegion(offer, rc);
-    const videoRows = normalizeVideoGeneration(offer, rc);
+    const videoRows = normalizeVideoGeneration(offer, rc).concat(normalizeVideoUnderstanding(offer, rc));
     process.stderr.write(`  ${rc}: ${rows.length} price_points; ${videoRows.length} video rates\n`);
     all = all.concat(rows);
     special = special.concat(videoRows);

@@ -25,13 +25,14 @@ test("Kimi K3 uses the English page Global CRIS rate", () => {
   assert.deepEqual(values("Kimi K3", "ap-northeast-2", "global-cris", "english-pricing-page"), { input: 3, output: 15 });
 });
 
-test("GPT-6 Astra is priced while Sol/Luna/6.1 remain explicitly price-unpublished", () => {
+test("GPT-6 Astra is priced by the API; Sol/Luna/6.1 by their model cards", () => {
   assert.deepEqual(values("OpenAI GPT-6 Astra", "ap-northeast-2", "global-cris"), { input: 10, output: 50 });
-  const pending = new Map(snap.announced_models.filter((m) => /^GPT-6/.test(m.name)).map((m) => [m.name, m.pricing_available]));
-  assert.equal(pending.get("GPT-6 Astra"), true);
-  assert.equal(pending.get("GPT-6 Sol"), false);
-  assert.equal(pending.get("GPT-6 Luna"), false);
-  assert.equal(pending.get("GPT-6.1 Sol"), false);
+  const priced = new Map(snap.announced_models.filter((m) => /^GPT-6/.test(m.name)).map((m) => [m.name, m.pricing_available]));
+  for (const name of ["GPT-6 Astra", "GPT-6 Sol", "GPT-6 Luna", "GPT-6.1 Sol"]) assert.equal(priced.get(name), true, name);
+  // Global CRIS is the cheaper route; these come from the cards' Pricing tables, not the Price List.
+  assert.deepEqual(values("GPT-6 Sol", "ap-northeast-2", "global-cris", "english-model-card"), { input: 2, output: 10 });
+  assert.deepEqual(values("GPT-6 Luna", "ap-northeast-2", "global-cris", "english-model-card"), { input: 0.1, output: 0.5 });
+  assert.deepEqual(values("GPT-6.1 Sol", "ap-northeast-2", "global-cris", "english-model-card"), { input: 2, output: 10 });
 });
 
 test("documentation remaps mislabeled API in-region rows to Geo", () => {

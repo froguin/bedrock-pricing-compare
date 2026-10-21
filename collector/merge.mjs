@@ -23,6 +23,7 @@ const abfm = JSON.parse(readFileSync(join(dir, pick(/^abfm-/))));
 const english = read(join(ROOT, "data/english-pricing.json"), { models: [], prices: [] });
 const docs = read(join(ROOT, "data/english-docs.json"), { models: [] });
 const apiPoints = [...bed.price_points, ...abfm.price_points];
+const cards = read(join(ROOT, "data/model-card-pricing.json"), { models: [] });
 const specialPrices = [...(bed.special_prices || []), ...(abfm.special_prices || [])];
 
 const norm = (s) => String(s || "").toLowerCase()
@@ -102,6 +103,60 @@ for (const p of documentedApi) {
   const k = key(p); const values = apiByKey.get(k) || new Set(); values.add(p.price_per_1m); apiByKey.set(k, values);
 }
 const conflicts = [];
+// Model-card pricing (the "Pricing" section of each model-card page in the Bedrock user guide).
+// Some models -- today the OpenAI GPT-5.x/6.x family -- publish prices only there: not on the
+// pricing page and not (yet) in the offer files. A card price is a literal USD figure per
+// inference option; the regions it applies to come from the compatibility table (Documentation),
+// exactly like page prices without an explicit region list. Rules:
+//   * fill-only: a key already published by the English pricing page or the Price List API is
+//     left alone; a differing card price is reported in `model_card_conflicts`, never applied.
+//   * only the Standard tier is ingested (Ultrafast rows are collected but not shown).
+//   * "In-Region" rows apply to the documented in-region + bedrock-mantle regions, Geo CRIS rows
+//     to documented US regional-CRIS regions, Global CRIS rows to documented global-CRIS regions.
+//     An option the card does not list gets no price (nothing is inferred from the other rows).
+//   * cache writes are stored as cache_write_30m and skipped for routes where the API already
+//     has a cache_write_* price.
+const routeKey = (p) => [p.provider, norm(p.model_id), p.endpoint_type, p.source_region,
+  p.service_tier, p.execution_mode, p.context_band || "standard"].join("|");
+const apiCacheWriteRoutes = new Set(documentedApi.filter((p) => /^cache_write/.test(p.dimension)).map(routeKey));
+const CARD_DIMENSIONS = [["input", "input"], ["output", "output"], ["cache_read", "cache_read"], ["cache_write", "cache_write_30m"]];
+const cardPoints = [], cardConflicts = [], cardKeys = new Set();
+for (const m of cards.models || []) {
+  const model = canonicalName(m.provider, m.model_id);
+  const doc = docsFor(m.provider, model);
+  for (const r of m.rows || []) {
+    if (r.tier !== "standard") continue;
+    let regions;
+    if (r.scope === "govcloud") regions = r.endpoint === "in-region" ? r.regions : [];
+    else {
+      if (!doc) continue; // commercial regions come from the compatibility table
+      regions = docRegionsFor(doc, r.endpoint).filter((x) => !x.startsWith("us-gov-"));
+      if (r.endpoint === "regional-cris") regions = regions.filter((x) => x.startsWith("us-"));
+    }
+    for (const region of regions) for (const [field, dimension] of CARD_DIMENSIONS) {
+      const price = r[field];
+      if (price == null) continue;
+      const p = {
+        provider: m.provider, model_id: model, status: doc?.status || "ga",
+        endpoint_type: r.endpoint, source_region: region, service_tier: "standard", execution_mode: "online",
+        dimension, context_band: r.band || "standard", price_per_1m: price,
+        raw_unit: "USD per 1M tokens", source: "english-model-card",
+        availability_source: r.scope === "govcloud" ? "english-model-card" : "english-documentation",
+        source_url: m.doc_url, effective_date: cards.generated_at, offer_version: `model-card:${cards.generated_at}`,
+      };
+      const k = key(p);
+      if (pageKeys.has(k) || cardKeys.has(k)) continue;
+      if (dimension === "cache_write_30m" && apiCacheWriteRoutes.has(routeKey(p))) continue;
+      const apiValues = apiByKey.get(k);
+      if (apiValues) {
+        if (!apiValues.has(price)) cardConflicts.push({ key: k, model_card_price: price, api_prices: [...apiValues].sort((a, b) => a - b), source_url: m.doc_url });
+        continue;
+      }
+      cardKeys.add(k);
+      cardPoints.push(p);
+    }
+  }
+}
 for (const p of pagePoints) {
   const values = apiByKey.get(key(p));
   if (values && !values.has(p.price_per_1m)) {
@@ -113,7 +168,7 @@ for (const p of pagePoints) {
 }
 // Page first: remove exact API keys the page publishes, then append page points.
 const apiFallback = documentedApi.filter((p) => !pageKeys.has(key(p)));
-const pricePoints = [...pagePoints, ...apiFallback];
+const pricePoints = [...pagePoints, ...cardPoints, ...apiFallback];
 
 const priced = new Set(pricePoints.filter((p) => /^(input|output)$/.test(p.dimension)).map((p) => id(p.provider, p.model_id)));
 const allNamed = new Map();
@@ -121,9 +176,15 @@ const allNamed = new Map();
 // "price pending". Documentation contains image/embedding/non-token models that
 // do not belong in this token-cost view; it validates launch/availability only.
 for (const m of english.models || []) allNamed.set(id(m.provider, m.name), m);
-const announcedModels = [...allNamed.values()].map((m) => ({ ...m, pricing_available: priced.has(id(m.provider, m.name)),
-  validation_source: docsById.has(id(m.provider,m.name)) ? "english-documentation" : "english-pricing-page" }))
-  .sort((a,b)=>a.provider.localeCompare(b.provider)||a.name.localeCompare(b.name));
+const announcedModels = [...allNamed.values()].map((m) => {
+  const d = docsById.get(id(m.provider, m.name));
+  // The pricing page sometimes links a model to a model-card URL that does not exist (for example
+  // model-card-openai-daybreak-blue.html, or the card index for GPT-6.1 Sol). The compatibility
+  // table links the real card, so prefer it when both are model-card URLs and they differ.
+  const url = d && /docs\.aws\.amazon\.com\/.*\/model-cards?-/.test(m.url || "") && d.doc_url !== m.url ? d.doc_url : m.url;
+  return { ...m, url, pricing_available: priced.has(id(m.provider, m.name)),
+    validation_source: d ? "english-documentation" : "english-pricing-page" };
+}).sort((a,b)=>a.provider.localeCompare(b.provider)||a.name.localeCompare(b.name));
 
 const merged = {
   generated_at: new Date().toISOString(),
@@ -135,12 +196,15 @@ const merged = {
   sources: [
     { code: "EnglishPricingPage", url: english.source, price_pairs: english.prices?.length || 0 },
     { code: "EnglishDocumentation", url: docs.source, models: docs.models?.length || 0 },
+    { code: "EnglishModelCards", url: cards.source || null, models: (cards.models || []).filter((m) => m.rows?.length).length, price_points: cardPoints.length },
     { code: "AmazonBedrock", version: bed.offer_version, count: bed.count },
     { code: "AmazonBedrockFoundationModels", version: abfm.offer_version, count: abfm.count },
   ],
   regions: [...new Set(pricePoints.map((p) => p.source_region))].sort(),
   count: pricePoints.length,
   english_page_points: pagePoints.length,
+  model_card_points: cardPoints.length,
+  model_card_conflicts: cardConflicts,
   api_fallback_points: apiFallback.length,
   source_conflicts: conflicts,
   special_count: specialPrices.length,

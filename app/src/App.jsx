@@ -26,6 +26,7 @@ import {
   PATH_KO, TIER_KO, STATUS_KO, BAND_KO, MODE_KO, PRESETS, SIZES, REGION_ORDER,
   regionName, regionFull, makeMatcher, rank, expandTiers, money, rate, rateRange,
   sizeBucket, asOf, asOfTime, isoTime, relativeKo, SRC_KO, rankEmbeddings, rankSpeech, groupVideoPrices,
+  rankVideoUnderstanding, videoUnderstandingKeys,
 } from "./logic.js";
 
 const STATUS_BADGE = { legacy: "grey", preview: "blue", internal: "severity-medium" };
@@ -146,6 +147,7 @@ export default function App({ snap }) {
   const set = (patch) => setF((s) => ({ ...s, ...patch }));
   const [sortKey, setSortKey] = useState("cost");
   const [videoSeconds, setVideoSeconds] = useState(60);
+  const [understandSeconds, setUnderstandSeconds] = useState(3600);
   const [speechIn, setSpeechIn] = useState(10);
   const [speechOut, setSpeechOut] = useState(2);
   const [expanded, setExpanded] = useState([]);
@@ -175,9 +177,14 @@ export default function App({ snap }) {
   const speechItems = speechResult.ranked;
   const videoResult = useMemo(() => groupVideoPrices(snap.special_prices, f.region), [snap.special_prices, f.region]);
   const videoItems = videoResult.ranked;
+  const understandKeys = useMemo(() => videoUnderstandingKeys(snap.special_prices), [snap.special_prices]);
+  const understandResult = useMemo(
+    () => rankVideoUnderstanding(snap.special_prices, P, f, understandSeconds, matches),
+    [snap.special_prices, P, f, understandSeconds, matches]);
+  const understandItems = understandResult.ranked;
   const regionSelected = { value: f.region, label: regionFull(f.region), tags: [`${regionCount[f.region]}개 모델`] };
 
-  const result = useMemo(() => rank(P, f, matches), [P, f, matches]);
+  const result = useMemo(() => rank(P, f, matches, understandKeys), [P, f, matches, understandKeys]);
   const items = useMemo(() => {
     const rows = result.ranked.map((r, i) => ({ ...r, kind: "model", id: r.key, n: i + 1 }));
     if (sortKey === "mult") rows.sort((a, b) => (a.mult ?? Infinity) - (b.mult ?? Infinity));
@@ -546,6 +553,50 @@ export default function App({ snap }) {
                 <SpaceBetween size="xxs">
                   {videoResult.missing.map((x) => (
                     <Box key={x.key}><b>{x.model}</b> <Box variant="span" color="text-body-secondary">{x.provider} · {x.variant}</Box>{" "}<RegionChips regions={x.regions} selected={f.region} /></Box>
+                  ))}
+                </SpaceBetween>
+              </ExpandableSection>
+            )}
+
+            {understandItems.length > 0 && (
+              <ExpandableSection variant="stacked" headerText="영상 이해 모델 비용"
+                headerCounter={`(${understandItems.length})`}
+                headerDescription="입력은 영상 길이(초), 출력은 토큰으로 과금됩니다. 출력 토큰은 위의 월 출력 토큰 값을 씁니다.">
+                <SpaceBetween size="m">
+                  <FormField label="월 입력 영상 길이" description="초 (3,600초 = 1시간)">
+                    <div style={{maxWidth:180}}><Input type="number" inputMode="numeric" value={String(understandSeconds)}
+                      ariaLabel="월 입력 영상 길이(초)" onChange={({detail})=>setUnderstandSeconds(Math.max(0,+detail.value||0))} /></div>
+                  </FormField>
+                  <Table variant="embedded" contentDensity="compact" trackBy="key" items={understandItems}
+                    ariaLabels={{ tableLabel:"영상 이해 모델 비용" }}
+                    columnDefinitions={[
+                      { id:"vu-rank", header:"#", width:56, cell:(x)=>understandItems.indexOf(x)+1 },
+                      { id:"vu-model", header:"모델", isRowHeader:true, cell:(x)=>(
+                        <SpaceBetween size="xxxs">
+                          <Box fontWeight="bold">{x.model} <Box variant="span" color="text-body-secondary" fontSize="body-s">{x.provider}</Box></Box>
+                          <SpaceBetween direction="horizontal" size="xs">
+                            <StatusIndicator type={PATH_KO[x.path].type}>{PATH_KO[x.path].label}</StatusIndicator>
+                            {x.outputMissing && <StatusIndicator type="warning">출력 단가 없음</StatusIndicator>}
+                          </SpaceBetween>
+                        </SpaceBetween>) },
+                      { id:"vu-cost", header:"월 비용 (USD/월)", cell:(x)=><Box fontWeight="bold" fontSize="heading-s">{money(x.cost)}</Box> },
+                      { id:"vu-rate", header:"단가", cell:(x)=>(
+                        <Box variant="small" color="text-body-secondary">
+                          영상 1초 ${x.perSecond.toFixed(5)} (1분 ${(x.perSecond*60).toFixed(4)})
+                          {x.outPer1m != null && <> · 출력 100만 토큰 {money(x.outPer1m)}</>}
+                        </Box>) },
+                      { id:"vu-regions", header:"제공 리전", cell:(x)=><RegionChips regions={x.regions} selected={f.region} limit={3} /> },
+                    ]} />
+                </SpaceBetween>
+              </ExpandableSection>
+            )}
+
+            {understandResult.missing.length > 0 && (
+              <ExpandableSection variant="stacked" headerText={`${regionName(f.region)}에서 제공되지 않는 영상 이해 모델`}
+                headerCounter={`(${understandResult.missing.length})`}>
+                <SpaceBetween size="xxs">
+                  {understandResult.missing.map((x) => (
+                    <Box key={x.key}><b>{x.model}</b> <Box variant="span" color="text-body-secondary">{x.provider}</Box>{" "}<RegionChips regions={x.regions} selected={f.region} /></Box>
                   ))}
                 </SpaceBetween>
               </ExpandableSection>

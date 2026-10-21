@@ -154,7 +154,7 @@ export function speechModelKeys(P) {
   return s;
 }
 
-export function rank(P, f, matches) {
+export function rank(P, f, matches, skipKeys = new Set()) {
   const { idx, statusOf } = buildIndex(P, f, matches);
   const paths = allowedPaths(f.resid);
   const speechKeys = speechModelKeys(P);
@@ -163,6 +163,7 @@ export function rank(P, f, matches) {
     const [provider, model] = key.split("\u0001");
     if (isEmbeddingModel(model)) continue; // rendered in the input-only embedding section
     if (speechKeys.has(key)) continue;     // rendered in the speech-token section
+    if (skipKeys.has(key)) continue;       // rendered in its own section (e.g. video understanding)
     const here = regions[f.region];
     if (!here) { missing.push({ key, provider, model, where: Object.keys(regions).length }); continue; }
     let best = null;
@@ -350,6 +351,49 @@ export function groupVideoPrices(points = [], selectedRegion = null) {
   if(!selectedRegion) return { ranked:rows.sort((a,b)=>a.rate-b.rate), missing:[] };
   const ranked=rows.filter(x=>x.regions.includes(selectedRegion)).sort((a,b)=>a.rate-b.rate);
   const missing=rows.filter(x=>!x.regions.includes(selectedRegion)).sort((a,b)=>b.regions.length-a.regions.length||a.rate-b.rate);
+  return { ranked, missing };
+}
+
+// Video understanding (for example TwelveLabs Pegasus): the INPUT is billed per second of video, the
+// OUTPUT per token. Those models carry only an output price in the token index, so they cannot be
+// costed there; the per-second input rate comes from special_prices (category "video-understanding").
+export const videoUnderstandingKeys = (special = []) => new Set(special
+  .filter((s) => s.category === "video-understanding").map((s) => s.provider + "\u0001" + s.model_id));
+
+export function rankVideoUnderstanding(special = [], P = [], f, seconds, matches) {
+  const secs = special.filter((s) => s.category === "video-understanding" && s.billing_unit === "second");
+  const keys = new Set(secs.map((s) => s.provider + "\u0001" + s.model_id));
+  const input = {}, output = {}; // key -> region -> path -> rate
+  for (const s of secs) {
+    const key = s.provider + "\u0001" + s.model_id;
+    if (matches && !matches(s.provider, s.model_id, f.q)) continue;
+    if (!f.vendors.has(s.provider) || (f.mode || "online") !== "online") continue;
+    (((input[key] ??= {})[s.source_region] ??= {})[s.endpoint_type] = s.price_per_unit);
+  }
+  for (const p of P) {
+    if (p.dimension !== "output" || p.service_tier !== "standard" || (p.execution_mode || "online") !== "online"
+      || (p.context_band || "standard") !== "standard") continue;
+    const key = p.provider + "\u0001" + p.model_id;
+    if (keys.has(key)) (((output[key] ??= {})[p.source_region] ??= {})[p.endpoint_type] = p.price_per_1m);
+  }
+  const paths = allowedPaths(f.resid), ranked = [], missing = [];
+  for (const [key, regions] of Object.entries(input)) {
+    const [provider, model] = key.split("\u0001");
+    const here = regions[f.region];
+    if (!here) { missing.push({ key, provider, model, regions: Object.keys(regions).sort() }); continue; }
+    let best = null;
+    for (const path of paths) {
+      const perSecond = here[path];
+      if (perSecond == null) continue;
+      const outPer1m = output[key]?.[f.region]?.[path] ?? null;
+      const cost = perSecond * seconds + (outPer1m ?? 0) * f.outM;
+      if (!best || cost < best.cost) best = { path, perSecond, outPer1m, cost };
+    }
+    if (best) ranked.push({ key, provider, model, ...best, outputMissing: best.outPer1m == null, regions: Object.keys(regions).sort() });
+    else missing.push({ key, provider, model, regions: Object.keys(regions).sort() });
+  }
+  ranked.sort((a, b) => a.cost - b.cost);
+  missing.sort((a, b) => b.regions.length - a.regions.length);
   return { ranked, missing };
 }
 export const SRC_KO = { AmazonBedrock: "Price List Bulk API(Bedrock)", AmazonBedrockFoundationModels: "Price List Bulk API(Marketplace)" };

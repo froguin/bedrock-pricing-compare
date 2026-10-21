@@ -2,7 +2,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { rank, makeMatcher, expandTiers, rankEmbeddings, rankSpeech, groupVideoPrices, isEmbeddingModel, relativeKo, SIZES } from "./logic.js";
+import { rank, makeMatcher, expandTiers, rankEmbeddings, rankSpeech, groupVideoPrices, isEmbeddingModel, relativeKo, SIZES,
+  rankVideoUnderstanding, videoUnderstandingKeys } from "./logic.js";
 
 const snap = JSON.parse(readFileSync(new URL("../../web/pricing.json", import.meta.url), "utf8"));
 const P = snap.price_points;
@@ -118,4 +119,43 @@ test("relativeKo formats elapsed time in Korean", () => {
   assert.equal(relativeKo(ago(3 * 86400), now), "3일 전");
   assert.equal(relativeKo(new Date(now + 60000).toISOString(), now), "방금 전");
   assert.equal(relativeKo("garbage", now), "?");
+});
+
+// ---- video understanding (TwelveLabs Pegasus): input per second of video + output per 1M tokens ----
+test("Pegasus is costed from its per-second video input plus output tokens", () => {
+  const f = base({ region: "us-east-1" });
+  const { ranked } = rankVideoUnderstanding(snap.special_prices, P, f, 3600, matches);
+  const peg = ranked.filter((x) => /Pegasus/.test(x.model));
+  assert.ok(peg.length >= 2, "Pegasus 1.2 and 1.5 are listed");
+  for (const x of peg) {
+    assert.equal(x.provider, "TwelveLabs");
+    assert.equal(x.perSecond, 0.00049);
+    assert.equal(x.outPer1m, 7.5);
+    // 3,600 s of video input + 2M output tokens
+    assert.ok(Math.abs(x.cost - (0.00049 * 3600 + 7.5 * 2)) < 1e-9, `${x.model} cost ${x.cost}`);
+    assert.equal(x.outputMissing, false);
+  }
+  for (let i = 1; i < ranked.length; i++) assert.ok(ranked[i - 1].cost <= ranked[i].cost);
+});
+
+test("embedding models with a per-second video input price (Marengo) are not video-understanding models", () => {
+  const keys = videoUnderstandingKeys(snap.special_prices);
+  assert.ok([...keys].some((k) => /Pegasus/.test(k)));
+  assert.ok([...keys].every((k) => !/Marengo|Embed/i.test(k)));
+});
+
+test("Pegasus leaves the token ranking's 'output price only' list once its section exists", () => {
+  const f = base({ region: "us-east-1" });
+  const before = rank(P, f, matches);
+  assert.ok(before.partial.some((x) => /Pegasus/.test(x.model)), "without the skip set it is flagged output-only");
+  const after = rank(P, f, matches, videoUnderstandingKeys(snap.special_prices));
+  assert.ok(!after.partial.some((x) => /Pegasus/.test(x.model)));
+  assert.ok(!after.ranked.some((x) => /Pegasus/.test(x.model)));
+});
+
+test("a region without Pegasus lists it as unavailable, and strict residency never picks a global route", () => {
+  const f = base({ region: "eu-north-1", resid: "strict" });
+  const { ranked, missing } = rankVideoUnderstanding(snap.special_prices, P, f, 60, matches);
+  assert.ok(ranked.every((x) => x.path === "in-region"));
+  assert.ok([...ranked, ...missing].some((x) => /Pegasus/.test(x.model)));
 });

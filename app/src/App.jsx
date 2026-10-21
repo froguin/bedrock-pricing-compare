@@ -215,6 +215,9 @@ export default function App({ snap }) {
   const dates = Object.values(snap.as_of || {}).map(asOf).sort();
   const englishChecked = String(snap.english_pricing_checked_at || "").slice(0, 10) || "?";
   const englishCheckedTime = isoTime(snap.english_pricing_checked_at);
+  const englishDocsTime = isoTime(snap.english_documentation_checked_at);
+  // Prices read from the model-card pages of the user guide (e.g. GPT): shown only when the dataset has any.
+  const modelCardTime = (snap.model_card_points || 0) > 0 ? isoTime(snap.model_card_checked_at) : "?";
   const newest = englishChecked !== "?" ? englishChecked : (dates[dates.length - 1] || "?");
   const ageDays = newest !== "?" ? Math.floor((Date.now() - new Date(newest))/864e5) : 999;
   const sourceConflicts = snap.source_conflicts?.length || 0;
@@ -334,7 +337,8 @@ export default function App({ snap }) {
             <Header variant="h1"
               description={
                 <span className="header-meta">
-                  <span className="hm-item"><Src k="pricing" /> 기준 ·</span>{" "}
+                  <span className="hm-item"><Src k="pricing" /> ·</span>{" "}
+                  <span className="hm-item"><Src k="docs" /> 기준 ·</span>{" "}
                   <span className="hm-item"><b>비공식</b> 추정치 ·</span>{" "}
                   <span className="hm-item">금액은 <b>USD</b></span>
                 </span>
@@ -619,10 +623,12 @@ export default function App({ snap }) {
                   <li>모든 금액은 <b>USD</b>입니다. 환율 정보가 원본 데이터에 없어 원화로 환산하지 않습니다.</li>
                   <li><b>지리적 리전 간 추론</b>과 <b>글로벌 리전 간 추론</b>은 <Src k="pricing" small />과 <Src k="docs" small />에 별도 경로가 확인된 경우에만 표시합니다.</li>
                   <li>같은 조건에 단가가 2개인 경우 <b>범위로 표시</b>하고 "N배" 기준에서 제외합니다.</li>
-                  <li><Src k="pricing" small />의 명시 가격을 우선합니다. <Src k="docs" small />으로 모델별 리전 제공 현황을 확인하고, <Src k="api" small />로 요금 페이지에 없는 리전·응답 방식·서비스 티어·입력 길이 요금 구간을 보완합니다.</li>
+                  <li><Src k="pricing" small />의 명시 가격을 우선합니다. <Src k="docs" small />으로 모델별 리전 제공 현황을 확인하고, <Src k="api" small />로 요금 페이지에 없는 리전·응답 방식·서비스 티어·입력 길이 요금 구간을 보완합니다.{modelCardTime !== "?" && <> 요금 페이지와 Price List 어디에도 없는 가격(예: GPT 계열)은 <Src k="docs" small />의 모델 카드(Pricing)에 적힌 값으로 채웁니다.</>}</li>
                   <li>
                     <span className="fm-item">출처별 데이터 기준 시각:</span>{" "}
                     <span className="fm-item">Bedrock 요금(영문) <b>{englishCheckedTime}</b> ·</span>{" "}
+                    {englishDocsTime !== "?" && <><span className="fm-item">Bedrock 사용 설명서(영문) <b>{englishDocsTime}</b> ·</span>{" "}</>}
+                    {modelCardTime !== "?" && <><span className="fm-item">모델 카드 가격 <b>{modelCardTime}</b> ·</span>{" "}</>}
                     {srcDatesTime.map((s, i) => (
                       <span className="fm-item" key={i}>{s.label} <b>{s.time}</b>{i < srcDatesTime.length - 1 ? " ·" : "."}</span>
                     ))}{" "}

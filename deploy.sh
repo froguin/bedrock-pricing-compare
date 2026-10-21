@@ -7,7 +7,7 @@
 set -euo pipefail
 
 BUCKET=awskr-bedrock-pricing
-DIST_ID=E1OQXWKSFOXAF
+DIST_ID=E43RB5R0916YO
 # Resolved from the active AWS identity so no account ID lives in the repo.
 ACCOUNT="${AWS_ACCOUNT_ID:-$(aws sts get-caller-identity --query Account --output text)}"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

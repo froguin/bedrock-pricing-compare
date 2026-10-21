@@ -197,6 +197,7 @@ export async function handler(event = {}) {
   // Rebuild dataset (same order as the GitHub workflow).
   run("collect-english-pricing.mjs");
   run("collect-english-docs.mjs");
+  run("collect-model-card-pricing.mjs");
   if (flags.offer_changed || force) {
     run("collect.mjs", ["all"]);
     run("parse-abfm.mjs", ["all"]);

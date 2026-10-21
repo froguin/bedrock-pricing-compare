@@ -16,6 +16,7 @@ import { readFileSync, writeFileSync, appendFileSync, existsSync } from "node:fs
 import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
+import { extractPricingSection } from "./model-card-parse.mjs";
 
 const ROOT = process.env.BPC_ROOT || join(dirname(fileURLToPath(import.meta.url)), "..");
 const STATE = join(ROOT, "data/state.json");
@@ -90,6 +91,43 @@ for (const s of SERVICES) {
     notes.push(`English documentation: ${docsChanged ? "CHANGED" : "baseline recorded"} (${tables.length} tables)`);
     next.docs = { tables_hash: hash, tables: tables.length };
   } else notes.push(`English documentation: unchanged (${tables.length} tables)`);
+}
+
+// Model-card Pricing sections are English documentation too. A price-only edit to a card does not touch
+// the compatibility table above, so hash those sections as well and report a change as docs_changed.
+// A card that cannot be fetched this run keeps the previous hash (no false change, no failed check).
+{
+  const providers = (process.env.BPC_CARD_PROVIDERS || "OpenAI").split(",").map((s) => s.trim()).filter(Boolean);
+  const docsFile = join(ROOT, "data/english-docs.json");
+  const urls = existsSync(docsFile)
+    ? [...new Set(JSON.parse(readFileSync(docsFile, "utf8")).models
+        .filter((m) => providers.includes(m.provider) && /\/model-card-[^/]+\.html$/.test(m.doc_url)).map((m) => m.doc_url))].sort()
+    : [];
+  if (!urls.length) notes.push("model cards: no card list yet (data/english-docs.json), skipped");
+  else {
+    const parts = [];
+    let failed = 0;
+    for (let i = 0; i < urls.length; i += 4) {
+      parts.push(...await Promise.all(urls.slice(i, i + 4).map(async (u) => {
+        try {
+          const r = await fetch(u);
+          if (!r.ok) throw new Error(`HTTP ${r.status}`);
+          const sec = extractPricingSection(await r.text()) ?? "";
+          return `${u}\n${sec.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim()}`;
+        } catch { failed++; return null; }
+      })));
+    }
+    if (failed) notes.push(`model cards: ${failed}/${urls.length} could not be fetched, previous hash kept`);
+    else {
+      const hash = createHash("sha256").update(parts.join("\n")).digest("hex");
+      if (hash !== state.cards?.pricing_hash) {
+        const changed = state.cards?.pricing_hash != null;
+        if (changed) docsChanged = true;
+        notes.push(`model cards: ${changed ? "pricing CHANGED" : "baseline recorded"} (${urls.length} cards)`);
+        next.cards = { pricing_hash: hash, cards: urls.length };
+      } else notes.push(`model cards: unchanged (${urls.length} cards)`);
+    }
+  }
 }
 
 const dirty = JSON.stringify(next) !== JSON.stringify(state);

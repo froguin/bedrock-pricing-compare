@@ -19,7 +19,7 @@ mkdir -p "$BUILD/collector"
 cp "$HERE/handler.mjs" "$BUILD/handler.mjs"
 
 # Only the scripts the handler actually invokes (keeps the bundle small).
-for f in check-sources collect-english-pricing collect-english-docs collect \
+for f in check-sources collect-english-pricing collect-english-docs collect-model-card-pricing model-card-parse collect \
          parse-abfm merge gate audit-model-catalog build-standalone \
          precompress providers write-stable; do
   cp "$ROOT/collector/$f.mjs" "$BUILD/collector/$f.mjs"

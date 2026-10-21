@@ -54,6 +54,8 @@ jobs:
           node collector/collect-english-pricing.mjs
           # Source 2: English Documentation — release and route/region availability.
           node collector/collect-english-docs.mjs
+          # Source 2b: model-card Pricing sections — prices only published there (fill-only).
+          node collector/collect-model-card-pricing.mjs
           # Source 3: Price List APIs — SKU dimensions and all page gaps.
           if [[ "${{ steps.check.outputs.offer_changed }}" == "true" || "${{ inputs.force }}" == "true" ]]; then
             node collector/collect.mjs all

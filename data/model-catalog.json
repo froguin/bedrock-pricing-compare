@@ -5453,6 +5453,50 @@
         "in-region"
       ]
     },
+    "OpenAI\u0001Daybreak Blue: GPT-5.6 Sol": {
+      "provider": "OpenAI",
+      "model_id": "Daybreak Blue: GPT-5.6 Sol",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-model-card"
+      ],
+      "regions": [
+        "us-east-2"
+      ],
+      "complete_regions": [
+        "us-east-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "OpenAI\u0001Daybreak Red: GPT-5.6 Cyber": {
+      "provider": "OpenAI",
+      "model_id": "Daybreak Red: GPT-5.6 Cyber",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-model-card"
+      ],
+      "regions": [
+        "us-east-2"
+      ],
+      "complete_regions": [
+        "us-east-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
     "OpenAI\u0001GPT 5.4": {
       "provider": "OpenAI",
       "model_id": "GPT 5.4",
@@ -5463,13 +5507,20 @@
         "ga"
       ],
       "sources": [
+        "english-model-card",
         "offer"
       ],
       "regions": [
-        "us-gov-west-1"
+        "us-east-1",
+        "us-east-2",
+        "us-gov-west-1",
+        "us-west-2"
       ],
       "complete_regions": [
-        "us-gov-west-1"
+        "us-east-1",
+        "us-east-2",
+        "us-gov-west-1",
+        "us-west-2"
       ],
       "paths": [
         "in-region"
@@ -5661,6 +5712,530 @@
         "in-region"
       ]
     },
+    "OpenAI\u0001GPT-5.5": {
+      "provider": "OpenAI",
+      "model_id": "GPT-5.5",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-model-card"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-east-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-east-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "OpenAI\u0001GPT-5.6 Luna": {
+      "provider": "OpenAI",
+      "model_id": "GPT-5.6 Luna",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-model-card"
+      ],
+      "regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region",
+        "regional-cris"
+      ]
+    },
+    "OpenAI\u0001GPT-5.6 Sol": {
+      "provider": "OpenAI",
+      "model_id": "GPT-5.6 Sol",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-model-card"
+      ],
+      "regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region",
+        "regional-cris"
+      ]
+    },
+    "OpenAI\u0001GPT-5.6 Terra": {
+      "provider": "OpenAI",
+      "model_id": "GPT-5.6 Terra",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-model-card"
+      ],
+      "regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region",
+        "regional-cris"
+      ]
+    },
+    "OpenAI\u0001GPT-6 Luna": {
+      "provider": "OpenAI",
+      "model_id": "GPT-6 Luna",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-model-card"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region",
+        "regional-cris"
+      ]
+    },
+    "OpenAI\u0001GPT-6 Sol": {
+      "provider": "OpenAI",
+      "model_id": "GPT-6 Sol",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-model-card"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region",
+        "regional-cris"
+      ]
+    },
+    "OpenAI\u0001GPT-6.1 Sol": {
+      "provider": "OpenAI",
+      "model_id": "GPT-6.1 Sol",
+      "active": true,
+      "first_seen": "20261016210806",
+      "last_seen": "20261016210806",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-model-card"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region",
+        "regional-cris"
+      ]
+    },
     "OpenAI\u0001OpenAI GPT-6 Astra": {
       "provider": "OpenAI",
       "model_id": "OpenAI GPT-6 Astra",
@@ -5671,21 +6246,36 @@
         "ga"
       ],
       "sources": [
+        "english-model-card",
         "offer-abfm"
       ],
       "regions": [
+        "af-south-1",
+        "ap-east-2",
         "ap-northeast-1",
         "ap-northeast-2",
         "ap-northeast-3",
         "ap-south-1",
+        "ap-south-2",
         "ap-southeast-1",
         "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
         "ca-central-1",
+        "ca-west-1",
         "eu-central-1",
+        "eu-central-2",
         "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
         "eu-west-1",
         "eu-west-2",
         "eu-west-3",
+        "il-central-1",
+        "mx-central-1",
         "sa-east-1",
         "us-east-1",
         "us-east-2",
@@ -5693,18 +6283,32 @@
         "us-west-2"
       ],
       "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
         "ap-northeast-1",
         "ap-northeast-2",
         "ap-northeast-3",
         "ap-south-1",
+        "ap-south-2",
         "ap-southeast-1",
         "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
         "ca-central-1",
+        "ca-west-1",
         "eu-central-1",
+        "eu-central-2",
         "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
         "eu-west-1",
         "eu-west-2",
         "eu-west-3",
+        "il-central-1",
+        "mx-central-1",
         "sa-east-1",
         "us-east-1",
         "us-east-2",

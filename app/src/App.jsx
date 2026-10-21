@@ -457,17 +457,6 @@ export default function App({ snap }) {
               </ExpandableSection>
             )}
 
-            {embeddingResult.missing.length > 0 && (
-              <ExpandableSection variant="stacked" headerText={`${regionName(f.region)}에서 제공되지 않는 임베딩 모델`}
-                headerCounter={`(${embeddingResult.missing.length})`}>
-                <ColumnLayout columns={2}>
-                  {embeddingResult.missing.map((x) => (
-                    <Box key={x.key}>{x.model} <Box variant="span" color="text-body-secondary">{x.provider} · 다른 리전 {x.where}곳</Box></Box>
-                  ))}
-                </ColumnLayout>
-              </ExpandableSection>
-            )}
-
             {speechItems.length > 0 && (
               <ExpandableSection variant="stacked" headerText="음성 대화 모델 비용"
                 headerCounter={`(${speechItems.length})`}
@@ -507,17 +496,6 @@ export default function App({ snap }) {
               </ExpandableSection>
             )}
 
-            {speechResult.missing.length > 0 && (
-              <ExpandableSection variant="stacked" headerText={`${regionName(f.region)}에서 제공되지 않는 음성 대화 모델`}
-                headerCounter={`(${speechResult.missing.length})`}>
-                <ColumnLayout columns={2}>
-                  {speechResult.missing.map((x) => (
-                    <Box key={x.key}>{x.model} <Box variant="span" color="text-body-secondary">{x.provider} · 다른 리전 {x.where}곳</Box></Box>
-                  ))}
-                </ColumnLayout>
-              </ExpandableSection>
-            )}
-
             {videoItems.length > 0 && (
               <ExpandableSection variant="stacked" headerText="영상 생성 모델 비용"
                 headerCounter={`(${videoItems.length})`}
@@ -543,17 +521,6 @@ export default function App({ snap }) {
                       { id:"video-variant", header:"출력 유형", cell:(x)=>x.variant },
                       { id:"video-regions", header:"제공 리전", cell:(x)=><RegionChips regions={x.regions} selected={f.region} limit={3} /> },
                     ]} />
-                </SpaceBetween>
-              </ExpandableSection>
-            )}
-
-            {videoResult.missing.length > 0 && (
-              <ExpandableSection variant="stacked" headerText={`${regionName(f.region)}에서 제공되지 않는 영상 생성 모델`}
-                headerCounter={`(${videoResult.missing.length})`}>
-                <SpaceBetween size="xxs">
-                  {videoResult.missing.map((x) => (
-                    <Box key={x.key}><b>{x.model}</b> <Box variant="span" color="text-body-secondary">{x.provider} · {x.variant}</Box>{" "}<RegionChips regions={x.regions} selected={f.region} /></Box>
-                  ))}
                 </SpaceBetween>
               </ExpandableSection>
             )}
@@ -587,17 +554,6 @@ export default function App({ snap }) {
                         </Box>) },
                       { id:"vu-regions", header:"제공 리전", cell:(x)=><RegionChips regions={x.regions} selected={f.region} limit={3} /> },
                     ]} />
-                </SpaceBetween>
-              </ExpandableSection>
-            )}
-
-            {understandResult.missing.length > 0 && (
-              <ExpandableSection variant="stacked" headerText={`${regionName(f.region)}에서 제공되지 않는 영상 이해 모델`}
-                headerCounter={`(${understandResult.missing.length})`}>
-                <SpaceBetween size="xxs">
-                  {understandResult.missing.map((x) => (
-                    <Box key={x.key}><b>{x.model}</b> <Box variant="span" color="text-body-secondary">{x.provider}</Box>{" "}<RegionChips regions={x.regions} selected={f.region} /></Box>
-                  ))}
                 </SpaceBetween>
               </ExpandableSection>
             )}
@@ -637,6 +593,50 @@ export default function App({ snap }) {
                     <Box key={x.key}>{x.model} <Box variant="span" color="text-body-secondary">{x.provider} · 다른 리전 {x.where}곳</Box></Box>
                   ))}
                 </ColumnLayout>
+              </ExpandableSection>
+            )}
+
+            {embeddingResult.missing.length > 0 && (
+              <ExpandableSection variant="stacked" headerText={`${regionName(f.region)}에서 제공되지 않는 임베딩 모델`}
+                headerCounter={`(${embeddingResult.missing.length})`}>
+                <ColumnLayout columns={2}>
+                  {embeddingResult.missing.map((x) => (
+                    <Box key={x.key}>{x.model} <Box variant="span" color="text-body-secondary">{x.provider} · 다른 리전 {x.where}곳</Box></Box>
+                  ))}
+                </ColumnLayout>
+              </ExpandableSection>
+            )}
+
+            {speechResult.missing.length > 0 && (
+              <ExpandableSection variant="stacked" headerText={`${regionName(f.region)}에서 제공되지 않는 음성 대화 모델`}
+                headerCounter={`(${speechResult.missing.length})`}>
+                <ColumnLayout columns={2}>
+                  {speechResult.missing.map((x) => (
+                    <Box key={x.key}>{x.model} <Box variant="span" color="text-body-secondary">{x.provider} · 다른 리전 {x.where}곳</Box></Box>
+                  ))}
+                </ColumnLayout>
+              </ExpandableSection>
+            )}
+
+            {videoResult.missing.length > 0 && (
+              <ExpandableSection variant="stacked" headerText={`${regionName(f.region)}에서 제공되지 않는 영상 생성 모델`}
+                headerCounter={`(${videoResult.missing.length})`}>
+                <SpaceBetween size="xxs">
+                  {videoResult.missing.map((x) => (
+                    <Box key={x.key}><b>{x.model}</b> <Box variant="span" color="text-body-secondary">{x.provider} · {x.variant}</Box>{" "}<RegionChips regions={x.regions} selected={f.region} /></Box>
+                  ))}
+                </SpaceBetween>
+              </ExpandableSection>
+            )}
+
+            {understandResult.missing.length > 0 && (
+              <ExpandableSection variant="stacked" headerText={`${regionName(f.region)}에서 제공되지 않는 영상 이해 모델`}
+                headerCounter={`(${understandResult.missing.length})`}>
+                <SpaceBetween size="xxs">
+                  {understandResult.missing.map((x) => (
+                    <Box key={x.key}><b>{x.model}</b> <Box variant="span" color="text-body-secondary">{x.provider}</Box>{" "}<RegionChips regions={x.regions} selected={f.region} /></Box>
+                  ))}
+                </SpaceBetween>
               </ExpandableSection>
             )}
 

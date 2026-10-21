@@ -191,6 +191,7 @@ const merged = {
   source_priority: ["english-pricing-page", "english-documentation", "price-list-api"],
   english_pricing_checked_at: english.generated_at || null,
   english_documentation_checked_at: docs.generated_at || null,
+  model_card_checked_at: cards.generated_at || null,
   offer_version: `${bed.offer_version} + ${abfm.offer_version}`,
   as_of: { AmazonBedrock: bed.offer_version, AmazonBedrockFoundationModels: abfm.offer_version },
   sources: [

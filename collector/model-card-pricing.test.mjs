@@ -102,6 +102,9 @@ test("every announced OpenAI model has a price after merging model-card pricing"
   const unpriced = snap.announced_models.filter((m) => !m.pricing_available).map((m) => m.name);
   assert.deepEqual(unpriced, []);
   assert.ok(snap.model_card_points > 0);
+  // the footer shows when the card prices were parsed; it needs a valid timestamp
+  assert.ok(!Number.isNaN(Date.parse(snap.model_card_checked_at)), "model_card_checked_at");
+  assert.ok(!Number.isNaN(Date.parse(snap.english_documentation_checked_at)), "english_documentation_checked_at");
 });
 
 test("GPT-5.5 In-Region price comes from its card in the bedrock-mantle regions", () => {

@@ -41,7 +41,7 @@ collector/ (Node, 의존성 없는 빌트인 전용 스크립트)
 
 app/ (Vite + React + Cloudscape)  → vite build → dist/bedrock-pricing.html (단일 파일)
 
-배포: S3(awskr-bedrock-pricing) + CloudFront(E43RB5R0916YO, 정액제)
+배포: S3 + CloudFront (정액제)
       CloudFront Function이 Accept-Encoding으로 br/gzip/원본 선택
 ```
 

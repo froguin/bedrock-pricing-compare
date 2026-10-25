@@ -5,7 +5,7 @@
 AWS Bedrock의 **모델 × 리전 × 엔드포인트 타입 × 과금 차원**별 토큰 비용을 한곳에서 비교하는 정적 웹앱입니다. 공개 데이터만으로 매시간 자동 갱신되며, 월 비용 순위(리더보드)를 첫 화면에 보여 줍니다.
 
 - 라이브: https://bedrock-compare.awskr.net
-- 스택: Vite + React + Cloudscape → **단일 HTML 파일**로 빌드, S3 + CloudFront(정액제)로 서빙
+- 스택: Vite + React + Cloudscape → **단일 HTML 파일**로 빌드해 정적 호스팅
 
 ## 무엇을 비교하나
 
@@ -37,18 +37,13 @@ collector/ (Node, 의존성 없는 빌트인 전용 스크립트)
   merge.mjs              # 우선순위 병합 → web/pricing.json
   gate.mjs               # 급격한 포인트 감소 등 회귀 차단
   audit-model-catalog.mjs# 스냅샷 2개 diff로 모델 추가/제거/가용성 변화 감사
-  build-standalone.mjs   # vite 셸에 사전(dictionary) 인코딩 데이터 인라인 → 단일 HTML
+  build-standalone.mjs   # 셸에 사전(dictionary) 인코딩 데이터 인라인 → 단일 HTML
 
 app/ (Vite + React + Cloudscape)  → vite build → dist/bedrock-pricing.html (단일 파일)
-
-배포: S3 + CloudFront (정액제)
-      CloudFront Function이 Accept-Encoding으로 br/gzip/원본 선택
 ```
 
-### 두 가지 갱신 경로
-
-- **코드·UI 변경:** `main`에 push → GitHub Actions(`.github/workflows/refresh.yml`)가 vite 빌드·배포하고, 매시 Lambda가 쓸 UI 셸도 S3에 동기화합니다.
-- **데이터만 변경(매시):** AWS EventBridge + Lambda(`infra/lambda-refresh/`)가 vite 없이 collector만 돌려 **데이터만 셸에 재인라인**해 배포합니다. (GitHub Actions `schedule`은 드롭이 잦아 쓰지 않습니다.)
+빌드 산출물은 단일 정적 HTML 파일 하나입니다. 데이터는 공개 소스에서 자동으로
+갱신되며, 브라우저는 런타임에 네트워크 호출을 하지 않습니다(토큰 단가 × 월 토큰만 곱함).
 
 ## 로컬 개발
 
@@ -66,15 +61,13 @@ node --test collector/              # collector 테스트
 
 ## 배포
 
+코드/UI 변경은 `main` push로 자동 배포됩니다. 데이터는 공개 소스에서 주기적으로
+자동 갱신됩니다. 상세 운영 절차는 리포에 포함하지 않습니다.
+
 ```bash
-# 코드/UI: main push가 refresh.yml을 통해 자동 배포
+# 코드/UI: main push가 자동 배포
 git push
-
-# 매시 갱신 Lambda에 collector/UI 변경 반영
-cd infra/lambda-refresh && ./package.sh && sam deploy
 ```
-
-> collector를 수정한 뒤에는 `./package.sh` 없이 `sam deploy`만 하면 옛 빌드 사본이 올라가 새 로직이 반영되지 않습니다. UI 코드를 바꿔 배포할 때는 `seed-state.sh`로 S3의 UI 셸도 갱신해야 다음 Lambda 실행이 옛 UI로 덮지 않습니다. 자세한 내용은 [`infra/lambda-refresh/README.md`](infra/lambda-refresh/README.md).
 
 ## 문서
 

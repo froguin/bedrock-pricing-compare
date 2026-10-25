@@ -7,3 +7,4 @@ dist/*.br
 dist/*.gz
 infra/lambda-refresh/build/
 infra/lambda-refresh/samconfig.toml
+infra/lambda-refresh/README.md

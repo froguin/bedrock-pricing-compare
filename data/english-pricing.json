@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-25T01:22:26.599Z",
+  "generated_at": "2026-10-28T13:15:30.879Z",
   "source": "https://aws.amazon.com/bedrock/pricing/",
   "table_count": 169,
   "static_table_count": 69,
@@ -212,6 +212,11 @@
     {
       "provider": "OpenAI",
       "name": "GPT-6.1 Sol",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-openai.html"
+    },
+    {
+      "provider": "OpenAI",
+      "name": "GPT-6.1 Terra",
       "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-openai.html"
     },
     {

@@ -14,6 +14,23 @@ const base = (patch = {}) => ({
   vendors: new Set(P.map((p) => p.provider)), sizes: new Set(SIZES), ...patch,
 });
 
+
+test("context bands stay separate and expose their per-request threshold", () => {
+  const point = (dimension, band, price) => ({ provider: "OpenAI", model_id: "Future GPT", status: "ga",
+    endpoint_type: "global-cris", source_region: "ap-northeast-2", service_tier: "standard",
+    execution_mode: "online", dimension, context_band: band, context_threshold: 272000, price_per_1m: price });
+  const points = [point("input", "standard", 1), point("output", "standard", 5),
+    point("input", "long-ctx", 2), point("output", "long-ctx", 7.5)];
+  const matcher = makeMatcher(points);
+  const short = rank(points, base({ vendors: new Set(["OpenAI"]), bands: new Set(["standard"]) }), matcher).ranked[0];
+  const long = rank(points, base({ vendors: new Set(["OpenAI"]), bands: new Set(["long-ctx"]) }), matcher).ranked[0];
+  assert.deepEqual(short.contextThresholds, [272000]);
+  assert.deepEqual(long.contextThresholds, [272000]);
+  assert.equal(short.cost.lo, 20);
+  assert.equal(long.cost.lo, 35);
+  assert.equal(short.cost.ambiguous, false);
+  assert.equal(long.cost.ambiguous, false);
+});
 test("Seoul default leaderboard is sorted, has a baseline and no ambiguous Haiku 5.5", () => {
   const { ranked, base: b } = rank(P, base(), matches);
   assert.ok(ranked.length > 0);

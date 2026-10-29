@@ -16,7 +16,7 @@ import { readFileSync, writeFileSync, appendFileSync, existsSync } from "node:fs
 import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
-import { extractPricingSection } from "./model-card-parse.mjs";
+import { extractPricingSection, extractRegionalAvailabilitySection, MODEL_CARD_INDEXES, parseModelCardIndex } from "./model-card-parse.mjs";
 
 const ROOT = process.env.BPC_ROOT || join(dirname(fileURLToPath(import.meta.url)), "..");
 const STATE = join(ROOT, "data/state.json");
@@ -93,39 +93,57 @@ for (const s of SERVICES) {
   } else notes.push(`English documentation: unchanged (${tables.length} tables)`);
 }
 
-// Model-card Pricing sections are English documentation too. A price-only edit to a card does not touch
-// the compatibility table above, so hash those sections as well and report a change as docs_changed.
-// A card that cannot be fetched this run keeps the previous hash (no false change, no failed check).
+// Provider model-card indexes and their Pricing / Regional Availability sections are English
+// documentation too. Hashing the index discovers a new card before the compatibility catalog catches
+// up; hashing both sections detects price and routing changes without waiting for another source.
 {
   const providers = (process.env.BPC_CARD_PROVIDERS || "OpenAI").split(",").map((s) => s.trim()).filter(Boolean);
   const docsFile = join(ROOT, "data/english-docs.json");
-  const urls = existsSync(docsFile)
-    ? [...new Set(JSON.parse(readFileSync(docsFile, "utf8")).models
-        .filter((m) => providers.includes(m.provider) && /\/model-card-[^/]+\.html$/.test(m.doc_url)).map((m) => m.doc_url))].sort()
-    : [];
-  if (!urls.length) notes.push("model cards: no card list yet (data/english-docs.json), skipped");
+  const urls = new Set(existsSync(docsFile)
+    ? JSON.parse(readFileSync(docsFile, "utf8")).models
+        .filter((m) => providers.includes(m.provider) && /\/model-card-[^/]+\.html$/.test(m.doc_url)).map((m) => m.doc_url)
+    : []);
+  const indexParts = [];
+  let failed = 0;
+  for (const provider of providers) {
+    const indexUrl = MODEL_CARD_INDEXES[provider];
+    if (!indexUrl) continue;
+    try {
+      const r = await fetch(indexUrl);
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const cards = parseModelCardIndex(await r.text(), indexUrl, provider);
+      if (cards.length < 3) throw new Error(`only ${cards.length} cards`);
+      indexParts.push(`${indexUrl}\n${cards.map((m) => `${m.model_id}|${m.doc_url}`).join("\n")}`);
+      for (const card of cards) urls.add(card.doc_url);
+    } catch { failed++; }
+  }
+  const sortedUrls = [...urls].sort();
+  if (!sortedUrls.length) notes.push("model cards: no card list yet, skipped");
+  else if (failed) notes.push(`model-card indexes: ${failed} could not be fetched, previous hash kept`);
   else {
     const parts = [];
-    let failed = 0;
-    for (let i = 0; i < urls.length; i += 4) {
-      parts.push(...await Promise.all(urls.slice(i, i + 4).map(async (u) => {
+    for (let i = 0; i < sortedUrls.length; i += 4) {
+      parts.push(...await Promise.all(sortedUrls.slice(i, i + 4).map(async (u) => {
         try {
           const r = await fetch(u);
           if (!r.ok) throw new Error(`HTTP ${r.status}`);
-          const sec = extractPricingSection(await r.text()) ?? "";
-          return `${u}\n${sec.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim()}`;
+          const html = await r.text();
+          const pricing = extractPricingSection(html) ?? "";
+          const availability = extractRegionalAvailabilitySection(html) ?? "";
+          const compact = (s) => s.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+          return `${u}\n${compact(pricing)}\n${compact(availability)}`;
         } catch { failed++; return null; }
       })));
     }
-    if (failed) notes.push(`model cards: ${failed}/${urls.length} could not be fetched, previous hash kept`);
+    if (failed) notes.push(`model cards: ${failed}/${sortedUrls.length} could not be fetched, previous hash kept`);
     else {
-      const hash = createHash("sha256").update(parts.join("\n")).digest("hex");
+      const hash = createHash("sha256").update([...indexParts, ...parts].join("\n")).digest("hex");
       if (hash !== state.cards?.pricing_hash) {
         const changed = state.cards?.pricing_hash != null;
         if (changed) docsChanged = true;
-        notes.push(`model cards: ${changed ? "pricing CHANGED" : "baseline recorded"} (${urls.length} cards)`);
-        next.cards = { pricing_hash: hash, cards: urls.length };
-      } else notes.push(`model cards: unchanged (${urls.length} cards)`);
+        notes.push(`model cards: ${changed ? "content CHANGED" : "baseline recorded"} (${sortedUrls.length} cards)`);
+        next.cards = { pricing_hash: hash, cards: sortedUrls.length, indexes: indexParts.length };
+      } else notes.push(`model cards: unchanged (${sortedUrls.length} cards)`);
     }
   }
 }

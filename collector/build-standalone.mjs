@@ -23,12 +23,12 @@ const OUT = resolve(ROOT, arg("--out", "dist/bedrock-pricing.html"));
 // Per-row fields the UI never reads — dropped from the inline payload.
 const DROP = new Set(["raw_unit", "source", "sku", "effective_date", "offer_version"]);
 // Low-cardinality fields worth interning into dictionaries.
-// context_band MUST be here: without it the inlined payload loses the long-ctx
-// distinction, long-ctx rates merge back into standard, and settled prices
-// reappear as ambiguous ranges in the deployed build only.
+// context_band and context_threshold MUST be here: without them the inlined payload loses the
+// short/long-context distinction and the per-request cutoff; long-ctx rates merge back into
+// standard, and settled prices reappear as ambiguous ranges in the deployed build only.
 const DICT_FIELDS = ["provider", "model_id", "status", "endpoint_type",
                      "source_region", "service_tier", "execution_mode",
-                     "context_band", "dimension"];
+                     "context_band", "context_threshold", "dimension"];
 
 const snap = JSON.parse(readFileSync(SRC_JSON, "utf8"));
 const points = snap.price_points;

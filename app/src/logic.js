@@ -113,7 +113,7 @@ export const rateRange = (v) => (v.length > 1 ? `${rate(v[0])}–${rate(v[v.leng
 /* ---------------- aggregation ---------------- */
 // provider/model -> region -> path -> dimension -> Set(prices)
 export function buildIndex(P, f, matches) {
-  const idx = {}, statusOf = {};
+  const idx = {}, statusOf = {}, thresholdsOf = {};
   for (const p of P) {
     if (!/^(input|output)$/.test(p.dimension)) continue;
     if ((p.execution_mode || "online") !== f.mode) continue;
@@ -125,10 +125,11 @@ export function buildIndex(P, f, matches) {
     if (!matches(p.provider, p.model_id, f.q)) continue;
     const key = p.provider + "\u0001" + p.model_id;
     statusOf[key] = p.status || "ga";
+    if (Number.isFinite(p.context_threshold)) (thresholdsOf[key] ??= new Set()).add(p.context_threshold);
     const node = (((idx[key] ??= {})[p.source_region] ??= {})[p.endpoint_type] ??= {});
     (node[p.dimension] ??= new Set()).add(p.price_per_1m);
   }
-  return { idx, statusOf };
+  return { idx, statusOf, thresholdsOf };
 }
 
 export const allowedPaths = (resid) => (resid === "strict" ? ["in-region"] : ["in-region", "regional-cris", "global-cris"]);
@@ -155,7 +156,7 @@ export function speechModelKeys(P) {
 }
 
 export function rank(P, f, matches, skipKeys = new Set()) {
-  const { idx, statusOf } = buildIndex(P, f, matches);
+  const { idx, statusOf, thresholdsOf } = buildIndex(P, f, matches);
   const paths = allowedPaths(f.resid);
   const speechKeys = speechModelKeys(P);
   const ranked = [], partial = [], missing = [];
@@ -183,6 +184,7 @@ export function rank(P, f, matches, skipKeys = new Set()) {
     }
     const inRegionCost = costFor(here["in-region"], f.inM, f.outM);
     ranked.push({ key, provider, model, status: statusOf[key], ...best, regions,
+                  contextThresholds: [...(thresholdsOf[key] || [])].sort((a, b) => a - b),
                   inRegionCost,
                   cheaperPathIsNonInRegion: best.path !== "in-region" && !!inRegionCost,
                   noInRegionHere: best.path !== "in-region" && !here["in-region"] });

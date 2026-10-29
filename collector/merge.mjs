@@ -33,6 +33,8 @@ const norm = (s) => String(s || "").toLowerCase()
   .replace(/[^a-z0-9]+/g, "")
   .replace(/^kimik(?=\d)/, "kimi");
 const id = (provider, model) => `${provider}|${norm(model)}`;
+const cardsById = new Map((cards.models || []).map((m) => [id(m.provider, m.model_id), m]));
+const cardFor = (provider, model) => cardsById.get(id(provider, model));
 const docsById = new Map(docs.models.map((m) => [id(m.provider, m.model_id), m]));
 const apiNames = new Map();
 for (const p of apiPoints) apiNames.set(id(p.provider, p.model_id), p.model_id);
@@ -75,9 +77,10 @@ for (const p of english.prices || []) {
 const key = (p) => [p.provider, norm(p.model_id), p.endpoint_type, p.source_region,
   p.service_tier, p.execution_mode, p.dimension, p.context_band || "standard"].join("|");
 const pageKeys = new Set(pagePoints.map(key));
-const docRegionsFor = (doc, endpoint) => endpoint === "in-region"
-  ? [...new Set([...(doc?.availability?.["in-region"] || []), ...(doc?.availability?.["in-region-mantle"] || [])])]
-  : (doc?.availability?.[endpoint] || []);
+const availabilityRegionsFor = (availability, endpoint) => endpoint === "in-region"
+  ? [...new Set([...(availability?.["in-region"] || []), ...(availability?.["in-region-mantle"] || [])])]
+  : (availability?.[endpoint] || []);
+const docRegionsFor = (doc, endpoint) => availabilityRegionsFor(doc?.availability, endpoint);
 // Documentation is source #2: for documented models it determines release
 // status and filters API-priced routes that the compatibility table does not
 // advertise. Models not yet in that doc remain available via API fallback.
@@ -111,9 +114,9 @@ const conflicts = [];
 //   * fill-only: a key already published by the English pricing page or the Price List API is
 //     left alone; a differing card price is reported in `model_card_conflicts`, never applied.
 //   * only the Standard tier is ingested (Ultrafast rows are collected but not shown).
-//   * "In-Region" rows apply to the documented in-region + bedrock-mantle regions, Geo CRIS rows
-//     to documented US regional-CRIS regions, Global CRIS rows to documented global-CRIS regions.
-//     An option the card does not list gets no price (nothing is inferred from the other rows).
+//   * Commercial regions come from the compatibility table when it already lists the model.
+//     For a newly launched model that has not reached that catalog yet, the model card's own
+//     bedrock-mantle / bedrock-runtime availability matrices are the fallback. No region is inferred.
 //   * cache writes are stored as cache_write_30m and skipped for routes where the API already
 //     has a cache_write_* price.
 const routeKey = (p) => [p.provider, norm(p.model_id), p.endpoint_type, p.source_region,
@@ -124,13 +127,15 @@ const cardPoints = [], cardConflicts = [], cardKeys = new Set();
 for (const m of cards.models || []) {
   const model = canonicalName(m.provider, m.model_id);
   const doc = docsFor(m.provider, model);
+  const availability = doc?.availability || m.availability;
+  const availabilitySource = doc ? "english-documentation" : "english-model-card";
   for (const r of m.rows || []) {
     if (r.tier !== "standard") continue;
     let regions;
     if (r.scope === "govcloud") regions = r.endpoint === "in-region" ? r.regions : [];
     else {
-      if (!doc) continue; // commercial regions come from the compatibility table
-      regions = docRegionsFor(doc, r.endpoint).filter((x) => !x.startsWith("us-gov-"));
+      if (!availability) continue;
+      regions = availabilityRegionsFor(availability, r.endpoint).filter((x) => !x.startsWith("us-gov-"));
       if (r.endpoint === "regional-cris") regions = regions.filter((x) => x.startsWith("us-"));
     }
     for (const region of regions) for (const [field, dimension] of CARD_DIMENSIONS) {
@@ -139,9 +144,10 @@ for (const m of cards.models || []) {
       const p = {
         provider: m.provider, model_id: model, status: doc?.status || "ga",
         endpoint_type: r.endpoint, source_region: region, service_tier: "standard", execution_mode: "online",
-        dimension, context_band: r.band || "standard", price_per_1m: price,
+        dimension, context_band: r.band || "standard", context_threshold: r.context_threshold || null,
+        price_per_1m: price,
         raw_unit: "USD per 1M tokens", source: "english-model-card",
-        availability_source: r.scope === "govcloud" ? "english-model-card" : "english-documentation",
+        availability_source: r.scope === "govcloud" ? "english-model-card" : availabilitySource,
         source_url: m.doc_url, effective_date: cards.generated_at, offer_version: `model-card:${cards.generated_at}`,
       };
       const k = key(p);
@@ -178,12 +184,12 @@ const allNamed = new Map();
 for (const m of english.models || []) allNamed.set(id(m.provider, m.name), m);
 const announcedModels = [...allNamed.values()].map((m) => {
   const d = docsById.get(id(m.provider, m.name));
-  // The pricing page sometimes links a model to a model-card URL that does not exist (for example
-  // model-card-openai-daybreak-blue.html, or the card index for GPT-6.1 Sol). The compatibility
-  // table links the real card, so prefer it when both are model-card URLs and they differ.
-  const url = d && /docs\.aws\.amazon\.com\/.*\/model-cards?-/.test(m.url || "") && d.doc_url !== m.url ? d.doc_url : m.url;
+  const card = cardFor(m.provider, m.name);
+  // Pricing tabs often name a just-launched model without linking its card. Prefer the concrete
+  // compatibility-table card, then the provider index card, over an index or pricing-page URL.
+  const url = d?.doc_url || card?.doc_url || m.url;
   return { ...m, url, pricing_available: priced.has(id(m.provider, m.name)),
-    validation_source: d ? "english-documentation" : "english-pricing-page" };
+    validation_source: d ? "english-documentation" : card ? "english-model-card" : "english-pricing-page" };
 }).sort((a,b)=>a.provider.localeCompare(b.provider)||a.name.localeCompare(b.name));
 
 const merged = {

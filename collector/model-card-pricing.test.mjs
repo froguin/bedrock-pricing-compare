@@ -1,10 +1,42 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { parsePricingSection, extractPricingSection } from "./model-card-parse.mjs";
+import { parseModelCardIndex, parsePricingSection, parseRegionalAvailability, extractPricingSection } from "./model-card-parse.mjs";
 
 const fixture = (name) => readFileSync(new URL(`./fixtures/${name}`, import.meta.url), "utf8");
 const find = (rows, f) => rows.find((r) => Object.entries(f).every(([k, v]) => r[k] === v));
+
+test("provider index discovers a newly linked model card without a name allowlist", () => {
+  const indexUrl = "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-openai.html";
+  const html = `<a href="./model-card-openai-gpt-existing.html">GPT Existing</a>
+    <a href="./model-card-openai-gpt-new-terra.html">GPT New Terra</a>
+    <a href="./unrelated.html">Ignore me</a>`;
+  assert.deepEqual(parseModelCardIndex(html, indexUrl, "OpenAI"), [
+    { provider: "OpenAI", model_id: "GPT Existing", doc_url: "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-existing.html" },
+    { provider: "OpenAI", model_id: "GPT New Terra", doc_url: "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-new-terra.html" },
+  ]);
+});
+
+test("model-card availability is parsed before the compatibility catalog catches up", () => {
+  const yes = `<img src="/images/icons/icon-yes.png" alt="Green circle with white checkmark icon.">`;
+  const no = `<img src="/images/icons/icon-no.png" alt="Red circle with white X icon.">`;
+  const html = `<h2>Regional Availability</h2>
+    <p><b>Availability using the <code>bedrock-mantle</code> endpoint</b></p>
+    <table><tr><th>Region</th><th>In-Region</th><th>Geo</th><th>Global</th></tr>
+      <tr><td><code>us-east-1</code></td><td>${yes}</td><td>${no}</td><td>${no}</td></tr></table>
+    <p><b>Availability using the <code>bedrock-runtime</code> endpoint</b></p>
+    <table><tr><th>Region</th><th>In-Region</th><th>Geo</th><th>Global</th></tr>
+      <tr><td><code>us-east-1</code></td><td>${no}</td><td>${yes}</td><td>${yes}</td></tr>
+      <tr><td><code>ap-northeast-2</code></td><td>${no}</td><td>${no}</td><td>${yes}</td></tr></table>
+    <h2>Quotas</h2>`;
+  const r = parseRegionalAvailability(html);
+  assert.equal(r.has_availability, true);
+  assert.equal(r.tables, 2);
+  assert.deepEqual(r.availability, {
+    "in-region": [], "in-region-mantle": ["us-east-1"],
+    "regional-cris": ["us-east-1"], "global-cris": ["ap-northeast-2", "us-east-1"],
+  });
+});
 
 test("GPT-5.5: single In-Region row, short and long context, cache write absent", () => {
   const { rows, skipped, has_pricing } = parsePricingSection(fixture("openai-gpt-55-pricing.html"));
@@ -12,10 +44,12 @@ test("GPT-5.5: single In-Region row, short and long context, cache write absent"
   assert.deepEqual(skipped, []);
   assert.equal(rows.length, 2);
   assert.deepEqual(find(rows, { band: "standard" }), {
-    scope: "commercial", regions: [], tier: "standard", band: "standard", option: "In-Region",
+    scope: "commercial", regions: [], tier: "standard", band: "standard", context_threshold: 272000,
+    option: "In-Region",
     endpoint: "in-region", region_hint: null, input: 5.5, cache_write: null, cache_read: 0.55, output: 33,
   });
   assert.equal(find(rows, { band: "long-ctx" }).output, 49.5);
+  assert.equal(find(rows, { band: "long-ctx" }).context_threshold, 272000);
 });
 
 test("GPT-5.6 Luna: In-Region / Geo CRIS / Global CRIS, then a GovCloud scope with both gov regions", () => {

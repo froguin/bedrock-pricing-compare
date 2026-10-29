@@ -29,6 +29,7 @@ import {
   rankVideoUnderstanding, videoUnderstandingKeys,
 } from "./logic.js";
 
+const tokenThreshold = (n) => n >= 1_000_000 ? `${n / 1_000_000}M` : n >= 1_000 ? `${n / 1_000}K` : String(n);
 const STATUS_BADGE = { legacy: "grey", preview: "blue", internal: "severity-medium" };
 
 /* Canonical source names + links: one definition so wording and URLs never drift. */
@@ -79,6 +80,7 @@ function readHash(regions) {
   if (h.get("out")) out.outM = Math.max(0, +h.get("out") || 0);
   if (h.get("mode") === "batch") out.mode = "batch";
   if (h.get("resid") === "strict") out.resid = "strict";
+  if (["standard", "long-ctx"].includes(h.get("band"))) out.bands = new Set([h.get("band")]);
   if (h.get("q")) out.q = h.get("q");
   return out;
 }
@@ -145,6 +147,7 @@ export default function App({ snap }) {
     ...readHash(snap.regions),
   }));
   const set = (patch) => setF((s) => ({ ...s, ...patch }));
+  const selectedBand = f.bands.has("long-ctx") ? "long-ctx" : "standard";
   const [sortKey, setSortKey] = useState("cost");
   const [videoSeconds, setVideoSeconds] = useState(60);
   const [understandSeconds, setUnderstandSeconds] = useState(3600);
@@ -157,9 +160,10 @@ export default function App({ snap }) {
     h.set("region", f.region); h.set("in", f.inM); h.set("out", f.outM);
     if (f.mode !== "online") h.set("mode", f.mode);
     if (f.resid !== "any") h.set("resid", f.resid);
+    if (selectedBand !== "standard") h.set("band", selectedBand);
     if (f.q) h.set("q", f.q);
     history.replaceState(null, "", "#" + h.toString());
-  }, [f.region, f.inM, f.outM, f.mode, f.resid, f.q]);
+  }, [f.region, f.inM, f.outM, f.mode, f.resid, f.q, selectedBand]);
 
   const regionCount = useMemo(() => {
     const m = {};
@@ -245,6 +249,9 @@ export default function App({ snap }) {
           <SpaceBetween direction="horizontal" size="xs">
             <StatusIndicator type={PATH_KO[it.path].type}>{PATH_KO[it.path].label}</StatusIndicator>
             {it.status && it.status !== "ga" && <Badge color={STATUS_BADGE[it.status] || "grey"}>{STATUS_KO[it.status] || it.status}</Badge>}
+            {it.contextThresholds?.length === 1 && <Badge color="blue">
+              요청당 입력 {selectedBand === "long-ctx" ? ">" : "≤"} {tokenThreshold(it.contextThresholds[0])}
+            </Badge>}
             {it.cost.ambiguous && <StatusIndicator type="warning">단가 2개</StatusIndicator>}
             {it.cheaperPathIsNonInRegion && <Badge color="green">
               리전 내 {it.inRegionCost.lo===it.inRegionCost.hi?money(it.inRegionCost.lo):`${money(it.inRegionCost.lo)}–${money(it.inRegionCost.hi)}`}도 가능
@@ -650,9 +657,12 @@ export default function App({ snap }) {
                   <CheckList items={haveTiers} set={f.tiers} label={(t) => TIER_KO[t] || t}
                     onChange={(tiers) => set({ tiers })} />
                 </FormField>
-                <FormField label="입력 길이 요금 구간" description="일부 모델은 긴 입력에 다른 단가를 씁니다.">
-                  <CheckList items={haveBands} set={f.bands} label={(b) => BAND_KO[b] || b}
-                    onChange={(bands) => set({ bands })} />
+                <FormField label="입력 길이 요금 구간"
+                  description="한 요청의 입력이 모델별 임계값을 넘으면 전체 요청에 긴 입력 단가가 적용됩니다. 월 입력 합계로는 자동 판정할 수 없습니다.">
+                  <Select
+                    selectedOption={{ value: selectedBand, label: BAND_KO[selectedBand] }}
+                    options={haveBands.map((b) => ({ value: b, label: BAND_KO[b] || b }))}
+                    onChange={({ detail }) => set({ bands: new Set([detail.selectedOption.value]) })} />
                 </FormField>
                 <FormField label="공급사">
                   <Multiselect

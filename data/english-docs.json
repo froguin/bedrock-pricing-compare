@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-25T01:22:26.720Z",
+  "generated_at": "2026-11-01T00:46:38.632Z",
   "source": "https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html",
   "models": [
     {
@@ -2882,7 +2882,8 @@
       "status": "ga",
       "availability": {
         "in-region": [
-          "us-east-2"
+          "us-east-2",
+          "us-gov-east-1"
         ],
         "in-region-mantle": [],
         "regional-cris": [],

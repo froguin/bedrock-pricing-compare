@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-29T04:45:46.912Z",
+  "generated_at": "2026-11-01T00:46:38.907Z",
   "source": "docs.aws.amazon.com model-card pages",
   "providers": [
     "OpenAI"
@@ -84,6 +84,22 @@
           "cache_write": 17.1875,
           "cache_read": 1.375,
           "output": 82.5
+        },
+        {
+          "scope": "govcloud",
+          "regions": [
+            "us-gov-east-1"
+          ],
+          "tier": "standard",
+          "band": "standard",
+          "context_threshold": 272000,
+          "option": "In-Region",
+          "endpoint": "in-region",
+          "region_hint": null,
+          "input": 16.875,
+          "cache_write": 21.09375,
+          "cache_read": 1.6875,
+          "output": 101.25
         }
       ],
       "skipped": []

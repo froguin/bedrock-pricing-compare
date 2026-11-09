@@ -1,8 +1,8 @@
 {
   "offer": {
     "AmazonBedrock": {
-      "version": "20261102165015",
-      "etag": "\"c3ee63fd0b109814d85bfa09d6ac4bbd\""
+      "version": "20261106184538",
+      "etag": "\"a38fd5a4246423dd363c903f42a39db6\""
     },
     "AmazonBedrockFoundationModels": {
       "version": "20261012084008",
@@ -10,15 +10,15 @@
     }
   },
   "page": {
-    "tables_hash": "f14773dc2e95f3fecf45fa69ed71cb49a246aa5428c3e450fe56895de0851fcc",
-    "tables": 169
+    "tables_hash": "7df2a39e99380de3000e4e8cab9e77dbbde4e94d96d61c9d2eb5852c981a5099",
+    "tables": 170
   },
   "docs": {
-    "tables_hash": "ab008b2a9848f01287e171bf669be8eb579eb9f7f2fe8fe9787b009df4df6582",
-    "tables": 145
+    "tables_hash": "50c47c9c549d9ce0ce96d5af0a34f72d2c9525d5496749ffd22efe602117f9f9",
+    "tables": 147
   },
   "cards": {
-    "pricing_hash": "bd45eabe42264637c1a26ba1bc1f891904ca4864136c22e7636e661d2d3f1f9a",
+    "pricing_hash": "3089dc6ba6bf13f30a6e81d260324119ed3e9bc2fcdd13ed9cd12b5e68b545eb",
     "cards": 16,
     "indexes": 1
   }

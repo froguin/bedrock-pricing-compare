@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-10-28T13:15:30.879Z",
+  "generated_at": "2026-11-09T10:16:17.594Z",
   "source": "https://aws.amazon.com/bedrock/pricing/",
-  "table_count": 169,
-  "static_table_count": 69,
+  "table_count": 170,
+  "static_table_count": 70,
   "models": [
     {
       "provider": "DeepSeek",
@@ -127,6 +127,11 @@
     {
       "provider": "Moonshot AI",
       "name": "Kimi K2.5",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    },
+    {
+      "provider": "Moonshot AI",
+      "name": "Kimi K3.1",
       "url": "https://aws.amazon.com/bedrock/pricing/"
     },
     {
@@ -1882,6 +1887,48 @@
     },
     {
       "provider": "Moonshot AI",
+      "model_id": "Kimi K3.1",
+      "input": 4,
+      "output": 20,
+      "endpoint_type": "global-cris",
+      "regions": [],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 82
+    },
+    {
+      "provider": "Moonshot AI",
+      "model_id": "Kimi K3.1",
+      "input": 4.4,
+      "output": 22,
+      "endpoint_type": "regional-cris",
+      "regions": [],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 82
+    },
+    {
+      "provider": "Moonshot AI",
+      "model_id": "Kimi K3.1",
+      "input": 4.4,
+      "output": 22,
+      "endpoint_type": "in-region",
+      "regions": [],
+      "service_tier": "standard",
+      "execution_mode": "online",
+      "context_band": "standard",
+      "status": "ga",
+      "source_url": "https://aws.amazon.com/bedrock/pricing/",
+      "table_index": 82
+    },
+    {
+      "provider": "Moonshot AI",
       "model_id": "Kimi 3",
       "input": 3,
       "output": 15,
@@ -1892,7 +1939,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 82
+      "table_index": 83
     },
     {
       "provider": "Moonshot AI",
@@ -1906,7 +1953,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 82
+      "table_index": 83
     },
     {
       "provider": "Moonshot AI",
@@ -1924,7 +1971,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 83
+      "table_index": 84
     },
     {
       "provider": "Moonshot AI",
@@ -1942,7 +1989,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 83
+      "table_index": 84
     },
     {
       "provider": "Moonshot AI",
@@ -1958,7 +2005,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 84
+      "table_index": 85
     },
     {
       "provider": "Moonshot AI",
@@ -1974,7 +2021,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 84
+      "table_index": 85
     },
     {
       "provider": "Moonshot AI",
@@ -1991,7 +2038,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 85
+      "table_index": 86
     },
     {
       "provider": "Moonshot AI",
@@ -2008,7 +2055,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 85
+      "table_index": 86
     },
     {
       "provider": "Moonshot AI",
@@ -2025,7 +2072,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 86
+      "table_index": 87
     },
     {
       "provider": "Moonshot AI",
@@ -2041,7 +2088,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 87
+      "table_index": 88
     },
     {
       "provider": "Moonshot AI",
@@ -2057,7 +2104,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 87
+      "table_index": 88
     },
     {
       "provider": "NVIDIA",
@@ -2075,7 +2122,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 88
+      "table_index": 89
     },
     {
       "provider": "NVIDIA",
@@ -2093,7 +2140,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 88
+      "table_index": 89
     },
     {
       "provider": "NVIDIA",
@@ -2111,7 +2158,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 88
+      "table_index": 89
     },
     {
       "provider": "NVIDIA",
@@ -2129,7 +2176,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 88
+      "table_index": 89
     },
     {
       "provider": "NVIDIA",
@@ -2146,7 +2193,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 89
+      "table_index": 90
     },
     {
       "provider": "NVIDIA",
@@ -2163,7 +2210,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 89
+      "table_index": 90
     },
     {
       "provider": "NVIDIA",
@@ -2180,7 +2227,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 89
+      "table_index": 90
     },
     {
       "provider": "NVIDIA",
@@ -2197,7 +2244,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 89
+      "table_index": 90
     },
     {
       "provider": "NVIDIA",
@@ -2214,7 +2261,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 91
+      "table_index": 92
     },
     {
       "provider": "NVIDIA",
@@ -2231,7 +2278,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 91
+      "table_index": 92
     },
     {
       "provider": "NVIDIA",
@@ -2248,7 +2295,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 91
+      "table_index": 92
     },
     {
       "provider": "NVIDIA",
@@ -2265,7 +2312,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 91
+      "table_index": 92
     },
     {
       "provider": "NVIDIA",
@@ -2281,7 +2328,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 93
+      "table_index": 94
     },
     {
       "provider": "NVIDIA",
@@ -2297,7 +2344,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 93
+      "table_index": 94
     },
     {
       "provider": "NVIDIA",
@@ -2313,7 +2360,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 93
+      "table_index": 94
     },
     {
       "provider": "NVIDIA",
@@ -2329,7 +2376,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 93
+      "table_index": 94
     },
     {
       "provider": "NVIDIA",
@@ -2347,7 +2394,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 94
+      "table_index": 95
     },
     {
       "provider": "OpenAI",
@@ -2363,7 +2410,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 96
+      "table_index": 97
     },
     {
       "provider": "OpenAI",
@@ -2379,7 +2426,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 96
+      "table_index": 97
     },
     {
       "provider": "OpenAI",
@@ -2395,7 +2442,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 98
+      "table_index": 99
     },
     {
       "provider": "OpenAI",
@@ -2411,7 +2458,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 98
+      "table_index": 99
     },
     {
       "provider": "OpenAI",
@@ -2427,7 +2474,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 100
+      "table_index": 101
     },
     {
       "provider": "OpenAI",
@@ -2443,7 +2490,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 100
+      "table_index": 101
     },
     {
       "provider": "OpenAI",
@@ -2459,7 +2506,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 102
+      "table_index": 103
     },
     {
       "provider": "OpenAI",
@@ -2475,7 +2522,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 102
+      "table_index": 103
     },
     {
       "provider": "OpenAI",
@@ -2493,7 +2540,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 104
+      "table_index": 105
     },
     {
       "provider": "OpenAI",
@@ -2511,7 +2558,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 104
+      "table_index": 105
     },
     {
       "provider": "OpenAI",
@@ -2529,7 +2576,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 105
+      "table_index": 106
     },
     {
       "provider": "OpenAI",
@@ -2547,7 +2594,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 105
+      "table_index": 106
     },
     {
       "provider": "OpenAI",
@@ -2564,7 +2611,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 106
+      "table_index": 107
     },
     {
       "provider": "OpenAI",
@@ -2581,7 +2628,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 106
+      "table_index": 107
     },
     {
       "provider": "OpenAI",
@@ -2597,7 +2644,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 107
+      "table_index": 108
     },
     {
       "provider": "OpenAI",
@@ -2613,7 +2660,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 107
+      "table_index": 108
     },
     {
       "provider": "OpenAI",
@@ -2629,7 +2676,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 108
+      "table_index": 109
     },
     {
       "provider": "OpenAI",
@@ -2645,7 +2692,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 108
+      "table_index": 109
     },
     {
       "provider": "Qwen",
@@ -2661,7 +2708,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 110
+      "table_index": 111
     },
     {
       "provider": "Qwen",
@@ -2677,7 +2724,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 110
+      "table_index": 111
     },
     {
       "provider": "Qwen",
@@ -2693,7 +2740,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 110
+      "table_index": 111
     },
     {
       "provider": "Qwen",
@@ -2709,7 +2756,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 112
+      "table_index": 113
     },
     {
       "provider": "Qwen",
@@ -2725,7 +2772,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 112
+      "table_index": 113
     },
     {
       "provider": "Qwen",
@@ -2741,7 +2788,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 112
+      "table_index": 113
     },
     {
       "provider": "Qwen",
@@ -2757,7 +2804,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 114
+      "table_index": 115
     },
     {
       "provider": "Qwen",
@@ -2773,7 +2820,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 114
+      "table_index": 115
     },
     {
       "provider": "Qwen",
@@ -2789,7 +2836,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 114
+      "table_index": 115
     },
     {
       "provider": "Qwen",
@@ -2805,7 +2852,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 116
+      "table_index": 117
     },
     {
       "provider": "Qwen",
@@ -2821,7 +2868,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 116
+      "table_index": 117
     },
     {
       "provider": "Qwen",
@@ -2837,7 +2884,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 116
+      "table_index": 117
     },
     {
       "provider": "Qwen",
@@ -2855,7 +2902,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 118
+      "table_index": 119
     },
     {
       "provider": "Qwen",
@@ -2873,7 +2920,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 118
+      "table_index": 119
     },
     {
       "provider": "Qwen",
@@ -2891,7 +2938,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 118
+      "table_index": 119
     },
     {
       "provider": "Qwen",
@@ -2909,7 +2956,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 119
+      "table_index": 120
     },
     {
       "provider": "Qwen",
@@ -2927,7 +2974,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 119
+      "table_index": 120
     },
     {
       "provider": "Qwen",
@@ -2945,7 +2992,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 119
+      "table_index": 120
     },
     {
       "provider": "Qwen",
@@ -2962,7 +3009,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 120
+      "table_index": 121
     },
     {
       "provider": "Qwen",
@@ -2979,7 +3026,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 120
+      "table_index": 121
     },
     {
       "provider": "Qwen",
@@ -2996,7 +3043,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 120
+      "table_index": 121
     },
     {
       "provider": "Qwen",
@@ -3012,7 +3059,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 121
+      "table_index": 122
     },
     {
       "provider": "Qwen",
@@ -3028,7 +3075,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 121
+      "table_index": 122
     },
     {
       "provider": "Qwen",
@@ -3044,7 +3091,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 121
+      "table_index": 122
     },
     {
       "provider": "Qwen",
@@ -3061,7 +3108,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 122
+      "table_index": 123
     },
     {
       "provider": "Qwen",
@@ -3077,7 +3124,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 123
+      "table_index": 124
     },
     {
       "provider": "Qwen",
@@ -3093,7 +3140,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 123
+      "table_index": 124
     },
     {
       "provider": "Qwen",
@@ -3109,7 +3156,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 123
+      "table_index": 124
     },
     {
       "provider": "Writer",
@@ -3123,7 +3170,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 128
+      "table_index": 129
     },
     {
       "provider": "Writer",
@@ -3137,7 +3184,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 128
+      "table_index": 129
     },
     {
       "provider": "Writer",
@@ -3151,7 +3198,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 128
+      "table_index": 129
     },
     {
       "provider": "Z AI",
@@ -3165,7 +3212,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 129
+      "table_index": 130
     },
     {
       "provider": "Z AI",
@@ -3179,7 +3226,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 129
+      "table_index": 130
     },
     {
       "provider": "Z AI",
@@ -3197,7 +3244,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 130
+      "table_index": 131
     },
     {
       "provider": "Z AI",
@@ -3217,7 +3264,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 131
+      "table_index": 132
     },
     {
       "provider": "Z AI",
@@ -3233,7 +3280,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 132
+      "table_index": 133
     },
     {
       "provider": "Z AI",
@@ -3249,7 +3296,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 133
+      "table_index": 134
     },
     {
       "provider": "Z AI",
@@ -3267,7 +3314,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 134
+      "table_index": 135
     },
     {
       "provider": "Z AI",
@@ -3287,7 +3334,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 135
+      "table_index": 136
     },
     {
       "provider": "Z AI",
@@ -3303,7 +3350,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 136
+      "table_index": 137
     },
     {
       "provider": "Z AI",
@@ -3321,7 +3368,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 137
+      "table_index": 138
     },
     {
       "provider": "Z AI",
@@ -3339,7 +3386,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 137
+      "table_index": 138
     },
     {
       "provider": "Z AI",
@@ -3362,7 +3409,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 138
+      "table_index": 139
     },
     {
       "provider": "Z AI",
@@ -3383,7 +3430,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 139
+      "table_index": 140
     },
     {
       "provider": "Z AI",
@@ -3399,7 +3446,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 140
+      "table_index": 141
     },
     {
       "provider": "Z AI",
@@ -3415,7 +3462,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 140
+      "table_index": 141
     },
     {
       "provider": "Z AI",
@@ -3431,7 +3478,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 141
+      "table_index": 142
     },
     {
       "provider": "Z AI",
@@ -3447,7 +3494,7 @@
       "context_band": "standard",
       "status": "ga",
       "source_url": "https://aws.amazon.com/bedrock/pricing/",
-      "table_index": 141
+      "table_index": 142
     }
   ]
 }

@@ -10,14 +10,14 @@
     "test": "node --test src/"
   },
   "dependencies": {
-    "@cloudscape-design/components": "3.0.1407",
-    "@cloudscape-design/global-styles": "1.0.71",
+    "@cloudscape-design/components": "3.0.1410",
+    "@cloudscape-design/global-styles": "1.0.72",
     "react": "19.3.1",
     "react-dom": "19.3.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "6.1.2",
-    "vite": "8.3.5",
+    "@vitejs/plugin-react": "6.2.1",
+    "vite": "8.3.6",
     "vite-plugin-singlefile": "2.3.4"
   }
 }

@@ -16,9 +16,28 @@
 const decode = (s) => s.replace(/&amp;/g, "&").replace(/&#39;/g, "'").replace(/&quot;/g, '"')
   .replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&nbsp;/g, " ");
 
-export const MODEL_CARD_INDEXES = {
-  OpenAI: "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-openai.html",
-};
+/** The user-guide page that links every provider's model-card index (model-cards-<provider>.html). */
+export const MODEL_CARDS_ROOT = "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html";
+
+/** List the provider indexes linked from the model-cards root page: [{ label, url }]. */
+export function parseProviderIndexes(html, rootUrl = MODEL_CARDS_ROOT) {
+  const out = new Map();
+  for (const m of html.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi)) {
+    let url;
+    try { url = new URL(decode(m[1]), rootUrl).href; } catch { continue; }
+    if (!/\/model-cards-[^/]+\.html$/i.test(new URL(url).pathname)) continue;
+    const label = text(m[2]);
+    if (label && !out.has(url)) out.set(url, { label, url });
+  }
+  return [...out.values()].sort((a, b) => a.label.localeCompare(b.label));
+}
+
+/** Map an index label ("MiniMax", "Z.AI") to the provider name the dataset already uses
+ *  ("MiniMax AI", "Z AI"). Compares letters and digits only, ignoring a trailing "AI". */
+export function matchProvider(label, known) {
+  const k = (s) => String(s).toLowerCase().replace(/[^a-z0-9]/g, "").replace(/ai$/, "");
+  return [...known].find((p) => k(p) === k(label)) || label;
+}
 
 /** Discover every concrete model-card linked from a provider index. */
 export function parseModelCardIndex(html, indexUrl, provider) {
@@ -90,11 +109,15 @@ function optionToEndpoint(label) {
   const hint = label.match(/\(((?:af|ap|ca|eu|il|me|mx|sa|us)-[a-z]+-\d)\)/i)?.[1]
     || label.match(/bedrock-mantle in ((?:af|ap|ca|eu|il|me|mx|sa|us)-[a-z]+-\d)/i)?.[1] || null;
   // "In-Region", "Mantle in-Region", and GPT-6.1's "Regional (bedrock-mantle in US East ...)"
-  if (/^(mantle )?in-region/.test(l) || /^regional \(? ?bedrock-mantle/.test(l)) return { endpoint: "in-region", region_hint: hint };
-  // "Geo CRIS", "US Geo CRIS", and GPT-6.1's "US CRIS (bedrock-runtime)"
-  if (/\bgeo cris\b/.test(l) || /^us cris\b/.test(l)) return { endpoint: "regional-cris", region_hint: hint };
-  if (/\bglobal cris\b/.test(l)) return { endpoint: "global-cris", region_hint: hint };
-  return { endpoint: null, region_hint: hint };
+  if (/^(mantle )?in-region/.test(l) || /^regional \(? ?bedrock-mantle/.test(l)) return { endpoint: "in-region", region_hint: hint, geo: null };
+  // "Geo CRIS", "US Geo CRIS", GPT-6.1's "US CRIS (bedrock-runtime)", and Kimi's "IN CRIS" (India).
+  // `geo` says which source regions a Geo row covers; an unlabelled "Geo CRIS" keeps the US meaning
+  // it has always had on the OpenAI cards. Any other geography prefix is not guessed.
+  if (/\bglobal cris\b/.test(l)) return { endpoint: "global-cris", region_hint: hint, geo: null };
+  const geo = l.match(/^(us|in)(?: geo)? cris\b/)?.[1];
+  if (geo) return { endpoint: "regional-cris", region_hint: hint, geo };
+  if (/^geo cris\b/.test(l)) return { endpoint: "regional-cris", region_hint: hint, geo: "us" };
+  return { endpoint: null, region_hint: hint, geo: null };
 }
 
 function govRegions(heading) {
@@ -150,7 +173,7 @@ export function parsePricingSection(html) {
     if (col.input < 0 || col.output < 0) { skipped.push({ reason: "table without Input/Output columns", header }); continue; }
     for (const cells of trs.slice(1)) {
       const label = cells[0] || "";
-      const { endpoint, region_hint } = optionToEndpoint(label);
+      const { endpoint, region_hint, geo } = optionToEndpoint(label);
       if (!endpoint) { skipped.push({ reason: "unrecognised inference option", label }); continue; }
       const prices = {};
       let bad = null;
@@ -168,7 +191,7 @@ export function parsePricingSection(html) {
       }
       rows.push({
         scope, regions: scope === "govcloud" ? govRegs : [], tier, band: band || "standard",
-        context_threshold: contextThreshold, option: label, endpoint, region_hint, ...prices,
+        context_threshold: contextThreshold, option: label, endpoint, region_hint, geo, ...prices,
       });
     }
   }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-09T10:16:17.594Z",
+  "generated_at": "2026-11-10T04:38:40.526Z",
   "source": "https://aws.amazon.com/bedrock/pricing/",
   "table_count": 170,
   "static_table_count": 70,
@@ -131,7 +131,7 @@
     },
     {
       "provider": "Moonshot AI",
-      "name": "Kimi K3.1",
+      "name": "Kimi K3.1 Pro - Highspeed",
       "url": "https://aws.amazon.com/bedrock/pricing/"
     },
     {
@@ -1887,7 +1887,7 @@
     },
     {
       "provider": "Moonshot AI",
-      "model_id": "Kimi K3.1",
+      "model_id": "Kimi K3.1 Pro - Highspeed",
       "input": 4,
       "output": 20,
       "endpoint_type": "global-cris",
@@ -1901,10 +1901,11 @@
     },
     {
       "provider": "Moonshot AI",
-      "model_id": "Kimi K3.1",
+      "model_id": "Kimi K3.1 Pro - Highspeed",
       "input": 4.4,
       "output": 22,
       "endpoint_type": "regional-cris",
+      "geo": "us",
       "regions": [],
       "service_tier": "standard",
       "execution_mode": "online",
@@ -1915,10 +1916,11 @@
     },
     {
       "provider": "Moonshot AI",
-      "model_id": "Kimi K3.1",
+      "model_id": "Kimi K3.1 Pro - Highspeed",
       "input": 4.4,
       "output": 22,
-      "endpoint_type": "in-region",
+      "endpoint_type": "regional-cris",
+      "geo": "in",
       "regions": [],
       "service_tier": "standard",
       "execution_mode": "online",
@@ -1947,6 +1949,7 @@
       "input": 3.3,
       "output": 16.5,
       "endpoint_type": "regional-cris",
+      "geo": "us",
       "regions": [],
       "service_tier": "standard",
       "execution_mode": "online",
@@ -3220,6 +3223,7 @@
       "input": 1.848,
       "output": 5.808,
       "endpoint_type": "regional-cris",
+      "geo": "us",
       "regions": [],
       "service_tier": "standard",
       "execution_mode": "online",

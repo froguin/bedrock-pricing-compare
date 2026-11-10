@@ -5103,6 +5103,92 @@
         "regional-cris"
       ]
     },
+    "Moonshot AI\u0001Kimi K3.1 Pro - Highspeed": {
+      "provider": "Moonshot AI",
+      "model_id": "Kimi K3.1 Pro - Highspeed",
+      "active": true,
+      "first_seen": "20261106184538",
+      "last_seen": "20261106184538",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-model-card",
+        "english-pricing-page"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "regional-cris"
+      ]
+    },
     "Nvidia\u0001Nemotron Nano 3 30B": {
       "provider": "Nvidia",
       "model_id": "Nemotron Nano 3 30B",
@@ -6977,6 +7063,7 @@
         "ga"
       ],
       "sources": [
+        "english-model-card",
         "offer"
       ],
       "regions": [

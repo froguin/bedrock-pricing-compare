@@ -126,8 +126,9 @@ for (const s of SERVICES) {
     } catch { failed++; }
   }
   const sortedUrls = [...urls].sort();
-  if (!sortedUrls.length) notes.push("model cards: no card list yet, skipped");
-  else if (failed) notes.push(`model-card indexes: ${failed} could not be fetched, previous hash kept`);
+  // Report a fetch failure first: a root-page outage must not read as "no card list yet".
+  if (failed) notes.push(`model-card indexes: ${failed} could not be fetched, previous hash kept`);
+  else if (!sortedUrls.length) notes.push("model cards: no card list yet, skipped");
   else {
     const parts = [];
     for (let i = 0; i < sortedUrls.length; i += 4) {

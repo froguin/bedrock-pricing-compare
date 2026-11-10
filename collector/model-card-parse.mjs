@@ -16,10 +16,6 @@
 const decode = (s) => s.replace(/&amp;/g, "&").replace(/&#39;/g, "'").replace(/&quot;/g, '"')
   .replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&nbsp;/g, " ");
 
-export const MODEL_CARD_INDEXES = {
-  OpenAI: "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-openai.html",
-};
-
 /** The user-guide page that links every provider's model-card index (model-cards-<provider>.html). */
 export const MODEL_CARDS_ROOT = "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html";
 

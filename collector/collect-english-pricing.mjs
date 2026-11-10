@@ -100,7 +100,7 @@ for (const match of html.matchAll(/<table\b[\s\S]*?<\/table>/gi)) {
     addModel(provider, model);
     const route = rowIsRoute ? row[0].toLowerCase() : "";
     // "IN CRIS" is the India geography (Kimi K3 / K3.1); it was read as in-region before.
-    const geo = /^in cris\b/.test(route) ? "in" : route.includes("us cris") ? "us" : undefined;
+    const geo = /^in cris\b/.test(route) ? "in" : /^us cris\b/.test(route) ? "us" : undefined;
     const endpoint_type = route.includes("global") ? "global-cris" : geo ? "regional-cris"
       : /global cross-region/i.test(context.slice(-700)) ? "global-cris"
       : /geo.*cross-region/i.test(context.slice(-700)) ? "regional-cris" : "in-region";

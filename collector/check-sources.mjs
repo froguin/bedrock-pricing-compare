@@ -16,7 +16,7 @@ import { readFileSync, writeFileSync, appendFileSync, existsSync } from "node:fs
 import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
-import { extractPricingSection, extractRegionalAvailabilitySection, MODEL_CARD_INDEXES, parseModelCardIndex } from "./model-card-parse.mjs";
+import { extractPricingSection, extractRegionalAvailabilitySection, MODEL_CARDS_ROOT, matchProvider, parseModelCardIndex, parseProviderIndexes } from "./model-card-parse.mjs";
 
 const ROOT = process.env.BPC_ROOT || join(dirname(fileURLToPath(import.meta.url)), "..");
 const STATE = join(ROOT, "data/state.json");
@@ -97,22 +97,30 @@ for (const s of SERVICES) {
 // documentation too. Hashing the index discovers a new card before the compatibility catalog catches
 // up; hashing both sections detects price and routing changes without waiting for another source.
 {
-  const providers = (process.env.BPC_CARD_PROVIDERS || "OpenAI").split(",").map((s) => s.trim()).filter(Boolean);
+  // Same scope as collect-model-card-pricing.mjs: every provider index, unless narrowed.
+  const only = (process.env.BPC_CARD_PROVIDERS || "").split(",").map((s) => s.trim()).filter(Boolean);
   const docsFile = join(ROOT, "data/english-docs.json");
-  const urls = new Set(existsSync(docsFile)
-    ? JSON.parse(readFileSync(docsFile, "utf8")).models
-        .filter((m) => providers.includes(m.provider) && /\/model-card-[^/]+\.html$/.test(m.doc_url)).map((m) => m.doc_url)
-    : []);
+  const docModels = existsSync(docsFile) ? JSON.parse(readFileSync(docsFile, "utf8")).models : [];
+  const known = new Set(docModels.map((m) => m.provider));
   const indexParts = [];
-  let failed = 0;
-  for (const provider of providers) {
-    const indexUrl = MODEL_CARD_INDEXES[provider];
-    if (!indexUrl) continue;
+  let failed = 0, providerIndexes = [];
+  try {
+    const r = await fetch(MODEL_CARDS_ROOT);
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    providerIndexes = parseProviderIndexes(await r.text())
+      .map((x) => ({ provider: matchProvider(x.label, known), url: x.url }))
+      .filter((x) => !only.length || only.includes(x.provider));
+    if (!providerIndexes.length) throw new Error("no provider indexes");
+  } catch { failed++; }
+  const providers = providerIndexes.map((x) => x.provider);
+  const urls = new Set(docModels
+    .filter((m) => providers.includes(m.provider) && /\/model-card-[^/]+\.html$/.test(m.doc_url)).map((m) => m.doc_url));
+  for (const { provider, url: indexUrl } of providerIndexes) {
     try {
       const r = await fetch(indexUrl);
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
       const cards = parseModelCardIndex(await r.text(), indexUrl, provider);
-      if (cards.length < 3) throw new Error(`only ${cards.length} cards`);
+      if (!cards.length) throw new Error("no cards");
       indexParts.push(`${indexUrl}\n${cards.map((m) => `${m.model_id}|${m.doc_url}`).join("\n")}`);
       for (const card of cards) urls.add(card.doc_url);
     } catch { failed++; }

@@ -44,6 +44,8 @@ const apiRegions = (provider, model, endpoint) => [...new Set(apiPoints
   .filter((p) => p.provider === provider && norm(p.model_id) === norm(model) && p.endpoint_type === endpoint)
   .map((p) => p.source_region))].sort();
 
+// Source-region prefixes of each Geo CRIS geography named on the pricing page and model cards.
+const GEO_SOURCE_PREFIX = { us: ["us-"], in: ["ap-south-"] };
 const pagePoints = [];
 for (const p of english.prices || []) {
   const model = canonicalName(p.provider, p.model_id);
@@ -59,8 +61,11 @@ for (const p of english.prices || []) {
     regions = apiRegions(p.provider, model, p.endpoint_type);
     availabilitySource = "price-list-api";
   }
-  // "US CRIS" is a geo route; do not expose it from a non-US source region.
-  if (p.endpoint_type === "regional-cris") regions = regions.filter((r) => r.startsWith("us-"));
+  // A Geo route prices one geography: "US CRIS" (the default) -> us-*, "IN CRIS" -> India regions.
+  if (p.endpoint_type === "regional-cris") {
+    const prefixes = GEO_SOURCE_PREFIX[p.geo || "us"] || [];
+    regions = regions.filter((r) => prefixes.some((pre) => r.startsWith(pre)));
+  }
   for (const region of regions) for (const [dimension, price] of [["input", p.input], ["output", p.output]]) {
     pagePoints.push({
       provider: p.provider, model_id: model, status: doc?.status || p.status || "ga",
@@ -136,7 +141,12 @@ for (const m of cards.models || []) {
     else {
       if (!availability) continue;
       regions = availabilityRegionsFor(availability, r.endpoint).filter((x) => !x.startsWith("us-gov-"));
-      if (r.endpoint === "regional-cris") regions = regions.filter((x) => x.startsWith("us-"));
+      // A Geo row prices one geography: "US CRIS" -> us-* sources, "IN CRIS" -> the India regions.
+      // Rows collected before `geo` existed are US rows. Other source regions are left unpriced.
+      if (r.endpoint === "regional-cris") {
+        const geo = r.geo || "us";
+        regions = regions.filter((x) => (GEO_SOURCE_PREFIX[geo] || []).some((pre) => x.startsWith(pre)));
+      }
     }
     for (const region of regions) for (const [field, dimension] of CARD_DIMENSIONS) {
       const price = r[field];

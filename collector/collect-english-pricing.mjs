@@ -80,8 +80,13 @@ for (const match of html.matchAll(/<table\b[\s\S]*?<\/table>/gi)) {
   let provider = providerFor(header[0]);
   let fixedModel = null, rowIsRoute = /inference option/i.test(first);
   if (rowIsRoute) {
+    // The tab heading right above the table carries the full model name ("Kimi K3.1 Pro - Highspeed").
+    // Read it line by line so suffixes are kept; fall back to the bare "Kimi K3.1" match.
+    const lines = html.slice(Math.max(0, match.index - 1600), match.index)
+      .replace(/<[^>]+>/g, "\n").split("\n").map((x) => text(x)).filter(Boolean);
+    const heading = lines.reverse().find((x) => /^(?:GLM|Kimi)\s+(?:K)?\d/i.test(x) && x.length <= 60);
     const candidates = [...context.matchAll(/((?:GLM|Kimi)\s+(?:K)?\d+(?:\.\d+)*)/gi)];
-    fixedModel = candidates.at(-1)?.[1] || null;
+    fixedModel = heading || candidates.at(-1)?.[1] || null;
     provider = /^GLM/i.test(fixedModel || "") ? "Z AI" : /^Kimi/i.test(fixedModel || "") ? "Moonshot AI" : provider;
   }
   const explicitRegions = regionsFor(context);
@@ -94,10 +99,12 @@ for (const match of html.matchAll(/<table\b[\s\S]*?<\/table>/gi)) {
     if (!provider || !model) continue;
     addModel(provider, model);
     const route = rowIsRoute ? row[0].toLowerCase() : "";
-    const endpoint_type = route.includes("global") ? "global-cris" : route.includes("us cris") ? "regional-cris"
+    // "IN CRIS" is the India geography (Kimi K3 / K3.1); it was read as in-region before.
+    const geo = /^in cris\b/.test(route) ? "in" : route.includes("us cris") ? "us" : undefined;
+    const endpoint_type = route.includes("global") ? "global-cris" : geo ? "regional-cris"
       : /global cross-region/i.test(context.slice(-700)) ? "global-cris"
       : /geo.*cross-region/i.test(context.slice(-700)) ? "regional-cris" : "in-region";
-    prices.push({ provider, model_id: model, input: iv, output: ov, endpoint_type,
+    prices.push({ provider, model_id: model, input: iv, output: ov, endpoint_type, ...(geo ? { geo } : {}),
       regions: explicitRegions, ...tm, context_band: "standard", status: /preview/i.test(model) ? "preview" : "ga",
       source_url: URL, table_index: tableCount - 1 });
     accepted++;

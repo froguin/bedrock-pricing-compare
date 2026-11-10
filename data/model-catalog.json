@@ -2,7 +2,7 @@
   "schema": 1,
   "as_of": {
     "AmazonBedrock": "20261106184538",
-    "AmazonBedrockFoundationModels": "20261012084008"
+    "AmazonBedrockFoundationModels": "20261109224312"
   },
   "models": {
     "AI21 Labs\u0001Jamba 1.5 Large": {
@@ -10,7 +10,7 @@
       "model_id": "Jamba 1.5 Large",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "legacy"
       ],
@@ -32,7 +32,7 @@
       "model_id": "Jamba 1.5 Mini",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "legacy"
       ],
@@ -54,7 +54,7 @@
       "model_id": "Jamba-Instruct",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -76,7 +76,7 @@
       "model_id": "Jurassic-2 Mid",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -100,7 +100,7 @@
       "model_id": "Jurassic-2 Ultra",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -124,7 +124,7 @@
       "model_id": "Nova 2.0 Lite",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -197,7 +197,7 @@
       "model_id": "Nova 2.0 Omni",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -272,7 +272,7 @@
       "model_id": "Nova 2.0 Pro",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -343,7 +343,7 @@
       "model_id": "Nova 2.5 Sonic",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -371,7 +371,7 @@
       "model_id": "Nova Lite",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -432,7 +432,7 @@
       "model_id": "Nova Micro",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -487,7 +487,7 @@
       "model_id": "Nova Premier",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -513,7 +513,7 @@
       "model_id": "Nova Pro",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -582,7 +582,7 @@
       "model_id": "Nova Pro Latency Optimized",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -608,7 +608,7 @@
       "model_id": "Nova Sonic",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -634,7 +634,7 @@
       "model_id": "Nova Sonic 2.0",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -662,7 +662,7 @@
       "model_id": "Titan Embeddings G1 Image",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "legacy"
       ],
@@ -691,7 +691,7 @@
       "model_id": "Titan Embeddings G1 Text",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -714,7 +714,7 @@
       "model_id": "Titan Text G1 Express",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "legacy"
       ],
@@ -758,7 +758,7 @@
       "model_id": "Titan Text G1 Lite",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "legacy"
       ],
@@ -796,7 +796,7 @@
       "model_id": "Titan Text G1 Premier",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "legacy"
       ],
@@ -818,7 +818,7 @@
       "model_id": "TitanEmbeddingsV2-Text-input",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "legacy"
       ],
@@ -860,7 +860,7 @@
       "model_id": "Claude",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "legacy"
       ],
@@ -890,7 +890,7 @@
       "model_id": "Claude (100K)",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "legacy"
       ],
@@ -914,7 +914,7 @@
       "model_id": "Claude 2.0",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "legacy"
       ],
@@ -935,7 +935,7 @@
       "model_id": "Claude 2.1",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "legacy"
       ],
@@ -956,7 +956,7 @@
       "model_id": "Claude 3 Haiku",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "legacy"
       ],
@@ -1012,7 +1012,7 @@
       "model_id": "Claude 3 Opus",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -1036,7 +1036,7 @@
       "model_id": "Claude 3 Sonnet",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -1083,7 +1083,7 @@
       "model_id": "Claude 3.5 Haiku",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -1109,7 +1109,7 @@
       "model_id": "Claude 3.5 Sonnet",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -1157,7 +1157,7 @@
       "model_id": "Claude 3.5 Sonnet v2",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -1207,7 +1207,7 @@
       "model_id": "Claude 3.7 Sonnet",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -1261,7 +1261,7 @@
       "model_id": "Claude Fable 5",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -1349,7 +1349,7 @@
       "model_id": "Claude Fable 5.1",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -1436,12 +1436,103 @@
         "regional-cris"
       ]
     },
+    "Anthropic\u0001Claude Fable 5.2": {
+      "provider": "Anthropic",
+      "model_id": "Claude Fable 5.2",
+      "active": true,
+      "first_seen": "20261109224312",
+      "last_seen": "20261109224312",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "regional-cris"
+      ]
+    },
     "Anthropic\u0001Claude Haiku 4.5": {
       "provider": "Anthropic",
       "model_id": "Claude Haiku 4.5",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -1529,7 +1620,7 @@
       "model_id": "Claude Haiku 5.5",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -1621,7 +1712,7 @@
       "model_id": "Claude Instant",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "legacy"
       ],
@@ -1652,7 +1743,7 @@
       "model_id": "Claude Instant (100K)",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "legacy"
       ],
@@ -1676,7 +1767,7 @@
       "model_id": "Claude Mythos 5",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -1698,7 +1789,7 @@
       "model_id": "Claude Mythos 5.1",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -1780,12 +1871,103 @@
         "regional-cris"
       ]
     },
+    "Anthropic\u0001Claude Mythos 5.2": {
+      "provider": "Anthropic",
+      "model_id": "Claude Mythos 5.2",
+      "active": true,
+      "first_seen": "20261109224312",
+      "last_seen": "20261109224312",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "regional-cris"
+      ]
+    },
     "Anthropic\u0001Claude Mythos Preview": {
       "provider": "Anthropic",
       "model_id": "Claude Mythos Preview",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "internal"
       ],
@@ -1809,7 +1991,7 @@
       "model_id": "Claude Opus 4",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -1835,7 +2017,7 @@
       "model_id": "Claude Opus 4.1",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "legacy"
       ],
@@ -1861,7 +2043,7 @@
       "model_id": "Claude Opus 4.5",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -1935,7 +2117,7 @@
       "model_id": "Claude Opus 4.6",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -2023,7 +2205,7 @@
       "model_id": "Claude Opus 4.7",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -2111,7 +2293,7 @@
       "model_id": "Claude Opus 4.8",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -2203,7 +2385,7 @@
       "model_id": "Claude Opus 5",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -2295,7 +2477,7 @@
       "model_id": "Claude Opus 5.5",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -2387,7 +2569,7 @@
       "model_id": "Claude Sonnet 4",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "legacy"
       ],
@@ -2450,7 +2632,7 @@
       "model_id": "Claude Sonnet 4.5",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "legacy"
       ],
@@ -2540,7 +2722,7 @@
       "model_id": "Claude Sonnet 4.6",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -2628,7 +2810,7 @@
       "model_id": "Claude Sonnet 5",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -2720,7 +2902,7 @@
       "model_id": "Claude Sonnet 5.5",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -2808,7 +2990,7 @@
       "model_id": "Cohere Command R",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -2832,7 +3014,7 @@
       "model_id": "Cohere Command R+",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -2856,7 +3038,7 @@
       "model_id": "Cohere Embed 3 Model - English",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -2887,7 +3069,7 @@
       "model_id": "Cohere Embed 4 Model",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -2929,7 +3111,7 @@
       "model_id": "Cohere Embed Model 3 - Multilingual",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -2960,7 +3142,7 @@
       "model_id": "Cohere Generate Model - Command",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -2984,7 +3166,7 @@
       "model_id": "Cohere Generate Model - Command-Light",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3008,7 +3190,7 @@
       "model_id": "DeepSeek V3.1",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3045,7 +3227,7 @@
       "model_id": "DeepSeek v3.2",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3086,7 +3268,7 @@
       "model_id": "R1",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3112,7 +3294,7 @@
       "model_id": "Gemma 3 12B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3159,7 +3341,7 @@
       "model_id": "Gemma 3 27B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3206,7 +3388,7 @@
       "model_id": "Gemma 3 4B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3253,7 +3435,7 @@
       "model_id": "Gemma 4 26B A4B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3284,7 +3466,7 @@
       "model_id": "Gemma 4 31B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3315,7 +3497,7 @@
       "model_id": "Gemma 4 E2B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3346,7 +3528,7 @@
       "model_id": "Llama 3 70B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3378,7 +3560,7 @@
       "model_id": "Llama 3 8B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3410,7 +3592,7 @@
       "model_id": "Llama 3.1 405B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "legacy"
       ],
@@ -3435,7 +3617,7 @@
       "model_id": "Llama 3.1 405B Latency Optimized",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3457,7 +3639,7 @@
       "model_id": "Llama 3.1 70B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3484,7 +3666,7 @@
       "model_id": "Llama 3.1 70B Latency Optimized",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3510,7 +3692,7 @@
       "model_id": "Llama 3.1 8B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3537,7 +3719,7 @@
       "model_id": "Llama 3.2 11B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "legacy"
       ],
@@ -3563,7 +3745,7 @@
       "model_id": "Llama 3.2 1B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "legacy"
       ],
@@ -3595,7 +3777,7 @@
       "model_id": "Llama 3.2 3B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "legacy"
       ],
@@ -3627,7 +3809,7 @@
       "model_id": "Llama 3.2 90B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "legacy"
       ],
@@ -3653,7 +3835,7 @@
       "model_id": "Llama 3.3 70B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3680,7 +3862,7 @@
       "model_id": "Llama 4 Maverick 17B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3708,7 +3890,7 @@
       "model_id": "Llama 4 Scout 17B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3736,7 +3918,7 @@
       "model_id": "Meta Llama 2 Chat 13B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3760,7 +3942,7 @@
       "model_id": "Meta Llama 2 Chat 70B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3784,7 +3966,7 @@
       "model_id": "Minimax M2",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3830,7 +4012,7 @@
       "model_id": "MiniMax M2",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3870,7 +4052,7 @@
       "model_id": "Minimax M2.1",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3916,7 +4098,7 @@
       "model_id": "MiniMax M2.1",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -3962,7 +4144,7 @@
       "model_id": "MiniMax M2.5",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4008,7 +4190,7 @@
       "model_id": "MiniMax M2.5",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4054,7 +4236,7 @@
       "model_id": "Devstral 2 123B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4100,7 +4282,7 @@
       "model_id": "Magistral Small 1.2",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4140,7 +4322,7 @@
       "model_id": "Ministral 14B 3.0",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4180,7 +4362,7 @@
       "model_id": "Ministral 3B 3.0",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4220,7 +4402,7 @@
       "model_id": "Ministral 8B 3.0",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4260,7 +4442,7 @@
       "model_id": "Mistral Large 3",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4294,7 +4476,7 @@
       "model_id": "Voxtral Mini 1.0",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4334,7 +4516,7 @@
       "model_id": "Voxtral Small 1.0",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4374,7 +4556,7 @@
       "model_id": "Devstral",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4420,7 +4602,7 @@
       "model_id": "Magistral Small 1.2",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4466,7 +4648,7 @@
       "model_id": "Ministral 14B 3.0",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4512,7 +4694,7 @@
       "model_id": "Ministral 3B 3.0",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4558,7 +4740,7 @@
       "model_id": "Ministral 8B 3.0",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4604,7 +4786,7 @@
       "model_id": "Mistral 7B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4642,7 +4824,7 @@
       "model_id": "Mistral Large",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4680,7 +4862,7 @@
       "model_id": "Mistral Large 2407",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4702,7 +4884,7 @@
       "model_id": "Mistral Large 3",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4748,7 +4930,7 @@
       "model_id": "Mistral Small",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4770,7 +4952,7 @@
       "model_id": "Mixtral 8x7B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4808,7 +4990,7 @@
       "model_id": "Pixtral Large 25.02",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4842,7 +5024,7 @@
       "model_id": "Voxtral Mini 1.0",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4888,7 +5070,7 @@
       "model_id": "Voxtral Small 1.0",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4934,7 +5116,7 @@
       "model_id": "Kimi K2 Thinking",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -4981,7 +5163,7 @@
       "model_id": "Kimi K2.5",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -5022,7 +5204,7 @@
       "model_id": "Kimi K3",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -5108,7 +5290,7 @@
       "model_id": "Kimi K3.1 Pro - Highspeed",
       "active": true,
       "first_seen": "20261106184538",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -5194,7 +5376,7 @@
       "model_id": "Nemotron Nano 3 30B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -5244,7 +5426,7 @@
       "model_id": "NVIDIA Nemotron 3 Nano 30B A3B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -5280,7 +5462,7 @@
       "model_id": "NVIDIA Nemotron 3 Super 120B A12B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -5330,7 +5512,7 @@
       "model_id": "NVIDIA Nemotron 3 Super 120B A12B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -5372,7 +5554,7 @@
       "model_id": "NVIDIA Nemotron Nano 2",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -5422,7 +5604,7 @@
       "model_id": "NVIDIA Nemotron Nano 2",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -5458,7 +5640,7 @@
       "model_id": "NVIDIA Nemotron Nano 2 VL",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -5508,7 +5690,7 @@
       "model_id": "NVIDIA Nemotron Nano 2 VL",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -5544,7 +5726,7 @@
       "model_id": "Daybreak Blue: GPT-5.6 Sol",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -5566,7 +5748,7 @@
       "model_id": "Daybreak Red: GPT-5.6 Cyber",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -5590,25 +5772,18 @@
       "model_id": "GPT 5.4",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
       "sources": [
-        "english-model-card",
         "offer"
       ],
       "regions": [
-        "us-east-1",
-        "us-east-2",
-        "us-gov-west-1",
-        "us-west-2"
+        "us-gov-west-1"
       ],
       "complete_regions": [
-        "us-east-1",
-        "us-east-2",
-        "us-gov-west-1",
-        "us-west-2"
+        "us-gov-west-1"
       ],
       "paths": [
         "in-region"
@@ -5619,7 +5794,7 @@
       "model_id": "GPT OSS 120B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -5671,7 +5846,7 @@
       "model_id": "GPT OSS 20B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -5723,7 +5898,7 @@
       "model_id": "GPT OSS Safeguard 120B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -5764,7 +5939,7 @@
       "model_id": "GPT OSS Safeguard 20B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -5803,7 +5978,7 @@
     "OpenAI\u0001GPT-5.5": {
       "provider": "OpenAI",
       "model_id": "GPT-5.5",
-      "active": true,
+      "active": false,
       "first_seen": "20261016210806",
       "last_seen": "20261106184538",
       "statuses": [
@@ -5822,12 +5997,20 @@
       ],
       "paths": [
         "in-region"
+      ],
+      "removed_at": "20261109224312",
+      "last_regions": [
+        "us-east-1",
+        "us-east-2"
+      ],
+      "last_paths": [
+        "in-region"
       ]
     },
     "OpenAI\u0001GPT-5.6 Luna": {
       "provider": "OpenAI",
       "model_id": "GPT-5.6 Luna",
-      "active": true,
+      "active": false,
       "first_seen": "20261016210806",
       "last_seen": "20261106184538",
       "statuses": [
@@ -5903,6 +6086,45 @@
         "us-west-2"
       ],
       "paths": [
+        "global-cris",
+        "in-region",
+        "regional-cris"
+      ],
+      "removed_at": "20261109224312",
+      "last_regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "last_paths": [
         "global-cris",
         "in-region",
         "regional-cris"
@@ -5911,7 +6133,7 @@
     "OpenAI\u0001GPT-5.6 Sol": {
       "provider": "OpenAI",
       "model_id": "GPT-5.6 Sol",
-      "active": true,
+      "active": false,
       "first_seen": "20261016210806",
       "last_seen": "20261106184538",
       "statuses": [
@@ -5983,6 +6205,43 @@
         "us-west-2"
       ],
       "paths": [
+        "global-cris",
+        "in-region",
+        "regional-cris"
+      ],
+      "removed_at": "20261109224312",
+      "last_regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "last_paths": [
         "global-cris",
         "in-region",
         "regional-cris"
@@ -5991,7 +6250,7 @@
     "OpenAI\u0001GPT-5.6 Terra": {
       "provider": "OpenAI",
       "model_id": "GPT-5.6 Terra",
-      "active": true,
+      "active": false,
       "first_seen": "20261016210806",
       "last_seen": "20261106184538",
       "statuses": [
@@ -6067,6 +6326,45 @@
         "us-west-2"
       ],
       "paths": [
+        "global-cris",
+        "in-region",
+        "regional-cris"
+      ],
+      "removed_at": "20261109224312",
+      "last_regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "last_paths": [
         "global-cris",
         "in-region",
         "regional-cris"
@@ -6075,7 +6373,7 @@
     "OpenAI\u0001GPT-6 Luna": {
       "provider": "OpenAI",
       "model_id": "GPT-6 Luna",
-      "active": true,
+      "active": false,
       "first_seen": "20261016210806",
       "last_seen": "20261106184538",
       "statuses": [
@@ -6151,6 +6449,45 @@
         "us-west-2"
       ],
       "paths": [
+        "global-cris",
+        "in-region",
+        "regional-cris"
+      ],
+      "removed_at": "20261109224312",
+      "last_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "last_paths": [
         "global-cris",
         "in-region",
         "regional-cris"
@@ -6159,7 +6496,7 @@
     "OpenAI\u0001GPT-6 Sol": {
       "provider": "OpenAI",
       "model_id": "GPT-6 Sol",
-      "active": true,
+      "active": false,
       "first_seen": "20261016210806",
       "last_seen": "20261106184538",
       "statuses": [
@@ -6235,6 +6572,45 @@
         "us-west-2"
       ],
       "paths": [
+        "global-cris",
+        "in-region",
+        "regional-cris"
+      ],
+      "removed_at": "20261109224312",
+      "last_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "last_paths": [
         "global-cris",
         "in-region",
         "regional-cris"
@@ -6243,7 +6619,7 @@
     "OpenAI\u0001GPT-6.1 Sol": {
       "provider": "OpenAI",
       "model_id": "GPT-6.1 Sol",
-      "active": true,
+      "active": false,
       "first_seen": "20261016210806",
       "last_seen": "20261106184538",
       "statuses": [
@@ -6322,12 +6698,51 @@
         "global-cris",
         "in-region",
         "regional-cris"
+      ],
+      "removed_at": "20261109224312",
+      "last_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "last_paths": [
+        "global-cris",
+        "in-region",
+        "regional-cris"
       ]
     },
     "OpenAI\u0001GPT-6.1 Terra": {
       "provider": "OpenAI",
       "model_id": "GPT-6.1 Terra",
-      "active": true,
+      "active": false,
       "first_seen": "20261028192216",
       "last_seen": "20261106184538",
       "statuses": [
@@ -6406,6 +6821,353 @@
         "global-cris",
         "in-region",
         "regional-cris"
+      ],
+      "removed_at": "20261109224312",
+      "last_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "last_paths": [
+        "global-cris",
+        "in-region",
+        "regional-cris"
+      ]
+    },
+    "OpenAI\u0001OpenAI GPT-5.4": {
+      "provider": "OpenAI",
+      "model_id": "OpenAI GPT-5.4",
+      "active": true,
+      "first_seen": "20261109224312",
+      "last_seen": "20261109224312",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "offer-abfm"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "OpenAI\u0001OpenAI GPT-5.5": {
+      "provider": "OpenAI",
+      "model_id": "OpenAI GPT-5.5",
+      "active": true,
+      "first_seen": "20261109224312",
+      "last_seen": "20261109224312",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-model-card",
+        "offer-abfm"
+      ],
+      "regions": [
+        "us-east-1",
+        "us-east-2"
+      ],
+      "complete_regions": [
+        "us-east-1",
+        "us-east-2"
+      ],
+      "paths": [
+        "in-region"
+      ]
+    },
+    "OpenAI\u0001OpenAI GPT-5.6 Luna": {
+      "provider": "OpenAI",
+      "model_id": "OpenAI GPT-5.6 Luna",
+      "active": true,
+      "first_seen": "20261109224312",
+      "last_seen": "20261109224312",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-model-card",
+        "offer-abfm"
+      ],
+      "regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region",
+        "regional-cris"
+      ]
+    },
+    "OpenAI\u0001OpenAI GPT-5.6 Sol": {
+      "provider": "OpenAI",
+      "model_id": "OpenAI GPT-5.6 Sol",
+      "active": true,
+      "first_seen": "20261109224312",
+      "last_seen": "20261109224312",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-model-card",
+        "offer-abfm"
+      ],
+      "regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region",
+        "regional-cris"
+      ]
+    },
+    "OpenAI\u0001OpenAI GPT-5.6 Terra": {
+      "provider": "OpenAI",
+      "model_id": "OpenAI GPT-5.6 Terra",
+      "active": true,
+      "first_seen": "20261109224312",
+      "last_seen": "20261109224312",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-model-card",
+        "offer-abfm"
+      ],
+      "regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "me-central-1",
+        "me-south-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-gov-east-1",
+        "us-gov-west-1",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region",
+        "regional-cris"
       ]
     },
     "OpenAI\u0001OpenAI GPT-6 Astra": {
@@ -6413,7 +7175,347 @@
       "model_id": "OpenAI GPT-6 Astra",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-model-card",
+        "offer-abfm"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region",
+        "regional-cris"
+      ]
+    },
+    "OpenAI\u0001OpenAI GPT-6 Luna": {
+      "provider": "OpenAI",
+      "model_id": "OpenAI GPT-6 Luna",
+      "active": true,
+      "first_seen": "20261109224312",
+      "last_seen": "20261109224312",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-model-card",
+        "offer-abfm"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region",
+        "regional-cris"
+      ]
+    },
+    "OpenAI\u0001OpenAI GPT-6 Sol": {
+      "provider": "OpenAI",
+      "model_id": "OpenAI GPT-6 Sol",
+      "active": true,
+      "first_seen": "20261109224312",
+      "last_seen": "20261109224312",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-model-card",
+        "offer-abfm"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region",
+        "regional-cris"
+      ]
+    },
+    "OpenAI\u0001OpenAI GPT-6.1 Sol": {
+      "provider": "OpenAI",
+      "model_id": "OpenAI GPT-6.1 Sol",
+      "active": true,
+      "first_seen": "20261109224312",
+      "last_seen": "20261109224312",
+      "statuses": [
+        "ga"
+      ],
+      "sources": [
+        "english-model-card",
+        "offer-abfm"
+      ],
+      "regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "complete_regions": [
+        "af-south-1",
+        "ap-east-2",
+        "ap-northeast-1",
+        "ap-northeast-2",
+        "ap-northeast-3",
+        "ap-south-1",
+        "ap-south-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-southeast-3",
+        "ap-southeast-4",
+        "ap-southeast-5",
+        "ap-southeast-6",
+        "ap-southeast-7",
+        "ca-central-1",
+        "ca-west-1",
+        "eu-central-1",
+        "eu-central-2",
+        "eu-north-1",
+        "eu-south-1",
+        "eu-south-2",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "il-central-1",
+        "mx-central-1",
+        "sa-east-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "paths": [
+        "global-cris",
+        "in-region",
+        "regional-cris"
+      ]
+    },
+    "OpenAI\u0001OpenAI GPT-6.1 Terra": {
+      "provider": "OpenAI",
+      "model_id": "OpenAI GPT-6.1 Terra",
+      "active": true,
+      "first_seen": "20261109224312",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -6498,7 +7600,7 @@
       "model_id": "Qwen3 235B A22B 2507",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -6539,7 +7641,7 @@
       "model_id": "Qwen3 32B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -6586,7 +7688,7 @@
       "model_id": "Qwen3 Coder 30B A3B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -6633,7 +7735,7 @@
       "model_id": "Qwen3 Coder 480B A35B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -6669,7 +7771,7 @@
       "model_id": "Qwen3 Coder Next",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -6714,7 +7816,7 @@
       "model_id": "Qwen3 Next 80B A3B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -6755,7 +7857,7 @@
       "model_id": "Qwen3 VL 235B A22B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -6796,7 +7898,7 @@
       "model_id": "TwelveLabs Pegasus 1.2",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -6846,7 +7948,7 @@
       "model_id": "TwelveLabs Pegasus 1.5",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -6898,7 +8000,7 @@
       "model_id": "Palmyra Vision 7B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -6924,7 +8026,7 @@
       "model_id": "Palmyra X4",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -6954,7 +8056,7 @@
       "model_id": "Palmyra X5",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -6984,7 +8086,7 @@
       "model_id": "Writer Palmyra Vision 7B",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -7030,7 +8132,7 @@
       "model_id": "Grok 4.3",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -7058,7 +8160,7 @@
       "model_id": "Grok 4.6",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -7145,7 +8247,7 @@
       "model_id": "Grok 4.7",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -7228,7 +8330,7 @@
       "model_id": "GLM 4.7",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -7269,7 +8371,7 @@
       "model_id": "GLM 4.7 Flash",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -7316,7 +8418,7 @@
       "model_id": "GLM 5",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],
@@ -7359,7 +8461,7 @@
       "model_id": "GLM 5.3",
       "active": true,
       "first_seen": "20261016210806",
-      "last_seen": "20261106184538",
+      "last_seen": "20261109224312",
       "statuses": [
         "ga"
       ],

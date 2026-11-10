@@ -5,21 +5,21 @@
       "etag": "\"a38fd5a4246423dd363c903f42a39db6\""
     },
     "AmazonBedrockFoundationModels": {
-      "version": "20261012084008",
-      "etag": "\"0e7558171d9db1b3ab03d03c655a5ea8\""
+      "version": "20261109224312",
+      "etag": "\"2e9436b75d02505066fa879d37f54338\""
     }
   },
   "page": {
-    "tables_hash": "7df2a39e99380de3000e4e8cab9e77dbbde4e94d96d61c9d2eb5852c981a5099",
+    "tables_hash": "5ba04902f69827172d4f0a8edc96476d63d011f4e204b4fb0a9e31ac98b5d203",
     "tables": 170
   },
   "docs": {
-    "tables_hash": "50c47c9c549d9ce0ce96d5af0a34f72d2c9525d5496749ffd22efe602117f9f9",
-    "tables": 147
+    "tables_hash": "371a4e9de3106a321ff4aee0d0003e7472892870a715def5c13d3a6313e8e461",
+    "tables": 149
   },
   "cards": {
-    "pricing_hash": "3089dc6ba6bf13f30a6e81d260324119ed3e9bc2fcdd13ed9cd12b5e68b545eb",
-    "cards": 16,
-    "indexes": 1
+    "pricing_hash": "42b477c1d254e6f27b6052f0caf548b5f32ec29542886f2cdedb3597e0fa1fb5",
+    "cards": 141,
+    "indexes": 19
   }
 }

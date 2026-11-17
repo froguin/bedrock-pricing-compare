@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T05:06:54.224Z",
+  "generated_at": "2026-11-17T05:39:31.193Z",
   "source": "https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html",
   "models": [
     {
@@ -3128,9 +3128,7 @@
       "doc_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-54.html",
       "status": "ga",
       "availability": {
-        "in-region": [
-          "us-gov-west-1"
-        ],
+        "in-region": [],
         "in-region-mantle": [
           "us-east-1",
           "us-east-2",
@@ -3140,6 +3138,8 @@
         "regional-cris": [
           "us-east-1",
           "us-east-2",
+          "us-gov-east-1",
+          "us-gov-west-1",
           "us-west-2"
         ],
         "global-cris": [

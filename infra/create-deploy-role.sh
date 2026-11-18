@@ -4,8 +4,11 @@
 # Trust: only froguin/bedrock-pricing-compare on refs/heads/main (scheduled and
 #        manual runs on main). Forks, PRs and other branches cannot assume it.
 # Power: PutObject on exactly s3://awskr-bedrock-pricing/index.html (+ its .br/.gz
-#        pre-compressed copies), and
-#        CreateInvalidation on exactly the one CloudFront distribution.
+#        pre-compressed copies and static files), CreateInvalidation on exactly the
+#        one CloudFront distribution, PutObject on the refresh Lambda's UI shell,
+#        and UpdateFunctionCode/Invoke on exactly the refresh Lambda
+#        (.github/workflows/deploy-lambda.yml). Mirrors
+#        infra/lambda-refresh/deploy-role-policy.json -- keep the two in sync.
 # No long-lived keys; each run gets 1h credentials.
 #
 # Re-running is safe: an existing role gets its trust + policy refreshed.
@@ -15,6 +18,8 @@ ROLE=gh-bedrock-compare-deploy
 REPO=froguin/bedrock-pricing-compare
 BUCKET=awskr-bedrock-pricing
 DIST_ID=E43RB5R0916YO
+REGION=ap-northeast-2
+FUNCTION=bedrock-pricing-refresh
 ACCOUNT="${AWS_ACCOUNT_ID:-$(aws sts get-caller-identity --query Account --output text)}"
 OIDC="arn:aws:iam::${ACCOUNT}:oidc-provider/token.actions.githubusercontent.com"
 # GitHub may issue "immutable" subjects (repo:owner@<id>/name@<id>:...) instead
@@ -36,7 +41,12 @@ PERM=$(cat <<EOF
  {"Sid":"UploadSitePage","Effect":"Allow","Action":"s3:PutObject",
   "Resource":["arn:aws:s3:::${BUCKET}/index.html","arn:aws:s3:::${BUCKET}/index.html.br","arn:aws:s3:::${BUCKET}/index.html.gz","arn:aws:s3:::${BUCKET}/robots.txt","arn:aws:s3:::${BUCKET}/sitemap.xml","arn:aws:s3:::${BUCKET}/llms.txt","arn:aws:s3:::${BUCKET}/.well-known/ard.json","arn:aws:s3:::${BUCKET}/.well-known/ai-catalog.json"]},
  {"Sid":"InvalidateSiteCache","Effect":"Allow","Action":"cloudfront:CreateInvalidation",
-  "Resource":"arn:aws:cloudfront::${ACCOUNT}:distribution/${DIST_ID}"}]}
+  "Resource":"arn:aws:cloudfront::${ACCOUNT}:distribution/${DIST_ID}"},
+ {"Sid":"SyncLambdaShell","Effect":"Allow","Action":"s3:PutObject",
+  "Resource":"arn:aws:s3:::${BUCKET}-refresh-state/refresh-state/shell.html"},
+ {"Sid":"DeployRefreshLambdaCode","Effect":"Allow",
+  "Action":["lambda:UpdateFunctionCode","lambda:GetFunctionConfiguration","lambda:InvokeFunction"],
+  "Resource":"arn:aws:lambda:${REGION}:${ACCOUNT}:function:${FUNCTION}"}]}
 EOF
 )
 

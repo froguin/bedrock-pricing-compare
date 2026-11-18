@@ -27,6 +27,16 @@
       "Effect": "Allow",
       "Action": "s3:PutObject",
       "Resource": "arn:aws:s3:::awskr-bedrock-pricing-refresh-state/refresh-state/shell.html"
+    },
+    {
+      "Sid": "DeployRefreshLambdaCode",
+      "Effect": "Allow",
+      "Action": [
+        "lambda:UpdateFunctionCode",
+        "lambda:GetFunctionConfiguration",
+        "lambda:InvokeFunction"
+      ],
+      "Resource": "arn:aws:lambda:ap-northeast-2:${AWS_ACCOUNT_ID}:function:bedrock-pricing-refresh"
     }
   ]
 }

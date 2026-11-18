@@ -12,6 +12,10 @@ on:
         description: "Rebuild and deploy even if no source changed"
         type: boolean
         default: false
+      deploy_lambda:
+        description: "Also ship the current collector to the refresh Lambda"
+        type: boolean
+        default: false
 
 # Never let two refreshes overlap; a queued run waits for the current one.
 concurrency:
@@ -27,6 +31,7 @@ env:
   STATE_BUCKET: awskr-bedrock-pricing-refresh-state
   DIST_ID: E43RB5R0916YO
   AWS_REGION: ap-northeast-2
+  LAMBDA: bedrock-pricing-refresh
 
 jobs:
   refresh:
@@ -86,8 +91,8 @@ jobs:
           node collector/build-standalone.mjs --src app/dist/index.html --out dist/bedrock-pricing.html
           node collector/precompress.mjs
 
-      - name: AWS credentials (OIDC, 1h, upload + invalidate only)
-        if: steps.build.outcome == 'success' || github.event_name == 'push'
+      - name: AWS credentials (OIDC, 1h, upload + invalidate + Lambda code)
+        if: steps.build.outcome == 'success' || github.event_name == 'push' || inputs.deploy_lambda
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ vars.AWS_ROLE_ARN }}
@@ -126,6 +131,70 @@ jobs:
           aws s3 cp static/.well-known/ai-catalog.json "s3://$BUCKET/.well-known/ai-catalog.json" --content-type "application/ai-catalog+json" --cache-control "public, max-age=3600" --no-progress
           aws cloudfront create-invalidation --distribution-id "$DIST_ID" \
             --paths "/index.html" "/" "/index.html.br" "/index.html.gz" "/robots.txt" "/sitemap.xml" "/llms.txt" "/.well-known/ard.json" "/.well-known/ai-catalog.json" --query 'Invalidation.Id' --output text
+
+      # The hourly refresh Lambda runs its OWN bundled copy of collector/*.mjs, and
+      # nothing used to update it: it stayed on the 2026-10-29 collector, and every
+      # hourly rebuild overwrote this deploy with old-code output (Kimi K3.1 Pro -
+      # Highspeed vanished on 2026-11-18). Ship the bundle whenever this push
+      # touched the code it contains. Running here, after the shell sync and the
+      # site deploy, keeps the order fixed (new shell first) and the
+      # refresh-prices lock held until the Lambda's forced rebuild finishes.
+      # Code only; template.yaml changes still go through `sam deploy`.
+      - name: Detect refresh Lambda code changes
+        id: lambda
+        if: github.event_name == 'push' || inputs.deploy_lambda
+        env:
+          BEFORE: ${{ github.event.before }}
+          MANUAL: ${{ inputs.deploy_lambda }}
+        run: |
+          paths=(collector infra/lambda-refresh/handler.mjs infra/lambda-refresh/package.sh)
+          if [[ "$MANUAL" == "true" ]]; then changed=true
+          elif [[ -z "$BEFORE" || "$BEFORE" =~ ^0+$ ]] || ! git fetch --quiet --depth=1 origin "$BEFORE"; then
+            changed=true   # unknown base: deploy rather than risk drifting again
+          elif git diff --quiet "$BEFORE" HEAD -- "${paths[@]}"; then changed=false
+          else changed=true
+          fi
+          echo "changed=$changed" >> "$GITHUB_OUTPUT"
+          echo "refresh Lambda code changed: $changed"
+
+      - name: Package refresh Lambda
+        if: steps.lambda.outputs.changed == 'true'
+        run: |
+          bash infra/lambda-refresh/package.sh
+          cd infra/lambda-refresh/build
+          missing=0
+          for f in handler.mjs collector/*.mjs; do
+            node --check "$f"
+            # package.sh copies an explicit file list; fail on a sibling import it left out.
+            while read -r dep; do
+              if [ ! -f "$(dirname "$f")/$dep" ]; then
+                echo "::error file=$f::imports ./$dep, which package.sh does not bundle"
+                missing=1
+              fi
+            done < <(grep -oE 'from "\./[^"]+"' "$f" | sed -E 's/from "\.\/(.*)"/\1/')
+          done
+          [ "$missing" = 0 ]
+          zip -X -q -r "$RUNNER_TEMP/lambda.zip" .
+
+      - name: Deploy refresh Lambda code and rebuild once
+        if: steps.lambda.outputs.changed == 'true'
+        run: |
+          aws lambda update-function-code --function-name "$LAMBDA" \
+            --zip-file "fileb://$RUNNER_TEMP/lambda.zip" --query CodeSha256 --output text
+          # function-updated polls GetFunctionConfiguration (the -v2 waiter needs
+          # GetFunction, which this role is deliberately not granted).
+          aws lambda wait function-updated --function-name "$LAMBDA"
+          # Synchronous on purpose: hold the lock until the new code has rebuilt the
+          # site, instead of waiting for the next source change (hourly runs report
+          # "unchanged" until then). Function timeout is 300 s.
+          aws lambda invoke --function-name "$LAMBDA" --cli-read-timeout 330 \
+            --cli-binary-format raw-in-base64-out --payload '{"force":true}' \
+            "$RUNNER_TEMP/invoke.json" --query FunctionError --output text > "$RUNNER_TEMP/invoke-error.txt"
+          cat "$RUNNER_TEMP/invoke.json"; echo
+          if [ "$(cat "$RUNNER_TEMP/invoke-error.txt")" != "None" ]; then
+            echo "::error::refresh Lambda failed on its forced run"; exit 1
+          fi
+          echo "Refresh Lambda updated to ${GITHUB_SHA::7} and rebuilt the site once." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Note page-only change
         if: steps.check.outputs.page_changed == 'true' && steps.check.outputs.offer_changed != 'true'

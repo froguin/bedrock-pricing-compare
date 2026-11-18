@@ -1,0 +1,103 @@
+name: Deploy refresh Lambda
+
+# The hourly refresh Lambda (infra/lambda-refresh) runs its OWN copy of
+# collector/*.mjs. A push to main only redeploys the site, so the Lambda kept
+# running the 2026-10-29 collector and every hourly rebuild overwrote the site
+# with output from old code (Kimi K3.1 Pro - Highspeed disappeared on
+# 2026-11-18 because the Lambda never received #9). This workflow ships the
+# current collector to the Lambda whenever the code it bundles changes.
+#
+# Code only: `aws lambda update-function-code`. Changes to template.yaml
+# (schedule, env, IAM) still go through `sam deploy` in infra/lambda-refresh/.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'collector/**'
+      - 'infra/lambda-refresh/handler.mjs'
+      - 'infra/lambda-refresh/package.sh'
+      - '.github/workflows/deploy-lambda.yml'
+  workflow_dispatch:
+
+# Same group as refresh.yml: never update the Lambda while a site refresh is
+# mid-deploy, and let the refresh triggered by the same push finish first.
+concurrency:
+  group: refresh-prices
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  id-token: write   # OIDC token for the AWS role
+
+env:
+  AWS_REGION: ap-northeast-2
+  FUNCTION: bedrock-pricing-refresh
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Not `node --test collector/`: several of those tests assert prices in the
+      # committed web/pricing.json snapshot and fail whenever AWS data moves,
+      # which would block shipping unrelated collector fixes.
+      - name: Package
+        run: bash infra/lambda-refresh/package.sh
+
+      - name: Syntax-check the bundle
+        working-directory: infra/lambda-refresh/build
+        run: for f in handler.mjs collector/*.mjs; do node --check "$f"; done
+
+      # package.sh copies an explicit file list. Fail before deploying if a
+      # bundled script imports a sibling module that was left out of it.
+      - name: Verify bundled imports resolve
+        working-directory: infra/lambda-refresh/build
+        run: |
+          missing=0
+          for f in handler.mjs collector/*.mjs; do
+            while read -r dep; do
+              if [ ! -f "$(dirname "$f")/$dep" ]; then
+                echo "::error file=$f::imports ./$dep, which package.sh does not bundle"
+                missing=1
+              fi
+            done < <(grep -oE 'from "\./[^"]+"' "$f" | sed -E 's/from "\.\/(.*)"/\1/')
+          done
+          exit $missing
+
+      - name: Zip
+        working-directory: infra/lambda-refresh/build
+        run: zip -X -q -r "$RUNNER_TEMP/lambda.zip" .
+
+      - name: AWS credentials (OIDC, 1h)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Update function code
+        run: |
+          aws lambda update-function-code --function-name "$FUNCTION" \
+            --zip-file "fileb://$RUNNER_TEMP/lambda.zip" \
+            --query '{LastModified:LastModified,CodeSha256:CodeSha256}' --output table
+          # function-updated polls GetFunctionConfiguration (the -v2 waiter needs
+          # GetFunction, which this role is deliberately not granted).
+          aws lambda wait function-updated --function-name "$FUNCTION"
+
+      # Rebuild the site once with the new code instead of waiting for the next
+      # source change; until then the hourly runs report "unchanged" and the
+      # page keeps the old code's output. Async: the job does not wait ~1 min.
+      - name: Force one refresh with the new code
+        run: |
+          aws lambda invoke --function-name "$FUNCTION" --invocation-type Event \
+            --cli-binary-format raw-in-base64-out --payload '{"force":true}' "$RUNNER_TEMP/invoke.json" \
+            --query StatusCode --output text
+          {
+            echo "Lambda \`$FUNCTION\` updated to ${GITHUB_SHA::7} and a forced refresh was queued."
+          } >> "$GITHUB_STEP_SUMMARY"
